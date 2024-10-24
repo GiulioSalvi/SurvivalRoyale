@@ -1,0 +1,19 @@
+var searchData=
+[
+  ['bgblack_0',['BgBlack',['../ansi_8h.html#ab3d2633629a1c8bf88c5f29c43569fe8aa509b64f9ac36c6b4844b77b55165b61',1,'ansi.h']]],
+  ['bgblue_1',['BgBlue',['../ansi_8h.html#ab3d2633629a1c8bf88c5f29c43569fe8ada3585acb6ae35b764c13cbb9b694ed7',1,'ansi.h']]],
+  ['bgbrightblack_2',['BgBrightBlack',['../ansi_8h.html#ab3d2633629a1c8bf88c5f29c43569fe8a21b7d6d55c1e89ffc934efe7388ac20d',1,'ansi.h']]],
+  ['bgbrightblue_3',['BgBrightBlue',['../ansi_8h.html#ab3d2633629a1c8bf88c5f29c43569fe8a818647dab25255beaf7f96e782ab6f63',1,'ansi.h']]],
+  ['bgbrightcyan_4',['BgBrightCyan',['../ansi_8h.html#ab3d2633629a1c8bf88c5f29c43569fe8ae083c78a02f14c9d38f350720e0f06e8',1,'ansi.h']]],
+  ['bgbrightgreen_5',['BgBrightGreen',['../ansi_8h.html#ab3d2633629a1c8bf88c5f29c43569fe8a554a54ddcb788f43a5493fd69cbe6e48',1,'ansi.h']]],
+  ['bgbrightmagenta_6',['BgBrightMagenta',['../ansi_8h.html#ab3d2633629a1c8bf88c5f29c43569fe8a6751837231705ae2622fd1f1f6a0ebb4',1,'ansi.h']]],
+  ['bgbrightred_7',['BgBrightRed',['../ansi_8h.html#ab3d2633629a1c8bf88c5f29c43569fe8aad818fbdab6479a3d4e5631883010fed',1,'ansi.h']]],
+  ['bgbrightwhite_8',['BgBrightWhite',['../ansi_8h.html#ab3d2633629a1c8bf88c5f29c43569fe8a26a2e1041f3ab056424021623697e4ae',1,'ansi.h']]],
+  ['bgbrightyellow_9',['BgBrightYellow',['../ansi_8h.html#ab3d2633629a1c8bf88c5f29c43569fe8ad99bbe09b4280cfd77a9817a36c21a8b',1,'ansi.h']]],
+  ['bgcyan_10',['BgCyan',['../ansi_8h.html#ab3d2633629a1c8bf88c5f29c43569fe8aa8626471b82c1f3c4f70d5dba89ae5f6',1,'ansi.h']]],
+  ['bggreen_11',['BgGreen',['../ansi_8h.html#ab3d2633629a1c8bf88c5f29c43569fe8ac22dc39f6234f203d6575ac3f2799c14',1,'ansi.h']]],
+  ['bgmagenta_12',['BgMagenta',['../ansi_8h.html#ab3d2633629a1c8bf88c5f29c43569fe8a4b20599fc2dba075dcaf40bc76d16cc5',1,'ansi.h']]],
+  ['bgred_13',['BgRed',['../ansi_8h.html#ab3d2633629a1c8bf88c5f29c43569fe8a614762b8a867d9dce405fe61b9566da9',1,'ansi.h']]],
+  ['bgwhite_14',['BgWhite',['../ansi_8h.html#ab3d2633629a1c8bf88c5f29c43569fe8ac791d86e6b3e376b600781ce3d6a56bf',1,'ansi.h']]],
+  ['bgyellow_15',['BgYellow',['../ansi_8h.html#ab3d2633629a1c8bf88c5f29c43569fe8aa5c71fafad96c1495896834153abea4d',1,'ansi.h']]]
+];
