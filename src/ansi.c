@@ -608,8 +608,7 @@ int inputf(const char* format, ...) {
             if(strcmp(substring(format, p, 1), "%") == 0) {
                 i++;
                 successfulInputs++;
-            }
-            else if(strcmp(substring(format, p, 1), "c") == 0) { // char
+            } else if(strcmp(substring(format, p, 1), "c") == 0) { // char
                 if(feof(stdin) != 0) {
                     endInputf(args, enterCount);
 
