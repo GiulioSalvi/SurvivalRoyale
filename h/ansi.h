@@ -1,3 +1,5 @@
+#include "includes.h"
+
 /* 
  *  Implemented following https://en.wikipedia.org/wiki/ANSI_escape_code
  *   
@@ -8,74 +10,20 @@
 
 // NOTICE: for these structures are available some builders function that you should use if you want to build structures with unset properties.
 
-
-/// @brief Define an enumaration for all standard (30-37, 90-97) ANSI foreground colors.
-typedef enum ansiStandardForegroundColors {
-    /// @brief ANSI standard black foreground color
-    FgBlack = 30,
-    /// @brief ANSI standard red foreground color
-    FgRed = 31,
-    /// @brief ANSI standard green foreground color
-    FgGreen = 32,
-    /// @brief ANSI standard yellow foreground color
-    FgYellow = 33,
-    /// @brief ANSI standard blue foreground color
-    FgBlue = 34,
-    /// @brief ANSI standard magenta foreground color
-    FgMagenta = 35,
-    /// @brief ANSI standard cyan foreground color
-    FgCyan = 36,
-    /// @brief ANSI standard white foreground color
-    FgWhite = 37,
-    /// @brief ANSI standard bright black foreground color
-    FgBrightBlack = 90,
-    /// @brief ANSI standard bright red foreground color
-    FgBrightRed = 91,
-    /// @brief ANSI standard bright green foreground color
-    FgBrightGreen = 92,
-    /// @brief ANSI standard bright yellow foreground color
-    FgBrightYellow = 93,
-    /// @brief ANSI standard bright blue foreground color
-    FgBrightBlue = 94,
-    /// @brief ANSI standard bright magenta foreground color
-    FgBrightMagenta = 95,
-    /// @brief ANSI standard bright cyan foreground color
-    FgBrightCyan = 96,
-    /// @brief ANSI standard bright white foreground color
-    FgBrightWhite = 97
-} ansiStandardForegroundColors;
-
-/// @brief Define an enumaration for all standard (40-47, 100-107) ANSI background colors.
-typedef enum ansiStandardBackgroundColors {
-    BgBlack = 40,
-    BgRed = 41,
-    BgGreen = 42,
-    BgYellow = 43,
-    BgBlue = 44,
-    BgMagenta = 45,
-    BgCyan = 46,
-    BgWhite = 47,
-    BgBrightBlack = 100,
-    BgBrightRed = 101,
-    BgBrightGreen = 102,
-    BgBrightYellow = 103,
-    BgBrightBlue = 104,
-    BgBrightMagenta = 105,
-    BgBrightCyan = 106,
-    BgBrightWhite = 107
-} ansiStandardBackgroundColors;
+typedef uint8_t underline;
+typedef uint8_t ansiStandardColors;
 
 /// @brief Defines a basic structure for RGB colors.
 typedef struct rgb {
-    int r;
-    int g;
-    int b;
+    uint8_t r;
+    uint8_t g;
+    uint8_t b;
 } rgb;
 
 /// @brief Defines a basic structure for standard ANSI foreground color and background color.
 typedef struct ansiStandardColor {
-    ansiStandardForegroundColors fgColor;
-    ansiStandardBackgroundColors bgColor;
+    ansiStandardColors fgColor;
+    ansiStandardColors bgColor;
 } ansiStandardColor;
 
 /// @brief Defines a basic structure for RGB foreground color and background color
@@ -92,21 +40,14 @@ typedef union __color {
 
 /// @brief Defines a struct for representing a generic color
 typedef struct color {
-    int isRgbColor;
+    bool isRgbColor;
     __color color;
 } color;
 
-/// @brief Defines an enumaration for possible underlining
-typedef enum underlined {
-    No = 0,
-    SinglyUnderlined = 1,
-    DoublyUnderlined = 2
-} underline;
-
 /// @brief Defines a struct for graphic rendition including propreties for bold, italic, underlined and colored text
 typedef struct graphicRendition {
-    int bold;
-    int italic;
+    bool bold;
+    bool italic;
     underline underlined;
     color color;
 } graphicRendition;
@@ -178,8 +119,6 @@ graphicRendition buildGrahicRendition();
 
 // UTILITY FUNCTIONS section
 
-/// Clears the screen when the programm is first started.
-void initialClearScreen();
 /// Checks if  a rgb struct has valids properties.
 bool validateRgb(rgb rgbColor);
 /// Clears the entire terminal's window's content.
@@ -195,14 +134,14 @@ void setColor(color color);
 void printGraphicRendition(char* text, graphicRendition rendition);
 /// Prints a text with the graphic rendition specified with custom format specifiers.
 ///
-/// Custom format specifiers: #b# (for bold text), #i# (for italic text), #u# (for underlined text), #du# (for doubly underlined text), #n# (for setting ANSI standard color represented by n), #r# for graphic reset.
+/// Custom format specifiers: #b# for bold text, #i# for italic text, #u# for underlined text, #du# for doubly underlined text, #n# for setting ANSI standard color represented by n, #bl# for slow blinking, #r# for graphic reset.
 /// 
 /// For setting RGB colors use #fg;r;g;b# or #bg;r;g;b# where fg or bg represents if the color has to be applied to the foreground or to the background and r, g, b are the values for r, g, b components of the color representation and must be between 0 and 255;
 /// If the passed format does not comply with this specification, then the passed format text is going to be printed.
 /// 
 /// Standard C formats specifiers are not handled.
 void printgr(char* text);
-/// Prints text as printgr but handles standarc C format specifiers %, d, i, u, x, X, f, F, s, n.
+/// Prints text as printgr but handles standard C format specifiers %, d, i, u, x, X, f, F, s, n.
 /// Integers are always interpreted in base 10.
 void printfgr(char* text, ...);
 
@@ -232,32 +171,13 @@ void graphicReset();
 void bold();
 void italic();
 void underlined();
+void slowBlinking();
 void doublyUnderlined();
-void setStandardForegroundColor(ansiStandardForegroundColors foregroundColor);
+void setStandardForegroundColor(ansiStandardColors foregroundColor);
 void setRGBForegroundColor(rgb rgbColor);
 void defaultForegroundColor();
-void setStandardBackgroundColor(ansiStandardBackgroundColors backgroundColor);
+void setStandardBackgroundColor(ansiStandardColors backgroundColor);
 void setRGBBackgroundColor(rgb rgbColor);
 void defaultBackgroundColor();
 
 // SGR section end
-
-// INPUTS section
-
-/// Should be called only by functions defined in this header.
-void prepareAnsi();
-/// Should be called only by functions defined in this header.
-void endAnsi();
-/// Should be called only by functions defined in this header.
-void endInputf(va_list args, int enterCount);
-/// Should be called only by functions defined in this header.
-char getChar();
-
-/// Gets the input as specified in the format as scanf, but counts how many times 'Enter' have been pressed.
-/// Supported standard C format specifiers: %, c, d, i, u, x, X, f, F, s, n.
-/// Returns the number of successfully taken inputs;
-/// Otherwise returns -1 if format is incorrect or returns -2 if reached EOF for stdin.
-/// Returns -3 if some argument passed does not fits with the corresponding format specifier.
-int inputf(const char* format, ...);
-
-// INPUTS section end
