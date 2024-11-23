@@ -5,7 +5,6 @@
         #define NONE -1
     #endif
 
-
     #ifndef ENTER
         #ifdef _WIN32
             #define ENTER '\r'
@@ -21,11 +20,14 @@
         #include <unistd.h>
         #include <termios.h>
     #endif
+    
     #include <math.h>
     #include <time.h>
     #include <stdio.h>
     #include <stdarg.h>
+    #include <stdint.h>
     #include <stdlib.h>
     #include <string.h>
     #include <stdbool.h>
+    #include <stdalign.h>
 #endif
