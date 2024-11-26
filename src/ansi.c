@@ -34,33 +34,6 @@ int count(char c, const char* str, int start) {
     return counter;
 }
 
-char* concatenate(int num, ...) {
-    va_list args;
-    va_start(args, num);
-
-    int totalLength = 0;
-    for (int i = 0; i < num; i++) {
-        char* str = va_arg(args, char*);
-        totalLength += strlen(str);
-    }
-
-    char* result = (char*)malloc(totalLength + 1);
-    if (result == NULL) {
-        va_end(args);
-        return NULL;
-    }
-
-    result[0] = '\0';
-    va_start(args, num);
-    for (int i = 0; i < num; i++) {
-        char* str = va_arg(args, char*);
-        strcat(result, str);
-    }
-
-    va_end(args);
-    return result;
-}
-
 bool containsFrom(const char* str, char c, int p) {
     for(int i = p; i < strlen(str); i++)
         if(str[i] == c)
@@ -102,11 +75,11 @@ int evalutateBase(char* num) {
 
 #ifndef _WIN32
     void itoa(int n, char* str, int base) {
-        int p = 0;
+        int p = 0, sign = n < 0 ? -1 : 1;
         char* s = (char*)malloc(sizeof(char)*1);
 
         if(n < 0)
-            *(s + p++) = '-';
+            n *= -1;
         else if(n == 0) {
             *str = '0';
             return;
@@ -116,6 +89,9 @@ int evalutateBase(char* num) {
             *(s + p++) = (char)(48 + n%10);
             n /= 10;
         }
+        
+        if(sign == -1)
+            *(s + p++) = '-';
         *(s + p) = '\0';
 
         for(int i = strlen(s) - 1; i >= 0; i--) {
@@ -182,6 +158,16 @@ graphicRendition buildGrahicRendition() {
 //BUILDERS section end
 
 // UTILITY FUNCTIONS section
+int nDigits(int n) {
+    int c = 0;
+
+    while(n != 0) {
+        n /= 10;
+        c++;
+    }
+
+    return c;
+}
 
 bool validateRgb(rgb rgbColor) {
     if(rgbColor.r < 0 || rgbColor.r > 255)
@@ -274,12 +260,20 @@ void printgr(char* text) {
                         else
                             semicolonOffset = offsetFromNext(';', text, i) - 1;
                         
-                        if(j == 0)
-                            rgb.r = atoi(substring(text, i, semicolonOffset + 1));
-                        else if(j == 1)
-                            rgb.g = atoi(substring(text, i, semicolonOffset + 1));
-                        else if(j == 2)
-                            rgb.b = atoi(substring(text, i, semicolonOffset + 1));
+                        if(j == 0) {
+                            char* r = substring(text, i, semicolonOffset + 1);
+                            rgb.r = atoi(r);
+                            free(r);
+                            // rgb.r = atoi(substring(text, i, semicolonOffset + 1));
+                        } else if(j == 1) {
+                            char* g = substring(text, i, semicolonOffset + 1);
+                            rgb.g = atoi(g);
+                            free(g);
+                        } else if(j == 2) {
+                            char* b = substring(text, i, semicolonOffset + 1);
+                            rgb.b = atoi(b);
+                            free(b);
+                        }
                         
                         if(j <= 1)
                             i += semicolonOffset + 2;
@@ -321,6 +315,8 @@ void printgr(char* text) {
                 i++;
                 graphicReset();
             }
+
+            free(substr);
         } else
             printf("%c", text[i]);
 
@@ -345,20 +341,42 @@ void printfgr(char* text, ...) {
                 *(t + p) = '%';
             else if(text[i] == 'd' || text[i] == 'i' || text[i] == 'u' || text[i] == 'x' || text[i] == 'X') {
                 int n = va_arg(args, int);
-                char* sn = (char*)malloc(sizeof(char)*1);
+                char* sn = (char*)malloc(sizeof(char)*2);
 
                 itoa(n, sn, 10);
 
                 for(int j = 0; j < strlen(sn); j++) 
                     *(t + p++) = *(sn + j);
+                
+                free(sn);
             } else if(text[i] == 'f' || text[i] == 'F') {
                 double n = va_arg(args, double);
                 char* sn = (char*)malloc(sizeof(char)*1);
                 
-                gcvt(n, 6, sn);
+                gcvt(n, NUMBER_DECIMALS_DIGITS + nDigits(floor(n)), sn);
+                if(n == floor(n)) {
+                    int l = strlen(sn);
+                    sn[l++] = '.';
+
+                    for(int k = 0; k < 6; k++)
+                        sn[l++] = '0';
+                    sn[l] = '\0';
+                } else {
+                    int nZerosToAdd = NUMBER_DECIMALS_DIGITS - ((strlen(sn) - 1) - offsetFromNext('.', sn, 0));
+
+                    if(nZerosToAdd > 0) {
+                        int l = strlen(sn);
+
+                        for(int k = 0; k < nZerosToAdd; k++)
+                            sn[l++] = '0';
+                        sn[l] = '\0';
+                    } 
+                }
 
                 for(int j = 0; j < strlen(sn); j++) 
                     *(t + p++) = *(sn + j);
+                
+                free(sn);
             } else if(text[i] == 's') {
                 char** s = va_arg(args, char**);
 
@@ -371,14 +389,29 @@ void printfgr(char* text, ...) {
     
     *(t + p++) = '\0';
     printgr(t);
+
+    free(t);
 }
 
 char getChar() {
     fflush(stdin);
 
     #ifndef _WIN32
+        struct termios term;
+        tcgetattr(STDIN_FILENO, &term);
+
+        term.c_lflag &= ~(ICANON | ECHO);
+        tcsetattr(STDIN_FILENO, TCSANOW, &term);
+
         char c;
-        if(read(STDIN_FILENO, &c, 1) == 1)
+        int rs = read(STDIN_FILENO, &c, 1);
+
+        tcgetattr(STDIN_FILENO, &term);
+
+        term.c_lflag |= (ICANON | ECHO);
+        tcsetattr(STDIN_FILENO, TCSANOW, &term);
+
+        if(rs == 1)
             return c;
         else
             return -1;

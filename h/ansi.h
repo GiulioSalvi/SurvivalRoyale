@@ -10,6 +10,9 @@
 
 // NOTICE: for these structures are available some builders function that you should use if you want to build structures with unset properties.
 
+/// @brief Defines how many decimals digits should use printfgr when printing floating-point numbers. If there are leading digits, it approximates the number to a floating-point number with this number of decimal digits
+#define NUMBER_DECIMALS_DIGITS 6
+
 typedef uint8_t underline;
 typedef uint8_t ansiStandardColors;
 
@@ -72,8 +75,6 @@ int offsetFromNext(char c, const char* str, int start);
 /// @param start The start position in the string to count from.
 /// @return Returns the number of occoruncies of the char in the string. If there are not occoruncies of the char in the passed string, returns 0.
 int count(char c, const char* str, int start);
-/// Concatenates the passed number of strings and returns the concatenenated string.
-char* concatenate(int num, ...);
 /// Checks if there is an occoruncy of the passed char from the passed position in the passed string.
 bool containsFrom(const char* str, char c, int p);
 /// Checks if a char is a decimal digit.
@@ -119,6 +120,7 @@ graphicRendition buildGrahicRendition();
 
 // UTILITY FUNCTIONS section
 
+int nDigits(int n);
 /// Checks if  a rgb struct has valids properties.
 bool validateRgb(rgb rgbColor);
 /// Clears the entire terminal's window's content.
