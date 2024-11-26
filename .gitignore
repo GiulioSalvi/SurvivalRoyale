@@ -1,3 +1,4 @@
 .DS_Store
 docs/Doxygen.app/**
 Go.ps1
+Go.sh
