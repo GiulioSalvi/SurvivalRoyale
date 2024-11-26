@@ -144,7 +144,7 @@ void printgr(char* text);
 /// Prints text as printgr but handles standard C format specifiers %, d, i, u, x, X, f, F, s, n.
 /// Integers are always interpreted in base 10.
 void printfgr(char* text, ...);
-
+char getChar();
 // UTILITY FUNCTIONS section end
 
 // CSI section

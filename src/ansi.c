@@ -373,6 +373,20 @@ void printfgr(char* text, ...) {
     printgr(t);
 }
 
+char getChar() {
+    fflush(stdin);
+
+    #ifndef _WIN32
+        char c;
+        if(read(STDIN_FILENO, &c, 1) == 1)
+            return c;
+        else
+            return -1;
+    #else
+        return getch();
+    #endif
+}
+
 // UTILITY FUNCTIONS section end
 
 // CSI section
