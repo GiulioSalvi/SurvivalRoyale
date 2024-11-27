@@ -60,7 +60,7 @@ Card* prepareCardDeck();
 /// Generates a player structure with the given player id.
 Player* preparePlayer(int id, Card* deck);
 /// Generates a game structure with the given players number.
-Game prepareGame(int playersCounter, Card** deck);
+Game prepareGame(int playersCounter, Card* deck);
 /// Shuffles the deck using Fisher - Yates algorithm.
 void shuffleDeck(Card* deck);
 /// @brief Handles the current game phase.

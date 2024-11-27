@@ -132,7 +132,7 @@ Card* prepareCardDeck() {
     return deck;
 }
 
-Game prepareGame(int playersCounter, Card** deck) {
+Game prepareGame(int playersCounter, Card* deck) {
     Game game = buildGame(playersCounter);
     game.lifePointsOnTheField = 0;
 
