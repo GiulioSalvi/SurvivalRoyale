@@ -110,10 +110,10 @@ ansiRgbColor buildAnsiRgbColor();
 /// @return Returns a ANSI standard color struct with properties set to NONE.
 ansiStandardColor buildAnsiStandardColor();
 /// @brief Builds a color struct.
-/// @return Returns a color struct with properties set to NONE.
+/// @return Returns a color struct with properties set to NONE. isRgbColor property is set to false.
 color buildColor();
 /// @brief Builds a graphic rendition struct.
-/// @return Returns a graphic rendition struct with properties set to NONE.
+/// @return Returns a graphic rendition struct with properties set to NONE. bold and italic properties are set to false.
 graphicRendition buildGrahicRendition();
 
 // BUILDERS section end

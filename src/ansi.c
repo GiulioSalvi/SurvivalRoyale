@@ -107,9 +107,9 @@ int evalutateBase(char* num) {
 
 rgb buildRgb() {
     rgb rgb = {
-        r: NONE,
-        g: NONE,
-        b: NONE
+        .r = NONE,
+        .g = NONE,
+        .b = NONE
     };
     
     return rgb;
@@ -117,8 +117,8 @@ rgb buildRgb() {
 
 ansiRgbColor buildAnsiRgbColor() {
     ansiRgbColor c = {
-        fgRgb: buildRgb(),
-        bgRgb: buildRgb()
+        .fgRgb = buildRgb(),
+        .bgRgb = buildRgb()
     };
 
     return c;
@@ -126,8 +126,8 @@ ansiRgbColor buildAnsiRgbColor() {
 
 ansiStandardColor buildAnsiStandardColor() {
     ansiStandardColor c = {
-        fgColor: NONE,
-        bgColor: NONE
+        .fgColor = NONE,
+        .bgColor = NONE
     };
     
     return c;
@@ -135,9 +135,9 @@ ansiStandardColor buildAnsiStandardColor() {
 
 color buildColor() {
     color c = {
-        isRgbColor: NONE,
-        color: {
-            stdColor: buildAnsiStandardColor()
+        .isRgbColor = false,
+        .color = {
+            .stdColor = buildAnsiStandardColor()
         }
     };
 
@@ -146,10 +146,10 @@ color buildColor() {
 
 graphicRendition buildGrahicRendition() {
     graphicRendition gr = {
-        bold: NONE,
-        italic: NONE,
-        underlined: NONE,
-        color: buildColor()
+        .bold = false,
+        .italic = false,
+        .underlined = NONE,
+        .color = buildColor()
     };
 
     return gr;
@@ -214,15 +214,15 @@ void setColor(color color) {
 }
 
 void printGraphicRendition(char* text, graphicRendition rendition) {
-    if(rendition.bold != NONE)
+    if(rendition.bold)
         bold();
-    if(rendition.italic != NONE)
+    if(rendition.italic)
         italic();
     if(rendition.underlined == 1)
         underlined();
     else if(rendition.underlined == 2)
         doublyUnderlined();
-    if(rendition.color.isRgbColor != NONE)
+    if(rendition.color.isRgbColor)
         setColor(rendition.color);
 
     printf("%s", text);
