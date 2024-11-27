@@ -1,5 +1,5 @@
-#include "../h/includes.h"
 #include "../h/ansi.h"
+#include "../h/includes.h"
 
 //STRING FUNCTIONS section
 
@@ -72,34 +72,6 @@ int evalutateBase(char* num) {
     return hexDigitToInt(max) + 1;
     
 }
-
-#ifndef _WIN32
-    void itoa(int n, char* str, int base) {
-        int p = 0, sign = n < 0 ? -1 : 1;
-        char* s = (char*)malloc(sizeof(char)*1);
-
-        if(n < 0)
-            n *= -1;
-        else if(n == 0) {
-            *str = '0';
-            return;
-        }
-
-        while(n > 0) {
-            *(s + p++) = (char)(48 + n%10);
-            n /= 10;
-        }
-        
-        if(sign == -1)
-            *(s + p++) = '-';
-        *(s + p) = '\0';
-
-        for(int i = strlen(s) - 1; i >= 0; i--) {
-            *(str + (strlen(s) - 1 - i)) = *(s + i);
-        }
-        *(str + strlen(s)) = '\0';
-    }
-#endif
 
 //STRING FUNCTIONS section end
 
@@ -238,47 +210,47 @@ void printgr(char* text) {
             else
                 continue;
 
-            char* substr = substring(text, i, offset);
-            int n = atoi(substr);
+            errno = 0;
+            char* substr = substring(text, i, offset), *endptr;
+            int n = 0;
+
+            if(isDecimalDigit(text[i]))
+                n = strtol(substr, &endptr, 10);
 
             if(offset >= 8) { // rgb
                 int semicolonCount = count(';', substr, 0);
 
                 if(semicolonCount == 3) { // valid rgb (#fg;r;g;b# or #bg;r;g;b#)
                     int semicolonOffset = offsetFromNext(';', text, i) - 1;
-
-                    if(semicolonOffset != 1) 
+                    
+                    if(semicolonOffset != 1)
                         continue;
                     
-                    bool fg = strcmp("fg", substring(text, i, 2)) == 0;
+                    char* str = substring(text, i, 2);
+                    bool fg = strcmp("fg", str) == 0;
+                    free(str);
                     i += 3;
                     rgb rgb = buildRgb();
 
                     for(int j = 0; j <= 2; j++) {
-                        if(j == 2)
-                            semicolonOffset = offsetFromNext('#', text, i) - 1;
-                        else
-                            semicolonOffset = offsetFromNext(';', text, i) - 1;
+                        semicolonOffset = j == 2 ? offsetFromNext('#', text, i) - 1 : offsetFromNext(';', text, i);
                         
-                        if(j == 0) {
-                            char* r = substring(text, i, semicolonOffset + 1);
-                            rgb.r = atoi(r);
-                            free(r);
-                            // rgb.r = atoi(substring(text, i, semicolonOffset + 1));
-                        } else if(j == 1) {
-                            char* g = substring(text, i, semicolonOffset + 1);
-                            rgb.g = atoi(g);
-                            free(g);
-                        } else if(j == 2) {
-                            char* b = substring(text, i, semicolonOffset + 1);
-                            rgb.b = atoi(b);
-                            free(b);
-                        }
-                        
-                        if(j <= 1)
-                            i += semicolonOffset + 2;
-                        else
-                            i += offsetFromNext('#', text, i);
+                        errno = 0;
+                        char* v = substring(text, i, semicolonOffset + 1), *endptr_;
+                        int n = strtol(v, &endptr_, 10);
+                        free(v);
+                        if(errno == ERANGE || *endptr_ != '\0')
+                            break;
+
+                        if(j == 0)
+                            rgb.r = n;
+                        else if(j == 1)
+                            rgb.g = n;
+                        else if(j == 2)
+                            rgb.b = n;
+
+                    
+                        i += j == 2 ? semicolonOffset : semicolonOffset + 2;
                     }
 
                     if(fg)
@@ -294,9 +266,7 @@ void printgr(char* text) {
                     setStandardBackgroundColor(n);
                     i += offset;
                 }
-            }
-            
-            if(strcmp(substr, "b") == 0) {
+            } else if(strcmp(substr, "b") == 0) {
                 i++;
                 bold();
             } else if(strcmp(substr, "i") == 0) {
@@ -314,7 +284,8 @@ void printgr(char* text) {
             } else if(strcmp(substr, "r") == 0) {
                 i++;
                 graphicReset();
-            }
+            } else
+                printf("%c", text[i]);
 
             free(substr);
         } else
@@ -340,10 +311,10 @@ void printfgr(char* text, ...) {
             if(text[i] == '%')
                 *(t + p) = '%';
             else if(text[i] == 'd' || text[i] == 'i' || text[i] == 'u' || text[i] == 'x' || text[i] == 'X') {
-                int n = va_arg(args, int);
-                char* sn = (char*)malloc(sizeof(char)*2);
+                int n = va_arg(args, int), snLen = nDigits(n) + 2;
+                char* sn = (char*)malloc(snLen*sizeof(char));
 
-                itoa(n, sn, 10);
+                snprintf(sn, snLen, "%d", n);
 
                 for(int j = 0; j < strlen(sn); j++) 
                     *(t + p++) = *(sn + j);
@@ -351,27 +322,13 @@ void printfgr(char* text, ...) {
                 free(sn);
             } else if(text[i] == 'f' || text[i] == 'F') {
                 double n = va_arg(args, double);
-                char* sn = (char*)malloc(sizeof(char)*1);
+                char format[16];
+                snprintf(format, 16, "%%.%df", NUMBER_DECIMALS_DIGITS);
+
+                int snLen = NUMBER_DECIMALS_DIGITS + nDigits(floor(n)) + 3;
+                char* sn = (char*)malloc(sizeof(char));
                 
-                gcvt(n, NUMBER_DECIMALS_DIGITS + nDigits(floor(n)), sn);
-                if(n == floor(n)) {
-                    int l = strlen(sn);
-                    sn[l++] = '.';
-
-                    for(int k = 0; k < 6; k++)
-                        sn[l++] = '0';
-                    sn[l] = '\0';
-                } else {
-                    int nZerosToAdd = NUMBER_DECIMALS_DIGITS - ((strlen(sn) - 1) - offsetFromNext('.', sn, 0));
-
-                    if(nZerosToAdd > 0) {
-                        int l = strlen(sn);
-
-                        for(int k = 0; k < nZerosToAdd; k++)
-                            sn[l++] = '0';
-                        sn[l] = '\0';
-                    } 
-                }
+                snprintf(sn, snLen, format, n);
 
                 for(int j = 0; j < strlen(sn); j++) 
                     *(t + p++) = *(sn + j);

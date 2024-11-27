@@ -1,19 +1,20 @@
 #include "includes.h"
 
-/* 
- *  Implemented following https://en.wikipedia.org/wiki/ANSI_escape_code
+/**
+ * @brief Implemented following https://en.wikipedia.org/wiki/ANSI_escape_code
  *   
- *  Function's names are as much as possible consistent with the quoted document
+ *  Function's names are as much as possible consistent with the quoted document.
  *  
  *  NOTICE: not every function declared in this header is part of ANSI standard.
-*/
-
-// NOTICE: for these structures are available some builders function that you should use if you want to build structures with unset properties.
+ *  NOTICE: for these structures are available some builders function that you should use if you want to build structures with unset properties.
+ */
 
 /// @brief Defines how many decimals digits should use printfgr when printing floating-point numbers. If there are leading digits, it approximates the number to a floating-point number with this number of decimal digits
 #define NUMBER_DECIMALS_DIGITS 6
 
+/// @brief Defines the type underlined as unsigned integer 1 byte large.
 typedef uint8_t underline;
+/// @brief Defines the ttype ansiStandardColors as unsigned integer 1 byte large.
 typedef uint8_t ansiStandardColors;
 
 /// @brief Defines a basic structure for RGB colors.
@@ -91,11 +92,6 @@ int hexDigitToInt(char d);
 /// If the string contains a non-digit char, returns -1.
 int evalutateBase(char* num);
 
-#ifndef _WIN32
-    /// Buffers a integer into a string intrepeting the int with the passed base (supported up to base 16).
-    void itoa(int n, char* str, int base);
-#endif
-
 // STRING FUNCTIONS section end
 
 // BUILDERS section
@@ -139,7 +135,7 @@ void printGraphicRendition(char* text, graphicRendition rendition);
 /// Custom format specifiers: #b# for bold text, #i# for italic text, #u# for underlined text, #du# for doubly underlined text, #n# for setting ANSI standard color represented by n, #bl# for slow blinking, #r# for graphic reset.
 /// 
 /// For setting RGB colors use #fg;r;g;b# or #bg;r;g;b# where fg or bg represents if the color has to be applied to the foreground or to the background and r, g, b are the values for r, g, b components of the color representation and must be between 0 and 255;
-/// If the passed format does not comply with this specification, then the passed format text is going to be printed.
+/// If the passed format does not comply with this specification, then the passed format text is going to be printed except for the #s.
 /// 
 /// Standard C formats specifiers are not handled.
 void printgr(char* text);
