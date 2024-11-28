@@ -6,7 +6,7 @@ vector* buildVector() {
 
     if(v == NULL) {
         free(v);
-        exit(EXIT_MALLOC_FAILURE);
+        exit(EXIT_ALLOC_FAILURE);
     }
     
     v->size = 0;
@@ -15,7 +15,7 @@ vector* buildVector() {
 
     if(v->data == NULL) {
         free(v);
-        exit(EXIT_MALLOC_FAILURE);
+        exit(EXIT_ALLOC_FAILURE);
     }
 
     return v;
@@ -30,7 +30,7 @@ void resize(vector* const vector, const size_t newCapacity) {
     data_type* newDataBuffer = (data_type*)malloc(newCapacity*sizeof(data_type));
     if(newDataBuffer == NULL) {
         freeVector(vector);
-        exit(EXIT_MALLOC_FAILURE);
+        exit(EXIT_ALLOC_FAILURE);
     }
 
     for(size_t i = 0; i < vector->size; i++)

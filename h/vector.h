@@ -1,7 +1,5 @@
+#include "consts.h"
 #include "includes.h"
-
-#define EXIT_MALLOC_FAILURE 2
-#define EXIT_POP_FAILURE 3
 
 /// @brief Defines the minimum allocated memory for the vector. If data_type is char, this is 2B of data.
 #define MIN_CAPACITY 2
