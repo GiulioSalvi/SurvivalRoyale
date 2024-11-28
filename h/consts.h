@@ -1,0 +1,2 @@
+#define EXIT_ALLOC_FAILURE 2
+#define EXIT_POP_FAILURE 3
