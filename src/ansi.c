@@ -9,6 +9,8 @@ char* substring(const char* str, int start, int length) {
     }
 
     char* sub = (char*)malloc(length + 1);
+    if(sub == NULL)
+        exit(EXIT_ALLOC_FAILURE);
 
     strncpy(sub, str + start, length);
     sub[length] = '\0';
@@ -302,6 +304,9 @@ void printfgr(char* text, ...) {
 
     int p = 0;
     char* t = (char*)calloc(strlen(text), sizeof(char));
+    if(t == NULL)
+        exit(EXIT_ALLOC_FAILURE);
+
     for(int i = 0; i < strlen(text); i++) {
         if(text[i] != '%')
             *(t + p++) = text[i];
@@ -313,6 +318,8 @@ void printfgr(char* text, ...) {
             else if(text[i] == 'd' || text[i] == 'i' || text[i] == 'u' || text[i] == 'x' || text[i] == 'X') {
                 int n = va_arg(args, int), snLen = nDigits(n) + 2;
                 char* sn = (char*)malloc(snLen*sizeof(char));
+                if(sn == NULL)
+                    exit(EXIT_ALLOC_FAILURE);
 
                 snprintf(sn, snLen, "%d", n);
 
@@ -327,7 +334,9 @@ void printfgr(char* text, ...) {
 
                 int snLen = NUMBER_DECIMALS_DIGITS + nDigits(floor(n)) + 3;
                 char* sn = (char*)malloc(sizeof(char));
-                
+                if(sn == NULL)
+                    exit(EXIT_ALLOC_FAILURE);
+
                 snprintf(sn, snLen, format, n);
 
                 for(int j = 0; j < strlen(sn); j++) 
