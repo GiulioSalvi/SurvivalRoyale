@@ -160,7 +160,7 @@ void eraseInDisplay(int n);
 void eraseInLine(int n);
 void scrollUp(int n);
 void scrollDown(int n);
-void deviceStatusReport(int* col, int* row);
+void deviceStatusReport(int* row, int* col);
 
 // CSI section end
 
