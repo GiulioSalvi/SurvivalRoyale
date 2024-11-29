@@ -155,7 +155,11 @@ bool validateRgb(rgb rgbColor) {
 }
 
 void clearScreen() {
-    system("clear");
+    #ifdef _WIN32
+        system("cls");
+    #else
+        system("clear");
+    #endif
 }
 
 void setForegroundColor(color color) {
