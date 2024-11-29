@@ -1,6 +1,6 @@
 .vscode/
 .DS_Store
-bin/**/*.*
+bin/
 docs/Doxygen.app/**
 Go.ps1
 Go.sh
