@@ -1,20 +1,20 @@
 #include "includes.h"
 
-const int Ace = 1;
-const int Two = 2;
-const int Three = 3;
-const int Four = 4;
-const int Five = 5;
-const int Six = 6;
-const int Seven = 7;
-const int Jack = 8;
-const int Queen = 9;
-const int King = 10;
+#define Ace 1
+#define Two 2
+#define Three 3
+#define Four 4
+#define Five 5
+#define Six 6
+#define Seven 7
+#define Jack 8
+#define Queen 9
+#define King 10
 
-const int Clubs = 11;
-const int Spades = 12;
-const int Diamonds = 13;
-const int Hearts = 14;
+#define Clubs 11
+#define Spades 12
+#define Diamonds 13
+#define Hearts 14
 
 typedef struct Card {
     int suit;

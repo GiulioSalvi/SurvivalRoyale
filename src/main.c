@@ -12,7 +12,7 @@ int main() {
     int playersCounter = askPlayerNumber();
 
     Game game = prepareGame(playersCounter, deck);
-    printPlayers(game, false);
+    // printPlayers(game, false);
     
     while(!handleGamePhase(&game)) {
         removeDeadPlayers(&game);
@@ -20,7 +20,7 @@ int main() {
         shuffleDeck(deck);
         giveCards(&game, deck);
 
-        printPlayers(game, false);
+        // printPlayers(game, false);
     }
     
     withdrawCards(&game);
@@ -38,7 +38,6 @@ int randomInt(int min, int max) {
 }
 
 int askPlayerNumber() {
-    // bool first = true;
     int playersCounter = 2;
 
     do {
@@ -388,7 +387,7 @@ void printCard(Card card, bool newLine) {
 
     switch(card.rank) {
         case Ace:
-            printgr("One");
+            printgr("Ace");
             break;
         case Two:
             printgr("Two");
