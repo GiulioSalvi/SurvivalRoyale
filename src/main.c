@@ -7,13 +7,13 @@ int main() {
     // return 0;
     srand(time(NULL));
     clearScreen();
-    
+
     Card* deck = prepareCardDeck();
     int playersCounter = askPlayerNumber();
 
     Game game = prepareGame(playersCounter, deck);
     // printPlayers(game, false);
-    
+
     while(!handleGamePhase(&game)) {
         removeDeadPlayers(&game);
         withdrawCards(&game);
@@ -22,7 +22,7 @@ int main() {
 
         // printPlayers(game, false);
     }
-    
+
     withdrawCards(&game);
     removeDeadPlayers(&game);
     announceWinner(*game.players[0]);
