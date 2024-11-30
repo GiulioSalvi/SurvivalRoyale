@@ -213,8 +213,6 @@ void printgr(char* text) {
             int offset = 0;
             if(containsFrom(text, '#', i + 1))
                 offset = offsetFromNext('#', text, ++i);
-            else
-                continue;
 
             errno = 0;
             char* substr = substring(text, i, offset), *endptr;
@@ -223,7 +221,7 @@ void printgr(char* text) {
             if(isDecimalDigit(text[i]))
                 n = strtol(substr, &endptr, 10);
 
-            if(offset >= 8) { // rgb
+            if(offset >= 5) { // rgb
                 int semicolonCount = count(';', substr, 0);
 
                 if(semicolonCount == 3) { // valid rgb (#fg;r;g;b# or #bg;r;g;b#)
@@ -239,13 +237,13 @@ void printgr(char* text) {
                     rgb rgb = buildRgb();
 
                     for(int j = 0; j <= 2; j++) {
-                        semicolonOffset = j == 2 ? offsetFromNext('#', text, i) - 1 : offsetFromNext(';', text, i);
-                        
+                        semicolonOffset = offsetFromNext(j == 2 ? '#' : ';', text, i);
+
                         errno = 0;
-                        char* v = substring(text, i, semicolonOffset + 1), *endptr_;
+                        char* v = substring(text, i, semicolonOffset), *endptr_;
                         int n = strtol(v, &endptr_, 10);
                         free(v);
-                        if(errno == ERANGE || *endptr_ != '\0')
+                        if(errno == ERANGE || *endptr_ != '\0' && endptr_ == NULL)
                             break;
 
                         if(j == 0)
@@ -255,10 +253,9 @@ void printgr(char* text) {
                         else if(j == 2)
                             rgb.b = n;
 
-                    
-                        i += j == 2 ? semicolonOffset : semicolonOffset + 2;
+                        i += j == 2 ? semicolonOffset : semicolonOffset + 1;
                     }
-
+                    
                     if(fg)
                         setRGBForegroundColor(rgb);
                     else
@@ -291,7 +288,7 @@ void printgr(char* text) {
                 i++;
                 graphicReset();
             } else
-                printf("%c", text[i]);
+                printf("%c%c", text[i - 1], text[i]);
 
             free(substr);
         } else
@@ -381,10 +378,7 @@ char getChar() {
         term.c_lflag |= (ICANON | ECHO);
         tcsetattr(STDIN_FILENO, TCSANOW, &term);
 
-        if(rs == 1)
-            return c;
-        else
-            return -1;
+        return rs == 1 ? c : -1;
     #else
         return getch();
     #endif
@@ -481,9 +475,8 @@ void scrollDown(int n) {
 }
 
 void deviceStatusReport(int* row, int* col) {
-    printgr("\e[6n");
-
     #ifndef _WIN32
+        printgr("\e[6n");
         scanf("\e[%d;%dR", row, col);
     #else
         CONSOLE_SCREEN_BUFFER_INFO csbi;

@@ -6,7 +6,8 @@
  *   
  *  Function's names are as much as possible consistent with the quoted document.
  *  
- *  NOTICE: not every function declared in this header is part of ANSI standard.
+ *  NOTICE: not all the functions declared in this header is part of ANSI standard.
+ *  NOTICE: this is not an exhaustive implementation of the ANSI escape codes standard.
  *  NOTICE: for these structures are available some builders function that you should use if you want to build structures with unset properties.
  */
 
@@ -135,8 +136,8 @@ void printGraphicRendition(char* text, graphicRendition rendition);
 ///
 /// Custom format specifiers: #b# for bold text, #i# for italic text, #u# for underlined text, #du# for doubly underlined text, #n# for setting ANSI standard color represented by n, #bl# for slow blinking, #r# for graphic reset.
 /// 
-/// For setting RGB colors use #fg;r;g;b# or #bg;r;g;b# where fg or bg represents if the color has to be applied to the foreground or to the background and r, g, b are the values for r, g, b components of the color representation and must be between 0 and 255;
-/// If the passed format does not comply with this specification, then the passed format text is going to be printed except for the #s.
+/// For setting RGB colors use #fg;r;g;b# or #bg;r;g;b# where fg or bg represents if the color has to be applied to the foreground or to the background and r, g, b are the values for r, g, b components of the color representation and must be between 0 and 255; if r, g and b are not specified, they would be considered as zero: for instance #fg;;;# will print the following text with the foreground color set to black.
+/// If the passed format does not comply with this specification, then the passed format text is going to be printed.
 /// 
 /// Standard C formats specifiers are not handled.
 void printgr(char* text);
