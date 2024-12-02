@@ -390,6 +390,19 @@ char getChar() {
     #endif
 }
 
+void screenSize(int* width, int* height) {
+    #ifndef _WIN32
+    #else
+        CONSOLE_SCREEN_BUFFER_INFO csbi;
+        HANDLE hStdout = GetStdHandle(STD_OUTPUT_HANDLE);
+
+        if (GetConsoleScreenBufferInfo(hStdout, &csbi)) {
+            *width = csbi.dwSize.X;
+            *height = csbi.dwSize.Y;
+        }
+    #endif
+}
+
 // UTILITY FUNCTIONS section end
 
 // CSI section
@@ -481,9 +494,8 @@ void scrollDown(int n) {
 }
 
 void deviceStatusReport(int* row, int* col) {
-    printgr("\e[6n");
-
     #ifndef _WIN32
+        printgr("\e[6n");
         scanf("\e[%d;%dR", row, col);
     #else
         CONSOLE_SCREEN_BUFFER_INFO csbi;

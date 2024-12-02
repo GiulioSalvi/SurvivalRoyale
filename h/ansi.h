@@ -144,6 +144,7 @@ void printgr(char* text);
 /// Integers are always interpreted in base 10.
 void printfgr(char* text, ...);
 char getChar();
+void screenSize(int* width, int* height);
 // UTILITY FUNCTIONS section end
 
 // CSI section
