@@ -392,6 +392,15 @@ char getChar() {
 
 void screenSize(int* width, int* height) {
     #ifndef _WIN32
+        struct winsize ws;
+
+        if(ioctl(STDOUT_FILENO, TIOCGWINSZ, &ws) != -1) {
+            *width = ws.ws_col;
+            *height = ws.ws_row;
+        } else {
+            *width = -1;
+            *height = -1;
+        }
     #else
         CONSOLE_SCREEN_BUFFER_INFO csbi;
         HANDLE hStdout = GetStdHandle(STD_OUTPUT_HANDLE);

@@ -143,7 +143,12 @@ void printgr(char* text);
 /// Prints text as printgr but handles standard C format specifiers %, d, i, u, x, X, f, F, s, n.
 /// Integers are always interpreted in base 10.
 void printfgr(char* text, ...);
+/// @brief Gets the char pressed on the keyboard without waiting for 'Enter' to be pressed.
+/// @return The pressed char on the keyboard.
 char getChar();
+/// @brief It returns the width and the height of the screen. On unix-like platforms, in case of errors, it sets them to -1.
+/// @param width The width, as the number of columns, for the terminal window.
+/// @param height The height, as the number of row, for the terminal window.
 void screenSize(int* width, int* height);
 // UTILITY FUNCTIONS section end
 
