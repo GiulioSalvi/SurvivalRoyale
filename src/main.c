@@ -1,6 +1,6 @@
-#include "../h/ansi.h"
-#include "../h/main.h"
-#include "../h/ansi_const.h"
+#include "ansi.h"
+#include "main.h"
+#include "ansi_const.h"
 
 int main() {
     // 

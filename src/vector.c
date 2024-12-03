@@ -1,5 +1,4 @@
-#include "../h/vector.h"
-#include "../h/includes.h"
+#include "vector.h"
 
 vector* buildVector() {
     vector* v = (vector*)malloc(sizeof(vector));
