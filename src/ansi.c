@@ -1,81 +1,4 @@
-#include "../h/ansi.h"
-#include "../h/includes.h"
-
-//STRING FUNCTIONS section
-
-char* substring(const char* str, int start, int length) {
-    if (start < 0 || length < 0 || start + length > strlen(str)) {
-        return NULL; 
-    }
-
-    char* sub = (char*)malloc(length + 1);
-    if(sub == NULL)
-        exit(EXIT_ALLOC_FAILURE);
-
-    strncpy(sub, str + start, length);
-    sub[length] = '\0';
-
-    return sub;
-}
-
-int offsetFromNext(char c, const char* str, int start) {
-    for(int i = start, p = 0; i < strlen(str); i++, p++)
-        if(str[i] == c)
-            return p;
-    
-    return -1;
-}
-
-int count(char c, const char* str, int start) {
-    int counter = 0;
-
-    for(int i = 0; i < strlen(str); i++)
-        if(str[i] == c)
-            counter++;
-
-    return counter;
-}
-
-bool containsFrom(const char* str, char c, int p) {
-    for(int i = p; i < strlen(str); i++)
-        if(str[i] == c)
-            return true;
-    
-    return false;
-}
-
-bool isDecimalDigit(char c) {
-    return (int)c >= 48 && (int)c <= 57;
-}
-
-bool isHexDigit(char c) {
-    return isDecimalDigit(c) || ((int)c >= 65 && (int)c <= 70) || ((int)c >= 97 && (int)c <= 102);
-}
-
-int decimalDigitToInt(char d) {
-    return isDecimalDigit(d) ? (int)d - 48 : (int)d;
-}
-
-int hexDigitToInt(char d) {
-    return isDecimalDigit(d) ? decimalDigitToInt(d) : (isHexDigit(d) ? ((int)d >= 97 ? (int)d - 97 + 10 : (int)d - 65 + 10) : (int)d);
-}
-
-int evalutateBase(char* num) {
-    char max = -1;
-
-    for(int i = 0; i < strlen(num); i++) {
-        if(isHexDigit(num[i])) {
-            if(num[i] > max)
-                max = num[i];
-        } else
-            return -1;
-    }
-
-    return hexDigitToInt(max) + 1;
-    
-}
-
-//STRING FUNCTIONS section end
+#include "ansi.h"
 
 // BUILDERS section
 
@@ -132,16 +55,6 @@ graphicRendition buildGrahicRendition() {
 //BUILDERS section end
 
 // UTILITY FUNCTIONS section
-int nDigits(int n) {
-    int c = 0;
-
-    while(n != 0) {
-        n /= 10;
-        c++;
-    }
-
-    return c;
-}
 
 bool validateRgb(rgb rgbColor) {
     if(rgbColor.r < 0 || rgbColor.r > 255)
@@ -212,7 +125,7 @@ void printgr(char* text) {
         if(text[i] == '#') {
             int offset = 0;
             if(containsFrom(text, '#', i + 1))
-                offset = offsetFromNext('#', text, ++i);
+                offset = offsetFromNext(text, '#', ++i);
             else
                 continue;
 
@@ -224,10 +137,10 @@ void printgr(char* text) {
                 n = strtol(substr, &endptr, 10);
 
             if(offset >= 8) { // rgb
-                int semicolonCount = count(';', substr, 0);
+                int semicolonCount = count(substr, ';', 0);
 
                 if(semicolonCount == 3) { // valid rgb (#fg;r;g;b# or #bg;r;g;b#)
-                    int semicolonOffset = offsetFromNext(';', text, i) - 1;
+                    int semicolonOffset = offsetFromNext(text, ';', i) - 1;
                     
                     if(semicolonOffset != 1)
                         continue;
@@ -239,7 +152,7 @@ void printgr(char* text) {
                     rgb rgb = buildRgb();
 
                     for(int j = 0; j <= 2; j++) {
-                        semicolonOffset = j == 2 ? offsetFromNext('#', text, i) - 1 : offsetFromNext(';', text, i);
+                        semicolonOffset = j == 2 ? offsetFromNext(text, '#', i) - 1 : offsetFromNext(text, ';', i);
                         
                         errno = 0;
                         char* v = substring(text, i, semicolonOffset + 1), *endptr_;
@@ -337,7 +250,7 @@ void printfgr(char* text, ...) {
                 snprintf(format, 16, "%%.%df", NUMBER_DECIMALS_DIGITS);
 
                 int snLen = NUMBER_DECIMALS_DIGITS + nDigits(floor(n)) + 3;
-                char* sn = (char*)malloc(sizeof(char));
+                char* sn = (char*)malloc(snLen*sizeof(char));
                 if(sn == NULL)
                     exit(EXIT_ALLOC_FAILURE);
 
