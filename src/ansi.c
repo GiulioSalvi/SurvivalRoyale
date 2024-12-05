@@ -270,7 +270,7 @@ void printfgr(char* text, ...) {
         }
     }
     
-    *(t + p++) = '\0';
+    *(t + p) = '\0';
     printgr(t);
 
     free(t);

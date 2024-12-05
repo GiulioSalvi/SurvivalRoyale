@@ -98,6 +98,8 @@ void printGraphicRendition(char* text, graphicRendition rendition);
 /// For setting RGB colors use #fg;r;g;b# or #bg;r;g;b# where fg or bg represents if the color has to be applied to the foreground or to the background and r, g, b are the values for r, g, b components of the color representation and must be between 0 and 255;
 /// If the passed format does not comply with this specification, then the passed format text is going to be printed except for the #s.
 /// 
+/// If printing # is needed, use ##.
+///
 /// Standard C formats specifiers are not handled.
 void printgr(char* text);
 /// Prints text as printgr but handles standard C format specifiers %, d, i, u, x, X, f, F, s, n.
