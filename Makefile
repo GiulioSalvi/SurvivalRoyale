@@ -3,9 +3,12 @@ CC=gcc
 CV=99
 CCFLAGS=-g -std=c$(CV) -I./h/
 
-all: clear config config_file utility vector ansi main
+all: clear cli config config_file utility vector ansi main
 go: all
-	./bin/exec/project
+	./bin/exec/game
+
+cli: src/cli.c
+	$(CC) $(CCFLAGS) -c src/cli.c -o bin/objects/cli-c$(CV).o
 
 config: src/config.c
 	$(CC) $(CCFLAGS) -c src/config.c -o bin/objects/config-c$(CV).o
@@ -22,10 +25,10 @@ vector: src/vector.c
 ansi: src/ansi.c
 	$(CC) $(CCFLAGS) -c src/ansi.c -o bin/objects/ansi-c$(CV).o
 
-main: src/main.c bin/objects/ansi-c$(CV).o bin/objects/vector-c$(CV).o bin/objects/utility-c$(CV).o bin/objects/config-c$(CV).o bin/objects/config-file-c$(CV).o
-	$(CC) $(CCFLAGS) src/main.c bin/objects/ansi-c$(CV).o bin/objects/vector-c$(CV).o bin/objects/utility-c$(CV).o bin/objects/config-c$(CV).o bin/objects/config-file-c$(CV).o -o bin/exec/project
+main: src/main.c bin/objects/ansi-c$(CV).o bin/objects/vector-c$(CV).o bin/objects/utility-c$(CV).o bin/objects/config-c$(CV).o bin/objects/config-file-c$(CV).o bin/objects/cli-c$(CV).o
+	$(CC) $(CCFLAGS) src/main.c bin/objects/ansi-c$(CV).o bin/objects/vector-c$(CV).o bin/objects/utility-c$(CV).o bin/objects/config-c$(CV).o bin/objects/config-file-c$(CV).o bin/objects/cli-c$(CV).o -o bin/exec/game
 
 clear:
-	rm bin/exec/project
-	rm bin/objects/ansi-c$(CV).o
-	rm bin/objects/vector-c$(CV).o
+	-rm -f bin/exec/game
+	-rm -rf bin/exec/game.dSYM
+	-rm -f bin/objects/*.o
