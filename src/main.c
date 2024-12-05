@@ -2,23 +2,26 @@
 #include "main.h"
 #include "ansi_const.h"
 
-int main() {
+int main(int argc, char** argv) {
     // 
     // return 0;
+    gameConfiguration cfg = getGameConfiguration(handleCLIArguments(argv, argc), getConfigurationFromArguments(argv, argc));
     srand(time(NULL));
     clearScreen();
     
+    // printGameConfiguration(cfg, true);
     Card* deck = prepareCardDeck();
     int playersCounter = askPlayerNumber();
 
-    Game game = prepareGame(playersCounter, deck);
+    clearScreen();
+    Game game = prepareGame(playersCounter, deck, cfg);
     // printPlayers(game, false);
     
     while(!handleGamePhase(&game)) {
         removeDeadPlayers(&game);
         withdrawCards(&game);
         shuffleDeck(deck);
-        giveCards(&game, deck);
+        giveCards(&game, deck, cfg);
 
         // printPlayers(game, false);
     }
@@ -35,6 +38,64 @@ int main() {
 
 int randomInt(int min, int max) {
     return rand()%(max - min + 1) + min;
+}
+
+gameConfiguration askConfigurationOptionsViaTerminal() {
+    gameConfiguration cfg;
+    int n = 0;
+    char opt = '\0';
+
+    do {
+        if(opt != '\0') {
+            clearScreen();
+            printfgr("#b##%d#The valid options are y, Y, n and N.\n#r#", (int)FgBrightRed);
+        }
+
+        printgr("#b#Can the players have the cards with the same rank? (y,Y,n,N) #r#");
+        fflush(stdin);
+        scanf("%c", &opt);
+    } while(opt != 'y' && opt != 'Y' && opt != 'n' && opt != 'N');
+    cfg.allowSameRank = opt == 'y' || opt == 'Y';
+
+    opt = '\0';
+    do {
+        if(opt != '\0') {
+            clearScreen();
+            printfgr("#b##%d#The valid options are y, Y, n, N.\n#r#", (int)FgBrightRed);
+        }
+
+        printgr("#b#Can the players have the cards with the same suit? (y, Y, n, N) #r#");
+        fflush(stdin);
+        scanf("%c", &opt);
+    } while(opt != 'y' && opt != 'Y' && opt != 'n' && opt != 'N');
+    cfg.allowSameSuit = opt == 'y' || opt == 'Y';
+
+    do {
+        if(n < 0) {
+            clearScreen();
+            printfgr("#b##%d#The value must be positive.\n#r#", (int)FgBrightRed);
+        }
+
+        printgr("#b#How many LPs on the field should there be by default? #r#");
+        fflush(stdin);
+        scanf("%d", &n);
+    } while(n < 0);
+    cfg.defaultLPsOnField = n;
+
+    n = 1;
+    do {
+        if(n <= 0) {
+            clearScreen();
+            printfgr("#b##%d#The value must be positive and not zero.\n#r#", (int)FgBrightRed);
+        }
+
+        printgr("#b#How many LPs should the players have by default? #r#");
+        fflush(stdin);
+        scanf("%d", &n);
+    } while(n <= 0);
+    cfg.defaultPlayersLPs = n;
+    
+    return cfg;
 }
 
 int askPlayerNumber() {
@@ -131,16 +192,16 @@ Card* prepareCardDeck() {
     return deck;
 }
 
-Game prepareGame(int playersCounter, Card* deck) {
+Game prepareGame(int playersCounter, Card* deck, gameConfiguration configuration) {
     Game game = buildGame(playersCounter);
-    game.lifePointsOnTheField = 0;
+    game.lifePointsOnTheField = configuration.defaultLPsOnField;
 
     for(int i = 0; i < game.playersCounter; i++) {
         Player* player = malloc(sizeof(Player));
         
         do
-            player = preparePlayer(i + 1, deck);
-        while(cardsWereGiven(game.players, game.playersCounter, *player) || cardAreEqual(player->facedUpCard, player->facedDownCard));
+            player = preparePlayer(i + 1, deck, configuration);
+        while(cardsWereGiven(game.players, game.playersCounter, *player) || cardAreEqual(player->facedUpCard, player->facedDownCard) || (!configuration.allowSameRank ? player->facedUpCard.rank == player->facedDownCard.rank : false) || (!configuration.allowSameSuit ? player->facedUpCard.suit == player->facedDownCard.suit : false));
 
         game.players[i] = player;
     }
@@ -148,11 +209,11 @@ Game prepareGame(int playersCounter, Card* deck) {
     return game;
 }
 
-Player* preparePlayer(int id, Card* deck) {
+Player* preparePlayer(int id, Card* deck, gameConfiguration configuration) {
     Player* player = buildPlayer();
 
     player->id = id;
-    player->lifePoints = 2;
+    player->lifePoints = configuration.defaultPlayersLPs;
     player->facedUpCard = deck[randomInt(0, 39)];
     player->facedDownCard = deck[randomInt(0, 39)];
 
@@ -171,7 +232,7 @@ void shuffleDeck(Card* deck) {
 
 bool handleGamePhase(Game* game) {
     int starterPlayerPosition = randomInt(0, game->playersCounter - 1);
-    printfgr("\nThe current phase starts from #b#player %d#r#.\n\n", game->players[starterPlayerPosition]->id);
+    printfgr("The current phase starts from #b#player %d#r#.\n\n", game->players[starterPlayerPosition]->id);
 
     for(int i = 0; i < game->playersCounter; i++) {
         int position = (i + starterPlayerPosition)%game->playersCounter, id = game->players[position]->id;
@@ -254,18 +315,15 @@ void applyEffect(Game* game, int playerPosition, bool facedUpCard) {
 }
 
 bool revealFacedDownCard(Card card) {
-    char ans = ' ';
-    bool first = true;
-
+    char ans = '\0';
     fflush(stdin);
 
     do {
-        if(!first) {
+        if(ans != '\0') {
             scrollUp(1);
             cursorHorizontalAbsolute(1);
             eraseInDisplay(0);
-        } else
-            first = false;
+        }
 
         printgr("Do you want to #b#reveal#r# your #b#faced down#r# card and #b#apply its effect#r#?? (y,Y,n,N) ");
         scanf("%c", &ans);
@@ -276,7 +334,7 @@ bool revealFacedDownCard(Card card) {
     return ans == 'Y' || ans == 'y';
 }
 
-void giveCards(Game* game, Card* deck) {
+void giveCards(Game* game, Card* deck, gameConfiguration configuration) {
     for(int i = 0; i < game->playersCounter; i++)
         if(game->players[i]->lifePoints > 0) {
             Player* player = buildPlayer();
@@ -286,7 +344,7 @@ void giveCards(Game* game, Card* deck) {
             do {
                 player->facedUpCard = deck[randomInt(0, 39)];
                 player->facedDownCard = deck[randomInt(0, 39)];
-            } while(cardsWereGiven(game->players, game->playersCounter, *player) || cardAreEqual(player->facedUpCard, player->facedDownCard));
+            } while(cardsWereGiven(game->players, game->playersCounter, *player) || cardAreEqual(player->facedUpCard, player->facedDownCard) || (!configuration.allowSameRank ? player->facedUpCard.rank == player->facedDownCard.rank : false) || (!configuration.allowSameSuit ? player->facedUpCard.suit == player->facedDownCard.suit : false));
 
             freePlayer(game->players[i]);
             game->players[i] = player;
@@ -475,4 +533,23 @@ void printPlayer(Player player, bool newLine) {
 void printPlayers(Game game, bool newLine) {
     for(int i = 0; i < game.playersCounter; i++)
         printPlayer(*game.players[i], i == game.playersCounter - 1 ? newLine : true);
+}
+
+void printGameConfiguration(gameConfiguration configuration, bool newLine) {
+    printgr("Allow cards with the same rank: ");
+    if(configuration.allowSameRank)
+        printgr("true");
+    else
+        printgr("false");
+
+    printgr(", allow cards with the same suit: ");
+    if(configuration.allowSameSuit)
+        printgr("true");
+    else
+        printgr("false");
+
+    printfgr(", default LPs on the playing field: %d, default players' LPs: %d.\n", configuration.defaultLPsOnField, configuration.defaultPlayersLPs);
+
+    if(newLine)
+        printgr("\n");
 }

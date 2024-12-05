@@ -1,14 +1,5 @@
-#include "includes.h"
+#include "cli.h"
+#include "config_file.h"
 
-#ifndef _CONFIG_H_
-    #define _CONFIG_H_
-    
-    typedef struct {
-        int defaultPlayersLPs;
-        int defaultLPsOnField;
-        bool allowSameRank;
-        bool allowSameSuit;
-    } gameConfiguration;
-
-    gameConfiguration getDefaultConfiguration();
-#endif
+gameConfiguration getGameConfiguration(const int code, const gameConfiguration cliGameConfiguration);
+gameConfiguration askConfigurationOptionsViaTerminal();

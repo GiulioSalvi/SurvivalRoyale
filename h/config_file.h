@@ -1,5 +1,5 @@
-#include "config.h"
 #include "utility.h"
+#include "game_configuration.h"
 
 bool existsConfigurationFile();
 gameConfiguration getConfigurationFromFile();

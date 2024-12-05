@@ -1,3 +1,4 @@
+#include "config.h"
 #include "includes.h"
 
 #define Ace 1
@@ -58,9 +59,9 @@ void freeGame(Game* game);
 /// Generates a deck with cards ordered randomly.
 Card* prepareCardDeck();
 /// Generates a player structure with the given player id.
-Player* preparePlayer(int id, Card* deck);
+Player* preparePlayer(int id, Card* deck, gameConfiguration configuration);
 /// Generates a game structure with the given players number.
-Game prepareGame(int playersCounter, Card* deck);
+Game prepareGame(int playersCounter, Card* deck, gameConfiguration configuration);
 /// Shuffles the deck using Fisher - Yates algorithm.
 void shuffleDeck(Card* deck);
 /// @brief Handles the current game phase.
@@ -70,7 +71,7 @@ bool handleGamePhase(Game* game);
 bool isGameEnded(Game* game);
 void applyEffect(Game* game, int playerPosition, bool facedUpCard);
 bool revealFacedDownCard(Card card);
-void giveCards(Game* game, Card* deck);
+void giveCards(Game* game, Card* deck, gameConfiguration configuration);
 void announceDeadPlayers(Game* game);
 int countDeadPlayers(Game* game);
 void removeDeadPlayers(Game* game);
@@ -93,3 +94,4 @@ void revealCard(Card card, int playerId, bool facedUp, bool newLine);
 /// Prints player's info.
 void printPlayer(Player player, bool newLine);
 void printPlayers(Game game, bool newLine);
+void printGameConfiguration(gameConfiguration configuration, bool newLine);

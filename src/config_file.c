@@ -25,9 +25,9 @@ gameConfiguration getConfigurationFromFile() {
             else {
                 errno = 0;
                 char* endptr;
-                int equalsPosition = offsetFromNext(line, '=', 0);
-                char* settingName = substring(line, 0, equalsPosition);
-                char* settingValue = substring(line, equalsPosition + 1, strlen(line) - equalsPosition - 1);
+                int equalPosition = offsetFromNext(line, '=', 0);
+                char* settingName = substring(line, 0, equalPosition);
+                char* settingValue = substring(line, equalPosition + 1, strlen(line) - equalPosition - 1);
 
                 if(settingValue[strlen(settingValue) - 1] == '\n')
                     settingValue[strlen(settingValue) - 1] = '\0';
