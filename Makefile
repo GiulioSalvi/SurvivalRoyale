@@ -5,7 +5,7 @@ CCFLAGS=-g -std=c$(CV) -I./h/
 
 all: clear cli config config_file utility vector ansi main
 go: all
-	./bin/exec/game
+	./bin/exec/game --go
 
 cli: src/cli.c
 	$(CC) $(CCFLAGS) -c src/cli.c -o bin/objects/cli-c$(CV).o
