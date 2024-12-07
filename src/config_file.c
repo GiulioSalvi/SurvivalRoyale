@@ -19,7 +19,7 @@ gameConfiguration getConfigurationFromFile() {
         while(feof(cfgFile) == 0) {
             char line[128];
 
-            fgets(line, 256, cfgFile);
+            fgets(line, 128, cfgFile);
             if(!containsFrom(line, '=', 0))
                 continue;
             else {
