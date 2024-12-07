@@ -95,12 +95,12 @@ gameConfiguration getConfigurationFromArguments(char** argv, const int argc) {
             int equalPosition = offsetFromNext(argv[i], '=', 0);
             optionName = substring(argv[i], 0, equalPosition);
             optionValue = substring(argv[i], equalPosition + 1, strlen(argv[i]) - equalPosition - 1);
+
+            i++;
         } else {
             optionName = argv[i];
             optionValue = argv[i + 1];
         }
-        printf("%s\n", argv[i]);
-        printf("%s\n", optionValue);
 
         errno = 0;
         char* endptr;
@@ -113,8 +113,6 @@ gameConfiguration getConfigurationFromArguments(char** argv, const int argc) {
             }
 
             cfg.defaultPlayersLPs = n;
-            if(!containsFrom(argv[i], '=', 0))
-                i++;
         } else if(strcmp(optionName, "--default-LPs-field") == 0 || strcmp(optionName, "-f") == 0) {
             int n = strtol(optionValue, &endptr, 10);
 
@@ -124,24 +122,16 @@ gameConfiguration getConfigurationFromArguments(char** argv, const int argc) {
             }
 
             cfg.defaultLPsOnField = n;
-            if(!containsFrom(argv[i], '=', 0))
-                i++;
         } else if(strcmp(optionName, "--allow-same-rank") == 0 || strcmp(optionName, "-r") == 0) {
-            if(strcmp(optionValue, "true") == 0 || strcmp(optionValue, "false") == 0) {
+            if(strcmp(optionValue, "true") == 0 || strcmp(optionValue, "false") == 0)
                 cfg.allowSameRank = strcmp(optionValue, "true") == 0;
-                if(!containsFrom(argv[i], '=', 0))
-                    i++;
-            }
             else {
                 printf("Illegal CLI arguments: true or false were expected.\n");
                 exit(EXIT_CLI_ILLEGAL);
             }
         } else if(strcmp(optionName, "--allow-same-suit") == 0 || strcmp(optionName, "-s") == 0) {
-            if(strcmp(optionValue, "true") == 0 || strcmp(optionValue, "false") == 0) {
+            if(strcmp(optionValue, "true") == 0 || strcmp(optionValue, "false") == 0)
                 cfg.allowSameSuit = strcmp(optionValue, "true") == 0;
-                if(!containsFrom(argv[i], '=', 0))
-                    i++;
-            }
             else {
                 printf("Illegal CLI arguments: true or false were expected.\n");
                 exit(EXIT_CLI_ILLEGAL);
