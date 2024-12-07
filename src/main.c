@@ -9,11 +9,11 @@ int main(int argc, char** argv) {
     srand(time(NULL));
     clearScreen();
     
-    // printGameConfiguration(cfg, true);
+    printGameConfiguration(cfg, true);
     Card* deck = prepareCardDeck();
     int playersCounter = askPlayerNumber();
 
-    clearScreen();
+    // clearScreen();
     Game game = prepareGame(playersCounter, deck, cfg);
     // printPlayers(game, false);
     
@@ -42,7 +42,7 @@ int randomInt(int min, int max) {
 
 gameConfiguration askConfigurationOptionsViaTerminal() {
     gameConfiguration cfg;
-    int n = 0;
+    int n = -1;
     char opt = '\0';
 
     do {
@@ -71,28 +71,32 @@ gameConfiguration askConfigurationOptionsViaTerminal() {
     cfg.allowSameSuit = opt == 'y' || opt == 'Y';
 
     do {
-        if(n < 0) {
+        if(n < 0 && n != -1) {
             clearScreen();
             printfgr("#b##%d#The value must be positive.\n#r#", (int)FgBrightRed);
         }
 
         printgr("#b#How many LPs on the field should there be by default? #r#");
         fflush(stdin);
-        scanf("%d", &n);
+        int a = scanf("%d", &n);
+        if(a == 0)
+            n = -2;
     } while(n < 0);
     cfg.defaultLPsOnField = n;
 
-    n = 1;
+    n = -1;
     do {
-        if(n <= 0) {
+        if(n <= 0 && n != -1) {
             clearScreen();
             printfgr("#b##%d#The value must be positive and not zero.\n#r#", (int)FgBrightRed);
         }
 
         printgr("#b#How many LPs should the players have by default? #r#");
         fflush(stdin);
-        scanf("%d", &n);
-    } while(n <= 0);
+        int a = scanf("%d", &n);
+        if(a == 0)
+            n = -2;
+    } while(n < 1);
     cfg.defaultPlayersLPs = n;
     
     return cfg;

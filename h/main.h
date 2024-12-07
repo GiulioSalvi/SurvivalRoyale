@@ -18,21 +18,21 @@
 #define Hearts 14
 
 typedef struct Card {
-    int suit;
-    int rank;
+    unsigned int suit;
+    unsigned int rank;
 } Card;
 
 typedef struct Player {
-    int id;
-    int lifePoints;
+    unsigned int id;
+    unsigned int lifePoints;
     bool revealedFacedDownCard;
     Card facedUpCard;
     Card facedDownCard;
 } Player;
 
 typedef struct Game {
-    int playersCounter;
-    int lifePointsOnTheField;
+    unsigned int playersCounter;
+    unsigned int lifePointsOnTheField;
     Player** players;
 } Game;
 
