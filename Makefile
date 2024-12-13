@@ -2,12 +2,11 @@ CV=99
 CC=gcc
 CCFLAGS=-g -std=c$(CV) -I./h/
 
+all: cli config config_file utility vector ansi main
 setup:
 	mkdir bin
 	mkdir bin/exec
 	mkdir bin/objects
-
-all: cli config config_file utility vector ansi main
 
 go: all
 	./bin/exec/game.exe --go --dont-ask-config-options
