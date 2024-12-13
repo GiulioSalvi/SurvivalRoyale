@@ -2,6 +2,11 @@ CV=99
 CC=gcc
 CCFLAGS=-g -std=c$(CV) -I./h/
 
+setup:
+	mkdir bin
+	mkdir bin/exec
+	mkdir bin/objects
+
 all: cli config config_file utility vector ansi main
 
 go: all
