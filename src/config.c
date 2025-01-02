@@ -2,6 +2,7 @@
 
 gameConfiguration getDefaultConfiguration() {
     gameConfiguration cfg = {
+        .beVerbose = false,
         .allowSameRank = true,
         .allowSameSuit = true,
         .defaultLPsOnField = 0,
@@ -20,15 +21,28 @@ bool isDefaultGameConfiguration(const gameConfiguration config) {
 }
 
 gameConfiguration getGameConfiguration(const int code, const gameConfiguration cliGameConfiguration) {
-    bool ignoreConfigFile = code - ACTION_IGNORE_CONFIG_FILE == 0 || code - ACTION_IGNORE_CONFIG_FILE - ACTION_DONT_ASK_CONFIG_OPTIONS == 0;
-    bool dontAskConfigOptions = code - (ignoreConfigFile ? ACTION_IGNORE_CONFIG_FILE : 0) - ACTION_DONT_ASK_CONFIG_OPTIONS == 0;
+    if(code == ACTION_HELP)
+        exit(EXIT_SUCCESS);
+    
+    gameConfiguration cfg;
+    bool ignoreConfigFile = code & 0b0001;
+    bool dontAskConfigOptions = code & 0b0010;
+    bool saveToFile = code & 0b0100;
+    bool beVerbose = code & 0b1000;
+
+    cfg.beVerbose = beVerbose;
 
     if(!ignoreConfigFile && existsConfigurationFile())
         return getConfigurationFromFile();
     else if(!isDefaultGameConfiguration(cliGameConfiguration))
-        return cliGameConfiguration;
+        cfg = cliGameConfiguration;
     else if(!dontAskConfigOptions)
-        return askConfigurationOptionsViaTerminal();
+        cfg = askConfigurationOptionsViaTerminal();
     else
-        return getDefaultConfiguration();
+        cfg = getDefaultConfiguration();
+
+    if(saveToFile)
+        saveConfigurationToFile(cfg, true);
+    
+    return cfg;
 }
