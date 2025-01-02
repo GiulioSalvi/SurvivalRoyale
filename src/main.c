@@ -9,13 +9,15 @@ int main(int argc, char** argv) {
     srand(time(NULL));
     clearScreen();
     
-    printGameConfiguration(cfg, true);
+    if(cfg.beVerbose)
+        printGameConfiguration(cfg, true);
     Card* deck = prepareCardDeck();
     int playersCounter = askPlayerNumber();
+    clearScreen();
 
-    // clearScreen();
     Game game = prepareGame(playersCounter, deck, cfg);
-    // printPlayers(game, false);
+    if(cfg.beVerbose)
+        printPlayers(game, false);
     
     while(!handleGamePhase(&game)) {
         removeDeadPlayers(&game);
@@ -23,7 +25,8 @@ int main(int argc, char** argv) {
         shuffleDeck(deck);
         giveCards(&game, deck, cfg);
 
-        // printPlayers(game, false);
+        if(cfg.beVerbose)
+            printPlayers(game, false);
     }
     
     withdrawCards(&game);
