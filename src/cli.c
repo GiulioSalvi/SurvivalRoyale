@@ -1,7 +1,7 @@
 #include "cli.h"
 
 void getHelp(const char* scope) {
-    printf("game [--help [option]] | [--go] [--dont-ask-config-options] [--ignore-config-file] [--default-player-LPs <LPs>] [--default-LPs-field <LPs>] [--allow-same-rank <false|true>] [--allow-same-suit <false|true>]\n\n");
+    printf("game [--help [option]] | [--go] [--dont-ask-config-options] [--ignore-config-file] [--save-to-file] [--default-player-LPs <LPs>] [--default-LPs-field <LPs>] [--allow-same-rank <false|true>] [--allow-same-suit <false|true>]\n\n");
 
     if(strcmp(scope, "generic") == 0 || strlen(scope) == 0) {
         printf("--help [option] (-h [option]):\n\tIf option is not given, then it shows this generic help message. Otherwise if option is given it shows an exhaustive help message for the given option.\n");
@@ -11,6 +11,10 @@ void getHelp(const char* scope) {
         printf("--dont-ask-config-options (-d):\n\tIt doesn't asks to the user the configuration options when the program starts.\n");
 
         printf("--ignore-config-file (-c):\n\tIt ignores the configuration file, if it exists, so that the configuration options saved in it are not loaded.\n");
+
+        printf("--save-to-file (-S):\n\tSaves the configuration loaded to a configuration file.\n");
+
+        printf("--verbose (-v):\n\tThe program has a verbose behaviour if this flag is specified. This option is not saved on file and it is not asked to the user.\n");
 
         printf("--default-player-LPs <LPs> (-p <LPs>):\n\tSets with how many LPs players spawn.\n");
 
@@ -27,6 +31,10 @@ void getHelp(const char* scope) {
         printf("--dont-ask-config-options (-d):\n\tIt doesn't asks to the user the configuration options when the program starts.\n");
     else if(strcmp(scope, "ignore-config-file") == 0)
         printf("--ignore-config-file (-c):\n\tIt ignores the configuration file, if it exists, so that the configuration options saved in it are not loaded.\n");
+    else if(strcmp(scope, "save-to-file") == 0)
+        printf("--save-to-file (-S):\n\tSaves the configuration loaded to a configuration file.\n");
+    else if(strcmp(scope, "verbose") == 0)
+        printf("--verbose (-v):\n\tThe program has a verbose behaviour if this flag is specified. This option is not saved on file and it is not asked to the user. It prints the game configuration when it is loaded and at the beginning of each phase prints the players informations.\n");
     else if(strcmp(scope, "default-player-LPs") == 0)
         printf("--default-player-LPs <LPs> (-p <LPs>):\n\tSets with how many LPs players spawn. If there exists the configuration file and it has not been ignored, the program considers this option instead of the file's option.\n\n\tNotice that also --default-playerLPs=<LPS> and -p=<LPs> are valid command syntaxes.\n");
     else if(strcmp(scope, "default-LPs-field") == 0)
@@ -35,16 +43,13 @@ void getHelp(const char* scope) {
         printf("--allow-same-rank <false|true> (-r <false|true>):\n\tSets if it is allowed for a player that its cards have the same rank. If there exists the configuration file and it has not been ignored, the program considers this option instead of the file's option.\n\n\tNotice that also --allow-same-rank=<false|true> and -r=<false|true> are valid command syntaxes.\n");
     else if(strcmp(scope, "allow-same-suit") == 0)
         printf("--allow-same-suit <false|true> (-s <false|true>):\n\tSets if it is allowed for a player that its cards have the same suit. If there exists the configuration file and it has not been ignored, the program considers this option instead of the file's option.\n\n\tNotice that also --allow-same-suit=<false|true> and -s=<false|true> are valid command syntaxes.\n");
-
-    exit(EXIT_CLI_ILLEGAL);
 }
 
 int handleCLIArguments(char** argv, const int argc) {
     if(argc == 1 || ((strcmp(argv[1], "--help") == 0 || strcmp(argv[1], "-h") == 0) && argc == 2)) {
         getHelp("generic");
-        return ACTION_NOTHING;
-    }
-    else if(argc == 3 && (strcmp(argv[1], "--help") == 0 || strcmp(argv[1], "-h") == 0)) {
+        return ACTION_HELP;
+    } else if(argc >= 3 && (strcmp(argv[1], "--help") == 0 || strcmp(argv[1], "-h") == 0)) {
         if(strcmp(argv[2], "--help") == 0 || strcmp(argv[2], "-h") == 0 || strcmp(argv[2], "help") == 0 || strcmp(argv[2], "h") == 0)
             getHelp("help");
         else if(strcmp(argv[2], "--go") == 0 || strcmp(argv[2], "-g") == 0 || strcmp(argv[2], "go") == 0 || strcmp(argv[2], "g") == 0)
@@ -53,6 +58,10 @@ int handleCLIArguments(char** argv, const int argc) {
             getHelp("dont-ask-config-options");
         else if(strcmp(argv[2], "--ignore-config-file") == 0 || strcmp(argv[2], "-c") == 0 || strcmp(argv[2], "ignore-config-file") == 0 || strcmp(argv[2], "c") == 0)
             getHelp("ignore-config-file");
+        else if(strcmp(argv[2], "--save-to-file") == 0 || strcmp(argv[2], "-S") == 0 || strcmp(argv[2], "save-to-file") == 0 || strcmp(argv[2], "S") == 0)
+            getHelp("save-to-file");
+        else if(strcmp(argv[2], "--verbose") == 0 || strcmp(argv[2], "-v") == 0 || strcmp(argv[2], "verbose") == 0 || strcmp(argv[2], "v") == 0)
+            getHelp("verbose");
         else if(strcmp(argv[2], "--default-player-LPs") == 0 || strcmp(argv[2], "-p") == 0 || strcmp(argv[2], "default-player-LPs") == 0 || strcmp(argv[2], "p") == 0)
             getHelp("default-player-LPs");
         else if(strcmp(argv[2], "--default-LPs-field") == 0 || strcmp(argv[2], "-f") == 0 || strcmp(argv[2], "default-LPs-field") == 0 || strcmp(argv[2], "f") == 0)
@@ -61,8 +70,12 @@ int handleCLIArguments(char** argv, const int argc) {
             getHelp("allow-same-rank");
         else if(strcmp(argv[2], "--allow-same-suit") == 0 || strcmp(argv[2], "-s") == 0 || strcmp(argv[2], "allow-same-suit") == 0 || strcmp(argv[2], "s") == 0)
             getHelp("allow-same-suit");
-        
-        return ACTION_NOTHING;
+        else {
+            printf("Illegal CLI arguments: help option was not recognized.\n");
+            exit(EXIT_CLI_ILLEGAL);
+        }
+
+        return ACTION_HELP;
     } else {
         int code = ACTION_NOTHING;
 
@@ -72,10 +85,17 @@ int handleCLIArguments(char** argv, const int argc) {
             else if(strcmp(argv[i], "--dont-ask-config-options") == 0 || strcmp(argv[i], "-d") == 0)
                 code += ACTION_DONT_ASK_CONFIG_OPTIONS;
             else if(strcmp(argv[i], "--ignore-config-file") == 0 || strcmp(argv[i], "-c") == 0)
-                code += ACTION_IGNORE_CONFIG_FILE;              
+                code += ACTION_IGNORE_CONFIG_FILE;
+            else if(strcmp(argv[i], "--save-to-file") == 0 || strcmp(argv[i], "-S") == 0)
+                code += ACTION_SAVE_TO_FILE;        
+            else if(strcmp(argv[i], "--verbose") == 0 || strcmp(argv[i], "-v") == 0)
+                code += ACTION_BE_VERBOSE;  
         }
 
-        if(code - ACTION_GO < 0) {
+        if(code == ACTION_NOTHING) {
+            printf("Illegal CLI argument: not recognized argument%c.\n", argc > 2 ? 's' : 0);
+            exit(EXIT_CLI_ILLEGAL);
+        } else if(code - ACTION_GO < 0) {
             printf("Illegal CLI arguments: --go option must be passed with options --dont-ask-config-options and --ignore-config-file.\n");
             exit(EXIT_CLI_ILLEGAL);
         }
@@ -95,11 +115,11 @@ gameConfiguration getConfigurationFromArguments(char** argv, const int argc) {
             int equalPosition = offsetFromNext(argv[i], '=', 0);
             optionName = substring(argv[i], 0, equalPosition);
             optionValue = substring(argv[i], equalPosition + 1, strlen(argv[i]) - equalPosition - 1);
-
-            i++;
         } else {
             optionName = argv[i];
             optionValue = argv[i + 1];
+            
+            i++;
         }
 
         errno = 0;
