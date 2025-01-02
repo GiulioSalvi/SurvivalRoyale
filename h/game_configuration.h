@@ -8,6 +8,7 @@
         int defaultLPsOnField;
         bool allowSameRank;
         bool allowSameSuit;
+        bool beVerbose;
     } gameConfiguration;
 
     gameConfiguration getDefaultConfiguration();
