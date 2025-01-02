@@ -1,4 +1,4 @@
-game [--help [option]] | [--go] [--dont-ask-config-options] [--ignore-config-file] [--default-player-LPs <LPs>] [--default-LPs-field <LPs>] [--allow-same-rank <false|true>] [--allow-same-suit <false|true>]
+game [--help [option]] | [--go] [--dont-ask-config-options] [--ignore-config-file] [--save-to-file] [--verbose] [--default-player-LPs <LPs>] [--default-LPs-field <LPs>] [--allow-same-rank <false|true>] [--allow-same-suit <false|true>]
 
 --help [option] (-h [option]):
     if option is not given, then it shows this generic help message. otherwise if option is given it shows an exhaustive help message for the given option.
@@ -8,6 +8,10 @@ game [--help [option]] | [--go] [--dont-ask-config-options] [--ignore-config-fil
     it doesn't asks to the user the configuration options when the program starts.
 --ignore-config-file (-c):
     it ignores the configuration file, if it exists, so that the configuration options saved in it are not loaded.
+--save-to-file (-S):
+    saves the configuration loaded to a configuration file.
+--verbose (-v):
+    the program has a verbose behaviour if this flag is specified. this option is not saved on file and it is not asked to the user. (it prints the game configuration when it is loaded and at the beginning of each phase prints the players informations.)
 --default-player-LPs <LPs> (-p <LPs>):
     sets with how many LPs players spawn. (if there exists the configuration file and it has not been ignored, the program considers this option instead of the file's option.
     
