@@ -1,3 +1,4 @@
+/// @brief Used in some structure for meaning that a field is unset, instead of using NULL.
 #define NONE 1
 
 #ifdef _WIN32
