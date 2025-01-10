@@ -5,14 +5,14 @@
 int main(int argc, char** argv) {
     // 
     // return 0;
-    gameConfiguration cfg = getGameConfiguration(handleCLIArguments(argv, argc), getConfigurationFromArguments(argv, argc));
+    const gameConfiguration cfg = getGameConfiguration(handleCLIArguments(argv, argc), getConfigurationFromArguments(argv, argc));
     srand(time(NULL));
     clearScreen();
     
     if(cfg.beVerbose)
         printGameConfiguration(cfg, true);
     Card* deck = prepareCardDeck();
-    int playersCounter = askPlayerNumber();
+    const int playersCounter = askPlayerNumber();
     clearScreen();
 
     Game game = prepareGame(playersCounter, deck, cfg);
@@ -39,7 +39,7 @@ int main(int argc, char** argv) {
     return 0;
 }
 
-int randomInt(int min, int max) {
+int randomInt(const int min, const int max) {
     return rand()%(max - min + 1) + min;
 }
 
@@ -81,7 +81,7 @@ gameConfiguration askConfigurationOptionsViaTerminal() {
 
         printgr("#b#How many LPs on the field should there be by default? #r#");
         fflush(stdin);
-        int a = scanf("%d", &n);
+        const int a = scanf("%d", &n);
         if(a == 0)
             n = -2;
     } while(n < 0);
@@ -96,12 +96,14 @@ gameConfiguration askConfigurationOptionsViaTerminal() {
 
         printgr("#b#How many LPs should the players have by default? #r#");
         fflush(stdin);
-        int a = scanf("%d", &n);
+        const int a = scanf("%d", &n);
         if(a == 0)
             n = -2;
     } while(n < 1);
     cfg.defaultPlayersLPs = n;
-    
+
+    cfg.beVerbose = false;
+
     return cfg;
 }
 

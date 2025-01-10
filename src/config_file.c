@@ -11,9 +11,7 @@ bool existsConfigurationFile() {
 }
 
 gameConfiguration getConfigurationFromFile() {
-    
     if(existsConfigurationFile()) {
-        gameConfiguration cfg;
         FILE* cfgFile = fopen("./game.cfg", "r");
 
         while(feof(cfgFile) == 0) {
@@ -23,9 +21,10 @@ gameConfiguration getConfigurationFromFile() {
             if(!containsFrom(line, '=', 0))
                 continue;
             else {
+                gameConfiguration cfg = getDefaultConfiguration();
                 errno = 0;
                 char* endptr;
-                int equalPosition = offsetFromNext(line, '=', 0);
+                const int equalPosition = offsetFromNext(line, '=', 0);
                 char* settingName = substring(line, 0, equalPosition);
                 char* settingValue = substring(line, equalPosition + 1, strlen(line) - equalPosition - 1);
 
@@ -37,14 +36,14 @@ gameConfiguration getConfigurationFromFile() {
                 } else if(strcmp("allowSameSuit", settingName) == 0) {
                     cfg.allowSameSuit = strcmp("true", settingValue) == 0;
                 } else if(strcmp("defaultPlayersLPs", settingName) == 0) {
-                    int rs = strtol(settingValue, &endptr, 10);
+                    const int rs = strtol(settingValue, &endptr, 10);
 
                     if(errno == ERANGE || *endptr != '\0')
                         continue;
                     else
                         cfg.defaultPlayersLPs = rs;
                 } else if(strcmp("defaultLPsOnField", settingName) == 0) {
-                    int rs = strtol(settingValue, &endptr, 10);
+                    const int rs = strtol(settingValue, &endptr, 10);
 
                     if(errno == ERANGE || *endptr != '\0')
                         continue;

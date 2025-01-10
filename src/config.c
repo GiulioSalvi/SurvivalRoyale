@@ -1,7 +1,7 @@
 #include "config.h"
 
 gameConfiguration getDefaultConfiguration() {
-    gameConfiguration cfg = {
+    const gameConfiguration cfg = {
         .beVerbose = false,
         .allowSameRank = true,
         .allowSameSuit = true,
@@ -13,8 +13,9 @@ gameConfiguration getDefaultConfiguration() {
 }
 
 bool isDefaultGameConfiguration(const gameConfiguration config) {
-    gameConfiguration d = getDefaultConfiguration();
-    return config.allowSameRank == d.allowSameRank &&
+    const gameConfiguration d = getDefaultConfiguration();
+    return config.beVerbose == d.beVerbose && 
+        config.allowSameRank == d.allowSameRank &&
         config.allowSameSuit == d.allowSameSuit &&
         config.defaultLPsOnField == d.defaultLPsOnField &&
         config.defaultPlayersLPs == d.defaultPlayersLPs;

@@ -54,7 +54,17 @@ int decimalDigitToInt(char d) {
 }
 
 int hexDigitToInt(char d) {
-    return isDecimalDigit(d) ? decimalDigitToInt(d) : (isHexDigit(d) ? ((int)d >= 97 ? (int)d - 97 + 10 : (int)d - 65 + 10) : (int)d);
+    return isDecimalDigit(d) ?
+        decimalDigitToInt(d) :
+        (
+            isHexDigit(d) ?
+            (
+                (int)d >= 97 ?
+                (int)d - 97 + 10 :
+                (int)d - 65 + 10
+            ) :
+        (int)d
+    );
 }
 
 int evalutateBase(char* num) {

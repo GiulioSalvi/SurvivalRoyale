@@ -112,7 +112,7 @@ gameConfiguration getConfigurationFromArguments(char** argv, const int argc) {
         char* optionValue = "";
 
         if(containsFrom(argv[i], '=', 0)) {
-            int equalPosition = offsetFromNext(argv[i], '=', 0);
+            const int equalPosition = offsetFromNext(argv[i], '=', 0);
             optionName = substring(argv[i], 0, equalPosition);
             optionValue = substring(argv[i], equalPosition + 1, strlen(argv[i]) - equalPosition - 1);
         } else {
