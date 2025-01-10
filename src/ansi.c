@@ -155,10 +155,10 @@ void printgr(const char* text) {
                         semicolonOffset = j == 2 ? offsetFromNext(text, '#', i) - 1 : offsetFromNext(text, ';', i);
                         
                         errno = 0;
-                        char* v = substring(text, i, semicolonOffset + 1), *endptr_;
+                        char* v = substring(text, i, semicolonOffset), *endptr_;
                         int n = strtol(v, &endptr_, 10);
                         free(v);
-                        if(errno == ERANGE || *endptr_ != '\0')
+                        if(errno == ERANGE || *endptr_ != '\0' && endptr_ == NULL)
                             break;
 
                         if(j == 0)
@@ -168,10 +168,9 @@ void printgr(const char* text) {
                         else if(j == 2)
                             rgb.b = n;
 
-                    
-                        i += j == 2 ? semicolonOffset : semicolonOffset + 2;
+                        i += j == 2 ? semicolonOffset : semicolonOffset + 1;
                     }
-
+                    
                     if(fg)
                         setRGBForegroundColor(rgb);
                     else
@@ -204,7 +203,7 @@ void printgr(const char* text) {
                 i++;
                 graphicReset();
             } else
-                printf("%c", text[i]);
+                printf("%c%c", text[i - 1], text[i]);
 
             free(substr);
         } else
@@ -292,10 +291,7 @@ char getChar() {
         term.c_lflag |= (ICANON | ECHO);
         tcsetattr(STDIN_FILENO, TCSANOW, &term);
 
-        if(rs == 1)
-            return c;
-        else
-            return -1;
+        return rs == 1 ? c : -1;
     #else
         return getch();
     #endif

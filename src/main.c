@@ -28,7 +28,7 @@ int main(int argc, char** argv) {
         if(cfg.beVerbose)
             printPlayers(game, false);
     }
-    
+
     withdrawCards(&game);
     removeDeadPlayers(&game);
     announceWinner(*game.players[0]);
