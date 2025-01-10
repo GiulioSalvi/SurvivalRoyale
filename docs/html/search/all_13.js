@@ -19,6 +19,9 @@ var searchData=
   ['slowblinking_16',['slowBlinking',['../ansi_8h.html#ad0dfc3813cd82beebc3e58aadd7bb70c',1,'slowBlinking():&#160;ansi.c'],['../ansi_8c.html#ad0dfc3813cd82beebc3e58aadd7bb70c',1,'slowBlinking():&#160;ansi.c']]],
   ['spades_17',['Spades',['../main_8h.html#a1ffc8540a09b84e093dbe31cf2f8f0d1',1,'main.h']]],
   ['stdcolor_18',['stdColor',['../union____color.html#ac5739dcb0f31d4ae0bc975e6d97f4f16',1,'__color']]],
-  ['substring_19',['substring',['../utility_8h.html#a4e62a614d8b0ed8c8b5375e47991526a',1,'substring(const char *str, int start, int length):&#160;utility.c'],['../utility_8c.html#a4e62a614d8b0ed8c8b5375e47991526a',1,'substring(const char *str, int start, int length):&#160;utility.c']]],
-  ['suit_20',['suit',['../struct_card.html#a40b11a6b8180214798ffc51621b13f57',1,'Card']]]
+  ['strong_19',['&lt;strong&gt;Survival Royale:&lt;/strong&gt;',['../index.html',1,'']]],
+  ['strong_20survival_20royale_3a_20strong_20',['&lt;strong&gt;Survival Royale:&lt;/strong&gt;',['../index.html',1,'']]],
+  ['substring_21',['substring',['../utility_8h.html#a4e62a614d8b0ed8c8b5375e47991526a',1,'substring(const char *str, int start, int length):&#160;utility.c'],['../utility_8c.html#a4e62a614d8b0ed8c8b5375e47991526a',1,'substring(const char *str, int start, int length):&#160;utility.c']]],
+  ['suit_22',['suit',['../struct_card.html#a40b11a6b8180214798ffc51621b13f57',1,'Card']]],
+  ['survival_20royale_3a_20strong_23',['&lt;strong&gt;Survival Royale:&lt;/strong&gt;',['../index.html',1,'']]]
 ];

@@ -10,6 +10,7 @@ var searchData=
   ['defaultplayerslps_7',['defaultPlayersLPs',['../structgame_configuration.html#ac6631954cc6972173af0d754774600f6',1,'gameConfiguration']]],
   ['devicestatusreport_8',['deviceStatusReport',['../ansi_8h.html#a49c7f9ee5f472eb31638f66e7694c62c',1,'deviceStatusReport(int *row, int *col):&#160;ansi.c'],['../ansi_8c.html#a49c7f9ee5f472eb31638f66e7694c62c',1,'deviceStatusReport(int *row, int *col):&#160;ansi.c']]],
   ['diamonds_9',['Diamonds',['../main_8h.html#a17cfb536d4e2f32f38afdd2a57617668',1,'main.h']]],
-  ['doublyunderlined_10',['DoublyUnderlined',['../ansi__const_8h.html#a58ff16a97d477595be313a98473f3cc4',1,'ansi_const.h']]],
-  ['doublyunderlined_11',['doublyUnderlined',['../ansi_8h.html#a82e03ae592c92726f05e58c353bf0553',1,'doublyUnderlined():&#160;ansi.c'],['../ansi_8c.html#a82e03ae592c92726f05e58c353bf0553',1,'doublyUnderlined():&#160;ansi.c']]]
+  ['docs_2dmainpage_2emd_10',['docs-mainpage.md',['../docs-mainpage_8md.html',1,'']]],
+  ['doublyunderlined_11',['DoublyUnderlined',['../ansi__const_8h.html#a58ff16a97d477595be313a98473f3cc4',1,'ansi_const.h']]],
+  ['doublyunderlined_12',['doublyUnderlined',['../ansi_8h.html#a82e03ae592c92726f05e58c353bf0553',1,'doublyUnderlined():&#160;ansi.c'],['../ansi_8c.html#a82e03ae592c92726f05e58c353bf0553',1,'doublyUnderlined():&#160;ansi.c']]]
 ];

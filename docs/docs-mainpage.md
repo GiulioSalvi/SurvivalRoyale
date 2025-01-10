@@ -1,6 +1,6 @@
-# **UniProject:**
+# **Survival Royale:**
 
-This project has been developed by [Giulio Salvi](https://github.com/GiulioSalvi) e [Jacopo Paradisi](https://github.com/jajo-coder) on [GitHub](https://github.com/GiulioSalvi/UniProject), with the related [commit history](https://github.com/GiulioSalvi/UniProject/commits/working-branch/).
+This project has been developed by [Giulio Salvi](https://github.com/GiulioSalvi) e [Jacopo Paradisi](https://github.com/jajo-coder) on [GitHub](https://github.com/GiulioSalvi/SurvivalRoyale), with the related [commit history](https://github.com/GiulioSalvi/SurvivalRoyale/commits/working-branch/).
 
 ### Code Organization:
 

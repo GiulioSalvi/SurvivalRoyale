@@ -10,5 +10,6 @@ var searchData=
   ['revealedfaceddowncard_7',['revealedFacedDownCard',['../struct_player.html#a5bf1e40834469018adf30bb516cc3c7b',1,'Player']]],
   ['revealfaceddowncard_8',['revealFacedDownCard',['../main_8h.html#a7363f838d5c121e6b3a76fac6ae14bbd',1,'revealFacedDownCard(Card card):&#160;main.c'],['../main_8c.html#a7363f838d5c121e6b3a76fac6ae14bbd',1,'revealFacedDownCard(Card card):&#160;main.c']]],
   ['rgb_9',['rgb',['../structrgb.html',1,'rgb'],['../ansi_8h.html#a7b8da94fb39e743a39c3835b2751d2ac',1,'rgb:&#160;ansi.h']]],
-  ['rgbcolor_10',['rgbColor',['../union____color.html#a6ca55daac8e551b71981291165af6028',1,'__color']]]
+  ['rgbcolor_10',['rgbColor',['../union____color.html#a6ca55daac8e551b71981291165af6028',1,'__color']]],
+  ['royale_3a_20strong_11',['&lt;strong&gt;Survival Royale:&lt;/strong&gt;',['../index.html',1,'']]]
 ];
