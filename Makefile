@@ -8,8 +8,11 @@ setup:
 	mkdir bin/exec
 	mkdir bin/objects
 
+gen-docs:
+	doxygen docs/Doxyfile
+
 go: all
-	./bin/exec/game.exe --go --dont-ask-config-options
+	./bin/exec/game --go --dont-ask-config-options
 
 cli: src/cli.c
 	$(CC) $(CCFLAGS) -c src/cli.c -o bin/objects/cli-c$(CV).o
