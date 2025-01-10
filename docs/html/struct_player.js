@@ -1,7 +1,8 @@
 var struct_player =
 [
-    [ "facedDownCard", "struct_player.html#a5d5638226645d1f132fa2909991ec524", null ],
-    [ "facedUpCard", "struct_player.html#a59c97fab98e3c5a7203692b06abf85d1", null ],
-    [ "id", "struct_player.html#a7441ef0865bcb3db9b8064dd7375c1ea", null ],
-    [ "lifePoints", "struct_player.html#a259a086ca6d5f15d0350083930917728", null ]
+    [ "facedDownCard", "struct_player.html#a171b556be45153dfeb898433e3d72763", null ],
+    [ "facedUpCard", "struct_player.html#aba7e2199ac72e994132712f55659fc27", null ],
+    [ "id", "struct_player.html#ab7ce6f462afaf105224b0ca772a33c43", null ],
+    [ "lifePoints", "struct_player.html#a76036d822a31dc930e2484775c3f7d0a", null ],
+    [ "revealedFacedDownCard", "struct_player.html#a5bf1e40834469018adf30bb516cc3c7b", null ]
 ];

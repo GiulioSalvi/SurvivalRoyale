@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['randomint_0',['randomInt',['../main_8c.html#a2bfdea9260301d9292a7ab002eeb4645',1,'main.c']]]
+  ['ndigits_0',['nDigits',['../utility_8h.html#af4629d2bfe39932e9492d578464d4da8',1,'nDigits(int n):&#160;utility.c'],['../utility_8c.html#af4629d2bfe39932e9492d578464d4da8',1,'nDigits(int n):&#160;utility.c']]]
 ];

@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['seed_0',['seed',['../struct_card.html#a6386b998db52ce66507e2ed0f7b2eddc',1,'Card']]],
-  ['stdcolor_1',['stdColor',['../union____color.html#ac5739dcb0f31d4ae0bc975e6d97f4f16',1,'__color']]]
+  ['players_0',['players',['../struct_game.html#ab7830bc6e2c7130f50dcc899375f3bbf',1,'Game']]],
+  ['playerscounter_1',['playersCounter',['../struct_game.html#aaf91554e4b4914b1a51d0abf74affe81',1,'Game']]]
 ];

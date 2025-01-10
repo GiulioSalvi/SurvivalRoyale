@@ -1,6 +1,6 @@
 var struct_game =
 [
-    [ "lifePointsOnTheField", "struct_game.html#aa4dcb710910067bf2d453bd99f7f4e0e", null ],
+    [ "lifePointsOnTheField", "struct_game.html#a8a1e75a5576917ffc0d1b94121822d53", null ],
     [ "players", "struct_game.html#ab7830bc6e2c7130f50dcc899375f3bbf", null ],
-    [ "playersCounter", "struct_game.html#a529d15933ca13e7771a58d71cea5d34b", null ]
+    [ "playersCounter", "struct_game.html#aaf91554e4b4914b1a51d0abf74affe81", null ]
 ];

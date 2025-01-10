@@ -1,9 +1,11 @@
 var searchData=
 [
-  ['initialclearscreen_0',['initialClearScreen',['../ansi_8h.html#a6737fe76f28007a2548fc7202e96935b',1,'initialClearScreen():&#160;ansi.c'],['../ansi_8c.html#a6737fe76f28007a2548fc7202e96935b',1,'initialClearScreen():&#160;ansi.c']]],
-  ['inputf_1',['inputf',['../ansi_8h.html#a26532d03298accefab7fd7b81c8b75c0',1,'inputf(const char *format,...):&#160;ansi.c'],['../ansi_8c.html#a26532d03298accefab7fd7b81c8b75c0',1,'inputf(const char *format,...):&#160;ansi.c']]],
-  ['isdecimaldigit_2',['isDecimalDigit',['../ansi_8h.html#a57a37f3dfbb6243df04b8ea21831f989',1,'isDecimalDigit(char c):&#160;ansi.c'],['../ansi_8c.html#a57a37f3dfbb6243df04b8ea21831f989',1,'isDecimalDigit(char c):&#160;ansi.c']]],
-  ['ishexdigit_3',['isHexDigit',['../ansi_8h.html#a39003da4dc8a0b8999f1325c2f96f641',1,'isHexDigit(char c):&#160;ansi.c'],['../ansi_8c.html#a39003da4dc8a0b8999f1325c2f96f641',1,'isHexDigit(char c):&#160;ansi.c']]],
-  ['italic_4',['italic',['../ansi_8h.html#ab24ee910c1383d74346513cc6ec474c2',1,'italic():&#160;ansi.c'],['../ansi_8c.html#ab24ee910c1383d74346513cc6ec474c2',1,'italic():&#160;ansi.c']]],
-  ['itoa_5',['itoa',['../ansi_8h.html#ae2e02f87b46932fc3cc5916444eb6cec',1,'itoa(int n, char *str, int base):&#160;ansi.c'],['../ansi_8c.html#ae2e02f87b46932fc3cc5916444eb6cec',1,'itoa(int n, char *str, int base):&#160;ansi.c']]]
+  ['getchar_0',['getChar',['../ansi_8h.html#a8fb1767df1e71af64fc13e5fbf4c6330',1,'getChar():&#160;ansi.c'],['../ansi_8c.html#a8fb1767df1e71af64fc13e5fbf4c6330',1,'getChar():&#160;ansi.c']]],
+  ['getconfigurationfromarguments_1',['getConfigurationFromArguments',['../cli_8h.html#a0c93e2e7b466782b9268c0cf1c95f393',1,'getConfigurationFromArguments(char **argv, const int argc):&#160;cli.c'],['../cli_8c.html#a0c93e2e7b466782b9268c0cf1c95f393',1,'getConfigurationFromArguments(char **argv, const int argc):&#160;cli.c']]],
+  ['getconfigurationfromfile_2',['getConfigurationFromFile',['../config__file_8h.html#a9148d31259436ae9ced62074a603dc3f',1,'getConfigurationFromFile():&#160;config_file.c'],['../config__file_8c.html#a9148d31259436ae9ced62074a603dc3f',1,'getConfigurationFromFile():&#160;config_file.c']]],
+  ['getdefaultconfiguration_3',['getDefaultConfiguration',['../game__configuration_8h.html#a0c1354e437a893de2342d332d1c95480',1,'getDefaultConfiguration():&#160;config.c'],['../config_8c.html#a0c1354e437a893de2342d332d1c95480',1,'getDefaultConfiguration():&#160;config.c']]],
+  ['getgameconfiguration_4',['getGameConfiguration',['../config_8h.html#a7bc46a30c47d39edf66d16721227bdce',1,'getGameConfiguration(const int code, const gameConfiguration cliGameConfiguration):&#160;config.c'],['../config_8c.html#a7bc46a30c47d39edf66d16721227bdce',1,'getGameConfiguration(const int code, const gameConfiguration cliGameConfiguration):&#160;config.c']]],
+  ['gethelp_5',['getHelp',['../cli_8h.html#af07bc0459c71635ff4bb3a77ffe75465',1,'getHelp(const char *scope):&#160;cli.c'],['../cli_8c.html#af07bc0459c71635ff4bb3a77ffe75465',1,'getHelp(const char *scope):&#160;cli.c']]],
+  ['givecards_6',['giveCards',['../main_8h.html#ad7c1005403ad848e762bc95a9b34e44b',1,'giveCards(Game *game, Card *deck, gameConfiguration configuration):&#160;main.c'],['../main_8c.html#ad7c1005403ad848e762bc95a9b34e44b',1,'giveCards(Game *game, Card *deck, gameConfiguration configuration):&#160;main.c']]],
+  ['graphicreset_7',['graphicReset',['../ansi_8h.html#a54dffcffb5538afde1838a8eb5f370d3',1,'graphicReset():&#160;ansi.c'],['../ansi_8c.html#a54dffcffb5538afde1838a8eb5f370d3',1,'graphicReset():&#160;ansi.c']]]
 ];

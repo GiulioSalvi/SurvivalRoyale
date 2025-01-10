@@ -1,4 +1,8 @@
 var searchData=
 [
-  ['validatergb_0',['validateRgb',['../ansi_8h.html#a7b4b30d9bb1010992f63aeeb40afb3c7',1,'validateRgb(rgb rgbColor):&#160;ansi.c'],['../ansi_8c.html#a7b4b30d9bb1010992f63aeeb40afb3c7',1,'validateRgb(rgb rgbColor):&#160;ansi.c']]]
+  ['randomint_0',['randomInt',['../main_8h.html#a8e008b233ca424a23d14f909fac460d8',1,'randomInt(const int min, const int max):&#160;main.c'],['../main_8c.html#a8e008b233ca424a23d14f909fac460d8',1,'randomInt(const int min, const int max):&#160;main.c']]],
+  ['removedeadplayers_1',['removeDeadPlayers',['../main_8h.html#aadaa17b780fb2726355670e01d7d1f8b',1,'removeDeadPlayers(Game *game):&#160;main.c'],['../main_8c.html#aadaa17b780fb2726355670e01d7d1f8b',1,'removeDeadPlayers(Game *game):&#160;main.c']]],
+  ['resize_2',['resize',['../vector_8h.html#a26c01b5ebc6a31734c50130b70b20592',1,'resize(vector *const vector, const size_t newCapacity):&#160;vector.c'],['../vector_8c.html#a26c01b5ebc6a31734c50130b70b20592',1,'resize(vector *const vector, const size_t newCapacity):&#160;vector.c']]],
+  ['revealcard_3',['revealCard',['../main_8h.html#a8a28ca45cd2575a68711409f7cbd9119',1,'revealCard(Card card, int playerId, bool facedUp, bool newLine):&#160;main.c'],['../main_8c.html#a8a28ca45cd2575a68711409f7cbd9119',1,'revealCard(Card card, int playerId, bool facedUp, bool newLine):&#160;main.c']]],
+  ['revealfaceddowncard_4',['revealFacedDownCard',['../main_8h.html#a7363f838d5c121e6b3a76fac6ae14bbd',1,'revealFacedDownCard(Card card):&#160;main.c'],['../main_8c.html#a7363f838d5c121e6b3a76fac6ae14bbd',1,'revealFacedDownCard(Card card):&#160;main.c']]]
 ];

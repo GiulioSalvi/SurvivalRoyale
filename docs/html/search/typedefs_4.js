@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['player_0',['Player',['../main_8c.html#a480a040facb94f90060562cd65274385',1,'main.c']]]
+  ['game_0',['Game',['../main_8h.html#a69b5df78d315f81ed77df30fdbfb7002',1,'main.h']]],
+  ['graphicrendition_1',['graphicRendition',['../ansi_8h.html#ad9fe4945cd8714a997baa4c945ec30d4',1,'ansi.h']]]
 ];

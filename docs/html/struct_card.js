@@ -1,5 +1,5 @@
 var struct_card =
 [
-    [ "number", "struct_card.html#a5aa07fadf895d20c471c04d566235040", null ],
-    [ "seed", "struct_card.html#a6386b998db52ce66507e2ed0f7b2eddc", null ]
+    [ "rank", "struct_card.html#a03c517951405031e7e81d491b5e2778b", null ],
+    [ "suit", "struct_card.html#a40b11a6b8180214798ffc51621b13f57", null ]
 ];
