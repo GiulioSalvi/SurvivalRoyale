@@ -41,7 +41,7 @@ color buildColor() {
     return c;
 }
 
-graphicRendition buildGrahicRendition() {
+graphicRendition buildGraphicRendition() {
     graphicRendition gr = {
         .bold = false,
         .italic = false,
@@ -120,7 +120,7 @@ void printGraphicRendition(char* text, graphicRendition rendition) {
     graphicReset();
 }
 
-void printgr(char* text) {
+void printgr(const char* text) {
     for(int i = 0; i < strlen(text); i++) {
         if(text[i] == '#') {
             int offset = 0;
@@ -219,19 +219,16 @@ void printfgr(char* text, ...) {
     va_list args;
     va_start(args, text);
 
-    int p = 0;
-    char* t = (char*)calloc(strlen(text), sizeof(char));
-    if(t == NULL)
-        exit(EXIT_ALLOC_FAILURE);
+    vector* t = buildVector();
 
     for(int i = 0; i < strlen(text); i++) {
         if(text[i] != '%')
-            *(t + p++) = text[i];
+            pushBack(t, text[i]);
         else {
             i++;
 
             if(text[i] == '%')
-                *(t + p) = '%';
+                pushBack(t, '%');
             else if(text[i] == 'd' || text[i] == 'i' || text[i] == 'u' || text[i] == 'x' || text[i] == 'X') {
                 int n = va_arg(args, int), snLen = nDigits(n) + 2;
                 char* sn = (char*)malloc(snLen*sizeof(char));
@@ -240,8 +237,8 @@ void printfgr(char* text, ...) {
 
                 snprintf(sn, snLen, "%d", n);
 
-                for(int j = 0; j < strlen(sn); j++) 
-                    *(t + p++) = *(sn + j);
+                for(int j = 0; j < strlen(sn); j++)
+                    pushBack(t, sn[j]);
                 
                 free(sn);
             } else if(text[i] == 'f' || text[i] == 'F') {
@@ -257,23 +254,24 @@ void printfgr(char* text, ...) {
                 snprintf(sn, snLen, format, n);
 
                 for(int j = 0; j < strlen(sn); j++) 
-                    *(t + p++) = *(sn + j);
+                    pushBack(t, sn[j]);
                 
                 free(sn);
             } else if(text[i] == 's') {
                 char** s = va_arg(args, char**);
 
                 for(int j = 0; j < strlen(*s); j++) 
-                    *(t + p++) = *(*s + j);
+                    pushBack(t, *(*s + j));
+
             } else if(text[i] == 'n')
                 ;
         }
     }
     
-    *(t + p) = '\0';
-    printgr(t);
+    pushBack(t, '\0');
+    printgr(t->data);
 
-    free(t);
+    freeVector(t);
 }
 
 char getChar() {
