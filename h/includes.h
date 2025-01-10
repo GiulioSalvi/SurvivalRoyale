@@ -1,3 +1,4 @@
+/// @brief Used in some structure for meaning that a field is unset, instead of using NULL.
 #define NONE 1
 
 #ifdef _WIN32
@@ -13,7 +14,7 @@
 #include <time.h>
 #include <errno.h>
 #include <stdio.h>
-#include <assert.h>    
+#include <assert.h>
 #include <stdarg.h>
 #include <stdint.h>
 #include <stdlib.h>

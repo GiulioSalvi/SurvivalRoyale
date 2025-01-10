@@ -1,6 +1,6 @@
 var structrgb =
 [
-    [ "b", "structrgb.html#a148e3876077787926724625411d6e7a9", null ],
-    [ "g", "structrgb.html#a71867e609034d4dbd6d0ad8d84540e59", null ],
-    [ "r", "structrgb.html#acab531abaa74a7e664e3986f2522b33a", null ]
+    [ "b", "structrgb.html#a4313c9563516f94387762ab05763456b", null ],
+    [ "g", "structrgb.html#a1673907d4d89d763bb7b94ec1eeb7b60", null ],
+    [ "r", "structrgb.html#a4c5c6ceb8ed33456261fa907136e0c3a", null ]
 ];

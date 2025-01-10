@@ -1,81 +1,4 @@
-#include "../h/ansi.h"
-#include "../h/includes.h"
-
-//STRING FUNCTIONS section
-
-char* substring(const char* str, int start, int length) {
-    if (start < 0 || length < 0 || start + length > strlen(str)) {
-        return NULL; 
-    }
-
-    char* sub = (char*)malloc(length + 1);
-    if(sub == NULL)
-        exit(EXIT_ALLOC_FAILURE);
-
-    strncpy(sub, str + start, length);
-    sub[length] = '\0';
-
-    return sub;
-}
-
-int offsetFromNext(char c, const char* str, int start) {
-    for(int i = start, p = 0; i < strlen(str); i++, p++)
-        if(str[i] == c)
-            return p;
-    
-    return -1;
-}
-
-int count(char c, const char* str, int start) {
-    int counter = 0;
-
-    for(int i = 0; i < strlen(str); i++)
-        if(str[i] == c)
-            counter++;
-
-    return counter;
-}
-
-bool containsFrom(const char* str, char c, int p) {
-    for(int i = p; i < strlen(str); i++)
-        if(str[i] == c)
-            return true;
-    
-    return false;
-}
-
-bool isDecimalDigit(char c) {
-    return (int)c >= 48 && (int)c <= 57;
-}
-
-bool isHexDigit(char c) {
-    return isDecimalDigit(c) || ((int)c >= 65 && (int)c <= 70) || ((int)c >= 97 && (int)c <= 102);
-}
-
-int decimalDigitToInt(char d) {
-    return isDecimalDigit(d) ? (int)d - 48 : (int)d;
-}
-
-int hexDigitToInt(char d) {
-    return isDecimalDigit(d) ? decimalDigitToInt(d) : (isHexDigit(d) ? ((int)d >= 97 ? (int)d - 97 + 10 : (int)d - 65 + 10) : (int)d);
-}
-
-int evalutateBase(char* num) {
-    char max = -1;
-
-    for(int i = 0; i < strlen(num); i++) {
-        if(isHexDigit(num[i])) {
-            if(num[i] > max)
-                max = num[i];
-        } else
-            return -1;
-    }
-
-    return hexDigitToInt(max) + 1;
-    
-}
-
-//STRING FUNCTIONS section end
+#include "ansi.h"
 
 // BUILDERS section
 
@@ -118,7 +41,7 @@ color buildColor() {
     return c;
 }
 
-graphicRendition buildGrahicRendition() {
+graphicRendition buildGraphicRendition() {
     graphicRendition gr = {
         .bold = false,
         .italic = false,
@@ -132,16 +55,6 @@ graphicRendition buildGrahicRendition() {
 //BUILDERS section end
 
 // UTILITY FUNCTIONS section
-int nDigits(int n) {
-    int c = 0;
-
-    while(n != 0) {
-        n /= 10;
-        c++;
-    }
-
-    return c;
-}
 
 bool validateRgb(rgb rgbColor) {
     if(rgbColor.r < 0 || rgbColor.r > 255)
@@ -207,12 +120,14 @@ void printGraphicRendition(char* text, graphicRendition rendition) {
     graphicReset();
 }
 
-void printgr(char* text) {
+void printgr(const char* text) {
     for(int i = 0; i < strlen(text); i++) {
         if(text[i] == '#') {
             int offset = 0;
             if(containsFrom(text, '#', i + 1))
-                offset = offsetFromNext('#', text, ++i);
+                offset = offsetFromNext(text, '#', ++i);
+            else
+                continue;
 
             errno = 0;
             char* substr = substring(text, i, offset), *endptr;
@@ -221,11 +136,11 @@ void printgr(char* text) {
             if(isDecimalDigit(text[i]))
                 n = strtol(substr, &endptr, 10);
 
-            if(offset >= 5) { // rgb
-                int semicolonCount = count(';', substr, 0);
+            if(offset >= 8) { // rgb
+                int semicolonCount = count(substr, ';', 0);
 
                 if(semicolonCount == 3) { // valid rgb (#fg;r;g;b# or #bg;r;g;b#)
-                    int semicolonOffset = offsetFromNext(';', text, i) - 1;
+                    int semicolonOffset = offsetFromNext(text, ';', i) - 1;
                     
                     if(semicolonOffset != 1)
                         continue;
@@ -237,8 +152,8 @@ void printgr(char* text) {
                     rgb rgb = buildRgb();
 
                     for(int j = 0; j <= 2; j++) {
-                        semicolonOffset = offsetFromNext(j == 2 ? '#' : ';', text, i);
-
+                        semicolonOffset = j == 2 ? offsetFromNext(text, '#', i) - 1 : offsetFromNext(text, ';', i);
+                        
                         errno = 0;
                         char* v = substring(text, i, semicolonOffset), *endptr_;
                         int n = strtol(v, &endptr_, 10);
@@ -303,19 +218,16 @@ void printfgr(char* text, ...) {
     va_list args;
     va_start(args, text);
 
-    int p = 0;
-    char* t = (char*)calloc(strlen(text), sizeof(char));
-    if(t == NULL)
-        exit(EXIT_ALLOC_FAILURE);
+    vector* t = buildVector();
 
     for(int i = 0; i < strlen(text); i++) {
         if(text[i] != '%')
-            *(t + p++) = text[i];
+            pushBack(t, text[i]);
         else {
             i++;
 
             if(text[i] == '%')
-                *(t + p) = '%';
+                pushBack(t, '%');
             else if(text[i] == 'd' || text[i] == 'i' || text[i] == 'u' || text[i] == 'x' || text[i] == 'X') {
                 int n = va_arg(args, int), snLen = nDigits(n) + 2;
                 char* sn = (char*)malloc(snLen*sizeof(char));
@@ -324,8 +236,8 @@ void printfgr(char* text, ...) {
 
                 snprintf(sn, snLen, "%d", n);
 
-                for(int j = 0; j < strlen(sn); j++) 
-                    *(t + p++) = *(sn + j);
+                for(int j = 0; j < strlen(sn); j++)
+                    pushBack(t, sn[j]);
                 
                 free(sn);
             } else if(text[i] == 'f' || text[i] == 'F') {
@@ -334,30 +246,31 @@ void printfgr(char* text, ...) {
                 snprintf(format, 16, "%%.%df", NUMBER_DECIMALS_DIGITS);
 
                 int snLen = NUMBER_DECIMALS_DIGITS + nDigits(floor(n)) + 3;
-                char* sn = (char*)malloc(sizeof(char));
+                char* sn = (char*)malloc(snLen*sizeof(char));
                 if(sn == NULL)
                     exit(EXIT_ALLOC_FAILURE);
 
                 snprintf(sn, snLen, format, n);
 
                 for(int j = 0; j < strlen(sn); j++) 
-                    *(t + p++) = *(sn + j);
+                    pushBack(t, sn[j]);
                 
                 free(sn);
             } else if(text[i] == 's') {
                 char** s = va_arg(args, char**);
 
                 for(int j = 0; j < strlen(*s); j++) 
-                    *(t + p++) = *(*s + j);
+                    pushBack(t, *(*s + j));
+
             } else if(text[i] == 'n')
                 ;
         }
     }
     
-    *(t + p++) = '\0';
-    printgr(t);
+    pushBack(t, '\0');
+    printgr(t->data);
 
-    free(t);
+    freeVector(t);
 }
 
 char getChar() {
@@ -381,6 +294,28 @@ char getChar() {
         return rs == 1 ? c : -1;
     #else
         return getch();
+    #endif
+}
+
+void screenSize(int* width, int* height) {
+    #ifndef _WIN32
+        struct winsize ws;
+
+        if(ioctl(STDOUT_FILENO, TIOCGWINSZ, &ws) != -1) {
+            *width = ws.ws_col;
+            *height = ws.ws_row;
+        } else {
+            *width = -1;
+            *height = -1;
+        }
+    #else
+        CONSOLE_SCREEN_BUFFER_INFO csbi;
+        HANDLE hStdout = GetStdHandle(STD_OUTPUT_HANDLE);
+
+        if (GetConsoleScreenBufferInfo(hStdout, &csbi)) {
+            *width = csbi.dwSize.X;
+            *height = csbi.dwSize.Y;
+        }
     #endif
 }
 

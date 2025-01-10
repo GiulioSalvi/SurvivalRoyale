@@ -1,6 +1,7 @@
+.idea/
 .vscode/
 .DS_Store
 bin/
-docs/Doxygen.app/**
 Go.ps1
 Go.sh
+terminalCardTest.c

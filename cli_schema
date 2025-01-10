@@ -1,0 +1,30 @@
+game [--help [option]] | [--go] [--dont-ask-config-options] [--ignore-config-file] [--save-to-file] [--verbose] [--default-player-LPs <LPs>] [--default-LPs-field <LPs>] [--allow-same-rank <false|true>] [--allow-same-suit <false|true>]
+
+--help [option] (-h [option]):
+    if option is not given, then it shows this generic help message. otherwise if option is given it shows an exhaustive help message for the given option.
+--go (-g):
+    it starts a new game. (the configuration is loaded from the file if it exists and unless --ignore-config-file has been specified. otherwise it asks to the user when the program is running unless --dont-ask-config-options has been specified. if so, it uses the default configuration options.)
+--dont-ask-config-options (-d):
+    it doesn't asks to the user the configuration options when the program starts.
+--ignore-config-file (-c):
+    it ignores the configuration file, if it exists, so that the configuration options saved in it are not loaded.
+--save-to-file (-S):
+    saves the configuration loaded to a configuration file.
+--verbose (-v):
+    the program has a verbose behaviour if this flag is specified. this option is not saved on file and it is not asked to the user. (it prints the game configuration when it is loaded and at the beginning of each phase prints the players informations.)
+--default-player-LPs <LPs> (-p <LPs>):
+    sets with how many LPs players spawn. (if there exists the configuration file and it has not been ignored, the program considers this option instead of the file's option.
+    
+    Notice that also --default-playerLPs=<LPS> and -p=<LPs> are valid command syntaxes.)
+--default-LPs-field <LPs> (-f <LPs>):
+    sets how many LPs there are on the playing field at the beginning of the game. (if there exists the configuration file and it has not been ignored, the program considers this option instead of the file's option.
+    
+    Notice that also --default-LPs-field=<LPs> and -f=<LPs> are valid command syntaxes.)
+--allow-same-rank <false|true> (-r <false|true>):
+    sets if it is allowed for a player that its cards have the same rank. (if there exists the configuration file and it has not been ignored, the program considers this option instead of the file's option.
+    
+    Notice that also --allow-same-rank=<false|true> and -r=<false|true> are valid command syntaxes.)
+--allow-same-suit <false|true> (-s <false|true>):
+    sets if it is allowed for a player that its cards have the same suit. (if there exists the configuration file and it has not been ignored, the program considers this option instead of the file's option.
+    
+    Notice that also --allow-same-suit=<false|true> and -s=<false|true> are valid command syntaxes.)

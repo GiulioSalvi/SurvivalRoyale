@@ -1,5 +1,4 @@
-#include "../h/vector.h"
-#include "../h/includes.h"
+#include "vector.h"
 
 vector* buildVector() {
     vector* v = (vector*)malloc(sizeof(vector));
@@ -91,7 +90,7 @@ data_type popFront(vector* const vector) {
 
 data_type at(vector* vector, size_t index) {
     if(index >= vector->size)
-        exit(EXIT_FAILURE);
+        exit(EXIT_ILLEGAL_INDEX_FAILURE);
     
     return vector->data[index];
 }

@@ -1,21 +1,36 @@
-CC=gcc
-
 CV=99
-PLT=macos
-CCFLAGS=-g -std=c$(CV)
+CC=gcc
+CCFLAGS=-g -std=c$(CV) -I./h/
 
-all: clear vector ansi main
+all: cli config config_file utility vector ansi main
+setup:
+	mkdir bin
+	mkdir bin/exec
+	mkdir bin/objects
+
+gen-docs:
+	doxygen docs/Doxyfile
+
+go: all
+	./bin/exec/game --go --dont-ask-config-options
+
+cli: src/cli.c
+	$(CC) $(CCFLAGS) -c src/cli.c -o bin/objects/cli-c$(CV).o
+
+config: src/config.c
+	$(CC) $(CCFLAGS) -c src/config.c -o bin/objects/config-c$(CV).o
+
+config_file: src/config_file.c
+	$(CC) $(CCFLAGS) -c src/config_file.c -o bin/objects/config-file-c$(CV).o
+
+utility: src/utility.c
+	$(CC) $(CCFLAGS) -c src/utility.c -o bin/objects/utility-c$(CV).o
 
 vector: src/vector.c
 	$(CC) $(CCFLAGS) -c src/vector.c -o bin/objects/vector-c$(CV).o
 
 ansi: src/ansi.c
-	$(CC) $(CCFLAGS) -c src/ansi.c -o bin/objects/ansi-$(PLT)-c$(CV).o
+	$(CC) $(CCFLAGS) -c src/ansi.c -o bin/objects/ansi-c$(CV).o
 
-main: src/main.c bin/objects/ansi-$(PLT)-c$(CV).o bin/objects/vector-c$(CV).o
-	$(CC) $(CCFLAGS) src/main.c bin/objects/ansi-$(PLT)-c$(CV).o bin/objects/vector-c$(CV).o -o bin/exec/project
-
-clear:
-	rm bin/exec/project
-	rm bin/objects/ansi-$(PLT)-c$(CV).o
-	rm bin/objects/vector-c$(CV).o
+main: src/main.c bin/objects/ansi-c$(CV).o bin/objects/vector-c$(CV).o bin/objects/utility-c$(CV).o bin/objects/config-c$(CV).o bin/objects/config-file-c$(CV).o bin/objects/cli-c$(CV).o
+	$(CC) $(CCFLAGS) src/main.c bin/objects/ansi-c$(CV).o bin/objects/vector-c$(CV).o bin/objects/utility-c$(CV).o bin/objects/config-c$(CV).o bin/objects/config-file-c$(CV).o bin/objects/cli-c$(CV).o -o bin/exec/game -lm
