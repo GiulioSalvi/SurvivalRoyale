@@ -2,17 +2,29 @@ CV=99
 CC=gcc
 CCFLAGS=-g -std=c$(CV) -I./h/
 
+# Rileva il sistema operativo
+ifeq ($(OS), Windows_NT)
+    EXE_EXT=.exe
+    MKDIR=mkdir
+    RM=del /Q
+else
+    EXE_EXT=
+    MKDIR=mkdir -p
+    RM=rm -rf
+endif
+
 all: cli config config_file utility vector ansi gui main
+
 setup:
-	mkdir bin
-	mkdir bin/exec
-	mkdir bin/objects
+	$(MKDIR) bin
+	$(MKDIR) bin/exec
+	$(MKDIR) bin/objects
 
 gen-docs:
 	doxygen docs/Doxyfile
 
 go: all
-	./bin/exec/game --go --dont-ask-config-options
+	./bin/exec/game$(EXE_EXT) --go --dont-ask-config-options
 
 cli: src/cli.c
 	$(CC) $(CCFLAGS) -c src/cli.c -o bin/objects/cli-c$(CV).o
@@ -36,4 +48,7 @@ gui: src/gui.c
 	$(CC) $(CCFLAGS) -c src/gui.c -o bin/objects/gui-c$(CV).o
 
 main: src/main.c bin/objects/ansi-c$(CV).o bin/objects/vector-c$(CV).o bin/objects/utility-c$(CV).o bin/objects/config-c$(CV).o bin/objects/config-file-c$(CV).o bin/objects/cli-c$(CV).o bin/objects/gui-c$(CV).o
-	$(CC) $(CCFLAGS) src/main.c bin/objects/ansi-c$(CV).o bin/objects/vector-c$(CV).o bin/objects/utility-c$(CV).o bin/objects/config-c$(CV).o bin/objects/config-file-c$(CV).o bin/objects/cli-c$(CV).o bin/objects/gui-c$(CV).o -o bin/exec/game -lm
+	$(CC) $(CCFLAGS) src/main.c bin/objects/ansi-c$(CV).o bin/objects/vector-c$(CV).o bin/objects/utility-c$(CV).o bin/objects/config-c$(CV).o bin/objects/config-file-c$(CV).o bin/objects/cli-c$(CV).o bin/objects/gui-c$(CV).o -o bin/exec/game$(EXE_EXT) -lm
+
+clean:
+	$(RM) bin/objects/* bin/exec/game$(EXE_EXT)
