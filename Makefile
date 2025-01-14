@@ -2,7 +2,7 @@ CV=99
 CC=gcc
 CCFLAGS=-g -std=c$(CV) -I./h/
 
-all: cli config config_file utility vector ansi main
+all: cli config config_file utility vector ansi gui main
 setup:
 	mkdir bin
 	mkdir bin/exec
@@ -32,5 +32,8 @@ vector: src/vector.c
 ansi: src/ansi.c
 	$(CC) $(CCFLAGS) -c src/ansi.c -o bin/objects/ansi-c$(CV).o
 
-main: src/main.c bin/objects/ansi-c$(CV).o bin/objects/vector-c$(CV).o bin/objects/utility-c$(CV).o bin/objects/config-c$(CV).o bin/objects/config-file-c$(CV).o bin/objects/cli-c$(CV).o
-	$(CC) $(CCFLAGS) src/main.c bin/objects/ansi-c$(CV).o bin/objects/vector-c$(CV).o bin/objects/utility-c$(CV).o bin/objects/config-c$(CV).o bin/objects/config-file-c$(CV).o bin/objects/cli-c$(CV).o -o bin/exec/game -lm
+gui: src/gui.c
+	$(CC) $(CCFLAGS) -c src/gui.c -o bin/objects/gui-c$(CV).o
+
+main: src/main.c bin/objects/ansi-c$(CV).o bin/objects/vector-c$(CV).o bin/objects/utility-c$(CV).o bin/objects/config-c$(CV).o bin/objects/config-file-c$(CV).o bin/objects/cli-c$(CV).o bin/objects/gui-c$(CV).o
+	$(CC) $(CCFLAGS) src/main.c bin/objects/ansi-c$(CV).o bin/objects/vector-c$(CV).o bin/objects/utility-c$(CV).o bin/objects/config-c$(CV).o bin/objects/config-file-c$(CV).o bin/objects/cli-c$(CV).o bin/objects/gui-c$(CV).o -o bin/exec/game -lm

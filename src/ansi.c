@@ -257,10 +257,10 @@ void printfgr(char* text, ...) {
                 
                 free(sn);
             } else if(text[i] == 's') {
-                char** s = va_arg(args, char**);
+                char* s = va_arg(args, char*);
 
-                for(int j = 0; j < strlen(*s); j++) 
-                    pushBack(t, *(*s + j));
+                for(int j = 0; j < strlen(s); j++) 
+                    pushBack(t, *(s + j));
 
             } else if(text[i] == 'n')
                 ;

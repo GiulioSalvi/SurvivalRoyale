@@ -1,3 +1,4 @@
+#include "gui.h"
 #include "ansi.h"
 #include "main.h"
 #include "ansi_const.h"
@@ -8,6 +9,9 @@ int main(int argc, char** argv) {
     const gameConfiguration cfg = getGameConfiguration(handleCLIArguments(argv, argc), getConfigurationFromArguments(argv, argc));
     srand(time(NULL));
     clearScreen();
+    #ifdef _WIN32
+        SetConsoleOutputCP(CP_UTF8);
+    #endif
     
     if(cfg.beVerbose)
         printGameConfiguration(cfg, true);
@@ -242,30 +246,19 @@ void shuffleDeck(Card* deck) {
 bool handleGamePhase(Game* game) {
     int starterPlayerPosition = randomInt(0, game->playersCounter - 1);
     printfgr("The current phase starts from #b#player %d#r#.\n\n", game->players[starterPlayerPosition]->id);
+    Pause(false);
+
+    int maxRows = 0, maxColumns = 0, totalPages = 0, bestStartColumn = 0;
+    screenSize(&maxRows, &maxColumns);
+    PageData* pages = getPageData(maxRows, maxColumns, game->players, game->playersCounter, &totalPages, &bestStartColumn);
+    printPageData(pages, totalPages);
 
     for(int i = 0; i < game->playersCounter; i++) {
-        int position = (i + starterPlayerPosition)%game->playersCounter, id = game->players[position]->id;
-        Player* player = game->players[position];
-        printfgr("#b#It's your turn, player %d!!#r# You have #b##%d#%d LPs#r#.\n", id, FgBrightCyan, player->lifePoints);
-        
-        revealCard(player->facedUpCard, id, true, false);
-        applyEffect(game, position, true);
-        printgr("\n");
-
-        if(!player->revealedFacedDownCard) {
-            revealCard(player->facedDownCard, id, false, false);
-
-            if(revealFacedDownCard(player->facedDownCard))
-                applyEffect(game, position, false);
-            else
-                printgr("#b#The card has not been revealed#r#.\n");
-        } else
-            printfgr("#b#Player %d#r#, your #b#faced down card#r# has been #b##%d#already revealed#r#!\n", id, FgBrightRed);
-        
-        Pause(true);
+        navigatePages(pages, totalPages, maxRows, maxColumns, bestStartColumn, (i + starterPlayerPosition)%game->playersCounter, game);
     }
 
     announceDeadPlayers(game);
+    freePageData(pages, totalPages);
 
     return isGameEnded(game);
 }
@@ -285,7 +278,7 @@ void applyEffect(Game* game, int playerPosition, bool facedUpCard) {
     
     if(!facedUpCard) {
         if(game->players[playerPosition]->revealedFacedDownCard) {
-            printfgr("#b#Player %d#r#, your #b#faced down card#r# has been #b##%d#already revealed#r#! #b#No effect by the last card has been applied#r#.\n", player->id, FgBrightRed);
+            printfgr("#b#Player %d#r#, your #b#faced down card#r# has been #b##%d#already revealed#r#! #b#No effect by the last card has been applied#r#.", player->id, FgBrightRed);
             return;
         }
         
@@ -296,28 +289,27 @@ void applyEffect(Game* game, int playerPosition, bool facedUpCard) {
         game->lifePointsOnTheField++;
         player->lifePoints--;
 
-        printfgr("Now #b#player %d#r# has #b##%d#%d LPs#r#. ", player->id, FgBrightRed, player->lifePoints);
-        printfgr("Now on the #b#playing field#r# there are #b##%d#%d LPs#r#.\n", FgGreen, game->lifePointsOnTheField);
+        printfgr("Now on the #b#playing field#r# there are #b##%d#%d LPs#r#.", FgGreen, game->lifePointsOnTheField);
     } else if((facedUpCard ? player->facedUpCard.rank : player->facedDownCard.rank) == Seven) {
-        revealCard(game->players[(playerPosition + 1)%game->playersCounter]->facedDownCard, game->players[(playerPosition + 1)%game->playersCounter]->id, false, true);
+        tellFacedDownCard(game->players[(playerPosition + 1)%game->playersCounter]->facedDownCard);
         applyEffect(game, (playerPosition + 1)%game->playersCounter, false);
     } else if((facedUpCard ? player->facedUpCard.rank : player->facedDownCard.rank) == Jack) {
         player->lifePoints--;
         game->players[(playerPosition == 0 ? game->playersCounter : playerPosition) - 1]->lifePoints++;
 
-        printfgr("Now #b#player %d#r# has #b##%d#%d LPs#r#. ", player->id, FgBrightRed, player->lifePoints);
-        printfgr("Now #b#player %d#r# has #b##%d#%d LPs#r#.\n", game->players[(playerPosition == 0 ? game->playersCounter : playerPosition) - 1]->id, FgGreen, game->players[(playerPosition == 0 ? game->playersCounter : playerPosition) - 1]->lifePoints);
+        // printfgr("Now #b#player %d#r# has #b##%d#%d LPs#r#. ", player->id, FgBrightRed, player->lifePoints);
+        // printfgr("Now #b#player %d#r# has #b##%d#%d LPs#r#.\n", game->players[(playerPosition == 0 ? game->playersCounter : playerPosition) - 1]->id, FgGreen, game->players[(playerPosition == 0 ? game->playersCounter : playerPosition) - 1]->lifePoints);
     } else if((facedUpCard ? player->facedUpCard.rank : player->facedDownCard.rank) == Queen) {
         player->lifePoints--;
         game->players[(playerPosition + 2)%game->playersCounter]->lifePoints++;
 
-        printfgr("Now #b#player %d#r# has #b##%d#%d LPs#r#. ", player->id, FgBrightRed, player->lifePoints);
-        printfgr("Now #b#player %d#r# has #b##%d#%d LPs#r#.\n", game->players[(playerPosition + 2)%game->playersCounter]->id, FgGreen, game->players[(playerPosition + 2)%game->playersCounter]->lifePoints);
+        // printfgr("Now #b#player %d#r# has #b##%d#%d LPs#r#. ", player->id, FgBrightRed, player->lifePoints);
+        // printfgr("Now #b#player %d#r# has #b##%d#%d LPs#r#.\n", game->players[(playerPosition + 2)%game->playersCounter]->id, FgGreen, game->players[(playerPosition + 2)%game->playersCounter]->lifePoints);
     } else if((facedUpCard ? player->facedUpCard.rank : player->facedDownCard.rank) == King) {
         player->lifePoints += game->lifePointsOnTheField;
         game->lifePointsOnTheField = 0;
 
-        printfgr("Now #b#player %d#r# has #b##%d#%d LPs#r#. ", player->id, FgGreen, player->lifePoints);
+        // printfgr("Now #b#player %d#r# has #b##%d#%d LPs#r#. ", player->id, FgGreen, player->lifePoints);
         printfgr("Now on the #b#playing field#r# there are #b##%d#0 LPs#r#.\n", FgBrightYellow);
     } else
         printgr("#b#No effect on the last card has been applied#r#.\n");
@@ -334,7 +326,7 @@ bool revealFacedDownCard(Card card) {
             eraseInDisplay(0);
         }
 
-        printgr("Do you want to #b#reveal#r# your #b#faced down#r# card and #b#apply its effect#r#?? (y,Y,n,N) ");
+        // printgr("Do you want to #b#reveal#r# your #b#faced down#r# card and #b#apply its effect#r#?? (y,Y,n,N) ");
         scanf("%c", &ans);
     } while(ans != 'Y' && ans != 'N' && ans != 'y' && ans != 'n');
 
@@ -512,19 +504,21 @@ void printCardEffect(Card card, bool newLine) {
         printgr("\n");
 }
 
-void revealCard(Card card, int playerId, bool facedUp, bool newLine) {
-    printfgr("Player %d #b#faced ", playerId);
-    if(facedUp)
-        printgr("up");
-    else
-        printgr("down");
-    printgr("#r# card is a #b#");
+void tellFacedDownCard(Card card) {
+    printgr("Your #b#faced down#r# card is a #b#");
     printCard(card, false);
-    printgr("#r#, the effect is: ");
+    printgr("");
+
+    cursorDown(1);
+    cursorHorizontalAbsolute(2);
+
+    printgr("#r#. The effect is: ");
     printCardEffect(card, true);
 
-    if(newLine)
-        printgr("\n");
+    cursorDown(1);
+    cursorHorizontalAbsolute(2);
+
+    printgr("Do you want reveal it?");
 }
 
 void printPlayer(Player player, bool newLine) {
