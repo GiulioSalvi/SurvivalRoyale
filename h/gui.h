@@ -10,7 +10,7 @@
     #define CARD_HEIGHT 9
     #define LOG_SECTION_HEIGHT 4
     #define MIN_ROWS ((2 * (CARD_HEIGHT + 4)) + (LOG_SECTION_HEIGHT + 2))
-    #define MIN_COLUMNS ((2 * CARD_WIDTH) + 5)
+    #define MIN_COLUMNS 141 // ((2 * CARD_WIDTH) + 5)
 
     typedef struct PageData {
         int playerRows;       // number of rows of players

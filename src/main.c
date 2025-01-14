@@ -13,6 +13,13 @@ int main(int argc, char** argv) {
         SetConsoleOutputCP(CP_UTF8);
     #endif
     
+    int maxRows = 0, maxColumns = 0;
+    screenSize(&maxColumns, &maxRows);
+    if(!isTerminalSizeValid(maxRows, maxColumns)) {
+        printfgr("#b##%d#The terminal is too small for the game to be played.#r#\n", FgBrightRed);
+        exit(EXIT_FAILURE);
+    }
+
     if(cfg.beVerbose)
         printGameConfiguration(cfg, true);
     Card* deck = prepareCardDeck();
@@ -216,6 +223,9 @@ Game prepareGame(int playersCounter, Card* deck, gameConfiguration configuration
             player = preparePlayer(i + 1, deck, configuration);
         while(cardsWereGiven(game.players, game.playersCounter, *player) || cardAreEqual(player->facedUpCard, player->facedDownCard) || (!configuration.allowSameRank ? player->facedUpCard.rank == player->facedDownCard.rank : false) || (!configuration.allowSameSuit ? player->facedUpCard.suit == player->facedDownCard.suit : false));
 
+        Card facedDown = {.suit = Diamonds, .rank = Seven};
+        player->facedDownCard = facedDown;
+
         game.players[i] = player;
     }
 
@@ -245,13 +255,16 @@ void shuffleDeck(Card* deck) {
 
 bool handleGamePhase(Game* game) {
     int starterPlayerPosition = randomInt(0, game->playersCounter - 1);
-    printfgr("The current phase starts from #b#player %d#r#.\n\n", game->players[starterPlayerPosition]->id);
+    int maxRows = 0, maxColumns = 0, totalPages = 0, bestStartColumn = 0;
+    screenSize(&maxColumns, &maxRows);
+    PageData* pages = getPageData(maxRows, maxColumns, game->players, game->playersCounter, &totalPages, &bestStartColumn);
+    
+    drawPageFrame(maxRows, maxColumns);
+    cursorPosition(maxRows - (LOG_SECTION_HEIGHT + 1) + 1, 3);
+    printfgr("The current phase starts from #b#player %d#r#.", game->players[starterPlayerPosition]->id);
     Pause(false);
 
-    int maxRows = 0, maxColumns = 0, totalPages = 0, bestStartColumn = 0;
-    screenSize(&maxRows, &maxColumns);
-    PageData* pages = getPageData(maxRows, maxColumns, game->players, game->playersCounter, &totalPages, &bestStartColumn);
-    printPageData(pages, totalPages);
+    // printPageData(pages, totalPages);
 
     for(int i = 0; i < game->playersCounter; i++) {
         navigatePages(pages, totalPages, maxRows, maxColumns, bestStartColumn, (i + starterPlayerPosition)%game->playersCounter, game);
@@ -291,7 +304,7 @@ void applyEffect(Game* game, int playerPosition, bool facedUpCard) {
 
         printfgr("Now on the #b#playing field#r# there are #b##%d#%d LPs#r#.", FgGreen, game->lifePointsOnTheField);
     } else if((facedUpCard ? player->facedUpCard.rank : player->facedDownCard.rank) == Seven) {
-        tellFacedDownCard(game->players[(playerPosition + 1)%game->playersCounter]->facedDownCard);
+        // tellFacedDownCard(game->players[(playerPosition + 1)%game->playersCounter]->facedDownCard);
         applyEffect(game, (playerPosition + 1)%game->playersCounter, false);
     } else if((facedUpCard ? player->facedUpCard.rank : player->facedDownCard.rank) == Jack) {
         player->lifePoints--;
@@ -310,9 +323,9 @@ void applyEffect(Game* game, int playerPosition, bool facedUpCard) {
         game->lifePointsOnTheField = 0;
 
         // printfgr("Now #b#player %d#r# has #b##%d#%d LPs#r#. ", player->id, FgGreen, player->lifePoints);
-        printfgr("Now on the #b#playing field#r# there are #b##%d#0 LPs#r#.\n", FgBrightYellow);
+        printfgr("Now on the #b#playing field#r# there are #b##%d#0 LPs#r#.", FgBrightYellow);
     } else
-        printgr("#b#No effect on the last card has been applied#r#.\n");
+        printgr("#b#No effect on the last card has been applied#r#.");
 }
 
 bool revealFacedDownCard(Card card) {
@@ -326,7 +339,7 @@ bool revealFacedDownCard(Card card) {
             eraseInDisplay(0);
         }
 
-        // printgr("Do you want to #b#reveal#r# your #b#faced down#r# card and #b#apply its effect#r#?? (y,Y,n,N) ");
+        printgr("Do you want to #b#reveal#r# your #b#faced down#r# card and #b#apply its effect#r#?? (y,Y,n,N) ");
         scanf("%c", &ans);
     } while(ans != 'Y' && ans != 'N' && ans != 'y' && ans != 'n');
 
@@ -507,16 +520,12 @@ void printCardEffect(Card card, bool newLine) {
 void tellFacedDownCard(Card card) {
     printgr("Your #b#faced down#r# card is a #b#");
     printCard(card, false);
-    printgr("");
-
-    cursorDown(1);
-    cursorHorizontalAbsolute(2);
 
     printgr("#r#. The effect is: ");
-    printCardEffect(card, true);
+    printCardEffect(card, false);
 
     cursorDown(1);
-    cursorHorizontalAbsolute(2);
+    cursorHorizontalAbsolute(3);
 
     printgr("Do you want reveal it?");
 }

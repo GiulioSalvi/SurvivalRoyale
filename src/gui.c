@@ -26,25 +26,32 @@ void navigatePages(PageData* pagesData, int totalPages, int maxRows, int maxColu
     int currentPage = getPageContainingPlayer(pagesData, totalPages, id);
 
     while (1) {
-        // Display the current page
-        displayPage(&pagesData[currentPage], maxRows, maxColumns, bestStartColumn);
-        //cursorPosition(maxRows - (LOG_SECTION_HEIGHT + 1) + 1, 2);
-        printfgr("#b#It's your turn, player %d!!#r# On the #b#playing field#r# there are #b#%d LPs#r#.", id, FgBrightCyan, game->lifePointsOnTheField);
+        // clear the terminal screen
+        clearScreen();
+        
+        cursorPosition(maxRows - (LOG_SECTION_HEIGHT + 1) + 1, 3);
+        printfgr("#b#It's your turn, player %d!!#r# On the #b#playing field#r# there are #b#%d LPs#r#.", id, game->lifePointsOnTheField);
 
-        //cursorPosition(maxRows - (LOG_SECTION_HEIGHT + 1) + 2, 2);
+        cursorPosition(maxRows - (LOG_SECTION_HEIGHT + 1) + 2, 3);
         applyEffect(game, playerIndex, true);
 
-        //cursorPosition(maxRows - (LOG_SECTION_HEIGHT + 1) + 3, 2);
-        tellFacedDownCard(player->facedDownCard);
+        // Display the current page
+        displayPage(&pagesData[currentPage], maxRows, maxColumns, bestStartColumn);
 
+        cursorPosition(maxRows - (LOG_SECTION_HEIGHT + 1) + 3, 3);
+        if(!player->revealedFacedDownCard)
+            tellFacedDownCard(player->facedDownCard);
+        else
+            printfgr("Your #b#faced down card#r# has been #b##%d#already revealed#r#!", FgBrightRed);
+        
         // Move cursor to the last empty row in the messages section
-        //cursorPosition(maxRows - 2, maxColumns - 2);
+        cursorPosition(maxRows - 2, maxColumns - 2);
         printgr(" "); // Ensure cursor is visible and no leftover text
 
         // Get user input
         input = getchar();
 
-        //cursorPosition(maxRows - (LOG_SECTION_HEIGHT + 1) + 4, 2);
+        cursorPosition(maxRows - (LOG_SECTION_HEIGHT + 1) + 4, 3);
         // Handle input
         if (input == 'w') {
             // Move to the next page or loop back to the first page
@@ -57,24 +64,33 @@ void navigatePages(PageData* pagesData, int totalPages, int maxRows, int maxColu
             clearScreen();
             break;
         } else if(!player->revealedFacedDownCard) {
-            clearScreen();
-            if(input == 'y')
+            if(input == 'y') {
                 applyEffect(game, playerIndex, false);
-            else if(input == 'n');
+                displayPage(&pagesData[currentPage], maxRows, maxColumns, bestStartColumn);
+            } else if(input == 'n')
                 printgr("#b#The card has not been revealed#r#.");
-        } else
+
+            while(getchar() != '\n');
+
+            Pause(true);
+            break;
+        } else {
             printfgr("Your #b#faced down card#r# has been #b##%d#already revealed#r#!", FgBrightRed);
+            
+            clearScreen();
+            // Clear input buffer
+            while(getchar() != '\n');
+            
+            break;
+        } 
 
         // Clear input buffer
-        while (getchar() != '\n');
+        while(getchar() != '\n');
     }
 }
 
 // function to display a full page (frame + cards)
 void displayPage(PageData* page, int maxRows, int maxColumns, int bestStartColumn) {
-    // clear the terminal screen
-    clearScreen();
-
     // draw all the cards for the current page
     drawCardsForPage(page, 3, bestStartColumn); // cards start at the best row to print with even spaces all the data
 
@@ -113,13 +129,13 @@ void drawCardsForPage(PageData* page, int startX, int bestStartColumn) {
 
         // Draw the card
         Player* player = page->players[i];
-        drawCard(currentRow, currentCol, randomInt(Clubs, Hearts), randomInt(Ace, King));
+        drawCard(currentRow, currentCol, player->facedUpCard.suit, player->facedUpCard.rank);
 
         // Print player name and life points
         cursorPosition(currentRow + CARD_HEIGHT + 1, currentCol + 1);
-        printfgr("ID: %d", player->id);
+        printfgr("ID: %u", player->id);
         cursorPosition(currentRow + CARD_HEIGHT + 2, currentCol + 1);
-        printfgr("Life: %d ♥", player->lifePoints);
+        printfgr("Life: %u ♥", player->lifePoints);
 
         // Move to the next row after completing a row
         if ((i + 1) % page->playerPerRow == 0) {
