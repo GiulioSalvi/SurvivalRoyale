@@ -33,26 +33,20 @@ void printGameConfiguration(GameConfiguration configuration, LogsConfiguration l
     FILE* outStream = !logsConfiguration.useConsole ? fopen(logsConfiguration.fileName, "a+") : stdout;
 
     fprintf(outStream, "Allow cards with the same rank: ");
-    fflush(outStream);
     if(configuration.allowSameRank)
         fprintf(outStream, "true");
     else
         fprintf(outStream, "false");
-    fflush(outStream);
 
     fprintf(outStream, ", allow cards with the same suit: ");
-    fflush(outStream);
     if(configuration.allowSameSuit)
         fprintf(outStream, "true");
     else
         fprintf(outStream, "false");
-    fflush(outStream);
 
     fprintf(outStream, ", default LPs on the playing field: %d, default players' LPs: %d.\n", configuration.defaultLPsOnField, configuration.defaultPlayersLPs);
-    fflush(outStream);
 
     fprintf(outStream, !logsConfiguration.useConsole || newLine ? "\n" : "");
-    fflush(outStream);
 
     if(!logsConfiguration.useConsole)
         fclose(outStream);
@@ -78,21 +72,18 @@ void printPlayer(Player player, LogsConfiguration logsConfiguration, bool newLin
         FILE* logFile = fopen(logsConfiguration.fileName, "a+");
         
         fprintf(logFile, "Player %d with %d LPs has cards ", player.id, player.lifePoints);
-        fflush(logFile);
         fclose(logFile);
 
         printCard(player.facedUpCard, logsConfiguration, false);
 
         logFile = fopen(logsConfiguration.fileName, "a+");
         fprintf(logFile, " faced up and ");
-        fflush(logFile);
         fclose(logFile);
 
         printCard(player.facedDownCard, logsConfiguration, false);
 
         logFile = fopen(logsConfiguration.fileName, "a+");
         fprintf(logFile, " faced down.\n");
-        fflush(logFile);
         fclose(logFile);
     }
 }
