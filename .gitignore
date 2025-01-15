@@ -2,6 +2,6 @@
 .vscode/
 .DS_Store
 bin/
-test/
+logs/
 Go.ps1
 Go.sh
