@@ -6,19 +6,13 @@
 int main(int argc, char** argv) {
     // 
     // return 0;
-    const gameConfiguration cfg = getGameConfiguration(handleCLIArguments(argv, argc), getConfigurationFromArguments(argv, argc));
+
     srand(time(NULL));
+    const gameConfiguration cfg = getGameConfiguration(handleCLIArguments(argv, argc), getConfigurationFromArguments(argv, argc));
     clearScreen();
-    #ifdef _WIN32
-        SetConsoleOutputCP(CP_UTF8);
-    #endif
     
-    int maxRows = 0, maxColumns = 0;
-    screenSize(&maxColumns, &maxRows);
-    if(!isTerminalSizeValid(maxRows, maxColumns)) {
-        printfgr("#b##%d#The terminal is too small for the game to be played.#r#\n", FgBrightRed);
-        exit(EXIT_FAILURE);
-    }
+    checkTerminal();
+    setupTerminal();
 
     if(cfg.beVerbose)
         printGameConfiguration(cfg, true);
@@ -48,6 +42,78 @@ int main(int argc, char** argv) {
     freeGame(&game);
 
     return 0;
+}
+
+void checkTerminal() {
+    if(!checkTerminalSize()) {
+        printfgr("#b##%d#The terminal is too small for the game to be played.#r#\n", FgBrightRed);
+        exit(EXIT_TERMINAL_TOO_SMALL);
+    }
+    if(!checkTerminalHost()) {
+        printf("The terminal's host is not supported. Please, use Windows Terminal App.\n");
+        exit(EXIT_WINDOWS_TERMINAL_HOST_NOT_SUPPORTED);
+    }
+}
+
+void setupTerminal() {
+    #ifdef _WIN32
+        SetConsoleOutputCP(CP_UTF8);
+    #endif
+}
+
+bool checkTerminalSize() {
+    int maxRows = 0, maxColumns = 0;
+    screenSize(&maxColumns, &maxRows);
+    
+    return isTerminalSizeValid(maxRows, maxColumns);
+}
+
+bool checkTerminalHost() {
+    #ifdef _WIN32
+        HANDLE hSnapshot = CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, 0);
+        if (hSnapshot == INVALID_HANDLE_VALUE) {
+            printf("Errore durante la creazione dello snapshot.\n");
+            return;
+        }
+
+        // bool windowsTerminalProcessFound = false;
+        while (processId != 0) {
+            PROCESSENTRY32 pe32;
+            pe32.dwSize = sizeof(PROCESSENTRY32);
+
+            int found = 0;
+            if (Process32First(hSnapshot, &pe32)) {
+                do {
+                    if (pe32.th32ProcessID == processId) {
+                        printf("PID: %lu - Nome: %s\n", processId, pe32.szExeFile);
+                        if(strcmp(pe32.szExeFile, "WindowsTeminal.exe") == 0)
+                            return true;
+
+                        processId = pe32.th32ParentProcessID;
+                        found = 1;
+                        break;
+                    }
+                } while (Process32Next(hSnapshot, &pe32));
+            }
+
+            if (!found) {
+                // printf("Processo con PID %lu non trovato o accesso negato.\n", processId);
+                CloseHandle(hSnapshot);
+                return false;
+            }
+
+            if (processId == 0) {
+                // printf("Raggiunto il processo radice.\n");
+                CloseHandle(hSnapshot);
+                return false;
+            }
+        }
+
+        CloseHandle(hSnapshot);
+        return false;
+    #else
+        return true;
+    #endif
 }
 
 int randomInt(const int min, const int max) {

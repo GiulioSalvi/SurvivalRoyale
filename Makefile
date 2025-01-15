@@ -10,8 +10,8 @@ all: cli config config_file utility vector ansi gui main
 
 setup:
 	mkdir bin
-	mkdir bin/exec
-	mkdir bin/objects
+	cd bin
+	mkdir exec objects
 
 gen-docs:
 	doxygen docs/Doxyfile

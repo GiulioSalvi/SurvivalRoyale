@@ -6,6 +6,10 @@
 #define EXIT_ILLEGAL_INDEX_FAILURE 4
 /// @brief Exit code when the CLI options are illegal.
 #define EXIT_CLI_ILLEGAL 5
+/// @brief Exit code when the terminal is too small for the TUI.
+#define EXIT_TERMINAL_TOO_SMALL 6
+/// @brief Exit code when the terminal's host process, on Windows, is not supported.
+#define EXIT_WINDOWS_TERMINAL_HOST_NOT_SUPPORTED 7
 
 /// @brief With this action code, the program does nothing.
 #define ACTION_NOTHING 0

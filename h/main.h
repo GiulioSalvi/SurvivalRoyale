@@ -65,6 +65,11 @@
         Player** players;
     } Game;
 
+    /// @brief Checks if the terminal size is suitable for the TUI (Terminal User Interface); if the terminal it is too small, it exits with EXIT_TERMINAL_TOO_SMALL exit code. On Windows, it checks if the terminal's host process is supported, otherwise it exits with EXIT_WINDOWS_TERMINAL_HOST_NOT_SUPPORTED exit code.
+    void checkTerminal();
+    void setupTerminal();
+    bool checkTerminalHost();
+    bool checkTerminalSize();
     /// @brief Generates a random number in the range (inclusive).
     /// @param min The minimum possibly generated value.
     /// @param max The maximum possibly generated value.

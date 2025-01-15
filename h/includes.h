@@ -4,6 +4,7 @@
 #ifdef _WIN32
     #include <conio.h>
     #include <windows.h>
+    #include <tlhelp32.h>
 #else
     #include <unistd.h>
     #include <termios.h>
