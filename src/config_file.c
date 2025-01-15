@@ -10,7 +10,7 @@ bool existsConfigurationFile() {
     }
 }
 
-gameConfiguration getConfigurationFromFile() {
+GameConfiguration getConfigurationFromFile() {
     if(existsConfigurationFile()) {
         FILE* cfgFile = fopen("./game.cfg", "r");
 
@@ -21,7 +21,7 @@ gameConfiguration getConfigurationFromFile() {
             if(!containsFrom(line, '=', 0))
                 continue;
             else {
-                gameConfiguration cfg = getDefaultConfiguration();
+                GameConfiguration cfg = getDefaultConfiguration();
                 errno = 0;
                 char* endptr;
                 const int equalPosition = offsetFromNext(line, '=', 0);
@@ -62,7 +62,7 @@ gameConfiguration getConfigurationFromFile() {
     return getDefaultConfiguration();
 }
 
-void saveConfigurationToFile(gameConfiguration configuration, bool overwriteIfExists) {
+void saveConfigurationToFile(GameConfiguration configuration, bool overwriteIfExists) {
     if(!overwriteIfExists && existsConfigurationFile())
         return;
 

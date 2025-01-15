@@ -9,8 +9,8 @@
     /// @param code The action code.
     /// @param cliGameConfiguration The possible CLI game configuration.
     /// @return The game configuration that the game will use. 
-    gameConfiguration getGameConfiguration(const int code, const gameConfiguration cliGameConfiguration);
+    GameConfiguration getGameConfiguration(const int code, const GameConfiguration cliGameConfiguration);
     /// @brief Asks to the user via terminal the game configuration.
     /// @return The game configuration asked via terminal.
-    gameConfiguration askConfigurationOptionsViaTerminal();
+    GameConfiguration askConfigurationOptionsViaTerminal();
 #endif

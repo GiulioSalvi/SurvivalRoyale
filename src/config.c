@@ -1,7 +1,7 @@
 #include "config.h"
 
-gameConfiguration getDefaultConfiguration() {
-    const gameConfiguration cfg = {
+GameConfiguration getDefaultConfiguration() {
+    const GameConfiguration cfg = {
         .beVerbose = false,
         .allowSameRank = true,
         .allowSameSuit = true,
@@ -12,8 +12,8 @@ gameConfiguration getDefaultConfiguration() {
     return cfg;
 }
 
-bool isDefaultGameConfiguration(const gameConfiguration config) {
-    const gameConfiguration d = getDefaultConfiguration();
+bool isDefaultGameConfiguration(const GameConfiguration config) {
+    const GameConfiguration d = getDefaultConfiguration();
     return config.beVerbose == d.beVerbose && 
         config.allowSameRank == d.allowSameRank &&
         config.allowSameSuit == d.allowSameSuit &&
@@ -21,11 +21,11 @@ bool isDefaultGameConfiguration(const gameConfiguration config) {
         config.defaultPlayersLPs == d.defaultPlayersLPs;
 }
 
-gameConfiguration getGameConfiguration(const int code, const gameConfiguration cliGameConfiguration) {
+GameConfiguration getGameConfiguration(const int code, const GameConfiguration cliGameConfiguration) {
     if(code == ACTION_HELP)
         exit(EXIT_SUCCESS);
     
-    gameConfiguration cfg;
+    GameConfiguration cfg;
     bool ignoreConfigFile = code & 0b0001;
     bool dontAskConfigOptions = code & 0b0010;
     bool saveToFile = code & 0b0100;

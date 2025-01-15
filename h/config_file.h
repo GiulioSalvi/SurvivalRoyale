@@ -10,9 +10,9 @@
     bool existsConfigurationFile();
     /// @brief Load the game configuration from the file. It checks if the file exists.
     /// @return The game configuration loaded from the file, otherwise the default game configuration.
-    gameConfiguration getConfigurationFromFile();
+    GameConfiguration getConfigurationFromFile();
     /// @brief Save the given configuration to the game configuration file. It overwrites an existing file if and only if overwriteIfExists is set to true.
     /// @param configuration The game configuration to be saved.
     /// @param overwriteIfExists Overwriting allowed flag.
-    void saveConfigurationToFile(gameConfiguration configuration, bool overwriteIfExists);
+    void saveConfigurationToFile(GameConfiguration configuration, bool overwriteIfExists);
 #endif

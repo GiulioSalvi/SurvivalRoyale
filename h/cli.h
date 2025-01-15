@@ -17,5 +17,5 @@
     /// @param argv The CLI options vector.
     /// @param argc The length of argv.
     /// @return The game configuration generated.
-    gameConfiguration getConfigurationFromArguments(char** argv, const int argc);
+    GameConfiguration getConfigurationFromArguments(char** argv, const int argc);
 #endif

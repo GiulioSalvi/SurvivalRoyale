@@ -104,8 +104,8 @@ int handleCLIArguments(char** argv, const int argc) {
     }
 }
 
-gameConfiguration getConfigurationFromArguments(char** argv, const int argc) {
-    gameConfiguration cfg = getDefaultConfiguration();
+GameConfiguration getConfigurationFromArguments(char** argv, const int argc) {
+    GameConfiguration cfg = getDefaultConfiguration();
 
     for(int i = 1; i < argc; i++) {
         char* optionName = "";
