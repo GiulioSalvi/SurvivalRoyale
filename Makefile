@@ -1,15 +1,15 @@
 CV=99
 CC=gcc
-CCFLAGS=-g -std=c$(CV) -I./h/
+CCFLAGS=-g -O2 -std=c$(CV) -I./h/
 
 ifeq ($(OS), Windows_NT)
     EXE_EXT=.exe
 endif
 
-all: cli config config_file utility vector ansi gui main
+all: cli config config_file utility vector ansi gui logs main
 
 setup:
-	mkdir bin
+	mkdir bin logs
 	cd bin
 	mkdir exec objects
 
@@ -40,5 +40,8 @@ ansi: src/ansi.c
 gui: src/gui.c
 	$(CC) $(CCFLAGS) -c src/gui.c -o bin/objects/gui-c$(CV).o
 
-main: src/main.c bin/objects/ansi-c$(CV).o bin/objects/vector-c$(CV).o bin/objects/utility-c$(CV).o bin/objects/config-c$(CV).o bin/objects/config-file-c$(CV).o bin/objects/cli-c$(CV).o bin/objects/gui-c$(CV).o
-	$(CC) $(CCFLAGS) src/main.c bin/objects/ansi-c$(CV).o bin/objects/vector-c$(CV).o bin/objects/utility-c$(CV).o bin/objects/config-c$(CV).o bin/objects/config-file-c$(CV).o bin/objects/cli-c$(CV).o bin/objects/gui-c$(CV).o -o bin/exec/game$(EXE_EXT) -lm
+logs: src/logs.c
+	$(CC) $(CCFLAGS) -c src/logs.c -o bin/objects/logs-c$(CV).o
+
+main: src/main.c bin/objects/ansi-c$(CV).o bin/objects/vector-c$(CV).o bin/objects/utility-c$(CV).o bin/objects/config-c$(CV).o bin/objects/config-file-c$(CV).o bin/objects/cli-c$(CV).o bin/objects/gui-c$(CV).o bin/objects/logs-c$(CV).o
+	$(CC) $(CCFLAGS) src/main.c bin/objects/ansi-c$(CV).o bin/objects/vector-c$(CV).o bin/objects/utility-c$(CV).o bin/objects/config-c$(CV).o bin/objects/config-file-c$(CV).o bin/objects/cli-c$(CV).o bin/objects/gui-c$(CV).o bin/objects/logs-c$(CV).o -o bin/exec/game$(EXE_EXT) -lm
