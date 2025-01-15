@@ -9,6 +9,7 @@
  * 
  *  NOTICE: for these structures are available some builders function that you should use if you want to build structures with unset properties.
 **/
+
 #include "vector.h"
 #include "utility.h"
 
@@ -127,11 +128,14 @@
     void printgr(const char* text);
     /// @brief Prints text as printgr but handles standard C format specifiers %, d, i, u, x, X, f, F, s, n. Integers are always interpreted in base 10.
     /// @param text The text with custom graphic rendition format specifiers and standard C format specifiers.
-    /// @param Values to be contacetaned.
+    /// @param Values Values to be contacetaned.
     void printfgr(char* text, ...);
     /// @brief Gets the char pressed on the keyboard without waiting for 'Enter' to be pressed.
     /// @return The pressed char on the keyboard.
     char getChar();
+    /// @brief Waits for the user to press a key without waiting for 'Enter' to be pressed.
+    /// @param clear Flag for determining if the screen has to be cleaned, if set to true.
+    void Pause(bool clear);
     /// @brief It returns the width and the height of the screen. On unix-like platforms, in case of errors, it sets them to -1.
     /// @param width The width, as the number of columns, for the terminal window.
     /// @param height The height, as the number of row, for the terminal window.

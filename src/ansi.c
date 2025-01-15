@@ -297,6 +297,13 @@ char getChar() {
     #endif
 }
 
+void Pause(bool clear) {
+    getChar();
+
+    if(clear)
+        clearScreen();
+}
+
 void screenSize(int* width, int* height) {
     #ifndef _WIN32
         struct winsize ws;
