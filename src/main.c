@@ -9,10 +9,11 @@ int main(int argc, char** argv) {
 
     srand(time(NULL));
     const gameConfiguration cfg = getGameConfiguration(handleCLIArguments(argv, argc), getConfigurationFromArguments(argv, argc));
-    clearScreen();
     
     checkTerminal();
     setupTerminal();
+    
+    clearScreen();
 
     if(cfg.beVerbose)
         printGameConfiguration(cfg, true);
@@ -73,10 +74,10 @@ bool checkTerminalHost() {
         HANDLE hSnapshot = CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, 0);
         if (hSnapshot == INVALID_HANDLE_VALUE) {
             printf("Errore durante la creazione dello snapshot.\n");
-            return;
+            return false;
         }
 
-        // bool windowsTerminalProcessFound = false;
+        DWORD processId = GetCurrentProcessId();
         while (processId != 0) {
             PROCESSENTRY32 pe32;
             pe32.dwSize = sizeof(PROCESSENTRY32);
@@ -85,8 +86,8 @@ bool checkTerminalHost() {
             if (Process32First(hSnapshot, &pe32)) {
                 do {
                     if (pe32.th32ProcessID == processId) {
-                        printf("PID: %lu - Nome: %s\n", processId, pe32.szExeFile);
-                        if(strcmp(pe32.szExeFile, "WindowsTeminal.exe") == 0)
+                        // printf("PID: %lu - Nome: %s\n", processId, pe32.szExeFile);
+                        if(strcmp(pe32.szExeFile, "WindowsTerminal.exe") == 0)
                             return true;
 
                         processId = pe32.th32ParentProcessID;
