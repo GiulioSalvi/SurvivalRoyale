@@ -31,8 +31,6 @@ GameConfiguration getGameConfiguration(const int code, const GameConfiguration c
     bool saveToFile = code & 0b0100;
     bool beVerbose = code & 0b1000;
 
-    cfg.beVerbose = beVerbose;
-
     if(!ignoreConfigFile && existsConfigurationFile())
         return getConfigurationFromFile();
     else if(!isDefaultGameConfiguration(cliGameConfiguration))
@@ -41,6 +39,8 @@ GameConfiguration getGameConfiguration(const int code, const GameConfiguration c
         cfg = askConfigurationOptionsViaTerminal();
     else
         cfg = getDefaultConfiguration();
+    
+    cfg.beVerbose = beVerbose;
 
     if(saveToFile)
         saveConfigurationToFile(cfg, true);
