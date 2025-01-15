@@ -1,37 +1,40 @@
 #include "gui.h"
 #include "ansi.h"
 #include "main.h"
+#include "logs.h"
 #include "ansi_const.h"
 
 int main(int argc, char** argv) {
     // 
     // return 0;
-
     srand(time(NULL));
-    const gameConfiguration cfg = getGameConfiguration(handleCLIArguments(argv, argc), getConfigurationFromArguments(argv, argc));
+    const GameConfiguration gameCfg = getGameConfiguration(handleCLIArguments(argv, argc), getConfigurationFromArguments(argv, argc));
+    printf("%d\n", gameCfg.beVerbose);
+    const LogsConfiguration logsCfg = gameCfg.beVerbose ? prepareLogs() : (LogsConfiguration){.fileName = "", .useConsole = true};
     
     checkTerminal();
     setupTerminal();
     
     clearScreen();
 
-    if(cfg.beVerbose)
-        printGameConfiguration(cfg, true);
+    if(gameCfg.beVerbose)
+        printGameConfiguration(gameCfg, logsCfg, true);
     Card* deck = prepareCardDeck();
     const int playersCounter = askPlayerNumber();
     clearScreen();
 
-    Game game = prepareGame(playersCounter, deck, cfg);
-    if(cfg.beVerbose)
+    Game game = prepareGame(playersCounter, deck, gameCfg);
+    game.logsConfiguration = logsCfg;
+    if(gameCfg.beVerbose)
         printPlayers(game, false);
     
     while(!handleGamePhase(&game)) {
         removeDeadPlayers(&game);
         withdrawCards(&game);
         shuffleDeck(deck);
-        giveCards(&game, deck, cfg);
+        giveCards(&game, deck);
 
-        if(cfg.beVerbose)
+        if(gameCfg.beVerbose)
             printPlayers(game, false);
     }
 
@@ -121,8 +124,8 @@ int randomInt(const int min, const int max) {
     return rand()%(max - min + 1) + min;
 }
 
-gameConfiguration askConfigurationOptionsViaTerminal() {
-    gameConfiguration cfg;
+GameConfiguration askConfigurationOptionsViaTerminal() {
+    GameConfiguration cfg;
     int n = -1;
     char opt = '\0';
 
@@ -279,7 +282,7 @@ Card* prepareCardDeck() {
     return deck;
 }
 
-Game prepareGame(int playersCounter, Card* deck, gameConfiguration configuration) {
+Game prepareGame(int playersCounter, Card* deck, GameConfiguration configuration) {
     Game game = buildGame(playersCounter);
     game.lifePointsOnTheField = configuration.defaultLPsOnField;
 
@@ -290,16 +293,15 @@ Game prepareGame(int playersCounter, Card* deck, gameConfiguration configuration
             player = preparePlayer(i + 1, deck, configuration);
         while(cardsWereGiven(game.players, game.playersCounter, *player) || cardAreEqual(player->facedUpCard, player->facedDownCard) || (!configuration.allowSameRank ? player->facedUpCard.rank == player->facedDownCard.rank : false) || (!configuration.allowSameSuit ? player->facedUpCard.suit == player->facedDownCard.suit : false));
 
-        Card facedDown = {.suit = Diamonds, .rank = Seven};
-        player->facedDownCard = facedDown;
-
         game.players[i] = player;
     }
+
+    game.gameConfiguration = configuration;
 
     return game;
 }
 
-Player* preparePlayer(int id, Card* deck, gameConfiguration configuration) {
+Player* preparePlayer(int id, Card* deck, GameConfiguration configuration) {
     Player* player = buildPlayer();
 
     player->id = id;
@@ -353,13 +355,13 @@ bool isGameEnded(Game* game) {
     return c == 1;
 }
 
-void applyEffect(Game* game, int playerPosition, bool facedUpCard) {
+bool applyEffect(Game* game, int playerPosition, bool facedUpCard) {
     Player* player = game->players[playerPosition];
     
     if(!facedUpCard) {
         if(game->players[playerPosition]->revealedFacedDownCard) {
-            printfgr("#b#Player %d#r#, your #b#faced down card#r# has been #b##%d#already revealed#r#! #b#No effect by the last card has been applied#r#.", player->id, FgBrightRed);
-            return;
+            printfgr("#b#Player %d's faced down card#r# has been #b##%d#already revealed#r#! #b#No effect by the last card has been applied#r#.", player->id, FgBrightRed);
+            return true;
         }
         
         player->revealedFacedDownCard = true;
@@ -367,22 +369,35 @@ void applyEffect(Game* game, int playerPosition, bool facedUpCard) {
 
     if((facedUpCard ? player->facedUpCard.rank : player->facedDownCard.rank) == Ace) {
         game->lifePointsOnTheField++;
-        player->lifePoints--;
+        if(player->lifePoints > 0)
+            player->lifePoints--;
 
-        printfgr("Now on the #b#playing field#r# there are #b##%d#%d LPs#r#.", FgGreen, game->lifePointsOnTheField);
+        printfgr("By the effect of the #b#player %d's faced %s card#r# now on the #b#playing field#r# there are #b##%d#%d LPs#r#.", player->id, facedUpCard ? "up" : "down", FgGreen, game->lifePointsOnTheField);
+        return true;
     } else if((facedUpCard ? player->facedUpCard.rank : player->facedDownCard.rank) == Seven) {
-        // tellFacedDownCard(game->players[(playerPosition + 1)%game->playersCounter]->facedDownCard);
-        applyEffect(game, (playerPosition + 1)%game->playersCounter, false);
-    } else if((facedUpCard ? player->facedUpCard.rank : player->facedDownCard.rank) == Jack) {
-        player->lifePoints--;
-        game->players[(playerPosition == 0 ? game->playersCounter : playerPosition) - 1]->lifePoints++;
+        tellFacedDownCard(game->players[(playerPosition + 1)%game->playersCounter]->facedDownCard, game->players[(playerPosition + 1)%game->playersCounter]->id);
+        
+        Pause(false);
+        cursorHorizontalAbsolute(3);
+        for(int i = 0; i < 134; i++)
+            printgr(" ");
+        cursorHorizontalAbsolute(3);
 
+        return applyEffect(game, (playerPosition + 1)%game->playersCounter, false);
+    } else if((facedUpCard ? player->facedUpCard.rank : player->facedDownCard.rank) == Jack) {
+        if(player->lifePoints > 0)
+            player->lifePoints--;
+        game->players[(playerPosition == 0 ? game->playersCounter : playerPosition) - 1]->lifePoints++;
+        
+        return false;
         // printfgr("Now #b#player %d#r# has #b##%d#%d LPs#r#. ", player->id, FgBrightRed, player->lifePoints);
         // printfgr("Now #b#player %d#r# has #b##%d#%d LPs#r#.\n", game->players[(playerPosition == 0 ? game->playersCounter : playerPosition) - 1]->id, FgGreen, game->players[(playerPosition == 0 ? game->playersCounter : playerPosition) - 1]->lifePoints);
     } else if((facedUpCard ? player->facedUpCard.rank : player->facedDownCard.rank) == Queen) {
-        player->lifePoints--;
+        if(player->lifePoints > 0)
+            player->lifePoints--;
         game->players[(playerPosition + 2)%game->playersCounter]->lifePoints++;
 
+        return false;
         // printfgr("Now #b#player %d#r# has #b##%d#%d LPs#r#. ", player->id, FgBrightRed, player->lifePoints);
         // printfgr("Now #b#player %d#r# has #b##%d#%d LPs#r#.\n", game->players[(playerPosition + 2)%game->playersCounter]->id, FgGreen, game->players[(playerPosition + 2)%game->playersCounter]->lifePoints);
     } else if((facedUpCard ? player->facedUpCard.rank : player->facedDownCard.rank) == King) {
@@ -390,9 +405,12 @@ void applyEffect(Game* game, int playerPosition, bool facedUpCard) {
         game->lifePointsOnTheField = 0;
 
         // printfgr("Now #b#player %d#r# has #b##%d#%d LPs#r#. ", player->id, FgGreen, player->lifePoints);
-        printfgr("Now on the #b#playing field#r# there are #b##%d#0 LPs#r#.", FgBrightYellow);
-    } else
-        printgr("#b#No effect on the last card has been applied#r#.");
+        printfgr("By the effect of the #b#player %d's faced %s card#r# now on the #b#playing field#r# there are #b##%d#0 LPs#r#.", player->id, facedUpCard ? "up" : "down", FgBrightYellow);
+        return true;
+    } else {
+        printfgr("#b#No effect by the player %d's faced %s card has been applied#r#.", player->id, facedUpCard ? "up" : "down");
+        return true;
+    }
 }
 
 bool revealFacedDownCard(Card card) {
@@ -415,7 +433,7 @@ bool revealFacedDownCard(Card card) {
     return ans == 'Y' || ans == 'y';
 }
 
-void giveCards(Game* game, Card* deck, gameConfiguration configuration) {
+void giveCards(Game* game, Card* deck) {
     for(int i = 0; i < game->playersCounter; i++)
         if(game->players[i]->lifePoints > 0) {
             Player* player = buildPlayer();
@@ -425,7 +443,10 @@ void giveCards(Game* game, Card* deck, gameConfiguration configuration) {
             do {
                 player->facedUpCard = deck[randomInt(0, 39)];
                 player->facedDownCard = deck[randomInt(0, 39)];
-            } while(cardsWereGiven(game->players, game->playersCounter, *player) || cardAreEqual(player->facedUpCard, player->facedDownCard) || (!configuration.allowSameRank ? player->facedUpCard.rank == player->facedDownCard.rank : false) || (!configuration.allowSameSuit ? player->facedUpCard.suit == player->facedDownCard.suit : false));
+            } while(cardsWereGiven(game->players, game->playersCounter, *player) ||
+                cardAreEqual(player->facedUpCard, player->facedDownCard) ||
+                (!game->gameConfiguration.allowSameRank ? player->facedUpCard.rank == player->facedDownCard.rank : false) || (!game->gameConfiguration.allowSameSuit ? player->facedUpCard.suit == player->facedDownCard.suit : false)
+            );
 
             freePlayer(game->players[i]);
             game->players[i] = player;
@@ -499,73 +520,6 @@ bool cardsWereGiven(Player** players, int playersCounter, Player player) {
     return false;
 }
 
-void Pause(bool clear) {
-    getChar();
-
-    if(clear)
-        clearScreen();
-}
-
-void printCard(Card card, bool newLine) {
-    switch(card.suit) {
-        case Clubs:
-            printgr("Clubs");
-            break;
-        case Spades:
-            printgr("Spades");
-            break;
-        case Diamonds:
-            printgr("Diamonds");
-            break;
-        case Hearts:
-            printgr("Hearts");
-            break;
-    }
-
-    printgr(" ");
-
-    switch(card.rank) {
-        case Ace:
-            printgr("Ace");
-            break;
-        case Two:
-            printgr("Two");
-            break;
-        case Three:
-            printgr("Three");
-            break;
-        case Four:
-            printgr("Four");
-            break;
-        case Five:
-            printgr("Five");
-            break;
-        case Six:
-            printgr("Six");
-            break;
-        case Seven:
-            printgr("Seven");
-            break;
-        case Jack:
-            printgr("Jack");
-            break;
-        case Queen:
-            printgr("Queen");
-            break;
-        case King:
-            printgr("King");
-            break;
-    }
-
-    if(newLine)
-        printgr("\n");
-}
-
-void printDeck(Card* deck, bool newLine) {
-    for(int i = 0; i < 40; i++)
-        printCard(deck[i], i == 39 ? newLine : true);
-}
-
 void printCardEffect(Card card, bool newLine) {
     if(card.rank == Ace)
         printgr("you drop #b#1 LP#r# to the #b#playing field#r#.");
@@ -584,51 +538,16 @@ void printCardEffect(Card card, bool newLine) {
         printgr("\n");
 }
 
-void tellFacedDownCard(Card card) {
-    printgr("Your #b#faced down#r# card is a #b#");
-    printCard(card, false);
+void tellFacedDownCard(Card card, int playerId) {
+    LogsConfiguration logsConfiguration = {.fileName = "", .useConsole = true};
+    
+    if(playerId == 0)
+        printgr("Your");
+    else
+        printfgr("Player %d's", playerId);
+    printgr(" #b#faced down#r# card is a #b#");
+    printCard(card, logsConfiguration, false);
 
     printgr("#r#. The effect is: ");
     printCardEffect(card, false);
-
-    cursorDown(1);
-    cursorHorizontalAbsolute(3);
-
-    printgr("Do you want reveal it?");
-}
-
-void printPlayer(Player player, bool newLine) {
-    printfgr("Player #b#%d#r# with #b#%d LPs#r# has cards #b#", player.id, player.lifePoints);
-
-    printCard(player.facedUpCard, false);
-    printgr("#r# faced up and #b#");
-    printCard(player.facedDownCard, false);
-    printgr("#r# faced down.");
-
-    if(newLine)
-        printgr("\n");
-}
-
-void printPlayers(Game game, bool newLine) {
-    for(int i = 0; i < game.playersCounter; i++)
-        printPlayer(*game.players[i], i == game.playersCounter - 1 ? newLine : true);
-}
-
-void printGameConfiguration(gameConfiguration configuration, bool newLine) {
-    printgr("Allow cards with the same rank: ");
-    if(configuration.allowSameRank)
-        printgr("true");
-    else
-        printgr("false");
-
-    printgr(", allow cards with the same suit: ");
-    if(configuration.allowSameSuit)
-        printgr("true");
-    else
-        printgr("false");
-
-    printfgr(", default LPs on the playing field: %d, default players' LPs: %d.\n", configuration.defaultLPsOnField, configuration.defaultPlayersLPs);
-
-    if(newLine)
-        printgr("\n");
 }

@@ -29,6 +29,9 @@ void navigatePages(PageData* pagesData, int totalPages, int maxRows, int maxColu
         // clear the terminal screen
         clearScreen();
         
+        // Display the current page
+        displayPage(&pagesData[currentPage], maxRows, maxColumns, bestStartColumn);
+
         cursorPosition(maxRows - (LOG_SECTION_HEIGHT + 1) + 1, 3);
         printfgr("#b#It's your turn, player %d!!#r# On the #b#playing field#r# there are #b#%d LPs#r#.", id, game->lifePointsOnTheField);
 
@@ -39,8 +42,12 @@ void navigatePages(PageData* pagesData, int totalPages, int maxRows, int maxColu
         displayPage(&pagesData[currentPage], maxRows, maxColumns, bestStartColumn);
 
         cursorPosition(maxRows - (LOG_SECTION_HEIGHT + 1) + 3, 3);
-        if(!player->revealedFacedDownCard)
-            tellFacedDownCard(player->facedDownCard);
+        if(!player->revealedFacedDownCard) {
+            tellFacedDownCard(player->facedDownCard, 0);
+
+            cursorPosition(maxRows - (LOG_SECTION_HEIGHT + 1) + 4, 3);
+            printgr("Do you want reveal it?");
+        }
         else
             printfgr("Your #b#faced down card#r# has been #b##%d#already revealed#r#!", FgBrightRed);
         
@@ -65,13 +72,19 @@ void navigatePages(PageData* pagesData, int totalPages, int maxRows, int maxColu
             break;
         } else if(!player->revealedFacedDownCard) {
             if(input == 'y') {
-                applyEffect(game, playerIndex, false);
+                bool applyEffectHasPrinted = applyEffect(game, playerIndex, false);
                 displayPage(&pagesData[currentPage], maxRows, maxColumns, bestStartColumn);
+
+                if(!applyEffectHasPrinted) {
+                    cursorPosition(maxRows - (LOG_SECTION_HEIGHT + 1) + 4, 3);
+                    eraseInLine(0);
+                    drawPageFrame(maxRows, maxColumns);
+                }
             } else if(input == 'n')
                 printgr("#b#The card has not been revealed#r#.");
 
             while(getchar() != '\n');
-
+            
             Pause(true);
             break;
         } else {
@@ -133,9 +146,9 @@ void drawCardsForPage(PageData* page, int startX, int bestStartColumn) {
 
         // Print player name and life points
         cursorPosition(currentRow + CARD_HEIGHT + 1, currentCol + 1);
-        printfgr("ID: %u", player->id);
+        printfgr("ID: %d", player->id);
         cursorPosition(currentRow + CARD_HEIGHT + 2, currentCol + 1);
-        printfgr("Life: %u ♥", player->lifePoints);
+        printfgr("Life: %d #%d#♥#r#", player->lifePoints, FgRed);
 
         // Move to the next row after completing a row
         if ((i + 1) % page->playerPerRow == 0) {

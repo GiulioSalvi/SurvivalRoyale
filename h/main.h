@@ -1,5 +1,6 @@
 #include "config.h"
 #include "includes.h"
+#include "logs_configuration.h"
 
 /// @brief Integer const to represent rank ace
 #define Ace 1
@@ -57,6 +58,10 @@
 
     /// @brief Defines a structure for the game.
     typedef struct Game {
+        /// @brief The configuration for the game.
+        GameConfiguration gameConfiguration;
+        /// @brief The configuration for the logs, if the game has to be verbose.
+        LogsConfiguration logsConfiguration;
         /// @brief The amount of players currently alive.
         unsigned int playersCounter;
         /// @brief The amount of LPs currently on the playing field.
@@ -67,8 +72,13 @@
 
     /// @brief Checks if the terminal size is suitable for the TUI (Terminal User Interface); if the terminal it is too small, it exits with EXIT_TERMINAL_TOO_SMALL exit code. On Windows, it checks if the terminal's host process is supported, otherwise it exits with EXIT_WINDOWS_TERMINAL_HOST_NOT_SUPPORTED exit code.
     void checkTerminal();
+    /// @brief On Windows, configures that the terminal such that it supports UTF-8 encoded chars.
     void setupTerminal();
+    /// @brief On Windows, it checks if the terminal's host process is supported.
+    /// @return True if the terminal's host process is supported, false otherwise.
     bool checkTerminalHost();
+    /// @brief Checks if the terminal size is suitable for the TUI (Terminal User Interface).
+    /// @return True if the terminal is not too small, false otherwise.
     bool checkTerminalSize();
     /// @brief Generates a random number in the range (inclusive).
     /// @param min The minimum possibly generated value.
@@ -113,13 +123,13 @@
     /// @param deck The deck from which the cards are given.
     /// @param configuration The game configuration from which data, like default LPs, is taken.
     /// @return The generated player. It may occur that this function, called several times, generates players with the same cards.
-    Player* preparePlayer(int id, Card* deck, gameConfiguration configuration);
+    Player* preparePlayer(int id, Card* deck, GameConfiguration configuration);
     /// @brief Generates a game structure with the given players number and with the given data gave by the game configuration.
     /// @param playersCounter The number of players.
     /// @param deck The deck from which the cards are given.
     /// @param configuration The game configuration form which data, like default LPs on the playing field, is taken.
     /// @return The generated game. It is guaranteed that players do not have the same cards.
-    Game prepareGame(int playersCounter, Card* deck, gameConfiguration configuration);
+    Game prepareGame(int playersCounter, Card* deck, GameConfiguration configuration);
     /// @brief Shuffles the deck using Fisher - Yates algorithm.
     /// @param deck The deck shuffled.
     void shuffleDeck(Card* deck);
@@ -135,7 +145,8 @@
     /// @param game Pointer to the game struct.
     /// @param playerPosition The index of the player in the players vector.
     /// @param facedUpCard Flag for determining if the effect of the faced up card has to be applied, if set to true.
-    void applyEffect(Game* game, int playerPosition, bool facedUpCard);
+    /// @return If the game is using TUI, returns true if the function has printed something, otherwise false. If it game is not in TUI, returns false.
+    bool applyEffect(Game* game, int playerPosition, bool facedUpCard);
     /// @brief Asks to the player if he wants to reveal the faced down card.
     /// @param card The card that could be revealed.
     /// @return True if the player wants to reveal the faced down card, false otherwise.
@@ -143,8 +154,7 @@
     /// @brief Assigns new cards to the player. It is not guaranteed that the old cards might be reassigned to the same player.
     /// @param game Pointer to the game struct.
     /// @param deck The cards deck.
-    /// @param configuration The game configuration from which rules about cards assignment is taken.
-    void giveCards(Game* game, Card* deck, gameConfiguration configuration);
+    void giveCards(Game* game, Card* deck);
     /// @brief Announces the dead players.
     /// @param game Pointer to the game struct.
     void announceDeadPlayers(Game* game);
@@ -179,34 +189,12 @@
     /// @return True if a player in the vector has at least one card equal to the player's one, false otherwise.
     bool cardsWereGiven(Player** players, int playersCounter, Player player);
 
-    /// @brief Waits for the user to press a key without waiting for 'Enter' to be pressed.
-    /// @param clear Flag for determining if the screen has to be cleaned, if set to true.
-    void Pause(bool clear);
-    /// @brief Prints user-friendly the card rank and suit.
-    /// @param card The card that has to be printed.
-    /// @param newLine Flag for determining if the function has to go to a new line before exiting.
-    void printCard(Card card, bool newLine);
-    /// @brief Prints user-friendly the cards deck.
-    /// @param deck The deck that has to be printed.
-    /// @param newLine Flag for determining if the function has to go to a new line before exiting.
-    void printDeck(Card* deck, bool newLine);
     /// @brief Prints user-friendly the card's effect.
     /// @param card The card whose effect has to be printed.
     /// @param newLine Flag for determining if the function has to go to a new line before exiting.
     void printCardEffect(Card card, bool newLine);
     /// @brief Prints user-friendly the card revealed from a player.
     /// @param card The card that has been revealed.
-    void tellFacedDownCard(Card card);
-    /// @brief Prints user-friendly player's info.
-    /// @param player The player whose infos have to be printed.
-    /// @param newLine Flag for determining if the function has to go to a new line before exiting.
-    void printPlayer(Player player, bool newLine);
-    /// @brief Prints user-friendly the players' infos.
-    /// @param game The game which cointains the players.
-    /// @param newLine Flag for determining if the function has to go to a new line before exiting.
-    void printPlayers(Game game, bool newLine);
-    /// @brief Prints user-friendly game configuration settings.
-    /// @param configuration The game configuration that has to be printed.
-    /// @param newLine Flag for determining if the function has to go to a new line before exiting.
-    void printGameConfiguration(gameConfiguration configuration, bool newLine);
+    /// @param playerId The card's owner ID. If it is 0, it prints 'your'.
+    void tellFacedDownCard(Card card, int playerId);
 #endif
