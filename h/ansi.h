@@ -69,10 +69,13 @@
 
     /// @brief Defines a struct for graphic rendition including properties for bold, italic, underlined and colored text
     typedef struct graphicRendition {
-        /// @brief Boolean flag to determine if
+        /// @brief Boolean flag to determine if the text has to be bold.
         bool bold;
+        /// @brief Boolean flag to determine if the text has to be italic.
         bool italic;
+        /// @brief Flag to determine if the text has to be underlined, singly or doubly.
         underline underlined;
+        /// @brief The color for the text and the its background.
         color color;
     } graphicRendition;
 
@@ -92,7 +95,6 @@
     /// @brief Builds a graphic rendition struct.
     /// @return Returns a graphic rendition struct with properties set to NONE. bold and italic properties are set to false.
     graphicRendition buildGraphicRendition();
-
 
     /// @brief Checks if  a rgb struct has valid properties, meaning that all the properites' values are between 0 and 255.
     /// @param rgbColor The struct to be checked.
@@ -141,7 +143,6 @@
     /// @param height The height, as the number of row, for the terminal window.
     void screenSize(int* width, int* height);
 
-
     /// @brief Moves the cursor up by n rows.
     /// @param n The rows to go up.
     void cursorUp(int n);
@@ -183,7 +184,6 @@
     /// @param row The row of the cursor.
     /// @param col The column of the cursor.
     void deviceStatusReport(int* row, int* col);
-
 
     /// @brief Resets the graphic rendition.
     void graphicReset();

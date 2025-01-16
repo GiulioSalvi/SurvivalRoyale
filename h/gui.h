@@ -4,20 +4,21 @@
 #include "ansi_const.h"
 
 #ifndef _GUI_H_
+    /// @brief Include guard.
     #define _GUI_H_
 
     #define CARD_WIDTH 15
     #define CARD_HEIGHT 9
     #define LOG_SECTION_HEIGHT 4
     #define MIN_ROWS ((2 * (CARD_HEIGHT + 4)) + (LOG_SECTION_HEIGHT + 2))
-    #define MIN_COLUMNS 141 // ((2 * CARD_WIDTH) + 5)
+    #define MIN_COLUMNS 141
 
     typedef struct PageData {
-        int playerRows;       // number of rows of players
-        int playerPerRow;     // number of players per row
-        int playerCount;      // total players on the page
-        int rowSpacing;       // spacing between rows (includes card height + text)
-        Player** players;     // array of pointers to players
+        int playerRows;
+        int playerPerRow;
+        int playerCount;
+        int rowSpacing;
+        Player** players;
     } PageData;
 
     void drawCardsForPage(PageData* page, int startX, int bestStartColumn);

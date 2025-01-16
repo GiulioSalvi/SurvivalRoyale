@@ -195,6 +195,6 @@
     void printCardEffect(Card card, bool newLine);
     /// @brief Prints user-friendly the card revealed from a player.
     /// @param card The card that has been revealed.
-    /// @param playerId The card's owner ID. If it is 0, it prints 'your'.
+    /// @param playerId The card's owner ID. If it is 0, it prints 'Your', otherwise it prints 'Player <playerID>'s'
     void tellFacedDownCard(Card card, int playerId);
 #endif
