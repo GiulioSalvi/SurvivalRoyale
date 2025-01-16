@@ -109,6 +109,7 @@ $(function(){initNavTree('main_8h.html',''); initResizable(true); });
 <div class="contents">
 <div class="textblock"><code>#include &quot;<a class="el" href="config_8h_source.html">config.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="includes_8h_source.html">includes.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="logs__configuration_8h_source.html">logs_configuration.h</a>&quot;</code><br />
 </div>
 <p><a href="main_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -168,6 +169,8 @@ Macros</h2></td></tr>
 <tr class="memitem:aae59a2a91713f1c78fd21306ea82f49f" id="r_aae59a2a91713f1c78fd21306ea82f49f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aae59a2a91713f1c78fd21306ea82f49f">Hearts</a>&#160;&#160;&#160;14</td></tr>
 <tr class="memdesc:aae59a2a91713f1c78fd21306ea82f49f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Integer const to represent suit hearts.  <br /></td></tr>
 <tr class="separator:aae59a2a91713f1c78fd21306ea82f49f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8a0cf1fb2b6e4ea7e5fb7ada9e9dd0ae" id="r_a8a0cf1fb2b6e4ea7e5fb7ada9e9dd0ae"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8a0cf1fb2b6e4ea7e5fb7ada9e9dd0ae">_MAIN_H_</a></td></tr>
+<tr class="separator:a8a0cf1fb2b6e4ea7e5fb7ada9e9dd0ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
@@ -183,6 +186,18 @@ Typedefs</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:aa26e5988ea48ea2b52ea5f2e671e4ccc" id="r_aa26e5988ea48ea2b52ea5f2e671e4ccc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa26e5988ea48ea2b52ea5f2e671e4ccc">checkTerminal</a> ()</td></tr>
+<tr class="memdesc:aa26e5988ea48ea2b52ea5f2e671e4ccc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the terminal size is suitable for the TUI (Terminal User Interface); if the terminal it is too small, it exits with EXIT_TERMINAL_TOO_SMALL exit code. On Windows, it checks if the terminal's host process is supported, otherwise it exits with EXIT_WINDOWS_TERMINAL_HOST_NOT_SUPPORTED exit code.  <br /></td></tr>
+<tr class="separator:aa26e5988ea48ea2b52ea5f2e671e4ccc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8303dfeccd0b733098a3d4fbba6a92c3" id="r_a8303dfeccd0b733098a3d4fbba6a92c3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8303dfeccd0b733098a3d4fbba6a92c3">setupTerminal</a> ()</td></tr>
+<tr class="memdesc:a8303dfeccd0b733098a3d4fbba6a92c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">On Windows, configures that the terminal such that it supports UTF-8 encoded chars.  <br /></td></tr>
+<tr class="separator:a8303dfeccd0b733098a3d4fbba6a92c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9751d2297bb67e28285b014f6081ad7d" id="r_a9751d2297bb67e28285b014f6081ad7d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9751d2297bb67e28285b014f6081ad7d">checkTerminalHost</a> ()</td></tr>
+<tr class="memdesc:a9751d2297bb67e28285b014f6081ad7d"><td class="mdescLeft">&#160;</td><td class="mdescRight">On Windows, it checks if the terminal's host process is supported.  <br /></td></tr>
+<tr class="separator:a9751d2297bb67e28285b014f6081ad7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7d422f5326c0fed8633ceb76d0fe3224" id="r_a7d422f5326c0fed8633ceb76d0fe3224"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7d422f5326c0fed8633ceb76d0fe3224">checkTerminalSize</a> ()</td></tr>
+<tr class="memdesc:a7d422f5326c0fed8633ceb76d0fe3224"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the terminal size is suitable for the TUI (Terminal User Interface).  <br /></td></tr>
+<tr class="separator:a7d422f5326c0fed8633ceb76d0fe3224"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8e008b233ca424a23d14f909fac460d8" id="r_a8e008b233ca424a23d14f909fac460d8"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8e008b233ca424a23d14f909fac460d8">randomInt</a> (const int min, const int max)</td></tr>
 <tr class="memdesc:a8e008b233ca424a23d14f909fac460d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates a random number in the range (inclusive).  <br /></td></tr>
 <tr class="separator:a8e008b233ca424a23d14f909fac460d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -216,12 +231,12 @@ Functions</h2></td></tr>
 <tr class="memitem:a10be07cae3750cec6afa7eb20d050fb3" id="r_a10be07cae3750cec6afa7eb20d050fb3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_card.html">Card</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a10be07cae3750cec6afa7eb20d050fb3">prepareCardDeck</a> ()</td></tr>
 <tr class="memdesc:a10be07cae3750cec6afa7eb20d050fb3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates a deck with cards ordered randomly. It is guaranteed that no duplicated cards occurs in the same deck.  <br /></td></tr>
 <tr class="separator:a10be07cae3750cec6afa7eb20d050fb3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af2698ede41d572bba9cfb375446b007e" id="r_af2698ede41d572bba9cfb375446b007e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_player.html">Player</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af2698ede41d572bba9cfb375446b007e">preparePlayer</a> (int id, <a class="el" href="struct_card.html">Card</a> *deck, <a class="el" href="structgame_configuration.html">gameConfiguration</a> configuration)</td></tr>
-<tr class="memdesc:af2698ede41d572bba9cfb375446b007e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates a player structure with the given player id and with the given data gave by the game configuration.  <br /></td></tr>
-<tr class="separator:af2698ede41d572bba9cfb375446b007e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0edd36b5c1e322652f4b847c7a80e5d7" id="r_a0edd36b5c1e322652f4b847c7a80e5d7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_game.html">Game</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0edd36b5c1e322652f4b847c7a80e5d7">prepareGame</a> (int playersCounter, <a class="el" href="struct_card.html">Card</a> *deck, <a class="el" href="structgame_configuration.html">gameConfiguration</a> configuration)</td></tr>
-<tr class="memdesc:a0edd36b5c1e322652f4b847c7a80e5d7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates a game structure with the given players number and with the given data gave by the game configuration.  <br /></td></tr>
-<tr class="separator:a0edd36b5c1e322652f4b847c7a80e5d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aed71306690e8157638747a31f7ed63c1" id="r_aed71306690e8157638747a31f7ed63c1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_player.html">Player</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aed71306690e8157638747a31f7ed63c1">preparePlayer</a> (int id, <a class="el" href="struct_card.html">Card</a> *deck, <a class="el" href="struct_game_configuration.html">GameConfiguration</a> configuration)</td></tr>
+<tr class="memdesc:aed71306690e8157638747a31f7ed63c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates a player structure with the given player id and with the given data gave by the game configuration.  <br /></td></tr>
+<tr class="separator:aed71306690e8157638747a31f7ed63c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aba6320c4d5c6680569573e3bad317ef3" id="r_aba6320c4d5c6680569573e3bad317ef3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_game.html">Game</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aba6320c4d5c6680569573e3bad317ef3">prepareGame</a> (int playersCounter, <a class="el" href="struct_card.html">Card</a> *deck, <a class="el" href="struct_game_configuration.html">GameConfiguration</a> configuration)</td></tr>
+<tr class="memdesc:aba6320c4d5c6680569573e3bad317ef3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates a game structure with the given players number and with the given data gave by the game configuration.  <br /></td></tr>
+<tr class="separator:aba6320c4d5c6680569573e3bad317ef3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2c98baf46aa86f9494a1f47f91724fae" id="r_a2c98baf46aa86f9494a1f47f91724fae"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2c98baf46aa86f9494a1f47f91724fae">shuffleDeck</a> (<a class="el" href="struct_card.html">Card</a> *deck)</td></tr>
 <tr class="memdesc:a2c98baf46aa86f9494a1f47f91724fae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Shuffles the deck using Fisher - Yates algorithm.  <br /></td></tr>
 <tr class="separator:a2c98baf46aa86f9494a1f47f91724fae"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -231,15 +246,15 @@ Functions</h2></td></tr>
 <tr class="memitem:a28737cca3709a7d63bc64fe22720dc07" id="r_a28737cca3709a7d63bc64fe22720dc07"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a28737cca3709a7d63bc64fe22720dc07">isGameEnded</a> (<a class="el" href="struct_game.html">Game</a> *game)</td></tr>
 <tr class="memdesc:a28737cca3709a7d63bc64fe22720dc07"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determines whether the game is ended.  <br /></td></tr>
 <tr class="separator:a28737cca3709a7d63bc64fe22720dc07"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8a84e5024a042ea1a6f6dbb1b1f75c0b" id="r_a8a84e5024a042ea1a6f6dbb1b1f75c0b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8a84e5024a042ea1a6f6dbb1b1f75c0b">applyEffect</a> (<a class="el" href="struct_game.html">Game</a> *game, int playerPosition, bool facedUpCard)</td></tr>
-<tr class="memdesc:a8a84e5024a042ea1a6f6dbb1b1f75c0b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Applies the effect of the player at the given index in the players vector.  <br /></td></tr>
-<tr class="separator:a8a84e5024a042ea1a6f6dbb1b1f75c0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a95e0d1c9a07dbc1d955826143baf4161" id="r_a95e0d1c9a07dbc1d955826143baf4161"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a95e0d1c9a07dbc1d955826143baf4161">applyEffect</a> (<a class="el" href="struct_game.html">Game</a> *game, int playerPosition, bool facedUpCard)</td></tr>
+<tr class="memdesc:a95e0d1c9a07dbc1d955826143baf4161"><td class="mdescLeft">&#160;</td><td class="mdescRight">Applies the effect of the player at the given index in the players vector.  <br /></td></tr>
+<tr class="separator:a95e0d1c9a07dbc1d955826143baf4161"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7363f838d5c121e6b3a76fac6ae14bbd" id="r_a7363f838d5c121e6b3a76fac6ae14bbd"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7363f838d5c121e6b3a76fac6ae14bbd">revealFacedDownCard</a> (<a class="el" href="struct_card.html">Card</a> card)</td></tr>
 <tr class="memdesc:a7363f838d5c121e6b3a76fac6ae14bbd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Asks to the player if he wants to reveal the faced down card.  <br /></td></tr>
 <tr class="separator:a7363f838d5c121e6b3a76fac6ae14bbd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad7c1005403ad848e762bc95a9b34e44b" id="r_ad7c1005403ad848e762bc95a9b34e44b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad7c1005403ad848e762bc95a9b34e44b">giveCards</a> (<a class="el" href="struct_game.html">Game</a> *game, <a class="el" href="struct_card.html">Card</a> *deck, <a class="el" href="structgame_configuration.html">gameConfiguration</a> configuration)</td></tr>
-<tr class="memdesc:ad7c1005403ad848e762bc95a9b34e44b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assigns new cards to the player. It is not guaranteed that the old cards might be reassigned to the same player.  <br /></td></tr>
-<tr class="separator:ad7c1005403ad848e762bc95a9b34e44b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a08c702712873429b9f972b2690c0db48" id="r_a08c702712873429b9f972b2690c0db48"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a08c702712873429b9f972b2690c0db48">giveCards</a> (<a class="el" href="struct_game.html">Game</a> *game, <a class="el" href="struct_card.html">Card</a> *deck)</td></tr>
+<tr class="memdesc:a08c702712873429b9f972b2690c0db48"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assigns new cards to the player. It is not guaranteed that the old cards might be reassigned to the same player.  <br /></td></tr>
+<tr class="separator:a08c702712873429b9f972b2690c0db48"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac88513b1e140bbdb9fcac52fe491eb8a" id="r_ac88513b1e140bbdb9fcac52fe491eb8a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac88513b1e140bbdb9fcac52fe491eb8a">announceDeadPlayers</a> (<a class="el" href="struct_game.html">Game</a> *game)</td></tr>
 <tr class="memdesc:ac88513b1e140bbdb9fcac52fe491eb8a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Announces the dead players.  <br /></td></tr>
 <tr class="separator:ac88513b1e140bbdb9fcac52fe491eb8a"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -264,32 +279,30 @@ Functions</h2></td></tr>
 <tr class="memitem:a46aaa40d26c564abbc0f582fe59e5d33" id="r_a46aaa40d26c564abbc0f582fe59e5d33"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a46aaa40d26c564abbc0f582fe59e5d33">cardsWereGiven</a> (<a class="el" href="struct_player.html">Player</a> **players, int playersCounter, <a class="el" href="struct_player.html">Player</a> player)</td></tr>
 <tr class="memdesc:a46aaa40d26c564abbc0f582fe59e5d33"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the cards of a given player have been already given to other players.  <br /></td></tr>
 <tr class="separator:a46aaa40d26c564abbc0f582fe59e5d33"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a106329ce5bea51f3defe6fabff041ae0" id="r_a106329ce5bea51f3defe6fabff041ae0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a106329ce5bea51f3defe6fabff041ae0">Pause</a> (bool clear)</td></tr>
-<tr class="memdesc:a106329ce5bea51f3defe6fabff041ae0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Waits for the user to press a key without waiting for 'Enter' to be pressed.  <br /></td></tr>
-<tr class="separator:a106329ce5bea51f3defe6fabff041ae0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa73153ae816ad736a62de306939886e1" id="r_aa73153ae816ad736a62de306939886e1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa73153ae816ad736a62de306939886e1">printCard</a> (<a class="el" href="struct_card.html">Card</a> card, bool newLine)</td></tr>
-<tr class="memdesc:aa73153ae816ad736a62de306939886e1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints user-friendly the card rank and suit.  <br /></td></tr>
-<tr class="separator:aa73153ae816ad736a62de306939886e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8ba70192e848f0a7bc18be1478240e8c" id="r_a8ba70192e848f0a7bc18be1478240e8c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8ba70192e848f0a7bc18be1478240e8c">printDeck</a> (<a class="el" href="struct_card.html">Card</a> *deck, bool newLine)</td></tr>
-<tr class="memdesc:a8ba70192e848f0a7bc18be1478240e8c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints user-friendly the cards deck.  <br /></td></tr>
-<tr class="separator:a8ba70192e848f0a7bc18be1478240e8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2ec84c3a300deb2eab68175e64f104b7" id="r_a2ec84c3a300deb2eab68175e64f104b7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2ec84c3a300deb2eab68175e64f104b7">printCardEffect</a> (<a class="el" href="struct_card.html">Card</a> card, bool newLine)</td></tr>
 <tr class="memdesc:a2ec84c3a300deb2eab68175e64f104b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints user-friendly the card's effect.  <br /></td></tr>
 <tr class="separator:a2ec84c3a300deb2eab68175e64f104b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8a28ca45cd2575a68711409f7cbd9119" id="r_a8a28ca45cd2575a68711409f7cbd9119"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8a28ca45cd2575a68711409f7cbd9119">revealCard</a> (<a class="el" href="struct_card.html">Card</a> card, int playerId, bool facedUp, bool newLine)</td></tr>
-<tr class="memdesc:a8a28ca45cd2575a68711409f7cbd9119"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints user-friendly the card revealed from a player.  <br /></td></tr>
-<tr class="separator:a8a28ca45cd2575a68711409f7cbd9119"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a06b8c91934e7cc164f1e0cfdc4fbce71" id="r_a06b8c91934e7cc164f1e0cfdc4fbce71"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a06b8c91934e7cc164f1e0cfdc4fbce71">printPlayer</a> (<a class="el" href="struct_player.html">Player</a> player, bool newLine)</td></tr>
-<tr class="memdesc:a06b8c91934e7cc164f1e0cfdc4fbce71"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints user-friendly player's info.  <br /></td></tr>
-<tr class="separator:a06b8c91934e7cc164f1e0cfdc4fbce71"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5555b0e7fae57537902c25ffbe5aef66" id="r_a5555b0e7fae57537902c25ffbe5aef66"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5555b0e7fae57537902c25ffbe5aef66">printPlayers</a> (<a class="el" href="struct_game.html">Game</a> game, bool newLine)</td></tr>
-<tr class="memdesc:a5555b0e7fae57537902c25ffbe5aef66"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints user-friendly the players' infos.  <br /></td></tr>
-<tr class="separator:a5555b0e7fae57537902c25ffbe5aef66"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a674220b5b2510fdc704dd52d095029ab" id="r_a674220b5b2510fdc704dd52d095029ab"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a674220b5b2510fdc704dd52d095029ab">printGameConfiguration</a> (<a class="el" href="structgame_configuration.html">gameConfiguration</a> configuration, bool newLine)</td></tr>
-<tr class="memdesc:a674220b5b2510fdc704dd52d095029ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints user-friendly game configuration settings.  <br /></td></tr>
-<tr class="separator:a674220b5b2510fdc704dd52d095029ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aba8732906313a3d174f78d98d5b4e39f" id="r_aba8732906313a3d174f78d98d5b4e39f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aba8732906313a3d174f78d98d5b4e39f">tellFacedDownCard</a> (<a class="el" href="struct_card.html">Card</a> card, int playerId)</td></tr>
+<tr class="memdesc:aba8732906313a3d174f78d98d5b4e39f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints user-friendly the card revealed from a player.  <br /></td></tr>
+<tr class="separator:aba8732906313a3d174f78d98d5b4e39f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>
+<a id="a8a0cf1fb2b6e4ea7e5fb7ada9e9dd0ae" name="a8a0cf1fb2b6e4ea7e5fb7ada9e9dd0ae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8a0cf1fb2b6e4ea7e5fb7ada9e9dd0ae">&#9670;&#160;</a></span>_MAIN_H_</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define _MAIN_H_</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="main_8h_source.html#l00036">36</a> of file <a class="el" href="main_8h_source.html">main.h</a>.</p>
+
+</div>
+</div>
 <a id="a5ff0bb6fd2959a67ce4f924ea7e6b2bf" name="a5ff0bb6fd2959a67ce4f924ea7e6b2bf"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a5ff0bb6fd2959a67ce4f924ea7e6b2bf">&#9670;&#160;</a></span>Ace</h2>
 
@@ -304,7 +317,7 @@ Functions</h2></td></tr>
 
 <p>Integer const to represent rank ace. </p>
 
-<p class="definition">Definition at line <a class="el" href="main_8h_source.html#l00005">5</a> of file <a class="el" href="main_8h_source.html">main.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="main_8h_source.html#l00006">6</a> of file <a class="el" href="main_8h_source.html">main.h</a>.</p>
 
 </div>
 </div>
@@ -322,7 +335,7 @@ Functions</h2></td></tr>
 
 <p>Integer const to represent suit clubs. </p>
 
-<p class="definition">Definition at line <a class="el" href="main_8h_source.html#l00026">26</a> of file <a class="el" href="main_8h_source.html">main.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="main_8h_source.html#l00027">27</a> of file <a class="el" href="main_8h_source.html">main.h</a>.</p>
 
 </div>
 </div>
@@ -340,7 +353,7 @@ Functions</h2></td></tr>
 
 <p>Integer const to represent suit diamonds. </p>
 
-<p class="definition">Definition at line <a class="el" href="main_8h_source.html#l00030">30</a> of file <a class="el" href="main_8h_source.html">main.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="main_8h_source.html#l00031">31</a> of file <a class="el" href="main_8h_source.html">main.h</a>.</p>
 
 </div>
 </div>
@@ -358,7 +371,7 @@ Functions</h2></td></tr>
 
 <p>Integer const to represent rank five. </p>
 
-<p class="definition">Definition at line <a class="el" href="main_8h_source.html#l00013">13</a> of file <a class="el" href="main_8h_source.html">main.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="main_8h_source.html#l00014">14</a> of file <a class="el" href="main_8h_source.html">main.h</a>.</p>
 
 </div>
 </div>
@@ -376,7 +389,7 @@ Functions</h2></td></tr>
 
 <p>Integer const to represent rank four. </p>
 
-<p class="definition">Definition at line <a class="el" href="main_8h_source.html#l00011">11</a> of file <a class="el" href="main_8h_source.html">main.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="main_8h_source.html#l00012">12</a> of file <a class="el" href="main_8h_source.html">main.h</a>.</p>
 
 </div>
 </div>
@@ -394,7 +407,7 @@ Functions</h2></td></tr>
 
 <p>Integer const to represent suit hearts. </p>
 
-<p class="definition">Definition at line <a class="el" href="main_8h_source.html#l00032">32</a> of file <a class="el" href="main_8h_source.html">main.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="main_8h_source.html#l00033">33</a> of file <a class="el" href="main_8h_source.html">main.h</a>.</p>
 
 </div>
 </div>
@@ -412,7 +425,7 @@ Functions</h2></td></tr>
 
 <p>Integer const to represent rank jack. </p>
 
-<p class="definition">Definition at line <a class="el" href="main_8h_source.html#l00019">19</a> of file <a class="el" href="main_8h_source.html">main.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="main_8h_source.html#l00020">20</a> of file <a class="el" href="main_8h_source.html">main.h</a>.</p>
 
 </div>
 </div>
@@ -430,7 +443,7 @@ Functions</h2></td></tr>
 
 <p>Integer const to represent rank king. </p>
 
-<p class="definition">Definition at line <a class="el" href="main_8h_source.html#l00023">23</a> of file <a class="el" href="main_8h_source.html">main.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="main_8h_source.html#l00024">24</a> of file <a class="el" href="main_8h_source.html">main.h</a>.</p>
 
 </div>
 </div>
@@ -448,7 +461,7 @@ Functions</h2></td></tr>
 
 <p>Integer const to represent rank queen. </p>
 
-<p class="definition">Definition at line <a class="el" href="main_8h_source.html#l00021">21</a> of file <a class="el" href="main_8h_source.html">main.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="main_8h_source.html#l00022">22</a> of file <a class="el" href="main_8h_source.html">main.h</a>.</p>
 
 </div>
 </div>
@@ -466,7 +479,7 @@ Functions</h2></td></tr>
 
 <p>Integer const to represent rank seven. </p>
 
-<p class="definition">Definition at line <a class="el" href="main_8h_source.html#l00017">17</a> of file <a class="el" href="main_8h_source.html">main.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="main_8h_source.html#l00018">18</a> of file <a class="el" href="main_8h_source.html">main.h</a>.</p>
 
 </div>
 </div>
@@ -484,7 +497,7 @@ Functions</h2></td></tr>
 
 <p>Integer const to represent rank six. </p>
 
-<p class="definition">Definition at line <a class="el" href="main_8h_source.html#l00015">15</a> of file <a class="el" href="main_8h_source.html">main.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="main_8h_source.html#l00016">16</a> of file <a class="el" href="main_8h_source.html">main.h</a>.</p>
 
 </div>
 </div>
@@ -502,7 +515,7 @@ Functions</h2></td></tr>
 
 <p>Integer const to represent suit spades. </p>
 
-<p class="definition">Definition at line <a class="el" href="main_8h_source.html#l00028">28</a> of file <a class="el" href="main_8h_source.html">main.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="main_8h_source.html#l00029">29</a> of file <a class="el" href="main_8h_source.html">main.h</a>.</p>
 
 </div>
 </div>
@@ -520,7 +533,7 @@ Functions</h2></td></tr>
 
 <p>Integer const to represent rank three. </p>
 
-<p class="definition">Definition at line <a class="el" href="main_8h_source.html#l00009">9</a> of file <a class="el" href="main_8h_source.html">main.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="main_8h_source.html#l00010">10</a> of file <a class="el" href="main_8h_source.html">main.h</a>.</p>
 
 </div>
 </div>
@@ -538,7 +551,7 @@ Functions</h2></td></tr>
 
 <p>Integer const to represent rank two. </p>
 
-<p class="definition">Definition at line <a class="el" href="main_8h_source.html#l00007">7</a> of file <a class="el" href="main_8h_source.html">main.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="main_8h_source.html#l00008">8</a> of file <a class="el" href="main_8h_source.html">main.h</a>.</p>
 
 </div>
 </div>
@@ -615,7 +628,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="main_8c_source.html#l00363">363</a> of file <a class="el" href="main_8c_source.html">main.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="main_8c_source.html#l00455">455</a> of file <a class="el" href="main_8c_source.html">main.c</a>.</p>
 
 </div>
 </div>
@@ -642,18 +655,18 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="main_8c_source.html#l00405">405</a> of file <a class="el" href="main_8c_source.html">main.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="main_8c_source.html#l00497">497</a> of file <a class="el" href="main_8c_source.html">main.c</a>.</p>
 
 </div>
 </div>
-<a id="a8a84e5024a042ea1a6f6dbb1b1f75c0b" name="a8a84e5024a042ea1a6f6dbb1b1f75c0b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8a84e5024a042ea1a6f6dbb1b1f75c0b">&#9670;&#160;</a></span>applyEffect()</h2>
+<a id="a95e0d1c9a07dbc1d955826143baf4161" name="a95e0d1c9a07dbc1d955826143baf4161"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a95e0d1c9a07dbc1d955826143baf4161">&#9670;&#160;</a></span>applyEffect()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void applyEffect </td>
+          <td class="memname">bool applyEffect </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="struct_game.html">Game</a> *</td>          <td class="paramname"><span class="paramname"><em>game</em></span>, </td>
         </tr>
@@ -679,8 +692,9 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>If the game is using TUI, returns true if the function has printed something, otherwise false. If it game is not in TUI, returns false. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="main_8c_source.html#l00283">283</a> of file <a class="el" href="main_8c_source.html">main.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="main_8c_source.html#l00357">357</a> of file <a class="el" href="main_8c_source.html">main.c</a>.</p>
 
 </div>
 </div>
@@ -702,7 +716,7 @@ Functions</h2></td></tr>
 <p>Asks the number of players to the user. </p>
 <dl class="section return"><dt>Returns</dt><dd>The number of players. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="main_8c_source.html#l00110">110</a> of file <a class="el" href="main_8c_source.html">main.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="main_8c_source.html#l00190">190</a> of file <a class="el" href="main_8c_source.html">main.c</a>.</p>
 
 </div>
 </div>
@@ -724,7 +738,7 @@ Functions</h2></td></tr>
 <p>Generates a card. </p>
 <dl class="section return"><dt>Returns</dt><dd>Generates a card with seed and number set to -1. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="main_8c_source.html#l00128">128</a> of file <a class="el" href="main_8c_source.html">main.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="main_8c_source.html#l00208">208</a> of file <a class="el" href="main_8c_source.html">main.c</a>.</p>
 
 </div>
 </div>
@@ -746,7 +760,7 @@ Functions</h2></td></tr>
 <p>Generates a deck. </p>
 <dl class="section return"><dt>Returns</dt><dd>Generates a deck of 40 cards, generated by <a class="el" href="#a4ca0a186ec08efcf84a88d51bdd3a558" title="Generates a card.">buildCard()</a>. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="main_8c_source.html#l00137">137</a> of file <a class="el" href="main_8c_source.html">main.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="main_8c_source.html#l00217">217</a> of file <a class="el" href="main_8c_source.html">main.c</a>.</p>
 
 </div>
 </div>
@@ -774,7 +788,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Generates a game with the given number of players. Players are built by buildPlayer. lifePointsOnTheField field is unset. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="main_8c_source.html#l00157">157</a> of file <a class="el" href="main_8c_source.html">main.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="main_8c_source.html#l00237">237</a> of file <a class="el" href="main_8c_source.html">main.c</a>.</p>
 
 </div>
 </div>
@@ -796,7 +810,7 @@ Functions</h2></td></tr>
 <p>Generates a player. </p>
 <dl class="section return"><dt>Returns</dt><dd>Generates a player with player's id to -1. <a class="el" href="struct_player.html" title="Defines a structure for the player&#39;s info.">Player</a>'s cards are built by buildCard. lifePoints property is unset. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="main_8c_source.html#l00146">146</a> of file <a class="el" href="main_8c_source.html">main.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="main_8c_source.html#l00226">226</a> of file <a class="el" href="main_8c_source.html">main.c</a>.</p>
 
 </div>
 </div>
@@ -829,7 +843,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>True if the cards have the same suit and rank, false otherwise. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="main_8c_source.html#l00417">417</a> of file <a class="el" href="main_8c_source.html">main.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="main_8c_source.html#l00509">509</a> of file <a class="el" href="main_8c_source.html">main.c</a>.</p>
 
 </div>
 </div>
@@ -868,7 +882,72 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>True if a player in the vector has at least one card equal to the player's one, false otherwise. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="main_8c_source.html#l00421">421</a> of file <a class="el" href="main_8c_source.html">main.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="main_8c_source.html#l00513">513</a> of file <a class="el" href="main_8c_source.html">main.c</a>.</p>
+
+</div>
+</div>
+<a id="aa26e5988ea48ea2b52ea5f2e671e4ccc" name="aa26e5988ea48ea2b52ea5f2e671e4ccc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa26e5988ea48ea2b52ea5f2e671e4ccc">&#9670;&#160;</a></span>checkTerminal()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void checkTerminal </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Checks if the terminal size is suitable for the TUI (Terminal User Interface); if the terminal it is too small, it exits with EXIT_TERMINAL_TOO_SMALL exit code. On Windows, it checks if the terminal's host process is supported, otherwise it exits with EXIT_WINDOWS_TERMINAL_HOST_NOT_SUPPORTED exit code. </p>
+
+<p class="definition">Definition at line <a class="el" href="main_8c_source.html#l00050">50</a> of file <a class="el" href="main_8c_source.html">main.c</a>.</p>
+
+</div>
+</div>
+<a id="a9751d2297bb67e28285b014f6081ad7d" name="a9751d2297bb67e28285b014f6081ad7d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9751d2297bb67e28285b014f6081ad7d">&#9670;&#160;</a></span>checkTerminalHost()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool checkTerminalHost </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>On Windows, it checks if the terminal's host process is supported. </p>
+<dl class="section return"><dt>Returns</dt><dd>True if the terminal's host process is supported, false otherwise. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="main_8c_source.html#l00074">74</a> of file <a class="el" href="main_8c_source.html">main.c</a>.</p>
+
+</div>
+</div>
+<a id="a7d422f5326c0fed8633ceb76d0fe3224" name="a7d422f5326c0fed8633ceb76d0fe3224"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7d422f5326c0fed8633ceb76d0fe3224">&#9670;&#160;</a></span>checkTerminalSize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool checkTerminalSize </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Checks if the terminal size is suitable for the TUI (Terminal User Interface). </p>
+<dl class="section return"><dt>Returns</dt><dd>True if the terminal is not too small, false otherwise. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="main_8c_source.html#l00067">67</a> of file <a class="el" href="main_8c_source.html">main.c</a>.</p>
 
 </div>
 </div>
@@ -896,7 +975,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The amount of dead players in the players vector. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="main_8c_source.html#l00369">369</a> of file <a class="el" href="main_8c_source.html">main.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="main_8c_source.html#l00461">461</a> of file <a class="el" href="main_8c_source.html">main.c</a>.</p>
 
 </div>
 </div>
@@ -929,7 +1008,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>True if the card is present in the deck, false otherwise. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="main_8c_source.html#l00409">409</a> of file <a class="el" href="main_8c_source.html">main.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="main_8c_source.html#l00501">501</a> of file <a class="el" href="main_8c_source.html">main.c</a>.</p>
 
 </div>
 </div>
@@ -956,7 +1035,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="main_8c_source.html#l00169">169</a> of file <a class="el" href="main_8c_source.html">main.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="main_8c_source.html#l00249">249</a> of file <a class="el" href="main_8c_source.html">main.c</a>.</p>
 
 </div>
 </div>
@@ -983,7 +1062,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="main_8c_source.html#l00183">183</a> of file <a class="el" href="main_8c_source.html">main.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="main_8c_source.html#l00263">263</a> of file <a class="el" href="main_8c_source.html">main.c</a>.</p>
 
 </div>
 </div>
@@ -1010,7 +1089,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="main_8c_source.html#l00173">173</a> of file <a class="el" href="main_8c_source.html">main.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="main_8c_source.html#l00253">253</a> of file <a class="el" href="main_8c_source.html">main.c</a>.</p>
 
 </div>
 </div>
@@ -1042,12 +1121,12 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="main_8c_source.html#l00177">177</a> of file <a class="el" href="main_8c_source.html">main.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="terminal_card_test_8c_source.html#l00301">301</a> of file <a class="el" href="terminal_card_test_8c_source.html">terminalCardTest.c</a>.</p>
 
 </div>
 </div>
-<a id="ad7c1005403ad848e762bc95a9b34e44b" name="ad7c1005403ad848e762bc95a9b34e44b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad7c1005403ad848e762bc95a9b34e44b">&#9670;&#160;</a></span>giveCards()</h2>
+<a id="a08c702712873429b9f972b2690c0db48" name="a08c702712873429b9f972b2690c0db48"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a08c702712873429b9f972b2690c0db48">&#9670;&#160;</a></span>giveCards()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1060,12 +1139,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="struct_card.html">Card</a> *</td>          <td class="paramname"><span class="paramname"><em>deck</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="structgame_configuration.html">gameConfiguration</a></td>          <td class="paramname"><span class="paramname"><em>configuration</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="struct_card.html">Card</a> *</td>          <td class="paramname"><span class="paramname"><em>deck</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1075,12 +1149,11 @@ Functions</h2></td></tr>
   <table class="params">
     <tr><td class="paramname">game</td><td>Pointer to the game struct. </td></tr>
     <tr><td class="paramname">deck</td><td>The cards deck. </td></tr>
-    <tr><td class="paramname">configuration</td><td>The game configuration from which rules about cards assignment is taken. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="main_8c_source.html#l00346">346</a> of file <a class="el" href="main_8c_source.html">main.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="main_8c_source.html#l00435">435</a> of file <a class="el" href="main_8c_source.html">main.c</a>.</p>
 
 </div>
 </div>
@@ -1108,7 +1181,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Returns if the game can go on. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="main_8c_source.html#l00242">242</a> of file <a class="el" href="main_8c_source.html">main.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="main_8c_source.html#l00324">324</a> of file <a class="el" href="main_8c_source.html">main.c</a>.</p>
 
 </div>
 </div>
@@ -1136,34 +1209,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>True if only player is still alive, false otherwise. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="main_8c_source.html#l00273">273</a> of file <a class="el" href="main_8c_source.html">main.c</a>.</p>
-
-</div>
-</div>
-<a id="a106329ce5bea51f3defe6fabff041ae0" name="a106329ce5bea51f3defe6fabff041ae0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a106329ce5bea51f3defe6fabff041ae0">&#9670;&#160;</a></span>Pause()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void Pause </td>
-          <td>(</td>
-          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>clear</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Waits for the user to press a key without waiting for 'Enter' to be pressed. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">clear</td><td>Flag for determining if the screen has to be cleaned, if set to true. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p class="definition">Definition at line <a class="el" href="main_8c_source.html#l00430">430</a> of file <a class="el" href="main_8c_source.html">main.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="main_8c_source.html#l00347">347</a> of file <a class="el" href="main_8c_source.html">main.c</a>.</p>
 
 </div>
 </div>
@@ -1185,12 +1231,12 @@ Functions</h2></td></tr>
 <p>Generates a deck with cards ordered randomly. It is guaranteed that no duplicated cards occurs in the same deck. </p>
 <dl class="section return"><dt>Returns</dt><dd>The deck generated randomly. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="main_8c_source.html#l00187">187</a> of file <a class="el" href="main_8c_source.html">main.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="main_8c_source.html#l00267">267</a> of file <a class="el" href="main_8c_source.html">main.c</a>.</p>
 
 </div>
 </div>
-<a id="a0edd36b5c1e322652f4b847c7a80e5d7" name="a0edd36b5c1e322652f4b847c7a80e5d7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0edd36b5c1e322652f4b847c7a80e5d7">&#9670;&#160;</a></span>prepareGame()</h2>
+<a id="aba6320c4d5c6680569573e3bad317ef3" name="aba6320c4d5c6680569573e3bad317ef3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aba6320c4d5c6680569573e3bad317ef3">&#9670;&#160;</a></span>prepareGame()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1208,7 +1254,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="structgame_configuration.html">gameConfiguration</a></td>          <td class="paramname"><span class="paramname"><em>configuration</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="struct_game_configuration.html">GameConfiguration</a></td>          <td class="paramname"><span class="paramname"><em>configuration</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1224,12 +1270,12 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The generated game. It is guaranteed that players do not have the same cards. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="main_8c_source.html#l00204">204</a> of file <a class="el" href="main_8c_source.html">main.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="main_8c_source.html#l00284">284</a> of file <a class="el" href="main_8c_source.html">main.c</a>.</p>
 
 </div>
 </div>
-<a id="af2698ede41d572bba9cfb375446b007e" name="af2698ede41d572bba9cfb375446b007e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af2698ede41d572bba9cfb375446b007e">&#9670;&#160;</a></span>preparePlayer()</h2>
+<a id="aed71306690e8157638747a31f7ed63c1" name="aed71306690e8157638747a31f7ed63c1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aed71306690e8157638747a31f7ed63c1">&#9670;&#160;</a></span>preparePlayer()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1247,7 +1293,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="structgame_configuration.html">gameConfiguration</a></td>          <td class="paramname"><span class="paramname"><em>configuration</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="struct_game_configuration.html">GameConfiguration</a></td>          <td class="paramname"><span class="paramname"><em>configuration</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1263,39 +1309,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The generated player. It may occur that this function, called several times, generates players with the same cards. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="main_8c_source.html#l00221">221</a> of file <a class="el" href="main_8c_source.html">main.c</a>.</p>
-
-</div>
-</div>
-<a id="aa73153ae816ad736a62de306939886e1" name="aa73153ae816ad736a62de306939886e1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa73153ae816ad736a62de306939886e1">&#9670;&#160;</a></span>printCard()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void printCard </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_card.html">Card</a></td>          <td class="paramname"><span class="paramname"><em>card</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>newLine</em></span>&#160;)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Prints user-friendly the card rank and suit. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">card</td><td>The card that has to be printed. </td></tr>
-    <tr><td class="paramname">newLine</td><td>Flag for determining if the function has to go to a new line before exiting. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p class="definition">Definition at line <a class="el" href="main_8c_source.html#l00437">437</a> of file <a class="el" href="main_8c_source.html">main.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="main_8c_source.html#l00303">303</a> of file <a class="el" href="main_8c_source.html">main.c</a>.</p>
 
 </div>
 </div>
@@ -1327,135 +1341,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="main_8c_source.html#l00497">497</a> of file <a class="el" href="main_8c_source.html">main.c</a>.</p>
-
-</div>
-</div>
-<a id="a8ba70192e848f0a7bc18be1478240e8c" name="a8ba70192e848f0a7bc18be1478240e8c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8ba70192e848f0a7bc18be1478240e8c">&#9670;&#160;</a></span>printDeck()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void printDeck </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_card.html">Card</a> *</td>          <td class="paramname"><span class="paramname"><em>deck</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>newLine</em></span>&#160;)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Prints user-friendly the cards deck. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">deck</td><td>The deck that has to be printed. </td></tr>
-    <tr><td class="paramname">newLine</td><td>Flag for determining if the function has to go to a new line before exiting. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p class="definition">Definition at line <a class="el" href="main_8c_source.html#l00492">492</a> of file <a class="el" href="main_8c_source.html">main.c</a>.</p>
-
-</div>
-</div>
-<a id="a674220b5b2510fdc704dd52d095029ab" name="a674220b5b2510fdc704dd52d095029ab"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a674220b5b2510fdc704dd52d095029ab">&#9670;&#160;</a></span>printGameConfiguration()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void printGameConfiguration </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structgame_configuration.html">gameConfiguration</a></td>          <td class="paramname"><span class="paramname"><em>configuration</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>newLine</em></span>&#160;)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Prints user-friendly game configuration settings. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">configuration</td><td>The game configuration that has to be printed. </td></tr>
-    <tr><td class="paramname">newLine</td><td>Flag for determining if the function has to go to a new line before exiting. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p class="definition">Definition at line <a class="el" href="main_8c_source.html#l00547">547</a> of file <a class="el" href="main_8c_source.html">main.c</a>.</p>
-
-</div>
-</div>
-<a id="a06b8c91934e7cc164f1e0cfdc4fbce71" name="a06b8c91934e7cc164f1e0cfdc4fbce71"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a06b8c91934e7cc164f1e0cfdc4fbce71">&#9670;&#160;</a></span>printPlayer()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void printPlayer </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_player.html">Player</a></td>          <td class="paramname"><span class="paramname"><em>player</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>newLine</em></span>&#160;)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Prints user-friendly player's info. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">player</td><td>The player whose infos have to be printed. </td></tr>
-    <tr><td class="paramname">newLine</td><td>Flag for determining if the function has to go to a new line before exiting. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p class="definition">Definition at line <a class="el" href="main_8c_source.html#l00530">530</a> of file <a class="el" href="main_8c_source.html">main.c</a>.</p>
-
-</div>
-</div>
-<a id="a5555b0e7fae57537902c25ffbe5aef66" name="a5555b0e7fae57537902c25ffbe5aef66"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5555b0e7fae57537902c25ffbe5aef66">&#9670;&#160;</a></span>printPlayers()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void printPlayers </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_game.html">Game</a></td>          <td class="paramname"><span class="paramname"><em>game</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>newLine</em></span>&#160;)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Prints user-friendly the players' infos. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">game</td><td>The game which cointains the players. </td></tr>
-    <tr><td class="paramname">newLine</td><td>Flag for determining if the function has to go to a new line before exiting. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p class="definition">Definition at line <a class="el" href="main_8c_source.html#l00542">542</a> of file <a class="el" href="main_8c_source.html">main.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="main_8c_source.html#l00522">522</a> of file <a class="el" href="main_8c_source.html">main.c</a>.</p>
 
 </div>
 </div>
@@ -1488,7 +1374,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A random value between min and max (inclusive). </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="main_8c_source.html#l00042">42</a> of file <a class="el" href="main_8c_source.html">main.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="file_logging_test_8c_source.html#l00041">41</a> of file <a class="el" href="file_logging_test_8c_source.html">fileLoggingTest.c</a>.</p>
 
 </div>
 </div>
@@ -1515,51 +1401,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="main_8c_source.html#l00379">379</a> of file <a class="el" href="main_8c_source.html">main.c</a>.</p>
-
-</div>
-</div>
-<a id="a8a28ca45cd2575a68711409f7cbd9119" name="a8a28ca45cd2575a68711409f7cbd9119"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8a28ca45cd2575a68711409f7cbd9119">&#9670;&#160;</a></span>revealCard()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void revealCard </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_card.html">Card</a></td>          <td class="paramname"><span class="paramname"><em>card</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>playerId</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>facedUp</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>newLine</em></span>&#160;)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Prints user-friendly the card revealed from a player. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">card</td><td>The card that has been revealed. </td></tr>
-    <tr><td class="paramname">playerId</td><td>The player ID. </td></tr>
-    <tr><td class="paramname">facedUp</td><td>Flag for determining if the card was faced up, if set to true. </td></tr>
-    <tr><td class="paramname">newLine</td><td>Flag for determining if the function has to go to a new line before exiting. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p class="definition">Definition at line <a class="el" href="main_8c_source.html#l00515">515</a> of file <a class="el" href="main_8c_source.html">main.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="main_8c_source.html#l00471">471</a> of file <a class="el" href="main_8c_source.html">main.c</a>.</p>
 
 </div>
 </div>
@@ -1587,7 +1429,28 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>True if the player wants to reveal the faced down card, false otherwise. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="main_8c_source.html#l00326">326</a> of file <a class="el" href="main_8c_source.html">main.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="main_8c_source.html#l00415">415</a> of file <a class="el" href="main_8c_source.html">main.c</a>.</p>
+
+</div>
+</div>
+<a id="a8303dfeccd0b733098a3d4fbba6a92c3" name="a8303dfeccd0b733098a3d4fbba6a92c3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8303dfeccd0b733098a3d4fbba6a92c3">&#9670;&#160;</a></span>setupTerminal()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void setupTerminal </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>On Windows, configures that the terminal such that it supports UTF-8 encoded chars. </p>
+
+<p class="definition">Definition at line <a class="el" href="main_8c_source.html#l00061">61</a> of file <a class="el" href="main_8c_source.html">main.c</a>.</p>
 
 </div>
 </div>
@@ -1614,7 +1477,39 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="main_8c_source.html#l00232">232</a> of file <a class="el" href="main_8c_source.html">main.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="main_8c_source.html#l00314">314</a> of file <a class="el" href="main_8c_source.html">main.c</a>.</p>
+
+</div>
+</div>
+<a id="aba8732906313a3d174f78d98d5b4e39f" name="aba8732906313a3d174f78d98d5b4e39f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aba8732906313a3d174f78d98d5b4e39f">&#9670;&#160;</a></span>tellFacedDownCard()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void tellFacedDownCard </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_card.html">Card</a></td>          <td class="paramname"><span class="paramname"><em>card</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>playerId</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Prints user-friendly the card revealed from a player. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">card</td><td>The card that has been revealed. </td></tr>
+    <tr><td class="paramname">playerId</td><td>The card's owner ID. If it is 0, it prints 'Your', otherwise it prints '<a class="el" href="struct_player.html" title="Defines a structure for the player&#39;s info.">Player</a> &lt;playerID&gt;'s' </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="main_8c_source.html#l00540">540</a> of file <a class="el" href="main_8c_source.html">main.c</a>.</p>
 
 </div>
 </div>
@@ -1641,7 +1536,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="main_8c_source.html#l00398">398</a> of file <a class="el" href="main_8c_source.html">main.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="main_8c_source.html#l00490">490</a> of file <a class="el" href="main_8c_source.html">main.c</a>.</p>
 
 </div>
 </div>

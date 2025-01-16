@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['three_0',['Three',['../main_8h.html#a3794447af542fd6a6af8cdcc405ab087',1,'main.h']]],
-  ['two_1',['Two',['../main_8h.html#ad8600b2689e80f5ba4c08c6c1576bfbf',1,'main.h']]]
+  ['reset_0',['RESET',['../terminal_card_test_8c.html#ab702106cf3b3e96750b6845ded4e0299',1,'RESET:&#160;terminalCardTest.c'],['../terminal_card_test_colors_8c.html#ab702106cf3b3e96750b6845ded4e0299',1,'RESET:&#160;terminalCardTestColors.c'],['../terminal_card_test_colors_old_8c.html#ab702106cf3b3e96750b6845ded4e0299',1,'RESET:&#160;terminalCardTestColorsOld.c']]],
+  ['resize_5fcoefficient_1',['RESIZE_COEFFICIENT',['../vector_8h.html#ae1ab5f2b82c0e0a3d3f34d9a4e7f3fb5',1,'vector.h']]]
 ];

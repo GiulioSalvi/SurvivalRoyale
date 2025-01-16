@@ -40,6 +40,7 @@ var ansi_8h =
     [ "getChar", "ansi_8h.html#a8fb1767df1e71af64fc13e5fbf4c6330", null ],
     [ "graphicReset", "ansi_8h.html#a54dffcffb5538afde1838a8eb5f370d3", null ],
     [ "italic", "ansi_8h.html#ab24ee910c1383d74346513cc6ec474c2", null ],
+    [ "Pause", "ansi_8h.html#a106329ce5bea51f3defe6fabff041ae0", null ],
     [ "printfgr", "ansi_8h.html#ad72de07e276fe6eb557d79c22338769a", null ],
     [ "printgr", "ansi_8h.html#a21e7e4f6cde120d8fa157fd89369f4ec", null ],
     [ "printGraphicRendition", "ansi_8h.html#a4c337d76edba0e3c4330bc8abf3df087", null ],

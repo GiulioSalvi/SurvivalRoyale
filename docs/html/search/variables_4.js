@@ -2,22 +2,7 @@ var searchData=
 [
   ['faceddowncard_0',['facedDownCard',['../struct_player.html#a171b556be45153dfeb898433e3d72763',1,'Player']]],
   ['facedupcard_1',['facedUpCard',['../struct_player.html#aba7e2199ac72e994132712f55659fc27',1,'Player']]],
-  ['fgblack_2',['FgBlack',['../ansi__const_8h.html#a6f29c8e44a1f74eb8ec0ddc894605de3',1,'ansi_const.h']]],
-  ['fgblue_3',['FgBlue',['../ansi__const_8h.html#a9778a72b2f2e5e405627fddd6ed98277',1,'ansi_const.h']]],
-  ['fgbrightblack_4',['FgBrightBlack',['../ansi__const_8h.html#ae1ea3206a44039de2aaa4b52952af0f1',1,'ansi_const.h']]],
-  ['fgbrightblue_5',['FgBrightBlue',['../ansi__const_8h.html#a1400ba6ea241795ad8e35c417b0d7a02',1,'ansi_const.h']]],
-  ['fgbrightcyan_6',['FgBrightCyan',['../ansi__const_8h.html#ac599f87abe19cfd71fd12d49801d6354',1,'ansi_const.h']]],
-  ['fgbrightgreen_7',['FgBrightGreen',['../ansi__const_8h.html#ac550917cf0239ba65c0f767414eb4bb4',1,'ansi_const.h']]],
-  ['fgbrightmagenta_8',['FgBrightMagenta',['../ansi__const_8h.html#aaf61a1a5ac5b0d5d84ee53a677f1cd9c',1,'ansi_const.h']]],
-  ['fgbrightred_9',['FgBrightRed',['../ansi__const_8h.html#a17b4360d858a726f79bbb3edc3cb12cc',1,'ansi_const.h']]],
-  ['fgbrightwhite_10',['FgBrightWhite',['../ansi__const_8h.html#a0c5011d91800d9410b6c8ac85aa9cd13',1,'ansi_const.h']]],
-  ['fgbrightyellow_11',['FgBrightYellow',['../ansi__const_8h.html#abeac7baeb61151381817a832319a14ba',1,'ansi_const.h']]],
-  ['fgcolor_12',['fgColor',['../structansi_standard_color.html#a0de7231df65c73e1e6d0fc8388ba380b',1,'ansiStandardColor']]],
-  ['fgcyan_13',['FgCyan',['../ansi__const_8h.html#ab3bb6cf4a4be365369c4c0a0fd1ddbe7',1,'ansi_const.h']]],
-  ['fggreen_14',['FgGreen',['../ansi__const_8h.html#aae6b8749978c45398a4ec86adb8f379f',1,'ansi_const.h']]],
-  ['fgmagenta_15',['FgMagenta',['../ansi__const_8h.html#a70c4791fe520a1cdac198b96cfa88222',1,'ansi_const.h']]],
-  ['fgred_16',['FgRed',['../ansi__const_8h.html#aa9f7c46464d915d2c8821478ab755bc4',1,'ansi_const.h']]],
-  ['fgrgb_17',['fgRgb',['../structansi_rgb_color.html#aa99992c72ad1b3809c77fe3f92840d46',1,'ansiRgbColor']]],
-  ['fgwhite_18',['FgWhite',['../ansi__const_8h.html#a7bd9949175e710511f27e798db752a28',1,'ansi_const.h']]],
-  ['fgyellow_19',['FgYellow',['../ansi__const_8h.html#a9a2d418947f33b22932576ed0459fffb',1,'ansi_const.h']]]
+  ['fgcolor_2',['fgColor',['../structansi_standard_color.html#a0de7231df65c73e1e6d0fc8388ba380b',1,'ansiStandardColor']]],
+  ['fgrgb_3',['fgRgb',['../structansi_rgb_color.html#aa99992c72ad1b3809c77fe3f92840d46',1,'ansiRgbColor']]],
+  ['filename_4',['fileName',['../struct_logs_configuration.html#a49a390aa5c438315caa764fc617a0e41',1,'LogsConfiguration']]]
 ];

@@ -1,24 +1,8 @@
 var searchData=
 [
   ['b_0',['b',['../structrgb.html#a4313c9563516f94387762ab05763456b',1,'rgb']]],
-  ['beverbose_1',['beVerbose',['../structgame_configuration.html#aa3d1b64d31e4e5eb084d1c602d8f9273',1,'gameConfiguration']]],
-  ['bgblack_2',['BgBlack',['../ansi__const_8h.html#a98a8ef6a2a1a46b58091bdcbfd3115d5',1,'ansi_const.h']]],
-  ['bgblue_3',['BgBlue',['../ansi__const_8h.html#aa7dab6637bf940ada679e81400928da5',1,'ansi_const.h']]],
-  ['bgbrightblack_4',['BgBrightBlack',['../ansi__const_8h.html#afb72c5652378200a8b2ddd63952d55c1',1,'ansi_const.h']]],
-  ['bgbrightblue_5',['BgBrightBlue',['../ansi__const_8h.html#aacce655b963fecd14a2f9b9fcc47fd44',1,'ansi_const.h']]],
-  ['bgbrightcyan_6',['BgBrightCyan',['../ansi__const_8h.html#a583e9d369c42917f3f584c28ec5bead6',1,'ansi_const.h']]],
-  ['bgbrightgreen_7',['BgBrightGreen',['../ansi__const_8h.html#a7dcc4b9cae1651407ec107cd208ce6a9',1,'ansi_const.h']]],
-  ['bgbrightmagenta_8',['BgBrightMagenta',['../ansi__const_8h.html#a4e065f5561beb7e280c21792e804a180',1,'ansi_const.h']]],
-  ['bgbrightred_9',['BgBrightRed',['../ansi__const_8h.html#a9f5d7ea90b57be866934ce14834816dc',1,'ansi_const.h']]],
-  ['bgbrightwhite_10',['BgBrightWhite',['../ansi__const_8h.html#a60b3e82577e39bca5eefe79c2766b6ba',1,'ansi_const.h']]],
-  ['bgbrightyellow_11',['BgBrightYellow',['../ansi__const_8h.html#a12ded2b891058c46315c72d51511eb98',1,'ansi_const.h']]],
-  ['bgcolor_12',['bgColor',['../structansi_standard_color.html#a3139a8081fec9d7e7100423dc918bf15',1,'ansiStandardColor']]],
-  ['bgcyan_13',['BgCyan',['../ansi__const_8h.html#a56d3a99e87600e57a68482c462dcfb6c',1,'ansi_const.h']]],
-  ['bggreen_14',['BgGreen',['../ansi__const_8h.html#a5738aad843011bbf0b86b51c590273cf',1,'ansi_const.h']]],
-  ['bgmagenta_15',['BgMagenta',['../ansi__const_8h.html#ac43a969d559d1f9126f2d8ee9e7c7943',1,'ansi_const.h']]],
-  ['bgred_16',['BgRed',['../ansi__const_8h.html#ad01f31dca0b7fb84941a567b29f6ca97',1,'ansi_const.h']]],
-  ['bgrgb_17',['bgRgb',['../structansi_rgb_color.html#a68f16c1dc91b5cae1e3c69b8d8caea0d',1,'ansiRgbColor']]],
-  ['bgwhite_18',['BgWhite',['../ansi__const_8h.html#ab8517313869714137ab53d6efc6f1882',1,'ansi_const.h']]],
-  ['bgyellow_19',['BgYellow',['../ansi__const_8h.html#a1145cca8519a2c47a96b1ce1c988040b',1,'ansi_const.h']]],
-  ['bold_20',['bold',['../structgraphic_rendition.html#a7a210a24d67146bd143c013d1da0f2dd',1,'graphicRendition']]]
+  ['beverbose_1',['beVerbose',['../struct_game_configuration.html#aa3d1b64d31e4e5eb084d1c602d8f9273',1,'GameConfiguration']]],
+  ['bgcolor_2',['bgColor',['../structansi_standard_color.html#a3139a8081fec9d7e7100423dc918bf15',1,'ansiStandardColor']]],
+  ['bgrgb_3',['bgRgb',['../structansi_rgb_color.html#a68f16c1dc91b5cae1e3c69b8d8caea0d',1,'ansiRgbColor']]],
+  ['bold_4',['bold',['../structgraphic_rendition.html#a7a210a24d67146bd143c013d1da0f2dd',1,'graphicRendition']]]
 ];

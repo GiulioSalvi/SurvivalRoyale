@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['withdrawcards_0',['withdrawCards',['../main_8h.html#ab9b5a83897966193fceed39148c1a18d',1,'withdrawCards(Game *game):&#160;main.c'],['../main_8c.html#ab9b5a83897966193fceed39148c1a18d',1,'withdrawCards(Game *game):&#160;main.c']]]
+  ['validatergb_0',['validateRgb',['../ansi_8h.html#a7b4b30d9bb1010992f63aeeb40afb3c7',1,'validateRgb(rgb rgbColor):&#160;ansi.c'],['../ansi_8c.html#a7b4b30d9bb1010992f63aeeb40afb3c7',1,'validateRgb(rgb rgbColor):&#160;ansi.c']]]
 ];

@@ -6,8 +6,10 @@ var annotated_dup =
     [ "Card", "struct_card.html", "struct_card" ],
     [ "color", "structcolor.html", "structcolor" ],
     [ "Game", "struct_game.html", "struct_game" ],
-    [ "gameConfiguration", "structgame_configuration.html", "structgame_configuration" ],
+    [ "GameConfiguration", "struct_game_configuration.html", "struct_game_configuration" ],
     [ "graphicRendition", "structgraphic_rendition.html", "structgraphic_rendition" ],
+    [ "LogsConfiguration", "struct_logs_configuration.html", "struct_logs_configuration" ],
+    [ "PageData", "struct_page_data.html", "struct_page_data" ],
     [ "Player", "struct_player.html", "struct_player" ],
     [ "rgb", "structrgb.html", "structrgb" ],
     [ "vector", "structvector.html", "structvector" ]

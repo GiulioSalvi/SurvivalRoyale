@@ -1,5 +1,11 @@
 var searchData=
 [
-  ['lifepoints_0',['lifePoints',['../struct_player.html#a76036d822a31dc930e2484775c3f7d0a',1,'Player']]],
-  ['lifepointsonthefield_1',['lifePointsOnTheField',['../struct_game.html#a8a1e75a5576917ffc0d1b94121822d53',1,'Game']]]
+  ['lifepoints_0',['lifePoints',['../struct_player.html#a259a086ca6d5f15d0350083930917728',1,'Player::lifePoints'],['../struct_player.html#a259a086ca6d5f15d0350083930917728',1,'Player::lifePoints']]],
+  ['lifepointsonthefield_1',['lifePointsOnTheField',['../struct_game.html#a8a1e75a5576917ffc0d1b94121822d53',1,'Game']]],
+  ['log_5fsection_5fheight_2',['LOG_SECTION_HEIGHT',['../gui_8h.html#aced628f36d2fc0b003b0eade62b142b6',1,'LOG_SECTION_HEIGHT:&#160;gui.h'],['../terminal_card_test_8c.html#aced628f36d2fc0b003b0eade62b142b6',1,'LOG_SECTION_HEIGHT:&#160;terminalCardTest.c'],['../terminal_card_test_colors_8c.html#aced628f36d2fc0b003b0eade62b142b6',1,'LOG_SECTION_HEIGHT:&#160;terminalCardTestColors.c'],['../terminal_card_test_colors_old_8c.html#aced628f36d2fc0b003b0eade62b142b6',1,'LOG_SECTION_HEIGHT:&#160;terminalCardTestColorsOld.c']]],
+  ['logs_2ec_3',['logs.c',['../logs_8c.html',1,'']]],
+  ['logs_2eh_4',['logs.h',['../logs_8h.html',1,'']]],
+  ['logs_5fconfiguration_2eh_5',['logs_configuration.h',['../logs__configuration_8h.html',1,'']]],
+  ['logsconfiguration_6',['LogsConfiguration',['../struct_logs_configuration.html',1,'LogsConfiguration'],['../logs__configuration_8h.html#ae1c4c3e7089fdcec20bad4286744e665',1,'LogsConfiguration:&#160;logs_configuration.h']]],
+  ['logsconfiguration_7',['logsConfiguration',['../struct_game.html#ace7266c212a57c60162c46f3db009de6',1,'Game']]]
 ];

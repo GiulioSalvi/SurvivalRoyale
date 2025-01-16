@@ -1,4 +1,20 @@
 var searchData=
 [
-  ['clubs_0',['Clubs',['../main_8h.html#a92065ca7307951aa84e28f1142d92c5b',1,'main.h']]]
+  ['bgblack_0',['BgBlack',['../ansi__const_8h.html#abf37b2c01059dcb6c769567ea82e4cc5',1,'ansi_const.h']]],
+  ['bgblue_1',['BgBlue',['../ansi__const_8h.html#aa224037495afe45a49bd31f7b5ddf861',1,'ansi_const.h']]],
+  ['bgbrightblack_2',['BgBrightBlack',['../ansi__const_8h.html#a88dcd558f8d430faefedec3cabf2fae8',1,'ansi_const.h']]],
+  ['bgbrightblue_3',['BgBrightBlue',['../ansi__const_8h.html#a1ffc8087629c106d8349c0a648faf5ee',1,'ansi_const.h']]],
+  ['bgbrightcyan_4',['BgBrightCyan',['../ansi__const_8h.html#ac953c0240fd43666f659ea92e285aeb3',1,'ansi_const.h']]],
+  ['bgbrightgreen_5',['BgBrightGreen',['../ansi__const_8h.html#acab344870ca376052587feb650955885',1,'ansi_const.h']]],
+  ['bgbrightmagenta_6',['BgBrightMagenta',['../ansi__const_8h.html#a52e1c4712b7cb6ce0659dfa85dad6805',1,'ansi_const.h']]],
+  ['bgbrightred_7',['BgBrightRed',['../ansi__const_8h.html#ab19b4af75b1e94e49afa3b92bc035c85',1,'ansi_const.h']]],
+  ['bgbrightwhite_8',['BgBrightWhite',['../ansi__const_8h.html#ac3ee8fff7904b2c5e0faa1ef74f80d34',1,'ansi_const.h']]],
+  ['bgbrightyellow_9',['BgBrightYellow',['../ansi__const_8h.html#a1eb866dbcf7303c11bb744072dafaf3f',1,'ansi_const.h']]],
+  ['bgcyan_10',['BgCyan',['../ansi__const_8h.html#a738183a072d49d281e42ed839aad9350',1,'ansi_const.h']]],
+  ['bggreen_11',['BgGreen',['../ansi__const_8h.html#aa2b64e99c8215c19b27d55dd4c1fde74',1,'ansi_const.h']]],
+  ['bgmagenta_12',['BgMagenta',['../ansi__const_8h.html#ac03898f3d575cff9f1f3af0d331eed09',1,'ansi_const.h']]],
+  ['bgred_13',['BgRed',['../ansi__const_8h.html#a912cc5d32dee48fdcf91fc0c576f5280',1,'ansi_const.h']]],
+  ['bgwhite_14',['BgWhite',['../ansi__const_8h.html#afd5d1b069c08ee483b375624dd611f35',1,'ansi_const.h']]],
+  ['bgyellow_15',['BgYellow',['../ansi__const_8h.html#ab993b410fb8b938d64ef9eb4edd22d0f',1,'ansi_const.h']]],
+  ['bold_16',['BOLD',['../terminal_card_test_8c.html#a26cdbb1a00213c810caccf21cd33a631',1,'BOLD:&#160;terminalCardTest.c'],['../terminal_card_test_colors_8c.html#a26cdbb1a00213c810caccf21cd33a631',1,'BOLD:&#160;terminalCardTestColors.c'],['../terminal_card_test_colors_old_8c.html#a26cdbb1a00213c810caccf21cd33a631',1,'BOLD:&#160;terminalCardTestColorsOld.c']]]
 ];

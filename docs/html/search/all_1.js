@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['ace_0',['Ace',['../main_8h.html#a5ff0bb6fd2959a67ce4f924ea7e6b2bf',1,'main.h']]],
+  ['ace_0',['Ace',['../main_8h.html#a5ff0bb6fd2959a67ce4f924ea7e6b2bf',1,'Ace:&#160;main.h'],['../terminal_card_test_8c.html#a5ff0bb6fd2959a67ce4f924ea7e6b2bf',1,'Ace:&#160;terminalCardTest.c'],['../terminal_card_test_colors_8c.html#a5ff0bb6fd2959a67ce4f924ea7e6b2bf',1,'Ace:&#160;terminalCardTestColors.c'],['../terminal_card_test_colors_old_8c.html#a5ff0bb6fd2959a67ce4f924ea7e6b2bf',1,'Ace:&#160;terminalCardTestColorsOld.c']]],
   ['action_5fbe_5fverbose_1',['ACTION_BE_VERBOSE',['../consts_8h.html#a0eb5b79daf4eb2fd682214a6b8e12437',1,'consts.h']]],
   ['action_5fdont_5fask_5fconfig_5foptions_2',['ACTION_DONT_ASK_CONFIG_OPTIONS',['../consts_8h.html#acb390e2c0582da128e9df72aaa81c917',1,'consts.h']]],
   ['action_5fgo_3',['ACTION_GO',['../consts_8h.html#a504e03c64bd4947ca8a8b182fdf7f397',1,'consts.h']]],
@@ -8,8 +8,8 @@ var searchData=
   ['action_5fignore_5fconfig_5ffile_5',['ACTION_IGNORE_CONFIG_FILE',['../consts_8h.html#a94c6b64be9fa788c516a8780f16b3e27',1,'consts.h']]],
   ['action_5fnothing_6',['ACTION_NOTHING',['../consts_8h.html#ad63e64e3a2a171ca05a18e4337d6aa5e',1,'consts.h']]],
   ['action_5fsave_5fto_5ffile_7',['ACTION_SAVE_TO_FILE',['../consts_8h.html#a2a7e70362eb9c107c9375a17c816ec00',1,'consts.h']]],
-  ['allowsamerank_8',['allowSameRank',['../structgame_configuration.html#a3cb11b0b471f0925f6dc0535363312cc',1,'gameConfiguration']]],
-  ['allowsamesuit_9',['allowSameSuit',['../structgame_configuration.html#ae2b1676555fa07b902cb26137348512c',1,'gameConfiguration']]],
+  ['allowsamerank_8',['allowSameRank',['../struct_game_configuration.html#a3cb11b0b471f0925f6dc0535363312cc',1,'GameConfiguration']]],
+  ['allowsamesuit_9',['allowSameSuit',['../struct_game_configuration.html#ae2b1676555fa07b902cb26137348512c',1,'GameConfiguration']]],
   ['announcedeadplayers_10',['announceDeadPlayers',['../main_8h.html#ac88513b1e140bbdb9fcac52fe491eb8a',1,'announceDeadPlayers(Game *game):&#160;main.c'],['../main_8c.html#ac88513b1e140bbdb9fcac52fe491eb8a',1,'announceDeadPlayers(Game *game):&#160;main.c']]],
   ['announcewinner_11',['announceWinner',['../main_8h.html#a9322e761e002ecf4a449f0a2655ebc3c',1,'announceWinner(Player player):&#160;main.c'],['../main_8c.html#a9322e761e002ecf4a449f0a2655ebc3c',1,'announceWinner(Player player):&#160;main.c']]],
   ['ansi_2ec_12',['ansi.c',['../ansi_8c.html',1,'']]],
@@ -18,8 +18,8 @@ var searchData=
   ['ansirgbcolor_15',['ansiRgbColor',['../structansi_rgb_color.html',1,'ansiRgbColor'],['../ansi_8h.html#af6f04dca38d40c693279f2c1572e7377',1,'ansiRgbColor:&#160;ansi.h']]],
   ['ansistandardcolor_16',['ansiStandardColor',['../structansi_standard_color.html',1,'ansiStandardColor'],['../ansi_8h.html#abb8f708417741830fa64d91ee4589317',1,'ansiStandardColor:&#160;ansi.h']]],
   ['ansistandardcolors_17',['ansiStandardColors',['../ansi_8h.html#af3c7e631728b722438dbbea250d432cc',1,'ansi.h']]],
-  ['applyeffect_18',['applyEffect',['../main_8h.html#a8a84e5024a042ea1a6f6dbb1b1f75c0b',1,'applyEffect(Game *game, int playerPosition, bool facedUpCard):&#160;main.c'],['../main_8c.html#a8a84e5024a042ea1a6f6dbb1b1f75c0b',1,'applyEffect(Game *game, int playerPosition, bool facedUpCard):&#160;main.c']]],
-  ['askconfigurationoptionsviaterminal_19',['askConfigurationOptionsViaTerminal',['../config_8h.html#aea43252ee6450e1356ad3721a02cf44b',1,'askConfigurationOptionsViaTerminal():&#160;main.c'],['../main_8c.html#aea43252ee6450e1356ad3721a02cf44b',1,'askConfigurationOptionsViaTerminal():&#160;main.c']]],
+  ['applyeffect_18',['applyEffect',['../main_8h.html#a95e0d1c9a07dbc1d955826143baf4161',1,'applyEffect(Game *game, int playerPosition, bool facedUpCard):&#160;main.c'],['../main_8c.html#a95e0d1c9a07dbc1d955826143baf4161',1,'applyEffect(Game *game, int playerPosition, bool facedUpCard):&#160;main.c']]],
+  ['askconfigurationoptionsviaterminal_19',['askConfigurationOptionsViaTerminal',['../config_8h.html#abf5e984b4bd2143a7136518e2541d8e3',1,'askConfigurationOptionsViaTerminal():&#160;main.c'],['../main_8c.html#abf5e984b4bd2143a7136518e2541d8e3',1,'askConfigurationOptionsViaTerminal():&#160;main.c']]],
   ['askplayernumber_20',['askPlayerNumber',['../main_8h.html#aad28d968d9f0a797c39c8860416b7664',1,'askPlayerNumber():&#160;main.c'],['../main_8c.html#aad28d968d9f0a797c39c8860416b7664',1,'askPlayerNumber():&#160;main.c']]],
   ['at_21',['at',['../vector_8h.html#a877087a729b1dee76cdc17a5efc8262e',1,'at(vector *vector, size_t index):&#160;vector.c'],['../vector_8c.html#a877087a729b1dee76cdc17a5efc8262e',1,'at(vector *vector, size_t index):&#160;vector.c']]]
 ];

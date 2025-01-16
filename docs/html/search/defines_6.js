@@ -1,4 +1,22 @@
 var searchData=
 [
-  ['hearts_0',['Hearts',['../main_8h.html#aae59a2a91713f1c78fd21306ea82f49f',1,'main.h']]]
+  ['fgblack_0',['FgBlack',['../ansi__const_8h.html#a6387589695d5aa1e343bd882037ebabd',1,'ansi_const.h']]],
+  ['fgblue_1',['FgBlue',['../ansi__const_8h.html#a5fe52dc0ba6f93caee98a66ca866d59e',1,'ansi_const.h']]],
+  ['fgbrightblack_2',['FgBrightBlack',['../ansi__const_8h.html#a5b37cccd977ab43661a9ef60cf7bb327',1,'ansi_const.h']]],
+  ['fgbrightblue_3',['FgBrightBlue',['../ansi__const_8h.html#a7385356a3127d57c3b27b5a42458d11f',1,'ansi_const.h']]],
+  ['fgbrightcyan_4',['FgBrightCyan',['../ansi__const_8h.html#a26fe7d4038d7d2bc15d9a20088d2981b',1,'ansi_const.h']]],
+  ['fgbrightgreen_5',['FgBrightGreen',['../ansi__const_8h.html#ae8d350e92c69315724f441001a6ed8d1',1,'ansi_const.h']]],
+  ['fgbrightmagenta_6',['FgBrightMagenta',['../ansi__const_8h.html#af756400701d2ea03535684c586f4dec1',1,'ansi_const.h']]],
+  ['fgbrightred_7',['FgBrightRed',['../ansi__const_8h.html#aa0c5b38ac2b7a00566ed83798bc93999',1,'ansi_const.h']]],
+  ['fgbrightwhite_8',['FgBrightWhite',['../ansi__const_8h.html#a84d0ce81cc77e008fbace3aba4d47aef',1,'ansi_const.h']]],
+  ['fgbrightyellow_9',['FgBrightYellow',['../ansi__const_8h.html#a1f764a080e194f651997505d714334cd',1,'ansi_const.h']]],
+  ['fgcyan_10',['FgCyan',['../ansi__const_8h.html#aff03421fc5eb74516f15489696f24f1c',1,'ansi_const.h']]],
+  ['fggreen_11',['FgGreen',['../ansi__const_8h.html#abbec6d5197930076ed82c04038dbdecd',1,'ansi_const.h']]],
+  ['fgmagenta_12',['FgMagenta',['../ansi__const_8h.html#a9dd721e21ce34cc9f4689c7504e64a43',1,'ansi_const.h']]],
+  ['fgred_13',['FgRed',['../ansi__const_8h.html#abaf734c3692c397fbb93a3efee837680',1,'ansi_const.h']]],
+  ['fgwhite_14',['FgWhite',['../ansi__const_8h.html#a6124ec62e609fd69836d62d373d7d082',1,'ansi_const.h']]],
+  ['fgyellow_15',['FgYellow',['../ansi__const_8h.html#a38fd5af6e1bc34c5b3a72868c8e5206e',1,'ansi_const.h']]],
+  ['filenamebuffersize_16',['fileNameBufferSize',['../logs__configuration_8h.html#aacbb6922cc303bc786fe270dc1514a07',1,'logs_configuration.h']]],
+  ['five_17',['Five',['../main_8h.html#a19fd47584f47a2fd48a165a5316426b7',1,'Five:&#160;main.h'],['../terminal_card_test_8c.html#a19fd47584f47a2fd48a165a5316426b7',1,'Five:&#160;terminalCardTest.c'],['../terminal_card_test_colors_8c.html#a19fd47584f47a2fd48a165a5316426b7',1,'Five:&#160;terminalCardTestColors.c'],['../terminal_card_test_colors_old_8c.html#a19fd47584f47a2fd48a165a5316426b7',1,'Five:&#160;terminalCardTestColorsOld.c']]],
+  ['four_18',['Four',['../main_8h.html#a5fe71961256593827c6634fed580a2cf',1,'Four:&#160;main.h'],['../terminal_card_test_8c.html#a5fe71961256593827c6634fed580a2cf',1,'Four:&#160;terminalCardTest.c'],['../terminal_card_test_colors_8c.html#a5fe71961256593827c6634fed580a2cf',1,'Four:&#160;terminalCardTestColors.c'],['../terminal_card_test_colors_old_8c.html#a5fe71961256593827c6634fed580a2cf',1,'Four:&#160;terminalCardTestColorsOld.c']]]
 ];
