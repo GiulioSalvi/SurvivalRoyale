@@ -15,7 +15,7 @@ var gui_8h =
     [ "drawLine", "gui_8h.html#a5f2b3198a25fda2dc30717a8ff88cbac", null ],
     [ "drawPageFrame", "gui_8h.html#a13b8c9cfd931f69359a0a401762a2e95", null ],
     [ "freePageData", "gui_8h.html#a40a7e16dd4928c3ac75424abb18ae672", null ],
-    [ "getCardColor", "gui_8h.html#a8c10ffb09f1934d8635c76d39e57ab45", null ],
+    [ "getCardColor", "gui_8h.html#a6cba795bcfe00049d9017419a9daaf76", null ],
     [ "getPageContainingPlayer", "gui_8h.html#a16ec9052e83c0c7bf3103347ecf5e0ba", null ],
     [ "getPageData", "gui_8h.html#a2a51a969e2043dbd573822dedcf6401a", null ],
     [ "isTerminalSizeValid", "gui_8h.html#aa6a54c1e00c5ba372ef53dce01d465dd", null ],

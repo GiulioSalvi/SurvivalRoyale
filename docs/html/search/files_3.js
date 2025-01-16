@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['fileloggingtest_2ec_0',['fileLoggingTest.c',['../file_logging_test_8c.html',1,'']]]
+  ['game_5fconfiguration_2eh_0',['game_configuration.h',['../game__configuration_8h.html',1,'']]],
+  ['gui_2ec_1',['gui.c',['../gui_8c.html',1,'']]],
+  ['gui_2eh_2',['gui.h',['../gui_8h.html',1,'']]]
 ];

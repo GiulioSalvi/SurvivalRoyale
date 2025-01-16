@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['size_0',['size',['../structvector.html#a854352f53b148adc24983a58a1866d66',1,'vector']]],
-  ['stdcolor_1',['stdColor',['../union____color.html#ac5739dcb0f31d4ae0bc975e6d97f4f16',1,'__color']]],
-  ['suit_2',['suit',['../struct_card.html#a40b11a6b8180214798ffc51621b13f57',1,'Card']]]
+  ['underlined_0',['underlined',['../structgraphic_rendition.html#ab418deb8b7a3f005d38f9b487b4cb9b8',1,'graphicRendition']]],
+  ['useconsole_1',['useConsole',['../struct_logs_configuration.html#a58ef51c76bbb511e068b10ac92dc5b8f',1,'LogsConfiguration']]]
 ];

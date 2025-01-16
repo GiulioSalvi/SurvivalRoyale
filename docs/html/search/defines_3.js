@@ -1,7 +1,6 @@
 var searchData=
 [
-  ['card_5fheight_0',['CARD_HEIGHT',['../gui_8h.html#a1112bc16f788ef03ff4165abfa648d28',1,'CARD_HEIGHT:&#160;gui.h'],['../terminal_card_test_8c.html#a1112bc16f788ef03ff4165abfa648d28',1,'CARD_HEIGHT:&#160;terminalCardTest.c'],['../terminal_card_test_colors_8c.html#a1112bc16f788ef03ff4165abfa648d28',1,'CARD_HEIGHT:&#160;terminalCardTestColors.c'],['../terminal_card_test_colors_old_8c.html#a1112bc16f788ef03ff4165abfa648d28',1,'CARD_HEIGHT:&#160;terminalCardTestColorsOld.c']]],
-  ['card_5fwidth_1',['CARD_WIDTH',['../gui_8h.html#ad6ff324701f28fdcd04a8408f68a3f6c',1,'CARD_WIDTH:&#160;gui.h'],['../terminal_card_test_8c.html#ad6ff324701f28fdcd04a8408f68a3f6c',1,'CARD_WIDTH:&#160;terminalCardTest.c'],['../terminal_card_test_colors_8c.html#ad6ff324701f28fdcd04a8408f68a3f6c',1,'CARD_WIDTH:&#160;terminalCardTestColors.c'],['../terminal_card_test_colors_old_8c.html#ad6ff324701f28fdcd04a8408f68a3f6c',1,'CARD_WIDTH:&#160;terminalCardTestColorsOld.c']]],
-  ['clear_5fscreen_2',['CLEAR_SCREEN',['../terminal_card_test_8c.html#a788be1e5263200d55dddebd3606ccad4',1,'CLEAR_SCREEN:&#160;terminalCardTest.c'],['../terminal_card_test_colors_8c.html#a788be1e5263200d55dddebd3606ccad4',1,'CLEAR_SCREEN:&#160;terminalCardTestColors.c'],['../terminal_card_test_colors_old_8c.html#a788be1e5263200d55dddebd3606ccad4',1,'CLEAR_SCREEN:&#160;terminalCardTestColorsOld.c']]],
-  ['clubs_3',['Clubs',['../main_8h.html#a92065ca7307951aa84e28f1142d92c5b',1,'Clubs:&#160;main.h'],['../terminal_card_test_8c.html#a92065ca7307951aa84e28f1142d92c5b',1,'Clubs:&#160;terminalCardTest.c'],['../terminal_card_test_colors_8c.html#a92065ca7307951aa84e28f1142d92c5b',1,'Clubs:&#160;terminalCardTestColors.c'],['../terminal_card_test_colors_old_8c.html#a92065ca7307951aa84e28f1142d92c5b',1,'Clubs:&#160;terminalCardTestColorsOld.c']]]
+  ['card_5fheight_0',['CARD_HEIGHT',['../gui_8h.html#a1112bc16f788ef03ff4165abfa648d28',1,'gui.h']]],
+  ['card_5fwidth_1',['CARD_WIDTH',['../gui_8h.html#ad6ff324701f28fdcd04a8408f68a3f6c',1,'gui.h']]],
+  ['clubs_2',['Clubs',['../main_8h.html#a92065ca7307951aa84e28f1142d92c5b',1,'main.h']]]
 ];

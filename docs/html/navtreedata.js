@@ -25,7 +25,7 @@
 var NAVTREE =
 [
   [ "Survival Royale", "index.html", [
-    [ "Survival Royale:", "index.html", null ],
+    [ "Survival Royale", "index.html", null ],
     [ "Data Structures", "annotated.html", [
       [ "Data Structures", "annotated.html", "annotated_dup" ],
       [ "Data Structure Index", "classes.html", null ],
@@ -50,8 +50,8 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"gui_8c.html#a16ec9052e83c0c7bf3103347ecf5e0ba",
-"terminal_card_test_8c.html#ad6ff324701f28fdcd04a8408f68a3f6c"
+"gui_8c.html#a6cba795bcfe00049d9017419a9daaf76",
+"vector_8h.html#ae1ab5f2b82c0e0a3d3f34d9a4e7f3fb5"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronization';

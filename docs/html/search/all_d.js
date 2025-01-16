@@ -1,11 +1,10 @@
 var searchData=
 [
-  ['main_0',['main',['../main_8c.html#a3c04138a5bfe5d72780bb7e82a18e627',1,'main(int argc, char **argv):&#160;main.c'],['../file_logging_test_8c.html#a840291bc02cba5474a4cb46a9b9566fe',1,'main(void):&#160;fileLoggingTest.c'],['../terminal_card_test_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'main():&#160;terminalCardTest.c'],['../terminal_card_test_colors_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'main():&#160;terminalCardTestColors.c'],['../terminal_card_test_colors_old_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'main():&#160;terminalCardTestColorsOld.c']]],
+  ['main_0',['main',['../main_8c.html#a3c04138a5bfe5d72780bb7e82a18e627',1,'main.c']]],
   ['main_2ec_1',['main.c',['../main_8c.html',1,'']]],
   ['main_2eh_2',['main.h',['../main_8h.html',1,'']]],
   ['max_5fcapacity_3',['MAX_CAPACITY',['../vector_8h.html#abc29155cbf8d3ba92a8cb487bbabdc66',1,'vector.h']]],
   ['min_5fcapacity_4',['MIN_CAPACITY',['../vector_8h.html#a770d308c31934341c11fa05f4549e1ce',1,'vector.h']]],
-  ['min_5fcolumns_5',['MIN_COLUMNS',['../gui_8h.html#a359791a95390262089840e5f232aac44',1,'MIN_COLUMNS:&#160;gui.h'],['../terminal_card_test_8c.html#a359791a95390262089840e5f232aac44',1,'MIN_COLUMNS:&#160;terminalCardTest.c'],['../terminal_card_test_colors_8c.html#a359791a95390262089840e5f232aac44',1,'MIN_COLUMNS:&#160;terminalCardTestColors.c'],['../terminal_card_test_colors_old_8c.html#a359791a95390262089840e5f232aac44',1,'MIN_COLUMNS:&#160;terminalCardTestColorsOld.c']]],
-  ['min_5frows_6',['MIN_ROWS',['../gui_8h.html#a127ce6a6f9cc3249f35aba75db3e77e0',1,'MIN_ROWS:&#160;gui.h'],['../terminal_card_test_8c.html#a127ce6a6f9cc3249f35aba75db3e77e0',1,'MIN_ROWS:&#160;terminalCardTest.c'],['../terminal_card_test_colors_8c.html#a127ce6a6f9cc3249f35aba75db3e77e0',1,'MIN_ROWS:&#160;terminalCardTestColors.c'],['../terminal_card_test_colors_old_8c.html#a127ce6a6f9cc3249f35aba75db3e77e0',1,'MIN_ROWS:&#160;terminalCardTestColorsOld.c']]],
-  ['movecursorat_7',['moveCursorAt',['../terminal_card_test_8c.html#a764caae09460f34bf9e63c9cd0b8ddd8',1,'moveCursorAt(unsigned int x, unsigned int y):&#160;terminalCardTest.c'],['../terminal_card_test_colors_8c.html#a764caae09460f34bf9e63c9cd0b8ddd8',1,'moveCursorAt(unsigned int x, unsigned int y):&#160;terminalCardTest.c'],['../terminal_card_test_colors_old_8c.html#a764caae09460f34bf9e63c9cd0b8ddd8',1,'moveCursorAt(unsigned int x, unsigned int y):&#160;terminalCardTestColorsOld.c']]]
+  ['min_5fcolumns_5',['MIN_COLUMNS',['../gui_8h.html#a359791a95390262089840e5f232aac44',1,'gui.h']]],
+  ['min_5frows_6',['MIN_ROWS',['../gui_8h.html#a127ce6a6f9cc3249f35aba75db3e77e0',1,'gui.h']]]
 ];

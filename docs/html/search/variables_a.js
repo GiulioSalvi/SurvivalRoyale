@@ -1,8 +1,6 @@
 var searchData=
 [
-  ['r_0',['r',['../structrgb.html#a4c5c6ceb8ed33456261fa907136e0c3a',1,'rgb']]],
-  ['rank_1',['rank',['../struct_card.html#a03c517951405031e7e81d491b5e2778b',1,'Card']]],
-  ['revealedfaceddowncard_2',['revealedFacedDownCard',['../struct_player.html#a5bf1e40834469018adf30bb516cc3c7b',1,'Player']]],
-  ['rgbcolor_3',['rgbColor',['../union____color.html#a6ca55daac8e551b71981291165af6028',1,'__color']]],
-  ['rowspacing_4',['rowSpacing',['../struct_page_data.html#ae72a2ef1e2d194be24b76b369c3c365e',1,'PageData']]]
+  ['size_0',['size',['../structvector.html#a854352f53b148adc24983a58a1866d66',1,'vector']]],
+  ['stdcolor_1',['stdColor',['../union____color.html#ac5739dcb0f31d4ae0bc975e6d97f4f16',1,'__color']]],
+  ['suit_2',['suit',['../struct_card.html#a40b11a6b8180214798ffc51621b13f57',1,'Card']]]
 ];

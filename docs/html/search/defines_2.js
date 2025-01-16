@@ -15,6 +15,5 @@ var searchData=
   ['bgmagenta_12',['BgMagenta',['../ansi__const_8h.html#ac03898f3d575cff9f1f3af0d331eed09',1,'ansi_const.h']]],
   ['bgred_13',['BgRed',['../ansi__const_8h.html#a912cc5d32dee48fdcf91fc0c576f5280',1,'ansi_const.h']]],
   ['bgwhite_14',['BgWhite',['../ansi__const_8h.html#afd5d1b069c08ee483b375624dd611f35',1,'ansi_const.h']]],
-  ['bgyellow_15',['BgYellow',['../ansi__const_8h.html#ab993b410fb8b938d64ef9eb4edd22d0f',1,'ansi_const.h']]],
-  ['bold_16',['BOLD',['../terminal_card_test_8c.html#a26cdbb1a00213c810caccf21cd33a631',1,'BOLD:&#160;terminalCardTest.c'],['../terminal_card_test_colors_8c.html#a26cdbb1a00213c810caccf21cd33a631',1,'BOLD:&#160;terminalCardTestColors.c'],['../terminal_card_test_colors_old_8c.html#a26cdbb1a00213c810caccf21cd33a631',1,'BOLD:&#160;terminalCardTestColorsOld.c']]]
+  ['bgyellow_15',['BgYellow',['../ansi__const_8h.html#ab993b410fb8b938d64ef9eb4edd22d0f',1,'ansi_const.h']]]
 ];
