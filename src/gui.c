@@ -26,10 +26,8 @@ void navigatePages(PageData* pagesData, int totalPages, int maxRows, int maxColu
     int currentPage = getPageContainingPlayer(pagesData, totalPages, id);
 
     while (1) {
-        // clear the terminal screen
         clearScreen();
         
-        // Display the current page
         displayPage(&pagesData[currentPage], maxRows, maxColumns, bestStartColumn);
 
         cursorPosition(maxRows - (LOG_SECTION_HEIGHT + 1) + 1, 3);
@@ -38,7 +36,6 @@ void navigatePages(PageData* pagesData, int totalPages, int maxRows, int maxColu
         cursorPosition(maxRows - (LOG_SECTION_HEIGHT + 1) + 2, 3);
         applyEffect(game, playerIndex, true);
 
-        // Display the current page
         displayPage(&pagesData[currentPage], maxRows, maxColumns, bestStartColumn);
 
         cursorPosition(maxRows - (LOG_SECTION_HEIGHT + 1) + 3, 3);
@@ -51,26 +48,18 @@ void navigatePages(PageData* pagesData, int totalPages, int maxRows, int maxColu
         else
             printfgr("Your #b#faced down card#r# has been #b##%d#already revealed#r#!", FgBrightRed);
         
-        // Move cursor to the last empty row in the messages section
         cursorPosition(maxRows - 2, maxColumns - 2);
-        printgr(" "); // Ensure cursor is visible and no leftover text
+        printgr(" ");
 
-        // Get user input
         input = getchar();
 
         cursorPosition(maxRows - (LOG_SECTION_HEIGHT + 1) + 4, 3);
-        // Handle input
         if (input == 'w') {
-            // Move to the next page or loop back to the first page
             currentPage = (currentPage + 1) % totalPages;
         } else if (input == 's') {
-            // Move to the previous page or loop back to the last page
             currentPage = (currentPage - 1 + totalPages) % totalPages;
-        } else if (input == 'e') {
-            // Exit the program
-            clearScreen();
-            break;
-        } else if(!player->revealedFacedDownCard) {
+        } 
+        else if(!player->revealedFacedDownCard) {
             if(input == 'y') {
                 bool applyEffectHasPrinted = applyEffect(game, playerIndex, false);
                 displayPage(&pagesData[currentPage], maxRows, maxColumns, bestStartColumn);
@@ -83,7 +72,7 @@ void navigatePages(PageData* pagesData, int totalPages, int maxRows, int maxColu
             } else if(input == 'n')
                 printgr("#b#The card has not been revealed#r#.");
 
-            while(getchar() != '\n');
+            fflush(stdin);
             
             Pause(true);
             break;
@@ -91,102 +80,89 @@ void navigatePages(PageData* pagesData, int totalPages, int maxRows, int maxColu
             printfgr("Your #b#faced down card#r# has been #b##%d#already revealed#r#!", FgBrightRed);
             
             clearScreen();
-            // Clear input buffer
-            while(getchar() != '\n');
+            fflush(stdin);
             
+            if (input == 'e') {
+                clearScreen();
+                break;
+            } 
             break;
         } 
 
         // Clear input buffer
-        while(getchar() != '\n');
+        // while(getchar() != '\n');
     }
 }
 
-// function to display a full page (frame + cards)
 void displayPage(PageData* page, int maxRows, int maxColumns, int bestStartColumn) {
-    // draw all the cards for the current page
     drawCardsForPage(page, 3, bestStartColumn); // cards start at the best row to print with even spaces all the data
 
-    // draw the page frame (borders and separator)
     drawPageFrame(maxRows, maxColumns);
 }
 
-// function to draw the page frame (borders and separator)
 void drawPageFrame(int maxRows, int maxColumns) {
-    // Top border
-    drawLine(1, 1, maxColumns, 'h', 'u'); // Top border with corners
+    drawLine(1, 1, maxColumns, 'h', 'u');
 
-    // Left and right vertical borders
-    drawLine(2, 1, maxRows - 1, 'v', 'n');             // Left vertical border
-    drawLine(2, maxColumns, maxRows - 1, 'v', 'n');    // Right vertical border
+    drawLine(2, 1, maxRows - 1, 'v', 'n');
+    drawLine(2, maxColumns, maxRows - 1, 'v', 'n');
 
-    // Separator above the log section (2 lines above the bottom border)
+    drawLine(maxRows, 1, maxColumns, 'h', 'd');
+
     int logSeparatorRow = maxRows - LOG_SECTION_HEIGHT - 1;
-    drawLine(logSeparatorRow, 2, maxColumns - 2, 'h', 'n'); // Horizontal separator
-
-    // Bottom border
-    drawLine(maxRows, 1, maxColumns, 'h', 'd'); // Bottom border with corners
+    drawLine(logSeparatorRow, 2, maxColumns - 2, 'h', 'n');
 
     // Log section border that separates input from messages
     drawLine(maxRows - (LOG_SECTION_HEIGHT), maxColumns - 3, LOG_SECTION_HEIGHT, 'v', 'n');
 }
 
-// function to draw all cards for the current page
 void drawCardsForPage(PageData* page, int startX, int bestStartColumn) {
-    int columnSpacing = CARD_WIDTH + 2;  // spacing between cards
-    int currentRow = startX;  // starting row position
+    int columnSpacing = CARD_WIDTH + 2;
+    int currentRow = startX;
 
     for (int i = 0; i < page->playerCount; i++) {
-        // Calculate column position
         int currentCol = bestStartColumn + (i % page->playerPerRow) * columnSpacing;
 
-        // Draw the card
         Player* player = page->players[i];
         drawCard(currentRow, currentCol, player->facedUpCard.suit, player->facedUpCard.rank);
 
-        // Print player name and life points
         cursorPosition(currentRow + CARD_HEIGHT + 1, currentCol + 1);
         printfgr("ID: %d", player->id);
         cursorPosition(currentRow + CARD_HEIGHT + 2, currentCol + 1);
         printfgr("Life: %d #%d#♥#r#", player->lifePoints, FgRed);
 
-        // Move to the next row after completing a row
         if ((i + 1) % page->playerPerRow == 0) {
             currentRow += page->rowSpacing;
         }
     }
 }
 
-
-// function to draw a line in the terminal
 void drawLine(int startingX, int startingY, int length, char direction, char borders) {
-    if (borders == 'u') { // upper border with corners
+    if (borders == 'u') {
         cursorPosition(startingX, startingY);
-        printgr("┌"); // top-left corner
+        printgr("┌");
         for (int i = 1; i < length - 1; i++) {
             cursorPosition(startingX, startingY + i);
             printgr("─");
         }
         cursorPosition(startingX, startingY + length - 1);
-        printgr("┐"); // top-right corner
+        printgr("┐");
     } 
-    else if (borders == 'd') { // bottom border with corners
+    else if (borders == 'd') {
         cursorPosition(startingX, startingY);
-        printgr("└"); // bottom-left corner
+        printgr("└");
         for (int i = 1; i < length - 1; i++) {
             cursorPosition(startingX, startingY + i);
             printgr("─");
         }
         cursorPosition(startingX, startingY + length - 1);
-        printgr("┘"); // bottom-right corner
+        printgr("┘");
     } 
-    else if (borders == 'n') { // plain line
+    else if (borders == 'n') {
         for (int i = 0; i < length; i++) {
-            if (direction == 'h') { // horizontal line
+            if (direction == 'h') {
                 cursorPosition(startingX, startingY + i);
                 printgr("─");
-            } 
-            else if (direction == 'v') { // vertical line
+            } else if (direction == 'v') {
                 cursorPosition(startingX + i, startingY);
                 printgr("│");
             }
@@ -194,38 +170,30 @@ void drawLine(int startingX, int startingY, int length, char direction, char bor
     }
 }
 
-// function to draw a single card at a specified position
 void drawCard(int startingX, int startingY, int suit, int rank) {
-    // Get the color for the card
     int color = getCardColor(rank);
 
-    // Draw card borders with color
     printfgr("#%d#", color);
-    drawLine(startingX, startingY, CARD_WIDTH, 'h', 'u'); // Top border
-    drawLine(startingX + 1, startingY, CARD_HEIGHT - 1, 'v', 'n'); // Left border
-    drawLine(startingX + 1, startingY + CARD_WIDTH - 1, CARD_HEIGHT - 1, 'v', 'n'); // Right border
-    drawLine(startingX + CARD_HEIGHT, startingY, CARD_WIDTH, 'h', 'd'); // Bottom border
+    drawLine(startingX, startingY, CARD_WIDTH, 'h', 'u');
+    drawLine(startingX + 1, startingY, CARD_HEIGHT - 1, 'v', 'n');
+    drawLine(startingX + 1, startingY + CARD_WIDTH - 1, CARD_HEIGHT - 1, 'v', 'n');
+    drawLine(startingX + CARD_HEIGHT, startingY, CARD_WIDTH, 'h', 'd');
     defaultForegroundColor();
 
-    // Calculate card's center
     int centerCol = startingY + CARD_WIDTH / 2;
 
-    // Display card suit and rank with color
-    const char* cardSuitString = CARD_SUIT_STRINGS[suit - Clubs]; // Suit index
-    const char* cardRankString = CARD_RANK_STRINGS[rank - 1];    // Rank index
+    const char* cardSuitString = CARD_SUIT_STRINGS[suit - Clubs];
+    const char* cardRankString = CARD_RANK_STRINGS[rank - 1];
 
-    // Print card suit
     cursorPosition(startingX + 2, centerCol - strlen(cardSuitString) / 2);
     printfgr("#%d#%s", color, cardSuitString);
     graphicReset();
 
-    // Print card rank
     cursorPosition(startingX + CARD_HEIGHT - 2, centerCol - strlen(cardRankString) / 2);
     printfgr("#%d#%s", color, cardRankString);
     graphicReset();
 }
 
-// function used to get the card's color
 int getCardColor(int cardRank) {
     switch (cardRank) {
         case Seven:
@@ -299,7 +267,6 @@ PageData* getPageData(int maxRows, int maxColumns, Player** players, int totalPl
     return pagesData;
 }
 
-// function to free page data
 void freePageData(PageData* pages, int totalPages) {
     for (int i = 0; i < totalPages; i++) {
         free(pages[i].players);
@@ -307,7 +274,6 @@ void freePageData(PageData* pages, int totalPages) {
     free(pages);
 }
 
-// function to print page data
 void printPageData(PageData* pages, int totalPages) {
     for (int i = 0; i < totalPages; i++) {
         printfgr("Page %d:\n", i + 1);
