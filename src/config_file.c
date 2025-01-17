@@ -31,11 +31,13 @@ GameConfiguration getConfigurationFromFile() {
                 if(settingValue[strlen(settingValue) - 1] == '\n')
                     settingValue[strlen(settingValue) - 1] = '\0';
 
-                if(strcmp("allowSameRank", settingName) == 0) {
+                if(strcmp("allowSameRank", settingName) == 0)
                     cfg.allowSameRank = strcmp("true", settingValue) == 0;
-                } else if(strcmp("allowSameSuit", settingName) == 0) {
+                else if(strcmp("allowSameSuit", settingName) == 0)
                     cfg.allowSameSuit = strcmp("true", settingValue) == 0;
-                } else if(strcmp("defaultPlayersLPs", settingName) == 0) {
+                else if(strcmp("beVerbose", settingName) == 0)
+                    cfg.beVerbose = strcmp("true", settingValue) == 0;
+                else if(strcmp("defaultPlayersLPs", settingName) == 0) {
                     const int rs = strtol(settingValue, &endptr, 10);
 
                     if(errno == ERANGE || *endptr != '\0')
@@ -66,42 +68,13 @@ void saveConfigurationToFile(GameConfiguration configuration, bool overwriteIfEx
     if(!overwriteIfExists && existsConfigurationFile())
         return;
 
-    FILE* cfgFile = fopen("game.cfg", "w");
+    FILE* cfgFile = fopen("game.cfg", "w+");
 
-    fputs("allowSameRank=", cfgFile);
-    if(configuration.allowSameRank)
-        fputs("true", cfgFile);
-    else
-        fputs("false", cfgFile);
-    fputs("\n", cfgFile);
-
-    fputs("allowSameSuit=", cfgFile);
-    if(configuration.allowSameSuit)
-        fputs("true", cfgFile);
-    else
-        fputs("false", cfgFile);
-    fputs("\n", cfgFile);
-
-    fputs("defaultPlayersLPs=", cfgFile);
-    int snLen = nDigits(configuration.defaultPlayersLPs) + 2;
-    char* sn = (char*)malloc(snLen*sizeof(char));
-    if(sn == NULL)
-        exit(EXIT_ALLOC_FAILURE);
-
-    snprintf(sn, snLen, "%d", configuration.defaultPlayersLPs);
-    fputs(sn, cfgFile);
-    fputs("\n", cfgFile);
-    free(sn);
-
-    fputs("defaultLPsOnField=", cfgFile);
-    snLen = nDigits(configuration.defaultLPsOnField) + 2;
-    sn = (char*)malloc(snLen*sizeof(char));
-    if(sn == NULL)
-        exit(EXIT_ALLOC_FAILURE);
+    fprintf(cfgFile, "beVerbose=%s\n", configuration.beVerbose ? "true" : "false");
+    fprintf(cfgFile, "allowSameRank=%s\n", configuration.allowSameRank ? "true" : "false");
+    fprintf(cfgFile, "allowSameSuit=%s\n", configuration.allowSameSuit ? "true" : "false");
+    fprintf(cfgFile, "defaultPlayersLPs=%d\n", configuration.defaultPlayersLPs);
+    fprintf(cfgFile, "defaultLPsOnField=%d\n", configuration.defaultLPsOnField);
     
-    snprintf(sn, snLen, "%d", configuration.defaultLPsOnField);
-    fputs(sn, cfgFile);
-    fputs("\n", cfgFile);
-    free(sn);
     fclose(cfgFile);
 }
