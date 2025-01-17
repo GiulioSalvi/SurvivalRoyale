@@ -1,8 +1,10 @@
-.idea/
-.vscode/
-.DS_Store
 bin/
 logs/
-Go.ps1
+.idea/
+.vscode/
+test/exec/
+
 Go.sh
+Go.ps1
 game.cfg
+.DS_Store
