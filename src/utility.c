@@ -41,6 +41,28 @@ bool containsFrom(const char* str, char c, int p) {
     return false;
 }
 
+bool containsSubstringFrom(const char* str, const char* subStr, int p) {
+    if(strcmp(str, subStr) == 0)
+        return true;
+    
+    int strLen = strlen(str);
+    int subStrLen = strlen(subStr);
+    
+    if(p < 0 || p >= strLen || subStrLen == 0 || subStrLen > strLen - p)
+        return false;
+
+    for(int i = p; i < strLen; i++)
+        if(str[i] == subStr[0] && i + subStrLen < strLen)
+            for(int j = 0; j < subStrLen; j++) {
+                if(str[i + j] != subStr[j])
+                    break;
+                else if(j == subStrLen - 1)
+                    return true;
+            }
+        
+    return false;
+}
+
 bool isDecimalDigit(char c) {
     return (int)c >= 48 && (int)c <= 57;
 }

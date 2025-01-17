@@ -29,6 +29,12 @@
     /// @param p The position from which starts.
     /// @return True if an occoruncy is found, false otherwise.
     bool containsFrom(const char* str, char c, int p);
+    /// @brief Checks if there is an occoruncy of the passed substring from the passed position in the passed string.
+    /// @param str The string to check in.
+    /// @param subStr The substring to look for.
+    /// @param p The position from which starts.
+    /// @return True if an occoruncy is found, false otherwise.
+    bool containsSubstringFrom(const char* str, const char* subStr, int p);
     /// @brief Checks if a char is a decimal digit.
     /// @param c The char to check.
     /// @return True if the char is decimal digit, false otherwise.
