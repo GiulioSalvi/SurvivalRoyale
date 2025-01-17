@@ -32,7 +32,6 @@
 
     PageData* getPageData(int maxRows, int maxColumns, Player** players, int totalPlayers, int* totalPages, int* bestStartColumn);
     void freePageData(PageData* pages, int totalPages);
-    void printPageData(PageData* pages, int totalPages);
 
     bool isTerminalSizeValid(int maxRows, int maxColumns);
 

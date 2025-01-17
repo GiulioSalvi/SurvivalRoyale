@@ -26,11 +26,17 @@
     /// @brief Prints user-friendly the card rank and suit.
     /// @param card The card that has to be printed.
     /// @param logsConfiguration The logs configuration.
-    /// @param newLine Flag for determining if the function has to go to a new line before exiting. If the logger is not using the console, this value is ignored and a new line is always generated.
+    /// @param newLine Flag for determining if the function has to go to a new line before exiting. Differently from the behaviour of the other functions, this value is not ignored if the logger is not using the console.
     void printCard(Card card, LogsConfiguration logsConfiguration, bool newLine);
     /// @brief Prints user-friendly the cards deck.
     /// @param deck The deck that has to be printed.
     /// @param logsConfiguration The logs configuration.
     /// @param newLine Flag for determining if the function has to go to a new line before exiting. If the logger is not using the console, this value is ignored and a new line is always generated.
     void printDeck(Card* deck, LogsConfiguration logsConfiguration, bool newLine);
+    /// @brief Prints user-friendly the pages' infos.
+    /// @param pages An array of structures containing informations about each page.
+    /// @param logsConfiguration The logs configuration.
+    /// @param totalPages The amount of page structures in the array.
+    /// @param newLine Flag for determining if the function has to go to a new line before exiting. If the logger is not using the console, this value is ignored and a new line is always generated.
+    void printPageData(PageData pages[], LogsConfiguration logsConfiguration, int totalPages, bool newLine);
 #endif

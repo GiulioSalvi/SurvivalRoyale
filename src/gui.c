@@ -274,21 +274,6 @@ void freePageData(PageData* pages, int totalPages) {
     free(pages);
 }
 
-void printPageData(PageData* pages, int totalPages) {
-    for (int i = 0; i < totalPages; i++) {
-        printfgr("Page %d:\n", i + 1);
-        printfgr("  Rows: %d, Players Per Row: %d, Total Players: %d\n", 
-               pages[i].playerRows, pages[i].playerPerRow, pages[i].playerCount);
-
-        for (int j = 0; j < pages[i].playerCount; j++) {
-            printfgr("    Player ID: %d, Life Points: %d\n",
-                   pages[i].players[j]->id,  
-                   pages[i].players[j]->lifePoints);
-        }
-        printfgr("\n");
-    }
-}
-
 bool isTerminalSizeValid(int maxRows, int maxColumns) {
     return (maxRows >= MIN_ROWS) && (maxColumns >= MIN_COLUMNS);
 }

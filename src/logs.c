@@ -1,3 +1,4 @@
+#include "gui.h"
 #include "ansi.h"
 #include "logs.h"
 #include "ansi_const.h"
@@ -90,6 +91,7 @@ void printPlayer(Player player, LogsConfiguration logsConfiguration, bool newLin
 
 void printCard(Card card, LogsConfiguration logsConfiguration, bool newLine) {
     FILE* outStream = !logsConfiguration.useConsole ? fopen(logsConfiguration.fileName, "a+") : stdout;
+
     switch(card.suit) {
         case Clubs:
             fprintf(outStream, "Clubs");
@@ -140,7 +142,7 @@ void printCard(Card card, LogsConfiguration logsConfiguration, bool newLine) {
             break;
     }
 
-    fprintf(outStream, !logsConfiguration.useConsole || newLine ? "\n" : "");
+    fprintf(outStream, newLine ? "\n" : "");
 
     fflush(outStream);
     if(!logsConfiguration.useConsole)
@@ -150,4 +152,27 @@ void printCard(Card card, LogsConfiguration logsConfiguration, bool newLine) {
 void printDeck(Card* deck, LogsConfiguration logsConfiguration, bool newLine) {
     for(int i = 0; i < 40; i++)
         printCard(deck[i], logsConfiguration, i == 39 ? newLine : true);
+}
+
+void printPageData(PageData pages[], LogsConfiguration logsConfiguration, int totalPages, bool newLine) {
+    FILE* outStream = !logsConfiguration.useConsole ? fopen(logsConfiguration.fileName, "a+") : stdout;
+    
+    for (int i = 0; i < totalPages; i++) {
+        fprintf(outStream, "Page %d:\n", i + 1);
+        fprintf(outStream, "  Rows: %d, Players Per Row: %d, Total Players: %d\n", 
+               pages[i].playerRows, pages[i].playerPerRow, pages[i].playerCount);
+
+        for (int j = 0; j < pages[i].playerCount; j++) {
+            fprintf(outStream, "    Player ID: %d, Life Points: %d\n",
+                   pages[i].players[j]->id,  
+                   pages[i].players[j]->lifePoints);
+        }
+        fprintf(outStream, "\n");
+    }
+
+    fprintf(outStream, !logsConfiguration.useConsole || newLine ? "\n" : "");
+
+    fflush(outStream);
+    if(!logsConfiguration.useConsole)
+        fclose(outStream);
 }
