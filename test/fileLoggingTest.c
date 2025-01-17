@@ -8,7 +8,7 @@ char randomLetter();
 
 int main(void) {
 	srand(time(NULL));
-	FILE* logFile = fopen("./log.txt", "w");
+	FILE* logFile = fopen("./exec/log.txt", "w");
 
 	printf("Writing first data\n");
 	char* buffer = (char*)calloc(256 + 1, sizeof(char));
