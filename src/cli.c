@@ -108,53 +108,64 @@ GameConfiguration getConfigurationFromArguments(char** argv, const int argc) {
     GameConfiguration cfg = getDefaultConfiguration();
 
     for(int i = 1; i < argc; i++) {
-        char* optionName = "";
-        char* optionValue = "";
+        if(
+            containsSubstringFrom(argv[i], "--default-player-LPs", 0) ||
+            containsSubstringFrom(argv[i], "-p", 0) ||
+            containsSubstringFrom(argv[i], "--default-LPs-field", 0) ||
+            containsSubstringFrom(argv[i], "-f", 0) ||
+            containsSubstringFrom(argv[i], "--allow-same-rank", 0) ||
+            containsSubstringFrom(argv[i], "-r", 0) ||
+            containsSubstringFrom(argv[i], "--allow-same-suit", 0) ||
+            containsSubstringFrom(argv[i], "-s", 0)
+        ) {
+            char* optionName = "";
+            char* optionValue = "";
 
-        if(containsFrom(argv[i], '=', 0)) {
-            const int equalPosition = offsetFromNext(argv[i], '=', 0);
-            optionName = substring(argv[i], 0, equalPosition);
-            optionValue = substring(argv[i], equalPosition + 1, strlen(argv[i]) - equalPosition - 1);
-        } else {
-            optionName = argv[i];
-            optionValue = argv[i + 1];
-            
-            i++;
-        }
-
-        errno = 0;
-        char* endptr;
-        if(strcmp(optionName, "--default-player-LPs") == 0 || strcmp(optionName, "-p") == 0) {
-            int n = strtol(optionValue, &endptr, 10);
-
-            if(errno == ERANGE || *endptr != '\0') {
-                printf("Illegal CLI arguments: a number was expected.\n");
-                exit(EXIT_CLI_ILLEGAL);
+            if(containsFrom(argv[i], '=', 0)) {
+                const int equalPosition = offsetFromNext(argv[i], '=', 0);
+                optionName = substring(argv[i], 0, equalPosition);
+                optionValue = substring(argv[i], equalPosition + 1, strlen(argv[i]) - equalPosition - 1);
+            } else {
+                optionName = argv[i];
+                optionValue = argv[i + 1];
+                
+                i++;
             }
 
-            cfg.defaultPlayersLPs = n;
-        } else if(strcmp(optionName, "--default-LPs-field") == 0 || strcmp(optionName, "-f") == 0) {
-            int n = strtol(optionValue, &endptr, 10);
+            errno = 0;
+            char* endptr;
+            if(strcmp(optionName, "--default-player-LPs") == 0 || strcmp(optionName, "-p") == 0) {
+                int n = strtol(optionValue, &endptr, 10);
 
-            if(errno == ERANGE || *endptr != '\0') {
-                printf("Illegal CLI arguments: a number was expected.\n");
-                exit(EXIT_CLI_ILLEGAL);
-            }
+                if(errno == ERANGE || *endptr != '\0') {
+                    printf("Illegal CLI arguments: a number was expected.\n");
+                    exit(EXIT_CLI_ILLEGAL);
+                }
 
-            cfg.defaultLPsOnField = n;
-        } else if(strcmp(optionName, "--allow-same-rank") == 0 || strcmp(optionName, "-r") == 0) {
-            if(strcmp(optionValue, "true") == 0 || strcmp(optionValue, "false") == 0)
-                cfg.allowSameRank = strcmp(optionValue, "true") == 0;
-            else {
-                printf("Illegal CLI arguments: true or false were expected.\n");
-                exit(EXIT_CLI_ILLEGAL);
-            }
-        } else if(strcmp(optionName, "--allow-same-suit") == 0 || strcmp(optionName, "-s") == 0) {
-            if(strcmp(optionValue, "true") == 0 || strcmp(optionValue, "false") == 0)
-                cfg.allowSameSuit = strcmp(optionValue, "true") == 0;
-            else {
-                printf("Illegal CLI arguments: true or false were expected.\n");
-                exit(EXIT_CLI_ILLEGAL);
+                cfg.defaultPlayersLPs = n;
+            } else if(strcmp(optionName, "--default-LPs-field") == 0 || strcmp(optionName, "-f") == 0) {
+                int n = strtol(optionValue, &endptr, 10);
+
+                if(errno == ERANGE || *endptr != '\0') {
+                    printf("Illegal CLI arguments: a number was expected.\n");
+                    exit(EXIT_CLI_ILLEGAL);
+                }
+
+                cfg.defaultLPsOnField = n;
+            } else if(strcmp(optionName, "--allow-same-rank") == 0 || strcmp(optionName, "-r") == 0) {
+                if(strcmp(optionValue, "true") == 0 || strcmp(optionValue, "false") == 0)
+                    cfg.allowSameRank = strcmp(optionValue, "true") == 0;
+                else {
+                    printf("Illegal CLI arguments: true or false were expected.\n");
+                    exit(EXIT_CLI_ILLEGAL);
+                }
+            } else if(strcmp(optionName, "--allow-same-suit") == 0 || strcmp(optionName, "-s") == 0) {
+                if(strcmp(optionValue, "true") == 0 || strcmp(optionValue, "false") == 0)
+                    cfg.allowSameSuit = strcmp(optionValue, "true") == 0;
+                else {
+                    printf("Illegal CLI arguments: true or false were expected.\n");
+                    exit(EXIT_CLI_ILLEGAL);
+                }
             }
         }
     }
