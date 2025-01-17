@@ -8,6 +8,9 @@ endif
 
 all: cli config config_file utility vector ansi gui logs main
 
+tests:
+	@echo "Move into the 'test' folder. Then type 'make <test_name>' for compiling one of the available tests or type 'make all' to compile all the available tests."
+
 setup:
 	mkdir bin logs
 	cd bin
