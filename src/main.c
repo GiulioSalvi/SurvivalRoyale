@@ -332,7 +332,7 @@ bool handleGamePhase(Game* game) {
     printfgr("The current phase starts from #b#player %d#r#.", game->players[starterPlayerPosition]->id);
     Pause(false);
 
-    // printPageData(pages, totalPages);
+    printPageData(pages, game->logsConfiguration, totalPages, true);
 
     for(int i = 0; i < game->playersCounter; i++) {
         navigatePages(pages, totalPages, maxRows, maxColumns, bestStartColumn, (i + starterPlayerPosition)%game->playersCounter, game);
