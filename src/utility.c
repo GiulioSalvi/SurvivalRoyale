@@ -5,8 +5,8 @@
 
 #include "utility.h"
 
-char* substring(const char* str, int start, int length) {
-    if (start < 0 || length < 0 || start + length > strlen(str)) {
+char* substring(const char* string, int startPosition, int length) {
+    if (startPosition < 0 || length < 0 || startPosition + length > strlen(string)) {
         return NULL; 
     }
 
@@ -14,52 +14,52 @@ char* substring(const char* str, int start, int length) {
     if(sub == NULL)
         exit(EXIT_ALLOC_FAILURE);
 
-    strncpy(sub, str + start, length);
+    strncpy(sub, string + startPosition, length);
     sub[length] = '\0';
 
     return sub;
 }
 
-int offsetFromNext(const char* str, char c, int start) {
-    for(int i = start, p = 0; i < strlen(str); i++, p++)
-        if(str[i] == c)
+int offsetFromNext(const char* string, char character, int startPosition) {
+    for(int i = startPosition, p = 0; i < strlen(string); i++, p++)
+        if(string[i] == character)
             return p;
     
     return -1;
 }
 
-int count(const char* str, char c, int start) {
+int count(const char* string, char character, int startPosition) {
     int counter = 0;
 
-    for(int i = 0; i < strlen(str); i++)
-        if(str[i] == c)
+    for(int i = startPosition; i < strlen(string); i++)
+        if(string[i] == character)
             counter++;
 
     return counter;
 }
 
-bool containsFrom(const char* str, char c, int p) {
-    for(int i = p; i < strlen(str); i++)
-        if(str[i] == c)
+bool containsFrom(const char* string, char character, int startPosition) {
+    for(int i = startPosition; i < strlen(string); i++)
+        if(string[i] == character)
             return true;
     
     return false;
 }
 
-bool containsSubstringFrom(const char* str, const char* subStr, int p) {
-    if(strcmp(str, subStr) == 0)
+bool containsSubstringFrom(const char* string, const char* subString, int startPosition) {
+    if(strcmp(string, subString) == 0)
         return true;
     
-    int strLen = strlen(str);
-    int subStrLen = strlen(subStr);
+    int strLen = strlen(string);
+    int subStrLen = strlen(subString);
     
-    if(p < 0 || p >= strLen || subStrLen == 0 || subStrLen > strLen - p)
+    if(startPosition < 0 || startPosition >= strLen || subStrLen == 0 || subStrLen > strLen - startPosition)
         return false;
 
-    for(int i = p; i < strLen; i++)
-        if(str[i] == subStr[0] && i + subStrLen < strLen)
+    for(int i = startPosition; i < strLen; i++)
+        if(string[i] == subString[0] && i + subStrLen < strLen)
             for(int j = 0; j < subStrLen; j++) {
-                if(str[i + j] != subStr[j])
+                if(string[i + j] != subString[j])
                     break;
                 else if(j == subStrLen - 1)
                     return true;
@@ -68,39 +68,39 @@ bool containsSubstringFrom(const char* str, const char* subStr, int p) {
     return false;
 }
 
-bool isDecimalDigit(char c) {
-    return (int)c >= 48 && (int)c <= 57;
+bool isDecimalDigit(char character) {
+    return character >= '0' && character <= '9';
 }
 
-bool isHexDigit(char c) {
-    return isDecimalDigit(c) || ((int)c >= 65 && (int)c <= 70) || ((int)c >= 97 && (int)c <= 102);
+bool isHexDigit(char character) {
+    return isDecimalDigit(character) || (character >= 'a' && character <= 'f') || (character >= 'A' && character <= 'F');
 }
 
-int decimalDigitToInt(char d) {
-    return isDecimalDigit(d) ? (int)d - 48 : (int)d;
+int decimalDigitToInt(char digit) {
+    return (int)(isDecimalDigit(digit) ? digit - '0' : digit);
 }
 
-int hexDigitToInt(char d) {
-    return isDecimalDigit(d) ?
-        decimalDigitToInt(d) :
+int hexDigitToInt(char digit) {
+    return isDecimalDigit(digit) ?
+        decimalDigitToInt(digit) :
         (
-            isHexDigit(d) ?
+            isHexDigit(digit) ?
             (
-                (int)d >= 97 ?
-                (int)d - 97 + 10 :
-                (int)d - 65 + 10
+                digit >= 'a' ?
+                (int)(digit - 'a') + 10 :
+                (int)(digit - 'A') + 10
             ) :
-        (int)d
+        (int)digit
     );
 }
 
-int evalutateBase(char* num) {
+int evalutateBase(char* number) {
     char max = -1;
 
-    for(int i = 0; i < strlen(num); i++) {
-        if(isHexDigit(num[i])) {
-            if(num[i] > max)
-                max = num[i];
+    for(int i = 0; i < strlen(number); i++) {
+        if(isHexDigit(number[i])) {
+            if(number[i] > max)
+                max = number[i];
         } else
             return -1;
     }
@@ -109,13 +109,6 @@ int evalutateBase(char* num) {
     
 }
 
-int nDigits(int n) {
-    int c = 0;
-
-    while(n != 0) {
-        n /= 10;
-        c++;
-    }
-
-    return c;
+int nDigits(int number) {
+    return number == 0 ? 1 : (int)log10(abs(number)) + 1;
 }
