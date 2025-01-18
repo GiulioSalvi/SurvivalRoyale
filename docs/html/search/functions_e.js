@@ -14,5 +14,5 @@ var searchData=
   ['setupterminal_11',['setupTerminal',['../main_8h.html#a8303dfeccd0b733098a3d4fbba6a92c3',1,'setupTerminal():&#160;main.c'],['../main_8c.html#a8303dfeccd0b733098a3d4fbba6a92c3',1,'setupTerminal():&#160;main.c']]],
   ['shuffledeck_12',['shuffleDeck',['../main_8h.html#a2c98baf46aa86f9494a1f47f91724fae',1,'shuffleDeck(Card *deck):&#160;main.c'],['../main_8c.html#a2c98baf46aa86f9494a1f47f91724fae',1,'shuffleDeck(Card *deck):&#160;main.c']]],
   ['slowblinking_13',['slowBlinking',['../ansi_8h.html#ad0dfc3813cd82beebc3e58aadd7bb70c',1,'slowBlinking():&#160;ansi.c'],['../ansi_8c.html#ad0dfc3813cd82beebc3e58aadd7bb70c',1,'slowBlinking():&#160;ansi.c']]],
-  ['substring_14',['substring',['../utility_8h.html#a4e62a614d8b0ed8c8b5375e47991526a',1,'substring(const char *str, int start, int length):&#160;utility.c'],['../utility_8c.html#a4e62a614d8b0ed8c8b5375e47991526a',1,'substring(const char *str, int start, int length):&#160;utility.c']]]
+  ['substring_14',['substring',['../utility_8h.html#a8e0c7b29f447229be79c6c7813fc0de5',1,'substring(const char *string, int startPosition, int length):&#160;utility.c'],['../utility_8c.html#a8e0c7b29f447229be79c6c7813fc0de5',1,'substring(const char *string, int startPosition, int length):&#160;utility.c']]]
 ];

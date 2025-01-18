@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['decimaldigittoint_0',['decimalDigitToInt',['../utility_8h.html#a38fbe5ea32ec5234a2269ae867b22f58',1,'decimalDigitToInt(char d):&#160;utility.c'],['../utility_8c.html#a38fbe5ea32ec5234a2269ae867b22f58',1,'decimalDigitToInt(char d):&#160;utility.c']]],
+  ['decimaldigittoint_0',['decimalDigitToInt',['../utility_8h.html#a2b3f55501548851b193af6f13549560c',1,'decimalDigitToInt(char digit):&#160;utility.c'],['../utility_8c.html#a2b3f55501548851b193af6f13549560c',1,'decimalDigitToInt(char digit):&#160;utility.c']]],
   ['deckhascard_1',['deckHasCard',['../main_8h.html#ac718162335c3f6b79f4b036816e4d877',1,'deckHasCard(Card *deck, Card card):&#160;main.c'],['../main_8c.html#ac718162335c3f6b79f4b036816e4d877',1,'deckHasCard(Card *deck, Card card):&#160;main.c']]],
   ['defaultbackgroundcolor_2',['defaultBackgroundColor',['../ansi_8h.html#a540ccd55325dcdc0da412709ec94609b',1,'defaultBackgroundColor():&#160;ansi.c'],['../ansi_8c.html#a540ccd55325dcdc0da412709ec94609b',1,'defaultBackgroundColor():&#160;ansi.c']]],
   ['defaultforegroundcolor_3',['defaultForegroundColor',['../ansi_8h.html#a6f818e398df2bb83682d5ae36f2fceeb',1,'defaultForegroundColor():&#160;ansi.c'],['../ansi_8c.html#a6f818e398df2bb83682d5ae36f2fceeb',1,'defaultForegroundColor():&#160;ansi.c']]],

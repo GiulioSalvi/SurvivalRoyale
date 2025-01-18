@@ -22,7 +22,7 @@ var searchData=
   ['stdcolor_19',['stdColor',['../union____color.html#ac5739dcb0f31d4ae0bc975e6d97f4f16',1,'__color']]],
   ['strong_20',['&lt;strong&gt;Survival Royale:&lt;/strong&gt;',['../index.html',1,'']]],
   ['strong_20survival_20royale_3a_20strong_21',['&lt;strong&gt;Survival Royale:&lt;/strong&gt;',['../index.html',1,'']]],
-  ['substring_22',['substring',['../utility_8h.html#a4e62a614d8b0ed8c8b5375e47991526a',1,'substring(const char *str, int start, int length):&#160;utility.c'],['../utility_8c.html#a4e62a614d8b0ed8c8b5375e47991526a',1,'substring(const char *str, int start, int length):&#160;utility.c']]],
+  ['substring_22',['substring',['../utility_8h.html#a8e0c7b29f447229be79c6c7813fc0de5',1,'substring(const char *string, int startPosition, int length):&#160;utility.c'],['../utility_8c.html#a8e0c7b29f447229be79c6c7813fc0de5',1,'substring(const char *string, int startPosition, int length):&#160;utility.c']]],
   ['suit_23',['suit',['../struct_card.html#a40b11a6b8180214798ffc51621b13f57',1,'Card']]],
   ['survival_20royale_3a_20strong_24',['&lt;strong&gt;Survival Royale:&lt;/strong&gt;',['../index.html',1,'']]]
 ];
