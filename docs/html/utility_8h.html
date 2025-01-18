@@ -122,7 +122,7 @@ Macros</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a8e0c7b29f447229be79c6c7813fc0de5" id="r_a8e0c7b29f447229be79c6c7813fc0de5"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8e0c7b29f447229be79c6c7813fc0de5">substring</a> (const char *string, int startPosition, int length)</td></tr>
-<tr class="memdesc:a8e0c7b29f447229be79c6c7813fc0de5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copies a substring (heap-allocated) from the passed string.  <br /></td></tr>
+<tr class="memdesc:a8e0c7b29f447229be79c6c7813fc0de5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copies a substring (heap-allocated) from the passed string. If fails when allocating memory for the substring, it exits with EXIT_ALLOC_FAILURE exit code.  <br /></td></tr>
 <tr class="separator:a8e0c7b29f447229be79c6c7813fc0de5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a732f58042cf0fe4787e83583d4ec7976" id="r_a732f58042cf0fe4787e83583d4ec7976"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a732f58042cf0fe4787e83583d4ec7976">offsetFromNext</a> (const char *string, char character, int startPosition)</td></tr>
 <tr class="memdesc:a732f58042cf0fe4787e83583d4ec7976"><td class="mdescLeft">&#160;</td><td class="mdescRight">Counts the offset in the string between the position and the next occoruncy of the passed char.  <br /></td></tr>
@@ -214,7 +214,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>True if an occoruncy is found, false otherwise. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="utility_8c_source.html#l00041">41</a> of file <a class="el" href="utility_8c_source.html">utility.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utility_8c_source.html#l00048">48</a> of file <a class="el" href="utility_8c_source.html">utility.c</a>.</p>
 
 </div>
 </div>
@@ -253,7 +253,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>True if an occoruncy is found, false otherwise. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="utility_8c_source.html#l00049">49</a> of file <a class="el" href="utility_8c_source.html">utility.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utility_8c_source.html#l00060">60</a> of file <a class="el" href="utility_8c_source.html">utility.c</a>.</p>
 
 </div>
 </div>
@@ -292,7 +292,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Returns the number of occoruncies of the char in the string. If there are not occoruncies of the char in the passed string, returns 0. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="utility_8c_source.html#l00031">31</a> of file <a class="el" href="utility_8c_source.html">utility.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utility_8c_source.html#l00035">35</a> of file <a class="el" href="utility_8c_source.html">utility.c</a>.</p>
 
 </div>
 </div>
@@ -320,7 +320,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The digit as an integer if the char is a decimal digit, ASCII integer representation of the passed char otherwise. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="utility_8c_source.html#l00079">79</a> of file <a class="el" href="utility_8c_source.html">utility.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utility_8c_source.html#l00090">90</a> of file <a class="el" href="utility_8c_source.html">utility.c</a>.</p>
 
 </div>
 </div>
@@ -348,7 +348,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The base of the number, if it is valid. Otherwise -1. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="utility_8c_source.html#l00097">97</a> of file <a class="el" href="utility_8c_source.html">utility.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utility_8c_source.html#l00108">108</a> of file <a class="el" href="utility_8c_source.html">utility.c</a>.</p>
 
 </div>
 </div>
@@ -376,7 +376,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The digit as an integer if the char is a hexadecimal giti, ASCII integer representation of the passed char otherwise. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="utility_8c_source.html#l00083">83</a> of file <a class="el" href="utility_8c_source.html">utility.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utility_8c_source.html#l00094">94</a> of file <a class="el" href="utility_8c_source.html">utility.c</a>.</p>
 
 </div>
 </div>
@@ -404,7 +404,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>True if the char is decimal digit, false otherwise. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="utility_8c_source.html#l00071">71</a> of file <a class="el" href="utility_8c_source.html">utility.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utility_8c_source.html#l00082">82</a> of file <a class="el" href="utility_8c_source.html">utility.c</a>.</p>
 
 </div>
 </div>
@@ -432,7 +432,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>True if the char is a hexadecima digit, false otherwise. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="utility_8c_source.html#l00075">75</a> of file <a class="el" href="utility_8c_source.html">utility.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utility_8c_source.html#l00086">86</a> of file <a class="el" href="utility_8c_source.html">utility.c</a>.</p>
 
 </div>
 </div>
@@ -460,7 +460,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The number of digits. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="utility_8c_source.html#l00112">112</a> of file <a class="el" href="utility_8c_source.html">utility.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utility_8c_source.html#l00123">123</a> of file <a class="el" href="utility_8c_source.html">utility.c</a>.</p>
 
 </div>
 </div>
@@ -527,7 +527,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Copies a substring (heap-allocated) from the passed string. </p>
+<p>Copies a substring (heap-allocated) from the passed string. If fails when allocating memory for the substring, it exits with EXIT_ALLOC_FAILURE exit code. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">string</td><td>String to copy from. </td></tr>
