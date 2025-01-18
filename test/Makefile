@@ -12,13 +12,13 @@ setup:
 	mkdir exec
 
 log-test:
-	$(CC) $(CCFLAGS) fileLoggingTest.c -o fileLoggingTest$(EXE_EXT)
+	$(CC) $(CCFLAGS) fileLoggingTest.c -o ./exec/fileLoggingTest$(EXE_EXT)
 
 term-card-test:
-	$(CC) $(CCFLAGS) terminalCardTest.c -o terminalCardTest$(EXE_EXT)
+	$(CC) $(CCFLAGS) terminalCardTest.c -o ./exec/terminalCardTest$(EXE_EXT)
 
 term-card-colors-test:
-	$(CC) $(CCFLAGS) terminalCardTestColors.c -o terminalCardTestColors$(EXE_EXT)
+	$(CC) $(CCFLAGS) terminalCardTestColors.c -o ./exec/terminalCardTestColors$(EXE_EXT)
 
 term-card-colors-old-test:
-	$(CC) $(CCFLAGS) terminalCardTestColorsOld.c -o terminalCardTestColorsOld$(EXE_EXT)
+	$(CC) $(CCFLAGS) terminalCardTestColorsOld.c -o ./exec/terminalCardTestColorsOld$(EXE_EXT)
