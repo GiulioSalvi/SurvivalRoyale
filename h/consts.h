@@ -1,3 +1,8 @@
+/**
+ * \file
+ * \brief Declaration of constants used by the modules.
+**/
+
 /// @brief Exit code when malloc fails.
 #define EXIT_ALLOC_FAILURE 2
 /// @brief Exit code when popping from a vector fails.

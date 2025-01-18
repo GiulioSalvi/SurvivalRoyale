@@ -1,3 +1,8 @@
+/**
+ * \file
+ * \brief Definition of the game configuration structure and definition of related accessory functions.
+**/
+
 #include "includes.h"
 
 #ifndef _GAME_CONFIGURATION_H_

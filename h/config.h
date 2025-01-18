@@ -1,3 +1,8 @@
+/**
+ * \file
+ * \brief Definition of functions which retrieves the game configuration from the possible sources.
+**/
+
 #include "cli.h"
 #include "config_file.h"
 

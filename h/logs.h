@@ -1,3 +1,8 @@
+/**
+ * \file
+ * \brief Definition of logger functions.
+**/
+
 #include "main.h"
 #include "includes.h"
 

@@ -1,3 +1,8 @@
+/**
+ * \file
+ * \brief Definition of vector structure and related functions. 
+**/
+
 #include "consts.h"
 #include "includes.h"
 

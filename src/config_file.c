@@ -1,3 +1,8 @@
+/**
+ * \file
+ * \brief Implementation of functions which handles the configuration file.
+**/
+
 #include "config_file.h"
 
 bool existsConfigurationFile() {

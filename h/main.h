@@ -1,3 +1,8 @@
+/**
+ * \file
+ * \brief Declaration of game-related constants, definition of game-related structures and functions.
+**/
+
 #include "config.h"
 #include "includes.h"
 #include "logs_configuration.h"

@@ -1,3 +1,8 @@
+/**
+ * \file
+ * \brief Implementation of utility functions.
+**/
+
 #include "utility.h"
 
 char* substring(const char* str, int start, int length) {

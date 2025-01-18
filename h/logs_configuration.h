@@ -1,3 +1,8 @@
+/**
+ * \file
+ * \brief Definition of logger configuration structure.
+**/
+
 #ifndef _LOGS_CONFIGURATION_H_
     /// @brief Include guard.
     #define _LOGS_CONFIGURATION_H_

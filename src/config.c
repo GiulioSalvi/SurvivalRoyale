@@ -1,3 +1,8 @@
+/**
+ * \file
+ * \brief Implementation of functions which retrieves the game configuration from the possible sources.
+**/
+
 #include "config.h"
 
 GameConfiguration getDefaultConfiguration() {

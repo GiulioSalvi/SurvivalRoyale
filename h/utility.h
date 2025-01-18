@@ -1,3 +1,8 @@
+/**
+ * \file
+ * \brief Definition of utility functions.
+**/
+
 #include "consts.h"
 #include "includes.h"
 

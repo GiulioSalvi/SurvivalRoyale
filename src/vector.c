@@ -1,3 +1,8 @@
+/**
+ * \file
+ * \brief Implementation of vector structure and related functions. 
+**/
+
 #include "vector.h"
 
 vector* buildVector() {

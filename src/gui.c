@@ -1,3 +1,8 @@
+/**
+ * \file
+ * \brief Implementation of TUI functions.
+**/
+
 #include "gui.h"
 
 const char* CARD_RANK_STRINGS[] = {

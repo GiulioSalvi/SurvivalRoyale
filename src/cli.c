@@ -1,3 +1,8 @@
+/**
+ * \file
+ * \brief Implementation of functions which handles CLI.
+**/
+
 #include "cli.h"
 
 void getHelp(const char* scope) {

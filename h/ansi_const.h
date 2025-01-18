@@ -1,3 +1,8 @@
+/**
+ * \file
+ * \brief Declaration of constant values for ANSI module.
+**/
+
 #include "includes.h"
 
 /// @brief ANSI standard black foreground color.

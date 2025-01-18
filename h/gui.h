@@ -1,3 +1,8 @@
+/**
+ * \file
+ * \brief Definition of page's informations wrapper structure and definition of TUI functions.
+**/
+
 #include "ansi.h"
 #include "main.h"
 #include "consts.h"

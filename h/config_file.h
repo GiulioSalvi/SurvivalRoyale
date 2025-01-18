@@ -1,3 +1,8 @@
+/**
+ * \file
+ * \brief Definition of functions which handles the configuration file.
+**/
+
 #include "utility.h"
 #include "game_configuration.h"
 

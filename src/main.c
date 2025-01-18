@@ -1,3 +1,8 @@
+/**
+ * \file
+ * \brief Implementation of game-related functions.
+**/
+
 #include "gui.h"
 #include "ansi.h"
 #include "main.h"

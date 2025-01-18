@@ -1,3 +1,8 @@
+/**
+ * \file
+ * \brief Implementation of logger functions.
+**/
+
 #include "gui.h"
 #include "ansi.h"
 #include "logs.h"
