@@ -10,7 +10,7 @@
     /// @brief Include guard.
     #define _UTILITY_H_
 
-    /// @brief Copies a substring (heap-allocated) from the passed string.
+    /// @brief Copies a substring (heap-allocated) from the passed string. If fails when allocating memory for the substring, it exits with EXIT_ALLOC_FAILURE exit code.
     /// @param string String to copy from.
     /// @param startPosition The position in str to start to copy from.
     /// @param length The length of the substring.
