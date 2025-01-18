@@ -5,6 +5,7 @@
  *  Function's names are as much as possible consistent with the quoted document.
  *  
  *  NOTICE: not every function declared in this header is part of ANSI standard.
+ * 
  *  NOTICE: for these structures are available some builders function that you should use if you want to build structures with unset properties.
 **/
 
