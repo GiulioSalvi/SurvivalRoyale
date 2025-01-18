@@ -34,6 +34,5 @@
     void freePageData(PageData* pages, int totalPages);
 
     bool isTerminalSizeValid(int maxRows, int maxColumns);
-
     int getPageContainingPlayer(PageData* pagesData, int totalPages, int id);
 #endif
