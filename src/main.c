@@ -7,6 +7,7 @@
 int main(int argc, char** argv) {
     // 
     // return 0;
+    
     srand(time(NULL));
     const GameConfiguration gameCfg = getGameConfiguration(handleCLIArguments(argv, argc), getConfigurationFromArguments(argv, argc));
     const LogsConfiguration logsCfg = gameCfg.beVerbose ? prepareLogs() : (LogsConfiguration){.fileName = "", .useConsole = true};
