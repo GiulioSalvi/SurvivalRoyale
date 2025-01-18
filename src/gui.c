@@ -25,9 +25,9 @@ void navigatePages(PageData* pagesData, int totalPages, int maxRows, int maxColu
     char input;
     int currentPage = getPageContainingPlayer(pagesData, totalPages, id);
 
-    while (1) {
+    while(1) {
         clearScreen();
-        
+
         displayPage(&pagesData[currentPage], maxRows, maxColumns, bestStartColumn);
 
         cursorPosition(maxRows - (LOG_SECTION_HEIGHT + 1) + 1, 3);
@@ -44,21 +44,19 @@ void navigatePages(PageData* pagesData, int totalPages, int maxRows, int maxColu
 
             cursorPosition(maxRows - (LOG_SECTION_HEIGHT + 1) + 4, 3);
             printgr("Do you want reveal it?");
-        }
-        else
+        } else
             printfgr("Your #b#faced down card#r# has been #b##%d#already revealed#r#!", FgBrightRed);
-        
+
         cursorPosition(maxRows - 2, maxColumns - 2);
         printgr(" ");
 
         input = getchar();
 
         cursorPosition(maxRows - (LOG_SECTION_HEIGHT + 1) + 4, 3);
-        if (input == 'w') {
+        if(input == 'w')
             currentPage = (currentPage + 1) % totalPages;
-        } else if (input == 's') {
+        else if(input == 's')
             currentPage = (currentPage - 1 + totalPages) % totalPages;
-        } 
         else if(!player->revealedFacedDownCard) {
             if(input == 'y') {
                 bool applyEffectHasPrinted = applyEffect(game, playerIndex, false);
@@ -73,24 +71,17 @@ void navigatePages(PageData* pagesData, int totalPages, int maxRows, int maxColu
                 printgr("#b#The card has not been revealed#r#.");
 
             fflush(stdin);
-            
+
             Pause(true);
             break;
         } else {
             printfgr("Your #b#faced down card#r# has been #b##%d#already revealed#r#!", FgBrightRed);
-            
-            clearScreen();
-            fflush(stdin);
-            
-            if (input == 'e') {
-                clearScreen();
-                break;
-            } 
-            break;
-        } 
 
-        // Clear input buffer
-        // while(getchar() != '\n');
+            fflush(stdin);
+            Pause(true);
+
+            break;
+        }
     }
 }
 
@@ -119,7 +110,7 @@ void drawCardsForPage(PageData* page, int startX, int bestStartColumn) {
     int columnSpacing = CARD_WIDTH + 2;
     int currentRow = startX;
 
-    for (int i = 0; i < page->playerCount; i++) {
+    for(int i = 0; i < page->playerCount; i++) {
         int currentCol = bestStartColumn + (i % page->playerPerRow) * columnSpacing;
 
         Player* player = page->players[i];
@@ -130,39 +121,37 @@ void drawCardsForPage(PageData* page, int startX, int bestStartColumn) {
         cursorPosition(currentRow + CARD_HEIGHT + 2, currentCol + 1);
         printfgr("Life: %d #%d#♥#r#", player->lifePoints, FgRed);
 
-        if ((i + 1) % page->playerPerRow == 0) {
+        if((i + 1) % page->playerPerRow == 0) {
             currentRow += page->rowSpacing;
         }
     }
 }
 
 void drawLine(int startingX, int startingY, int length, char direction, char borders) {
-    if (borders == 'u') {
+    if(borders == 'u') {
         cursorPosition(startingX, startingY);
         printgr("┌");
-        for (int i = 1; i < length - 1; i++) {
+        for(int i = 1; i < length - 1; i++) {
             cursorPosition(startingX, startingY + i);
             printgr("─");
         }
         cursorPosition(startingX, startingY + length - 1);
         printgr("┐");
-    } 
-    else if (borders == 'd') {
+    } else if(borders == 'd') {
         cursorPosition(startingX, startingY);
         printgr("└");
-        for (int i = 1; i < length - 1; i++) {
+        for(int i = 1; i < length - 1; i++) {
             cursorPosition(startingX, startingY + i);
             printgr("─");
         }
         cursorPosition(startingX, startingY + length - 1);
         printgr("┘");
-    } 
-    else if (borders == 'n') {
-        for (int i = 0; i < length; i++) {
-            if (direction == 'h') {
+    } else if(borders == 'n') {
+        for(int i = 0; i < length; i++) {
+            if(direction == 'h') {
                 cursorPosition(startingX, startingY + i);
                 printgr("─");
-            } else if (direction == 'v') {
+            } else if(direction == 'v') {
                 cursorPosition(startingX + i, startingY);
                 printgr("│");
             }
@@ -195,7 +184,7 @@ void drawCard(int startingX, int startingY, int suit, int rank) {
 }
 
 int getCardColor(int cardRank) {
-    switch (cardRank) {
+    switch(cardRank) {
         case Seven:
             return FgBlue;
         case Jack:
@@ -217,7 +206,7 @@ PageData* getPageData(int maxRows, int maxColumns, Player** players, int totalPl
     int rowSpacing = CARD_HEIGHT + 3;   // Card height + name row + life points row + minimum space row
 
     // Calculate the height of the upper section
-    int upperSectionHeight = maxRows - (1 + 1 + LOG_SECTION_HEIGHT + 1 + 1); // // Upper line + upper minimal space + log section + line above
+    int upperSectionHeight = maxRows - (1 + 1 + LOG_SECTION_HEIGHT + 1 + 1); // Upper line + upper minimal space + log section + line above
 
     // Determine usable rows in the upper section
     int availableRows = upperSectionHeight / rowSpacing;
@@ -237,13 +226,12 @@ PageData* getPageData(int maxRows, int maxColumns, Player** players, int totalPl
 
     // Allocate memory for pages
     PageData* pagesData = (PageData*)malloc(sizeof(PageData) * (*totalPages));
-    if (!pagesData) {
+    if(!pagesData)
         exit(EXIT_ALLOC_FAILURE);
-    }
 
     int playersArrayIndex = 0; // Track players assigned to pages
 
-    for (int i = 0; i < *totalPages; i++) {
+    for(int i = 0; i < *totalPages; i++) {
         int playersOnThisPage = (playersArrayIndex + playersInEachFilledPage > totalPlayers)
                                     ? totalPlayers - playersArrayIndex
                                     : playersInEachFilledPage;
@@ -255,22 +243,20 @@ PageData* getPageData(int maxRows, int maxColumns, Player** players, int totalPl
         pagesData[i].rowSpacing = rowSpacing;
 
         pagesData[i].players = (Player**)malloc(sizeof(Player*) * playersOnThisPage);
-        if (!pagesData[i].players) {
+        if(!pagesData[i].players)
             exit(EXIT_ALLOC_FAILURE);
-        }
 
-        for (int j = 0; j < playersOnThisPage; j++) {
+        for(int j = 0; j < playersOnThisPage; j++)
             pagesData[i].players[j] = players[playersArrayIndex++];
-        }
     }
 
     return pagesData;
 }
 
 void freePageData(PageData* pages, int totalPages) {
-    for (int i = 0; i < totalPages; i++) {
+    for(int i = 0; i < totalPages; i++)
         free(pages[i].players);
-    }
+
     free(pages);
 }
 
