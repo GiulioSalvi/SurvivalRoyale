@@ -21,17 +21,24 @@ char* substring(const char* string, int startPosition, int length) {
 }
 
 int offsetFromNext(const char* string, char character, int startPosition) {
-    for(int i = startPosition, p = 0; i < strlen(string); i++, p++)
+    int strLen = strlen(string);
+    if(startPosition < 0 || startPosition >= strLen)
+        return -1;
+
+    for(int i = startPosition; i < strLen; i++)
         if(string[i] == character)
-            return p;
+            return i - startPosition;
     
     return -1;
 }
 
 int count(const char* string, char character, int startPosition) {
-    int counter = 0;
+    int strLen = strlen(string);
+    if(startPosition < 0 || startPosition >= strLen)
+        return 0;
 
-    for(int i = startPosition; i < strlen(string); i++)
+    int counter = 0;
+    for(int i = startPosition; i < strLen; i++)
         if(string[i] == character)
             counter++;
 
@@ -39,7 +46,11 @@ int count(const char* string, char character, int startPosition) {
 }
 
 bool containsFrom(const char* string, char character, int startPosition) {
-    for(int i = startPosition; i < strlen(string); i++)
+    int strLen = strlen(string);
+    if(startPosition < 0 || startPosition >= strLen)
+        return false;
+
+    for(int i = startPosition; i < strLen; i++)
         if(string[i] == character)
             return true;
     
