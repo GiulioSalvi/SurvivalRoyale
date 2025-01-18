@@ -3,7 +3,7 @@
  * \brief Implementation of game-related functions.
 **/
 
-#include "gui.h"
+#include "tui.h"
 #include "ansi.h"
 #include "main.h"
 #include "logs.h"

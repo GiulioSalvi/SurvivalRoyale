@@ -3,7 +3,7 @@
  * \brief Implementation of TUI functions.
 **/
 
-#include "gui.h"
+#include "tui.h"
 
 const char* CARD_RANK_STRINGS[] = {
     "Ace", "Two", "Three", "Four", "Five",

@@ -6,7 +6,7 @@ ifeq ($(OS), Windows_NT)
     EXE_EXT=.exe
 endif
 
-all: cli config config_file utility vector ansi gui logs main
+all: cli config config_file utility vector ansi tui logs main
 
 tests:
 	@echo "Move into the 'test' folder. Then type 'make <test_name>' for compiling one of the available tests or type 'make all' to compile all the available tests."
@@ -40,11 +40,11 @@ vector: src/vector.c
 ansi: src/ansi.c
 	$(CC) $(CCFLAGS) -c src/ansi.c -o bin/objects/ansi-c$(CV).o
 
-gui: src/gui.c
-	$(CC) $(CCFLAGS) -c src/gui.c -o bin/objects/gui-c$(CV).o
+tui: src/tui.c
+	$(CC) $(CCFLAGS) -c src/tui.c -o bin/objects/tui-c$(CV).o
 
 logs: src/logs.c
 	$(CC) $(CCFLAGS) -c src/logs.c -o bin/objects/logs-c$(CV).o
 
-main: src/main.c bin/objects/ansi-c$(CV).o bin/objects/vector-c$(CV).o bin/objects/utility-c$(CV).o bin/objects/config-c$(CV).o bin/objects/config-file-c$(CV).o bin/objects/cli-c$(CV).o bin/objects/gui-c$(CV).o bin/objects/logs-c$(CV).o
-	$(CC) $(CCFLAGS) src/main.c bin/objects/ansi-c$(CV).o bin/objects/vector-c$(CV).o bin/objects/utility-c$(CV).o bin/objects/config-c$(CV).o bin/objects/config-file-c$(CV).o bin/objects/cli-c$(CV).o bin/objects/gui-c$(CV).o bin/objects/logs-c$(CV).o -o bin/exec/game$(EXE_EXT) -lm
+main: src/main.c bin/objects/ansi-c$(CV).o bin/objects/vector-c$(CV).o bin/objects/utility-c$(CV).o bin/objects/config-c$(CV).o bin/objects/config-file-c$(CV).o bin/objects/cli-c$(CV).o bin/objects/tui-c$(CV).o bin/objects/logs-c$(CV).o
+	$(CC) $(CCFLAGS) src/main.c bin/objects/ansi-c$(CV).o bin/objects/vector-c$(CV).o bin/objects/utility-c$(CV).o bin/objects/config-c$(CV).o bin/objects/config-file-c$(CV).o bin/objects/cli-c$(CV).o bin/objects/tui-c$(CV).o bin/objects/logs-c$(CV).o -o bin/exec/game$(EXE_EXT) -lm

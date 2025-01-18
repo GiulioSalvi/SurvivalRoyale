@@ -3,7 +3,7 @@
  * \brief Implementation of logger functions.
 **/
 
-#include "gui.h"
+#include "tui.h"
 #include "ansi.h"
 #include "logs.h"
 #include "ansi_const.h"
