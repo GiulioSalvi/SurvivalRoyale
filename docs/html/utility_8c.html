@@ -104,6 +104,9 @@ $(function(){initNavTree('utility_8c.html',''); initResizable(true); });
   <div class="headertitle"><div class="title">utility.c File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Implementation of utility functions.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="utility_8h_source.html">utility.h</a>&quot;</code><br />
 </div>
 <p><a href="utility_8c_source.html">Go to the source code of this file.</a></p>
@@ -122,6 +125,9 @@ Functions</h2></td></tr>
 <tr class="memitem:aad8a0393920e380bb2b8f5b0c9db7198" id="r_aad8a0393920e380bb2b8f5b0c9db7198"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aad8a0393920e380bb2b8f5b0c9db7198">containsFrom</a> (const char *str, char c, int p)</td></tr>
 <tr class="memdesc:aad8a0393920e380bb2b8f5b0c9db7198"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if there is an occoruncy of the passed char from the passed position in the passed string.  <br /></td></tr>
 <tr class="separator:aad8a0393920e380bb2b8f5b0c9db7198"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a954bed2953013c74678db103f1d8db22" id="r_a954bed2953013c74678db103f1d8db22"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a954bed2953013c74678db103f1d8db22">containsSubstringFrom</a> (const char *str, const char *subStr, int p)</td></tr>
+<tr class="memdesc:a954bed2953013c74678db103f1d8db22"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if there is an occoruncy of the passed substring from the passed position in the passed string.  <br /></td></tr>
+<tr class="separator:a954bed2953013c74678db103f1d8db22"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a57a37f3dfbb6243df04b8ea21831f989" id="r_a57a37f3dfbb6243df04b8ea21831f989"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a57a37f3dfbb6243df04b8ea21831f989">isDecimalDigit</a> (char c)</td></tr>
 <tr class="memdesc:a57a37f3dfbb6243df04b8ea21831f989"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if a char is a decimal digit.  <br /></td></tr>
 <tr class="separator:a57a37f3dfbb6243df04b8ea21831f989"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -141,7 +147,11 @@ Functions</h2></td></tr>
 <tr class="memdesc:af4629d2bfe39932e9492d578464d4da8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Evalutates the number of digits of a number.  <br /></td></tr>
 <tr class="separator:af4629d2bfe39932e9492d578464d4da8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Implementation of utility functions. </p>
+
+<p class="definition">Definition in file <a class="el" href="utility_8c_source.html">utility.c</a>.</p>
+</div><h2 class="groupheader">Function Documentation</h2>
 <a id="aad8a0393920e380bb2b8f5b0c9db7198" name="aad8a0393920e380bb2b8f5b0c9db7198"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aad8a0393920e380bb2b8f5b0c9db7198">&#9670;&#160;</a></span>containsFrom()</h2>
 
@@ -177,7 +187,46 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>True if an occoruncy is found, false otherwise. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="utility_8c_source.html#l00036">36</a> of file <a class="el" href="utility_8c_source.html">utility.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utility_8c_source.html#l00041">41</a> of file <a class="el" href="utility_8c_source.html">utility.c</a>.</p>
+
+</div>
+</div>
+<a id="a954bed2953013c74678db103f1d8db22" name="a954bed2953013c74678db103f1d8db22"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a954bed2953013c74678db103f1d8db22">&#9670;&#160;</a></span>containsSubstringFrom()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool containsSubstringFrom </td>
+          <td>(</td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>str</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>subStr</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>p</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Checks if there is an occoruncy of the passed substring from the passed position in the passed string. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">str</td><td>The string to check in. </td></tr>
+    <tr><td class="paramname">subStr</td><td>The substring to look for. </td></tr>
+    <tr><td class="paramname">p</td><td>The position from which starts. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True if an occoruncy is found, false otherwise. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="utility_8c_source.html#l00049">49</a> of file <a class="el" href="utility_8c_source.html">utility.c</a>.</p>
 
 </div>
 </div>
@@ -216,7 +265,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Returns the number of occoruncies of the char in the string. If there are not occoruncies of the char in the passed string, returns 0. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="utility_8c_source.html#l00026">26</a> of file <a class="el" href="utility_8c_source.html">utility.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utility_8c_source.html#l00031">31</a> of file <a class="el" href="utility_8c_source.html">utility.c</a>.</p>
 
 </div>
 </div>
@@ -244,7 +293,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The digit as an integer if the char is a decimal digit, ASCII integer representation of the passed char otherwise. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="utility_8c_source.html#l00052">52</a> of file <a class="el" href="utility_8c_source.html">utility.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utility_8c_source.html#l00079">79</a> of file <a class="el" href="utility_8c_source.html">utility.c</a>.</p>
 
 </div>
 </div>
@@ -272,7 +321,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The base of the number, if it is valid. Otherwise -1. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="utility_8c_source.html#l00070">70</a> of file <a class="el" href="utility_8c_source.html">utility.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utility_8c_source.html#l00097">97</a> of file <a class="el" href="utility_8c_source.html">utility.c</a>.</p>
 
 </div>
 </div>
@@ -300,7 +349,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The digit as an integer if the char is a hexadecimal giti, ASCII integer representation of the passed char otherwise. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="utility_8c_source.html#l00056">56</a> of file <a class="el" href="utility_8c_source.html">utility.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utility_8c_source.html#l00083">83</a> of file <a class="el" href="utility_8c_source.html">utility.c</a>.</p>
 
 </div>
 </div>
@@ -328,7 +377,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>True if the char is decimal digit, false otherwise. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="utility_8c_source.html#l00044">44</a> of file <a class="el" href="utility_8c_source.html">utility.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utility_8c_source.html#l00071">71</a> of file <a class="el" href="utility_8c_source.html">utility.c</a>.</p>
 
 </div>
 </div>
@@ -356,7 +405,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>True if the char is a hexadecima digit, false otherwise. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="utility_8c_source.html#l00048">48</a> of file <a class="el" href="utility_8c_source.html">utility.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utility_8c_source.html#l00075">75</a> of file <a class="el" href="utility_8c_source.html">utility.c</a>.</p>
 
 </div>
 </div>
@@ -384,7 +433,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The number of digits. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="utility_8c_source.html#l00085">85</a> of file <a class="el" href="utility_8c_source.html">utility.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utility_8c_source.html#l00112">112</a> of file <a class="el" href="utility_8c_source.html">utility.c</a>.</p>
 
 </div>
 </div>
@@ -423,7 +472,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The offset from the start position to the next occorncy of the char. Otherwise, if no more occoruncies occur, returns -1. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="utility_8c_source.html#l00018">18</a> of file <a class="el" href="utility_8c_source.html">utility.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utility_8c_source.html#l00023">23</a> of file <a class="el" href="utility_8c_source.html">utility.c</a>.</p>
 
 </div>
 </div>
@@ -462,7 +511,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The substring. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="utility_8c_source.html#l00003">3</a> of file <a class="el" href="utility_8c_source.html">utility.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utility_8c_source.html#l00008">8</a> of file <a class="el" href="utility_8c_source.html">utility.c</a>.</p>
 
 </div>
 </div>

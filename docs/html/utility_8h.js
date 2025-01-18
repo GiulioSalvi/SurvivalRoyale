@@ -2,6 +2,7 @@ var utility_8h =
 [
     [ "_UTILITY_H_", "utility_8h.html#ace048a65a77b67caf20134e44be945f0", null ],
     [ "containsFrom", "utility_8h.html#aad8a0393920e380bb2b8f5b0c9db7198", null ],
+    [ "containsSubstringFrom", "utility_8h.html#a954bed2953013c74678db103f1d8db22", null ],
     [ "count", "utility_8h.html#af592cd424cffe25678baeacea8342c16", null ],
     [ "decimalDigitToInt", "utility_8h.html#a38fbe5ea32ec5234a2269ae867b22f58", null ],
     [ "evalutateBase", "utility_8h.html#a7077d0d836297004a98637185e099276", null ],

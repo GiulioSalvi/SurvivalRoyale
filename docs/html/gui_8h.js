@@ -19,6 +19,5 @@ var gui_8h =
     [ "getPageContainingPlayer", "gui_8h.html#a16ec9052e83c0c7bf3103347ecf5e0ba", null ],
     [ "getPageData", "gui_8h.html#a2a51a969e2043dbd573822dedcf6401a", null ],
     [ "isTerminalSizeValid", "gui_8h.html#aa6a54c1e00c5ba372ef53dce01d465dd", null ],
-    [ "navigatePages", "gui_8h.html#ad8ecbf47f5d1759dd4a3702947fe144c", null ],
-    [ "printPageData", "gui_8h.html#af79ca1458378b2f76424e3175f6caefa", null ]
+    [ "navigatePages", "gui_8h.html#ad8ecbf47f5d1759dd4a3702947fe144c", null ]
 ];

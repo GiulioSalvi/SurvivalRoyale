@@ -107,6 +107,9 @@ $(function(){initNavTree('vector_8h.html',''); initResizable(true); });
   <div class="headertitle"><div class="title">vector.h File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Definition of vector structure and related functions.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="consts_8h_source.html">consts.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="includes_8h_source.html">includes.h</a>&quot;</code><br />
 </div>
@@ -169,7 +172,11 @@ Functions</h2></td></tr>
 <tr class="memdesc:a877087a729b1dee76cdc17a5efc8262e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Access at the element in the given index of the vector. If the index is greater or equal to the vector's size, it exits with EXIT_ILLEGAL_INDEX_FAILURE exit code.  <br /></td></tr>
 <tr class="separator:a877087a729b1dee76cdc17a5efc8262e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Macro Definition Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Definition of vector structure and related functions. </p>
+
+<p class="definition">Definition in file <a class="el" href="vector_8h_source.html">vector.h</a>.</p>
+</div><h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="a491b273480596b0b0b136807a32ebee5" name="a491b273480596b0b0b136807a32ebee5"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a491b273480596b0b0b136807a32ebee5">&#9670;&#160;</a></span>_VECTOR_H_</h2>
 
@@ -184,7 +191,7 @@ Functions</h2></td></tr>
 
 <p>Include guard. </p>
 
-<p class="definition">Definition at line <a class="el" href="vector_8h_source.html#l00006">6</a> of file <a class="el" href="vector_8h_source.html">vector.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vector_8h_source.html#l00011">11</a> of file <a class="el" href="vector_8h_source.html">vector.h</a>.</p>
 
 </div>
 </div>
@@ -202,7 +209,7 @@ Functions</h2></td></tr>
 
 <p>Defines the maximum allocable memory for the vector. If <a class="el" href="#a7c39df60f7d049c0fcc3e7e2654dac48" title="The type of data wrapped in the vector structure. For convenience char has been choosen so it can wra...">data_type</a> is char, this is 2KiB of data. </p>
 
-<p class="definition">Definition at line <a class="el" href="vector_8h_source.html#l00011">11</a> of file <a class="el" href="vector_8h_source.html">vector.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vector_8h_source.html#l00016">16</a> of file <a class="el" href="vector_8h_source.html">vector.h</a>.</p>
 
 </div>
 </div>
@@ -220,7 +227,7 @@ Functions</h2></td></tr>
 
 <p>Defines the minimum allocated memory for the vector. If <a class="el" href="#a7c39df60f7d049c0fcc3e7e2654dac48" title="The type of data wrapped in the vector structure. For convenience char has been choosen so it can wra...">data_type</a> is char, this is 2B of data. </p>
 
-<p class="definition">Definition at line <a class="el" href="vector_8h_source.html#l00009">9</a> of file <a class="el" href="vector_8h_source.html">vector.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vector_8h_source.html#l00014">14</a> of file <a class="el" href="vector_8h_source.html">vector.h</a>.</p>
 
 </div>
 </div>
@@ -238,7 +245,7 @@ Functions</h2></td></tr>
 
 <p>Defines the multiplicative coefficient for which the vector has to be resized. </p>
 
-<p class="definition">Definition at line <a class="el" href="vector_8h_source.html#l00013">13</a> of file <a class="el" href="vector_8h_source.html">vector.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vector_8h_source.html#l00018">18</a> of file <a class="el" href="vector_8h_source.html">vector.h</a>.</p>
 
 </div>
 </div>
@@ -257,7 +264,7 @@ Functions</h2></td></tr>
 
 <p>The type of data wrapped in the vector structure. For convenience char has been choosen so it can wrap, by casting, any other primitive data type. </p>
 
-<p class="definition">Definition at line <a class="el" href="vector_8h_source.html#l00016">16</a> of file <a class="el" href="vector_8h_source.html">vector.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vector_8h_source.html#l00021">21</a> of file <a class="el" href="vector_8h_source.html">vector.h</a>.</p>
 
 </div>
 </div>
@@ -307,7 +314,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The element at the index position in the vector. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="vector_8c_source.html#l00091">91</a> of file <a class="el" href="vector_8c_source.html">vector.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vector_8c_source.html#l00096">96</a> of file <a class="el" href="vector_8c_source.html">vector.c</a>.</p>
 
 </div>
 </div>
@@ -329,7 +336,7 @@ Functions</h2></td></tr>
 <p>Builds a vector structure initializing its fields. If vector's allocation or data's block allocation fails, it exits with EXIT_ALLOC_FAILED exit code. </p>
 <dl class="section return"><dt>Returns</dt><dd>A vector structure. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="vector_8c_source.html#l00003">3</a> of file <a class="el" href="vector_8c_source.html">vector.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vector_8c_source.html#l00008">8</a> of file <a class="el" href="vector_8c_source.html">vector.c</a>.</p>
 
 </div>
 </div>
@@ -356,7 +363,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="vector_8c_source.html#l00023">23</a> of file <a class="el" href="vector_8c_source.html">vector.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vector_8c_source.html#l00028">28</a> of file <a class="el" href="vector_8c_source.html">vector.c</a>.</p>
 
 </div>
 </div>
@@ -384,7 +391,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Returns the element at the back of the vector. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="vector_8c_source.html#l00050">50</a> of file <a class="el" href="vector_8c_source.html">vector.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vector_8c_source.html#l00055">55</a> of file <a class="el" href="vector_8c_source.html">vector.c</a>.</p>
 
 </div>
 </div>
@@ -412,7 +419,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Returns the element at the front of the vector. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="vector_8c_source.html#l00074">74</a> of file <a class="el" href="vector_8c_source.html">vector.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vector_8c_source.html#l00079">79</a> of file <a class="el" href="vector_8c_source.html">vector.c</a>.</p>
 
 </div>
 </div>
@@ -444,7 +451,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="vector_8c_source.html#l00043">43</a> of file <a class="el" href="vector_8c_source.html">vector.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vector_8c_source.html#l00048">48</a> of file <a class="el" href="vector_8c_source.html">vector.c</a>.</p>
 
 </div>
 </div>
@@ -476,7 +483,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="vector_8c_source.html#l00063">63</a> of file <a class="el" href="vector_8c_source.html">vector.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vector_8c_source.html#l00068">68</a> of file <a class="el" href="vector_8c_source.html">vector.c</a>.</p>
 
 </div>
 </div>
@@ -508,7 +515,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="vector_8c_source.html#l00028">28</a> of file <a class="el" href="vector_8c_source.html">vector.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="vector_8c_source.html#l00033">33</a> of file <a class="el" href="vector_8c_source.html">vector.c</a>.</p>
 
 </div>
 </div>
