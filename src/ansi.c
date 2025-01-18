@@ -1,3 +1,13 @@
+/**
+ * \file 
+ * \brief Implemented following https://en.wikipedia.org/wiki/ANSI_escape_code.
+ *   
+ *  Function's names are as much as possible consistent with the quoted document.
+ *  
+ *  NOTICE: not every function declared in this header is part of ANSI standard.
+ *  NOTICE: for these structures are available some builders function that you should use if you want to build structures with unset properties.
+**/
+
 #include "ansi.h"
 
 // BUILDERS section
@@ -323,6 +333,8 @@ void screenSize(int* width, int* height) {
             *width = csbi.dwSize.X;
             *height = csbi.dwSize.Y;
         }
+
+        CloseHandle(hStdout);
     #endif
 }
 
@@ -428,6 +440,8 @@ void deviceStatusReport(int* row, int* col) {
             *col = csbi.dwCursorPosition.X + 1;
             *row = csbi.dwCursorPosition.Y + 1;
         }
+
+        CloseHandle(hStdout);
     #endif
 }
 
