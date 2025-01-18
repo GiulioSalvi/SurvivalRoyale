@@ -4,9 +4,9 @@ var dir_68267d1309a1af8e8297ef4c3efbcdba =
     [ "cli.c", "cli_8c.html", "cli_8c" ],
     [ "config.c", "config_8c.html", "config_8c" ],
     [ "config_file.c", "config__file_8c.html", "config__file_8c" ],
-    [ "gui.c", "gui_8c.html", "gui_8c" ],
     [ "logs.c", "logs_8c.html", "logs_8c" ],
     [ "main.c", "main_8c.html", "main_8c" ],
+    [ "tui.c", "tui_8c.html", "tui_8c" ],
     [ "utility.c", "utility_8c.html", "utility_8c" ],
     [ "vector.c", "vector_8c.html", "vector_8c" ]
 ];

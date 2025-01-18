@@ -1,12 +1,12 @@
 var searchData=
 [
-  ['pagedata_0',['PageData',['../struct_page_data.html',1,'PageData'],['../gui_8h.html#aa1fc2d68f76375422f30618cf705329b',1,'PageData:&#160;gui.h']]],
+  ['pagedata_0',['PageData',['../struct_page_data.html',1,'PageData'],['../tui_8h.html#aa1fc2d68f76375422f30618cf705329b',1,'PageData:&#160;tui.h']]],
   ['pause_1',['Pause',['../ansi_8h.html#a106329ce5bea51f3defe6fabff041ae0',1,'Pause(bool clear):&#160;ansi.c'],['../ansi_8c.html#a106329ce5bea51f3defe6fabff041ae0',1,'Pause(bool clear):&#160;ansi.c']]],
   ['player_2',['Player',['../struct_player.html',1,'Player'],['../main_8h.html#a480a040facb94f90060562cd65274385',1,'Player:&#160;main.h']]],
   ['playercount_3',['playerCount',['../struct_page_data.html#a970e4524261782959a63be471548f3ba',1,'PageData']]],
   ['playerperrow_4',['playerPerRow',['../struct_page_data.html#a43a3b5e83c868745e7ac22228801e85f',1,'PageData']]],
   ['playerrows_5',['playerRows',['../struct_page_data.html#a8f2348aa6f6c83b4d7b2e1a1385f5834',1,'PageData']]],
-  ['players_6',['players',['../struct_page_data.html#ab7830bc6e2c7130f50dcc899375f3bbf',1,'PageData::players'],['../struct_game.html#ab7830bc6e2c7130f50dcc899375f3bbf',1,'Game::players']]],
+  ['players_6',['players',['../struct_game.html#ab7830bc6e2c7130f50dcc899375f3bbf',1,'Game::players'],['../struct_page_data.html#ab7830bc6e2c7130f50dcc899375f3bbf',1,'PageData::players']]],
   ['playerscounter_7',['playersCounter',['../struct_game.html#aaf91554e4b4914b1a51d0abf74affe81',1,'Game']]],
   ['popback_8',['popBack',['../vector_8h.html#a8555ba5175ec4b9cf5c39b2c213a53e8',1,'popBack(vector *const vector):&#160;vector.c'],['../vector_8c.html#a8555ba5175ec4b9cf5c39b2c213a53e8',1,'popBack(vector *const vector):&#160;vector.c']]],
   ['popfront_9',['popFront',['../vector_8h.html#aeae11bbfced9e92344df6690e606071e',1,'popFront(vector *const vector):&#160;vector.c'],['../vector_8c.html#aeae11bbfced9e92344df6690e606071e',1,'popFront(vector *const vector):&#160;vector.c']]],

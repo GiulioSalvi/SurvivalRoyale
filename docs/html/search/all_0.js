@@ -6,7 +6,7 @@ var searchData=
   ['_5fconfig_5ffile_5fh_5f_3',['_CONFIG_FILE_H_',['../config__file_8h.html#a7dfa49770274f1f1dcd7e42b2be61e98',1,'config_file.h']]],
   ['_5fconfig_5fh_5f_4',['_CONFIG_H_',['../config_8h.html#a5d94fd1748b9df7dfcf34f663653c564',1,'config.h']]],
   ['_5fgame_5fconfiguration_5fh_5f_5',['_GAME_CONFIGURATION_H_',['../game__configuration_8h.html#a2f6e51fa2bb43955516b9a23cb7cea80',1,'game_configuration.h']]],
-  ['_5fgui_5fh_5f_6',['_GUI_H_',['../gui_8h.html#a7c3af9c14c097d70cc89934d479f38f5',1,'gui.h']]],
+  ['_5fgui_5fh_5f_6',['_GUI_H_',['../tui_8h.html#a7c3af9c14c097d70cc89934d479f38f5',1,'tui.h']]],
   ['_5flogs_5fconfiguration_5fh_5f_7',['_LOGS_CONFIGURATION_H_',['../logs__configuration_8h.html#a88b397ca4b1b28f4d0d9d36f2f84edf3',1,'logs_configuration.h']]],
   ['_5flogs_5fh_5f_8',['_LOGS_H_',['../logs_8h.html#a85b1d6085bf5d3e37ae48e98cb9a2d1a',1,'logs.h']]],
   ['_5fmain_5fh_5f_9',['_MAIN_H_',['../main_8h.html#a8a0cf1fb2b6e4ea7e5fb7ada9e9dd0ae',1,'main.h']]],

@@ -50,7 +50,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"gui_8c.html#a6cba795bcfe00049d9017419a9daaf76",
+"logs_8c.html#a5da19e2091468433a5af97c29fa5c927",
 "vector_8h.html#ac8c5476186a019b60cc8fd4cc6ea41a1"
 ];
 
