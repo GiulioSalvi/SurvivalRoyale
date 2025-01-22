@@ -1,5 +1,5 @@
 /**
- * \file tui.c
+ * \file
  * \brief Terminal User Interface (TUI) implementation for card game display.
  *
  * This file contains functions to handle terminal-based user interface components,
