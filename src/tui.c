@@ -18,15 +18,6 @@ void navigatePages(PageData* pagesData, int totalPages, int maxRows, int maxColu
     int id = pagesData->players[playerIndex]->id;
     Player* player = game->players[playerIndex];
 
-    // if(!player->revealedFacedDownCard) {
-    //     revealCard(player->facedDownCard, id, false, false);
-
-    //     if(revealFacedDownCard(player->facedDownCard))
-    //         applyEffect(game, playerIndex, false);
-    //     else
-    // } else
-    // Pause(true);
-
     char input;
     int currentPage = getPageContainingPlayer(pagesData, totalPages, id);
 
