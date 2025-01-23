@@ -384,7 +384,7 @@ bool applyEffect(Game* game, int playerPosition, bool facedUpCard) {
         
         Pause(false);
         cursorHorizontalAbsolute(3);
-        for(int i = 0; i < 134; i++)
+        for(int i = 0; i < 137; i++)
             printgr(" ");
         cursorHorizontalAbsolute(3);
 
