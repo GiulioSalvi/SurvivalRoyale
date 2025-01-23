@@ -66,10 +66,11 @@ void navigatePages(PageData* pagesData, int totalPages, int maxRows, int maxColu
             } else if(input == 'n')
                 printgr("#b#The card has not been revealed#r#.");
 
-            fflush(stdin);
-
-            Pause(true);
-            break;
+            if(input == 'y' || input == 'n') {
+                fflush(stdin);
+                Pause(true);
+                break;
+            }
         } else {
             printfgr("Your #b#faced down card#r# has been #b##%d#already revealed#r#!", FgBrightRed);
 
