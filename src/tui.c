@@ -43,7 +43,8 @@ void navigatePages(PageData* pagesData, int totalPages, int maxRows, int maxColu
 
     while(1) {
         cursorPosition(maxRows - 2, maxColumns - 2);
-        printgr(" ");
+        printgr("  ");
+        cursorBack(1);
 
         input = getchar();
 
