@@ -17,32 +17,31 @@ const char* CARD_SUIT_STRINGS[] = {
 void navigatePages(PageData* pagesData, int totalPages, int maxRows, int maxColumns, int bestStartColumn, int playerIndex, Game* game) {
     int id = pagesData->players[playerIndex]->id;
     Player* player = game->players[playerIndex];
-
     char input;
     int currentPage = getPageContainingPlayer(pagesData, totalPages, id);
+    
+    clearScreen();
+
+    displayPage(&pagesData[currentPage], maxRows, maxColumns, bestStartColumn);
+
+    cursorPosition(maxRows - (LOG_SECTION_HEIGHT + 1) + 1, 3);
+    printfgr("#b#It's your turn, player %d!!#r# On the #b#playing field#r# there are #b#%d LPs#r#.", id, game->lifePointsOnTheField);
+
+    cursorPosition(maxRows - (LOG_SECTION_HEIGHT + 1) + 2, 3);
+    applyEffect(game, playerIndex, true);
+
+    displayPage(&pagesData[currentPage], maxRows, maxColumns, bestStartColumn);
+
+    cursorPosition(maxRows - (LOG_SECTION_HEIGHT + 1) + 3, 3);
+    if(!player->revealedFacedDownCard) {
+        tellFacedDownCard(player->facedDownCard, 0);
+
+        cursorPosition(maxRows - (LOG_SECTION_HEIGHT + 1) + 4, 3);
+        printgr("Do you want reveal it?");
+    } else
+        printfgr("Your #b#faced down card#r# has been #b##%d#already revealed#r#!", FgBrightRed);
 
     while(1) {
-        clearScreen();
-
-        displayPage(&pagesData[currentPage], maxRows, maxColumns, bestStartColumn);
-
-        cursorPosition(maxRows - (LOG_SECTION_HEIGHT + 1) + 1, 3);
-        printfgr("#b#It's your turn, player %d!!#r# On the #b#playing field#r# there are #b#%d LPs#r#.", id, game->lifePointsOnTheField);
-
-        cursorPosition(maxRows - (LOG_SECTION_HEIGHT + 1) + 2, 3);
-        applyEffect(game, playerIndex, true);
-
-        displayPage(&pagesData[currentPage], maxRows, maxColumns, bestStartColumn);
-
-        cursorPosition(maxRows - (LOG_SECTION_HEIGHT + 1) + 3, 3);
-        if(!player->revealedFacedDownCard) {
-            tellFacedDownCard(player->facedDownCard, 0);
-
-            cursorPosition(maxRows - (LOG_SECTION_HEIGHT + 1) + 4, 3);
-            printgr("Do you want reveal it?");
-        } else
-            printfgr("Your #b#faced down card#r# has been #b##%d#already revealed#r#!", FgBrightRed);
-
         cursorPosition(maxRows - 2, maxColumns - 2);
         printgr(" ");
 
