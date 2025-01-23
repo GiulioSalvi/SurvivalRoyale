@@ -82,7 +82,7 @@ void clearScreen() {
     #ifdef _WIN32
         system("cls");
     #else
-        system("clear");
+        int _ = system("clear");
     #endif
 }
 
@@ -432,7 +432,7 @@ void scrollDown(int n) {
 void deviceStatusReport(int* row, int* col) {
     #ifndef _WIN32
         printgr("\e[6n");
-        scanf("\e[%d;%dR", row, col);
+        int _ = scanf("\e[%d;%dR", row, col);
     #else
         CONSOLE_SCREEN_BUFFER_INFO csbi;
         HANDLE hStdout = GetStdHandle(STD_OUTPUT_HANDLE);

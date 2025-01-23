@@ -142,7 +142,7 @@ GameConfiguration askConfigurationOptionsViaTerminal() {
 
         printgr("#b#Can the players have the cards with the same rank? (y,Y,n,N) #r#");
         fflush(stdin);
-        scanf("%c", &opt);
+        int _ = scanf("%c", &opt);
     } while(opt != 'y' && opt != 'Y' && opt != 'n' && opt != 'N');
     cfg.allowSameRank = opt == 'y' || opt == 'Y';
 
@@ -155,7 +155,7 @@ GameConfiguration askConfigurationOptionsViaTerminal() {
 
         printgr("#b#Can the players have the cards with the same suit? (y, Y, n, N) #r#");
         fflush(stdin);
-        scanf("%c", &opt);
+        int _ = scanf("%c", &opt);
     } while(opt != 'y' && opt != 'Y' && opt != 'n' && opt != 'N');
     cfg.allowSameSuit = opt == 'y' || opt == 'Y';
 
@@ -205,7 +205,7 @@ int askPlayerNumber() {
         }
 
         printgr("#b#Please, insert the players number: #r#");
-        scanf("%d", &playersCounter);
+        int _ = scanf("%d", &playersCounter);
     } while(playersCounter < 2 || playersCounter > 20);
 
     return playersCounter;
@@ -430,7 +430,7 @@ bool revealFacedDownCard(Card card) {
         }
 
         printgr("Do you want to #b#reveal#r# your #b#faced down#r# card and #b#apply its effect#r#?? (y,Y,n,N) ");
-        scanf("%c", &ans);
+        int _ = scanf("%c", &ans);
     } while(ans != 'Y' && ans != 'N' && ans != 'y' && ans != 'n');
 
     printgr("\n");
