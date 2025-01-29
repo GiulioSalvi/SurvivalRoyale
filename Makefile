@@ -6,7 +6,7 @@ ifeq ($(OS), Windows_NT)
     EXE_EXT=.exe
 endif
 
-all: cli config config_file utility vector ansi tui logs main
+all: cli config config_file utility vector ansi tui log main
 
 tests:
 	@echo "Move into the 'test' folder. Then type 'make <test_name>' for compiling one of the available tests or type 'make all' to compile all the available tests."
@@ -42,7 +42,7 @@ ansi: src/ansi.c
 tui: src/tui.c
 	$(CC) $(CCFLAGS) -c src/tui.c -o bin/objects/tui-c$(CV).o
 
-logs: src/logs.c
+log: src/logs.c
 	$(CC) $(CCFLAGS) -c src/logs.c -o bin/objects/logs-c$(CV).o
 
 main: src/main.c bin/objects/ansi-c$(CV).o bin/objects/vector-c$(CV).o bin/objects/utility-c$(CV).o bin/objects/config-c$(CV).o bin/objects/config-file-c$(CV).o bin/objects/cli-c$(CV).o bin/objects/tui-c$(CV).o bin/objects/logs-c$(CV).o
