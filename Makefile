@@ -13,8 +13,7 @@ tests:
 
 setup:
 	mkdir bin logs
-	cd bin
-	mkdir exec objects
+	cd bin && mkdir exec objects
 
 gen-docs:
 	doxygen docs/Doxyfile
