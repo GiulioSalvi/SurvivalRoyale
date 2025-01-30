@@ -46,14 +46,22 @@ void navigatePages(PageData* pagesData, int totalPages, int maxRows, int maxColu
         printgr("  ");
         cursorBack(1);
 
-        input = getchar();
+        input = tolower(getchar());
 
         cursorPosition(maxRows - (LOG_SECTION_HEIGHT + 1) + 4, 3);
-        if(input == 'w')
+        if(input == 'w') {
+            cursorUp(4);
+            eraseInDisplay(1);
+
             currentPage = (currentPage + 1) % totalPages;
-        else if(input == 's')
+            displayPage(&pagesData[currentPage], maxRows, maxColumns, bestStartColumn);
+        } else if(input == 's') {
+            cursorUp(4);
+            eraseInDisplay(1);
+
             currentPage = (currentPage - 1 + totalPages) % totalPages;
-        else if(!player->revealedFacedDownCard) {
+            displayPage(&pagesData[currentPage], maxRows, maxColumns, bestStartColumn);
+        } else if(!player->revealedFacedDownCard) {
             if(input == 'y') {
                 bool applyEffectHasPrinted = applyEffect(game, playerIndex, false);
                 displayPage(&pagesData[currentPage], maxRows, maxColumns, bestStartColumn);
