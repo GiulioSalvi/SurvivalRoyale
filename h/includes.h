@@ -18,6 +18,7 @@
 
 #include <math.h>
 #include <time.h>
+#include <ctype.h>
 #include <errno.h>
 #include <stdio.h>
 #include <assert.h>
