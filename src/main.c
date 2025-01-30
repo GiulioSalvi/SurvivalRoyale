@@ -24,6 +24,7 @@ int main(int argc, char** argv) {
 
     if(gameCfg.beVerbose)
         printGameConfiguration(gameCfg, logsCfg, true);
+
     Card* deck = prepareCardDeck();
     const int playersCounter = askPlayerNumber();
     clearScreen();
@@ -33,7 +34,7 @@ int main(int argc, char** argv) {
     if(gameCfg.beVerbose)
         printPlayers(game, false);
     
-    while(!handleGamePhase(&game)) {
+    while(!handleGamePhase(&game) && game.playersCounter) {
         removeDeadPlayers(&game);
         withdrawCards(&game);
         shuffleDeck(deck);
@@ -45,7 +46,11 @@ int main(int argc, char** argv) {
 
     withdrawCards(&game);
     removeDeadPlayers(&game);
-    announceWinner(*game.players[0]);
+    
+    if(game.playersCounter)
+        announceWinner(*game.players[0]);
+    else
+        printfgr("#b##%d#No player has won.#r#\n", FgBrightRed);
 
     freeDeck(deck);
     freeGame(&game);
@@ -94,7 +99,6 @@ bool checkTerminalHost() {
             if (Process32First(hSnapshot, &pe32)) {
                 do {
                     if (pe32.th32ProcessID == processId) {
-                        // printf("PID: %lu - Nome: %s\n", processId, pe32.szExeFile);
                         if(strcmp(pe32.szExeFile, "WindowsTerminal.exe") == 0)
                             return true;
 
@@ -106,13 +110,11 @@ bool checkTerminalHost() {
             }
 
             if (!found) {
-                // printf("Processo con PID %lu non trovato o accesso negato.\n", processId);
                 CloseHandle(hSnapshot);
                 return false;
             }
 
             if (processId == 0) {
-                // printf("Raggiunto il processo radice.\n");
                 CloseHandle(hSnapshot);
                 return false;
             }
@@ -222,6 +224,8 @@ Card buildCard() {
 
 Card* buildDeck() {
     Card* deck = malloc(sizeof(Card)*40);
+    if(!deck)
+        exit(EXIT_ALLOC_FAILURE);
 
     for(int i = 0; i < 40; i++)
         deck[i] = buildCard();
@@ -231,6 +235,8 @@ Card* buildDeck() {
 
 Player* buildPlayer() {
     Player* player = malloc(sizeof(Player));
+    if(!player)
+        exit(EXIT_ALLOC_FAILURE);
 
     player->id = -1;
     player->facedUpCard = buildCard();
@@ -245,6 +251,8 @@ Game buildGame(int playersCounter) {
 
     game.playersCounter = playersCounter;
     game.players = malloc(sizeof(Player*)*game.playersCounter);
+    if(!game.players)
+        exit(EXIT_ALLOC_FAILURE);
 
     for(int i = 0; i < game.playersCounter; i++)
         game.players[i] = buildPlayer();
@@ -293,6 +301,8 @@ Game prepareGame(int playersCounter, Card* deck, GameConfiguration configuration
 
     for(int i = 0; i < game.playersCounter; i++) {
         Player* player = malloc(sizeof(Player));
+        if(!player)
+            exit(EXIT_ALLOC_FAILURE);
         
         do
             player = preparePlayer(i + 1, deck, configuration);
@@ -338,7 +348,8 @@ bool handleGamePhase(Game* game) {
     printfgr("The current phase starts from #b#player %d#r#.", game->players[starterPlayerPosition]->id);
     Pause(false);
 
-    printPageData(pages, game->logsConfiguration, totalPages, true);
+    if(game->gameConfiguration.beVerbose)
+        printPageData(pages, game->logsConfiguration, totalPages, true);
 
     for(int i = 0; i < game->playersCounter; i++) {
         navigatePages(pages, totalPages, maxRows, maxColumns, bestStartColumn, (i + starterPlayerPosition)%game->playersCounter, game);
@@ -480,6 +491,8 @@ void removeDeadPlayers(Game* game) {
         return;
     
     Player** players = (Player**)malloc(newPlayersCounter*sizeof(Player*));
+    if(!players)
+        exit(EXIT_ALLOC_FAILURE);
 
     for(int i = 0, p = 0; i < game->playersCounter; i++) {
         if(game->players[i]->lifePoints > 0)
