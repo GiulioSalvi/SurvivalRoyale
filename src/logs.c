@@ -89,7 +89,7 @@ void printPlayer(Player player, LogsConfiguration logsConfiguration, bool newLin
         printCard(player.facedDownCard, logsConfiguration, false);
 
         logFile = fopen(logsConfiguration.fileName, "a+");
-        fprintf(logFile, " faced down.\n\n");
+        fprintf(logFile, " faced down.\n%s", newLine ? "\n" : "");
         fclose(logFile);
     }
 }
