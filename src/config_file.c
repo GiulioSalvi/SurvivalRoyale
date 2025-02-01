@@ -36,12 +36,14 @@ GameConfiguration getConfigurationFromFile() {
                 if(settingValue[strlen(settingValue) - 1] == '\n')
                     settingValue[strlen(settingValue) - 1] = '\0';
 
-                if(strcmp("allowSameRank", settingName) == 0)
+                if(strcmp("useTui", settingName) == 0)
+                    cfg.useTui = strcmp("true", settingValue) == 0;
+                if(strcmp("beVerbose", settingName) == 0)
+                    cfg.beVerbose = strcmp("true", settingValue) == 0;
+                else if(strcmp("allowSameRank", settingName) == 0)
                     cfg.allowSameRank = strcmp("true", settingValue) == 0;
                 else if(strcmp("allowSameSuit", settingName) == 0)
                     cfg.allowSameSuit = strcmp("true", settingValue) == 0;
-                else if(strcmp("beVerbose", settingName) == 0)
-                    cfg.beVerbose = strcmp("true", settingValue) == 0;
                 else if(strcmp("defaultPlayersLPs", settingName) == 0) {
                     const int rs = strtol(settingValue, &endptr, 10);
 
@@ -75,6 +77,7 @@ void saveConfigurationToFile(GameConfiguration configuration, bool overwriteIfEx
 
     FILE* cfgFile = fopen("game.cfg", "w+");
 
+    fprintf(cfgFile, "useTui=%s\n", configuration.useTui ? "true" : "false");
     fprintf(cfgFile, "beVerbose=%s\n", configuration.beVerbose ? "true" : "false");
     fprintf(cfgFile, "allowSameRank=%s\n", configuration.allowSameRank ? "true" : "false");
     fprintf(cfgFile, "allowSameSuit=%s\n", configuration.allowSameSuit ? "true" : "false");
