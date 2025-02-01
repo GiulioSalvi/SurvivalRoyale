@@ -19,7 +19,16 @@ gen-docs:
 	doxygen docs/Doxyfile
 
 go: all
+	./bin/exec/game$(EXE_EXT) --go --dont-ask-config-options --use-tui
+
+go-verbose: all
+	./bin/exec/game$(EXE_EXT) --go --dont-ask-config-options --use-tui --verbose
+
+go-classic:	all
 	./bin/exec/game$(EXE_EXT) --go --dont-ask-config-options
+
+go-classic-verbose:
+	./bin/exec/game$(EXE_EXT) --go --dont-ask-config-options --verbose
 
 cli: src/cli.c
 	$(CC) $(CCFLAGS) -c src/cli.c -o bin/objects/cli-c$(CV).o
