@@ -7,6 +7,7 @@
 
 GameConfiguration getDefaultConfiguration() {
     const GameConfiguration cfg = {
+        .useTui = true,
         .beVerbose = false,
         .allowSameRank = true,
         .allowSameSuit = true,
@@ -19,7 +20,8 @@ GameConfiguration getDefaultConfiguration() {
 
 bool isDefaultGameConfiguration(const GameConfiguration config) {
     const GameConfiguration d = getDefaultConfiguration();
-    return config.beVerbose == d.beVerbose && 
+    return config.useTui == d.useTui &&
+        config.beVerbose == d.beVerbose && 
         config.allowSameRank == d.allowSameRank &&
         config.allowSameSuit == d.allowSameSuit &&
         config.defaultLPsOnField == d.defaultLPsOnField &&
@@ -31,10 +33,11 @@ GameConfiguration getGameConfiguration(const int code, const GameConfiguration c
         exit(EXIT_SUCCESS);
     
     GameConfiguration cfg;
-    bool ignoreConfigFile = code & 0b0001;
-    bool dontAskConfigOptions = code & 0b0010;
-    bool saveToFile = code & 0b0100;
-    bool beVerbose = code & 0b1000;
+    bool ignoreConfigFile = code & 0b00001;
+    bool dontAskConfigOptions = code & 0b00010;
+    bool saveToFile = code & 0b00100;
+    bool beVerbose = code & 0b01000;
+    bool useTui = code & 0b10000;
 
     if(!ignoreConfigFile && existsConfigurationFile())
         return getConfigurationFromFile();
@@ -45,6 +48,7 @@ GameConfiguration getGameConfiguration(const int code, const GameConfiguration c
     else
         cfg = getDefaultConfiguration();
     
+    cfg.useTui = useTui;
     cfg.beVerbose = beVerbose;
 
     if(saveToFile)
