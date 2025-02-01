@@ -6,7 +6,7 @@
 #include "cli.h"
 
 void getHelp(const char* scope) {
-    printf("game [--help [option]] | [--go] [--dont-ask-config-options] [--ignore-config-file] [--save-to-file] [--default-player-LPs <LPs>] [--default-LPs-field <LPs>] [--allow-same-rank <false|true>] [--allow-same-suit <false|true>]\n\n");
+    printf("game [--help [option]] | [--go] [--dont-ask-config-options] [--ignore-config-file] [--save-to-file] [--use-tui] [--verbose] [--default-player-LPs <LPs>] [--default-LPs-field <LPs>] [--allow-same-rank <false|true>] [--allow-same-suit <false|true>]\n\n");
 
     if(strcmp(scope, "generic") == 0 || strlen(scope) == 0) {
         printf("--help [option] (-h [option]):\n\tIf option is not given, then it shows this generic help message. Otherwise if option is given it shows an exhaustive help message for the given option.\n");
@@ -18,6 +18,8 @@ void getHelp(const char* scope) {
         printf("--ignore-config-file (-c):\n\tIt ignores the configuration file, if it exists, so that the configuration options saved in it are not loaded.\n");
 
         printf("--save-to-file (-S):\n\tSaves the configuration loaded to a configuration file.\n");
+
+        printf("--use-tui (-t):\n\tThe game will use the terminal user interface (TUI) when specified.\n");
 
         printf("--verbose (-v):\n\tThe program has a verbose behaviour if this flag is specified. This option is not saved on file and it is not asked to the user.\n");
 
@@ -38,6 +40,8 @@ void getHelp(const char* scope) {
         printf("--ignore-config-file (-c):\n\tIt ignores the configuration file, if it exists, so that the configuration options saved in it are not loaded.\n");
     else if(strcmp(scope, "save-to-file") == 0)
         printf("--save-to-file (-S):\n\tSaves the configuration loaded to a configuration file.\n");
+    else if(strcmp(scope, "use-tui") == 0)
+        printf("--use-tui (-t):\n\tThe game will use the terminal user interface (TUI) when specified.\n");
     else if(strcmp(scope, "verbose") == 0)
         printf("--verbose (-v):\n\tThe program has a verbose behaviour if this flag is specified. This option is not saved on file and it is not asked to the user. It prints the game configuration when it is loaded and at the beginning of each phase prints the players informations.\n");
     else if(strcmp(scope, "default-player-LPs") == 0)
@@ -65,6 +69,8 @@ int handleCLIArguments(char** argv, const int argc) {
             getHelp("ignore-config-file");
         else if(strcmp(argv[2], "--save-to-file") == 0 || strcmp(argv[2], "-S") == 0 || strcmp(argv[2], "save-to-file") == 0 || strcmp(argv[2], "S") == 0)
             getHelp("save-to-file");
+        else if(strcmp(argv[2], "--use-tui") == 0 || strcmp(argv[2], "-t") == 0 || strcmp(argv[2], "use-tui") == 0 || strcmp(argv[2], "t") == 0)
+            getHelp("use-tui");
         else if(strcmp(argv[2], "--verbose") == 0 || strcmp(argv[2], "-v") == 0 || strcmp(argv[2], "verbose") == 0 || strcmp(argv[2], "v") == 0)
             getHelp("verbose");
         else if(strcmp(argv[2], "--default-player-LPs") == 0 || strcmp(argv[2], "-p") == 0 || strcmp(argv[2], "default-player-LPs") == 0 || strcmp(argv[2], "p") == 0)
@@ -92,9 +98,11 @@ int handleCLIArguments(char** argv, const int argc) {
             else if(strcmp(argv[i], "--ignore-config-file") == 0 || strcmp(argv[i], "-c") == 0)
                 code += ACTION_IGNORE_CONFIG_FILE;
             else if(strcmp(argv[i], "--save-to-file") == 0 || strcmp(argv[i], "-S") == 0)
-                code += ACTION_SAVE_TO_FILE;        
+                code += ACTION_SAVE_TO_FILE;
+            else if(strcmp(argv[i], "--use-tui") == 0 || strcmp(argv[i], "-t") == 0)
+                code += ACTION_USE_TUI;
             else if(strcmp(argv[i], "--verbose") == 0 || strcmp(argv[i], "-v") == 0)
-                code += ACTION_BE_VERBOSE;  
+                code += ACTION_BE_VERBOSE;
         }
 
         if(code == ACTION_NOTHING) {
