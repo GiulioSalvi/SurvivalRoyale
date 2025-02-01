@@ -3,7 +3,7 @@
  * \brief Declaration of constants used by the modules.
 **/
 
-/// @brief Exit code when malloc fails.
+/// @brief Exit code when dynamic memory allocation fails.
 #define EXIT_ALLOC_FAILURE 2
 /// @brief Exit code when popping from a vector fails.
 #define EXIT_POP_FAILURE 3
@@ -26,7 +26,9 @@
 #define ACTION_SAVE_TO_FILE 4
 /// @brief With this action code, the program has a verbose logging behaviour.
 #define ACTION_BE_VERBOSE 8
+/// @brief With this action code, the program will use te terminal user interface (TUI) when specified.
+#define ACTION_USE_TUI 16
 /// @brief With this action code, the program starts a match.
-#define ACTION_GO 16
+#define ACTION_GO 32
 /// @brief With this action code, the program has printed help messages.
-#define ACTION_HELP 17
+#define ACTION_HELP 33
