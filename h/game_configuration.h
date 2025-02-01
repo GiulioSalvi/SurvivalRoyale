@@ -21,6 +21,8 @@
         bool allowSameSuit;
         /// @brief Determines if the program has to have a verbose logging behaviour.
         bool beVerbose;
+        /// @brief Determines if the gama has to use the terminal user interface (TUI).
+        bool useTui;
     } GameConfiguration;
 
     /// @brief Retrieves the default game configuration.
