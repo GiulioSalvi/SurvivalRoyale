@@ -17,8 +17,10 @@ int main(int argc, char** argv) {
     const GameConfiguration gameCfg = getGameConfiguration(handleCLIArguments(argv, argc), getConfigurationFromArguments(argv, argc));
     const LogsConfiguration logsCfg = gameCfg.beVerbose ? prepareLogs() : (LogsConfiguration){.fileName = "", .useConsole = true};
     
-    checkTerminal();
-    setupTerminal();
+    if(gameCfg.useTui) {
+        checkTerminal();
+        setupTerminal();
+    }
     
     clearScreen();
 
@@ -29,8 +31,7 @@ int main(int argc, char** argv) {
     const int playersCounter = askPlayerNumber();
     clearScreen();
 
-    Game game = prepareGame(playersCounter, deck, gameCfg);
-    game.logsConfiguration = logsCfg;
+    Game game = prepareGame(playersCounter, deck, gameCfg, logsCfg);
     if(gameCfg.beVerbose)
         printPlayers(game, false);
     
@@ -295,9 +296,9 @@ Card* prepareCardDeck() {
     return deck;
 }
 
-Game prepareGame(int playersCounter, Card* deck, GameConfiguration configuration) {
+Game prepareGame(int playersCounter, Card* deck, GameConfiguration gameConfiguration, LogsConfiguration logsConfiguration) {
     Game game = buildGame(playersCounter);
-    game.lifePointsOnTheField = configuration.defaultLPsOnField;
+    game.lifePointsOnTheField = gameConfiguration.defaultLPsOnField;
 
     for(int i = 0; i < game.playersCounter; i++) {
         Player* player = malloc(sizeof(Player));
@@ -305,13 +306,23 @@ Game prepareGame(int playersCounter, Card* deck, GameConfiguration configuration
             exit(EXIT_ALLOC_FAILURE);
         
         do
-            player = preparePlayer(i + 1, deck, configuration);
-        while(cardsWereGiven(game.players, game.playersCounter, *player) || cardAreEqual(player->facedUpCard, player->facedDownCard) || (!configuration.allowSameRank ? player->facedUpCard.rank == player->facedDownCard.rank : false) || (!configuration.allowSameSuit ? player->facedUpCard.suit == player->facedDownCard.suit : false));
+            player = preparePlayer(i + 1, deck, gameConfiguration);
+        while(
+            cardsWereGiven(game.players, game.playersCounter, *player) ||
+            cardAreEqual(player->facedUpCard, player->facedDownCard) || (
+                !gameConfiguration.allowSameRank ?
+                player->facedUpCard.rank == player->facedDownCard.rank : false
+            ) || (
+                !gameConfiguration.allowSameSuit ?
+                player->facedUpCard.suit == player->facedDownCard.suit : false
+            )
+        );
 
         game.players[i] = player;
     }
 
-    game.gameConfiguration = configuration;
+    game.gameConfiguration = gameConfiguration;
+    game.logsConfiguration = logsConfiguration;
 
     return game;
 }
@@ -338,25 +349,54 @@ void shuffleDeck(Card* deck) {
 }
 
 bool handleGamePhase(Game* game) {
+    PageData* pages;
     int starterPlayerPosition = randomInt(0, game->playersCounter - 1);
     int maxRows = 0, maxColumns = 0, totalPages = 0, bestStartColumn = 0;
-    screenSize(&maxColumns, &maxRows);
-    PageData* pages = getPageData(maxRows, maxColumns, game->players, game->playersCounter, &totalPages, &bestStartColumn);
     
-    drawPageFrame(maxRows, maxColumns);
-    cursorPosition(maxRows - (LOG_SECTION_HEIGHT + 1) + 1, 3);
+    if(game->gameConfiguration.useTui) {
+        screenSize(&maxColumns, &maxRows);
+        pages = getPageData(maxRows, maxColumns, game->players, game->playersCounter, &totalPages, &bestStartColumn);
+
+        drawPageFrame(maxRows, maxColumns);
+        cursorPosition(maxRows - (LOG_SECTION_HEIGHT + 1) + 1, 3);
+
+        if(game->gameConfiguration.beVerbose)
+            printPageData(pages, game->logsConfiguration, totalPages, true);
+    }
+
     printfgr("The current phase starts from #b#player %d#r#.", game->players[starterPlayerPosition]->id);
     Pause(false);
 
-    if(game->gameConfiguration.beVerbose)
-        printPageData(pages, game->logsConfiguration, totalPages, true);
-
     for(int i = 0; i < game->playersCounter; i++) {
-        navigatePages(pages, totalPages, maxRows, maxColumns, bestStartColumn, (i + starterPlayerPosition)%game->playersCounter, game);
+        int position = (i + starterPlayerPosition)%game->playersCounter, id = game->players[position]->id;
+
+        if(game->gameConfiguration.useTui)
+            navigatePages(pages, totalPages, maxRows, maxColumns, bestStartColumn, position, game);
+        else {
+            Player* player = game->players[position];
+            printfgr("%s#b#It's your turn, player %d!!#r# You have #b##%d#%d LPs#r#.\n", i == 0 ? "\n\n" : "", id, FgBrightCyan, player->lifePoints);
+            
+            revealCard(player->facedUpCard, id, true, true);
+            applyEffect(game, position, true);
+            printgr("\n");
+
+            if(!player->revealedFacedDownCard) {
+                revealCard(player->facedDownCard, id, false, false);
+
+                if(revealFacedDownCard(player->facedDownCard))
+                    applyEffect(game, position, false);
+                else
+                    printgr("#b#The card has not been revealed#r#.\n");
+            } else
+                printfgr("#b#Player %d#r#, your #b#faced down card#r# has been #b##%d#already revealed#r#!\n", id, FgBrightRed);
+            
+            Pause(true);
+        }
     }
 
     announceDeadPlayers(game);
-    freePageData(pages, totalPages);
+    if(game->gameConfiguration.useTui)
+        freePageData(pages, totalPages);
 
     return isGameEnded(game);
 }
@@ -368,7 +408,7 @@ bool isGameEnded(Game* game) {
         if(game->players[i]->lifePoints > 0)
             c++;
     
-    return c == 1;
+    return c <= 1;
 }
 
 bool applyEffect(Game* game, int playerPosition, bool facedUpCard) {
@@ -377,55 +417,82 @@ bool applyEffect(Game* game, int playerPosition, bool facedUpCard) {
     if(!facedUpCard) {
         if(game->players[playerPosition]->revealedFacedDownCard) {
             printfgr("#b#Player %d's faced down card#r# has been #b##%d#already revealed#r#! #b#No effect by the last card has been applied#r#.", player->id, FgBrightRed);
-            return true;
+            return game->gameConfiguration.useTui;
         }
         
         player->revealedFacedDownCard = true;
     }
 
     if((facedUpCard ? player->facedUpCard.rank : player->facedDownCard.rank) == Ace) {
-        game->lifePointsOnTheField++;
-        if(player->lifePoints > 0)
+        if(player->lifePoints > 0) {
+            game->lifePointsOnTheField++;
             player->lifePoints--;
-
-        printfgr("By the effect of the #b#player %d's faced %s card#r# now on the #b#playing field#r# there are #b##%d#%d LPs#r#.", player->id, facedUpCard ? "up" : "down", FgGreen, game->lifePointsOnTheField);
-        return true;
-    } else if((facedUpCard ? player->facedUpCard.rank : player->facedDownCard.rank) == Seven) {
-        tellFacedDownCard(game->players[(playerPosition + 1)%game->playersCounter]->facedDownCard, game->players[(playerPosition + 1)%game->playersCounter]->id);
+        }
         
-        Pause(false);
-        cursorHorizontalAbsolute(3);
-        for(int i = 0; i < 137; i++)
-            printgr(" ");
-        cursorHorizontalAbsolute(3);
+        if(game->gameConfiguration.useTui) {
+            printfgr("By the effect of the #b#player %d's faced %s card#r# now on the #b#playing field#r# there are #b##%d#%d LPs#r#.", player->id, facedUpCard ? "up" : "down", FgGreen, game->lifePointsOnTheField);
+
+            return true;
+        } else {
+            printfgr("Now #b#player %d#r# has #b##%d#%d LPs#r#. ", player->id, FgBrightRed, player->lifePoints);
+            printfgr("Now on the #b#playing field#r# there are #b##%d#%d LPs#r#.\n", FgGreen, game->lifePointsOnTheField);
+
+            return false;
+        }
+    } else if((facedUpCard ? player->facedUpCard.rank : player->facedDownCard.rank) == Seven) {
+        if(game->gameConfiguration.useTui) {
+            tellFacedDownCard(game->players[(playerPosition + 1)%game->playersCounter]->facedDownCard, game->players[(playerPosition + 1)%game->playersCounter]->id);
+
+            Pause(false);
+            cursorHorizontalAbsolute(3);
+            for(int i = 0; i < 137; i++)
+                printgr(" ");
+            cursorHorizontalAbsolute(3);
+        } else
+            revealCard(game->players[(playerPosition + 1)%game->playersCounter]->facedDownCard, game->players[(playerPosition + 1)%game->playersCounter]->id, false, true);
 
         return applyEffect(game, (playerPosition + 1)%game->playersCounter, false);
     } else if((facedUpCard ? player->facedUpCard.rank : player->facedDownCard.rank) == Jack) {
-        if(player->lifePoints > 0)
+        if(player->lifePoints > 0) {
             player->lifePoints--;
-        game->players[(playerPosition == 0 ? game->playersCounter : playerPosition) - 1]->lifePoints++;
+            game->players[(playerPosition == 0 ? game->playersCounter : playerPosition) - 1]->lifePoints++;
+        }
         
-        return false;
-        // printfgr("Now #b#player %d#r# has #b##%d#%d LPs#r#. ", player->id, FgBrightRed, player->lifePoints);
-        // printfgr("Now #b#player %d#r# has #b##%d#%d LPs#r#.\n", game->players[(playerPosition == 0 ? game->playersCounter : playerPosition) - 1]->id, FgGreen, game->players[(playerPosition == 0 ? game->playersCounter : playerPosition) - 1]->lifePoints);
-    } else if((facedUpCard ? player->facedUpCard.rank : player->facedDownCard.rank) == Queen) {
-        if(player->lifePoints > 0)
-            player->lifePoints--;
-        game->players[(playerPosition + 2)%game->playersCounter]->lifePoints++;
+        if(!game->gameConfiguration.useTui) {
+            printfgr("Now #b#player %d#r# has #b##%d#%d LPs#r#. ", player->id, FgBrightRed, player->lifePoints);
+            printfgr("Now #b#player %d#r# has #b##%d#%d LPs#r#.\n", game->players[(playerPosition == 0 ? game->playersCounter : playerPosition) - 1]->id, FgGreen, game->players[(playerPosition == 0 ? game->playersCounter : playerPosition) - 1]->lifePoints);
+        }
 
         return false;
-        // printfgr("Now #b#player %d#r# has #b##%d#%d LPs#r#. ", player->id, FgBrightRed, player->lifePoints);
-        // printfgr("Now #b#player %d#r# has #b##%d#%d LPs#r#.\n", game->players[(playerPosition + 2)%game->playersCounter]->id, FgGreen, game->players[(playerPosition + 2)%game->playersCounter]->lifePoints);
+    } else if((facedUpCard ? player->facedUpCard.rank : player->facedDownCard.rank) == Queen) {
+        if(player->lifePoints > 0) {
+            player->lifePoints--;
+            game->players[(playerPosition + 2)%game->playersCounter]->lifePoints++;
+        }
+
+        if(!game->gameConfiguration.useTui) {
+            printfgr("Now #b#player %d#r# has #b##%d#%d LPs#r#. ", player->id, FgBrightRed, player->lifePoints);
+            printfgr("Now #b#player %d#r# has #b##%d#%d LPs#r#.\n", game->players[(playerPosition + 2)%game->playersCounter]->id, FgGreen, game->players[(playerPosition + 2)%game->playersCounter]->lifePoints);
+        }
+
+        return false;
     } else if((facedUpCard ? player->facedUpCard.rank : player->facedDownCard.rank) == King) {
         player->lifePoints += game->lifePointsOnTheField;
         game->lifePointsOnTheField = 0;
 
-        // printfgr("Now #b#player %d#r# has #b##%d#%d LPs#r#. ", player->id, FgGreen, player->lifePoints);
-        printfgr("By the effect of the #b#player %d's faced %s card#r# now on the #b#playing field#r# there are #b##%d#0 LPs#r#.", player->id, facedUpCard ? "up" : "down", FgBrightYellow);
-        return true;
+        if(game->gameConfiguration.useTui) {
+            printfgr("By the effect of the #b#player %d's faced %s card#r# now on the #b#playing field#r# there are #b##%d#0 LPs#r#.", player->id, facedUpCard ? "up" : "down", FgBrightYellow);
+            
+            return true;
+        } else {
+            printfgr("Now #b#player %d#r# has #b##%d#%d LPs#r#. ", player->id, FgGreen, player->lifePoints);
+            printfgr("Now on the #b#playing field#r# there are #b##%d#0 LPs#r#.\n", FgBrightYellow);
+
+            return false;
+        }
     } else {
         printfgr("#b#No effect by the player %d's faced %s card has been applied#r#.", player->id, facedUpCard ? "up" : "down");
-        return true;
+        return game->gameConfiguration.useTui;
     }
 }
 
@@ -552,6 +619,16 @@ void printCardEffect(Card card, bool newLine) {
     else if(card.rank == King)
         printgr("you claim #b#all#r# the #b#LPs#r# on the playing field.");
     
+    if(newLine)
+        printgr("\n");
+}
+
+void revealCard(Card card, int playerId, bool facedUp, bool newLine) {
+    printfgr("Player %d #b#faced %s#r# card is a #b#", playerId, facedUp ? "up" : "down");
+    printCard(card, (LogsConfiguration){.fileName = "", .useConsole = true}, false);
+    printgr("#r#, the effect is: ");
+    printCardEffect(card, true);
+
     if(newLine)
         printgr("\n");
 }

@@ -132,9 +132,10 @@
     /// @brief Generates a game structure with the given players number and with the given data gave by the game configuration.
     /// @param playersCounter The number of players.
     /// @param deck The deck from which the cards are given.
-    /// @param configuration The game configuration form which data, like default LPs on the playing field, is taken.
+    /// @param gameConfiguration The game configuration form which data, like default LPs on the playing field, is taken.
+    /// @param logsConfiguration The logs configuration to append to the generated game structure.
     /// @return The generated game. It is guaranteed that players do not have the same cards.
-    Game prepareGame(int playersCounter, Card* deck, GameConfiguration configuration);
+    Game prepareGame(int playersCounter, Card* deck, GameConfiguration gameConfiguration, LogsConfiguration logsConfiguration);
     /// @brief Shuffles the deck using Fisher - Yates algorithm.
     /// @param deck The deck shuffled.
     void shuffleDeck(Card* deck);
@@ -194,6 +195,12 @@
     /// @return True if a player in the vector has at least one card equal to the player's one, false otherwise.
     bool cardsWereGiven(Player** players, int playersCounter, Player player);
 
+    /// @brief Prints user-friendly the card revealed from a player.
+    /// @param card The card that has been revealed.
+    /// @param playerId The player ID.
+    /// @param facedUp Flag for determining if the card was faced up, if set to true.
+    /// @param newLine Flag for determining if the function has to go to a new line before exiting.
+    void revealCard(Card card, int playerId, bool facedUp, bool newLine);
     /// @brief Prints user-friendly the card's effect.
     /// @param card The card whose effect has to be printed.
     /// @param newLine Flag for determining if the function has to go to a new line before exiting.
