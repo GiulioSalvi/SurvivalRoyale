@@ -86,10 +86,8 @@ bool checkTerminalSize() {
 bool checkTerminalHost() {
     #ifdef _WIN32
         HANDLE hSnapshot = CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, 0);
-        if (hSnapshot == INVALID_HANDLE_VALUE) {
-            printf("Errore durante la creazione dello snapshot.\n");
+        if (hSnapshot == INVALID_HANDLE_VALUE)
             return false;
-        }
 
         DWORD processId = GetCurrentProcessId();
         while (processId != 0) {
