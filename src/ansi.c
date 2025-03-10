@@ -79,11 +79,10 @@ bool validateRgb(rgb rgbColor) {
 }
 
 void clearScreen() {
-    #ifdef _WIN32
-        system("cls");
-    #else
-        int _ = system("clear");
-    #endif
+    eraseInDisplay(1);
+    eraseInDisplay(2);
+
+    cursorPosition(1, 1);
 }
 
 void setForegroundColor(color color) {
@@ -146,7 +145,9 @@ void printgr(const char* text) {
 
             if(isDecimalDigit(text[i]))
                 n = strtol(substr, &endptr, 10);
-
+            
+            if(offset == 0)
+                printf("#");
             if(offset >= 8) { // rgb
                 int semicolonCount = count(substr, ';', 0);
 
@@ -213,8 +214,7 @@ void printgr(const char* text) {
             } else if(strcmp(substr, "r") == 0) {
                 i++;
                 graphicReset();
-            } else
-                printf("%c%c", text[i - 1], text[i]);
+            }
 
             free(substr);
         } else
