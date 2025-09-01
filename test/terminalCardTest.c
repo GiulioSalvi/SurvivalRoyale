@@ -1,3 +1,18 @@
+// Copyright (C) 2025  Giulio Salvi, Jacopo Paradisi
+//
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
@@ -439,7 +454,7 @@ bool randomBool() {
     drawLine(2, maxColumns, maxRows - 1, 'v', 'n');
 
     // drawing the separator between the cards section and the logs section
-    drawLine(maxRows - 2 - LOG_SECTION_HEIGTH, 2, maxColumns - 2, 'h', 'n');
+    drawLine(maxRows - 2 - LOG_SECTION_HEIGHT, 2, maxColumns - 2, 'h', 'n');
 
     // drawing the bottom line
     drawLine(maxRows - 1, 1, maxColumns, 'h', 'd');

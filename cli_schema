@@ -1,3 +1,18 @@
+# Copyright (C) 2025  Giulio Salvi, Jacopo Paradisi
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
 game [--help [option]] | [--go] [--dont-ask-config-options] [--ignore-config-file] [--save-to-file] [--use-tui] [--verbose] [--default-player-LPs <LPs>] [--default-LPs-field <LPs>] [--allow-same-rank <false|true>] [--allow-same-suit <false|true>]
 
 --help [option] (-h [option]):
@@ -13,7 +28,7 @@ game [--help [option]] | [--go] [--dont-ask-config-options] [--ignore-config-fil
 --use-tui (-t):
     the game will use the terminal user interface (TUI) when specified.
 --verbose (-v):
-    the program has a verbose behaviour if this flag is specified. this option is not saved on file and it is not asked to the user. (it prints the game configuration when it is loaded and at the beginning of each phase prints the players informations.)
+    the program has a verbose behavior if this flag is specified. this option is not saved on file and it is not asked to the user. (it prints the game configuration when it is loaded and at the beginning of each phase prints the players informations.)
 --default-player-LPs <LPs> (-p <LPs>):
     sets with how many LPs players spawn. (if there exists the configuration file and it has not been ignored, the program considers this option instead of the file's option.
     
