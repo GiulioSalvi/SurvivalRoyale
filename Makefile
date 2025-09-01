@@ -17,6 +17,8 @@ CV=99
 CC=gcc
 CCFLAGS=-g -O2 --std=c$(CV) -I./h/
 
+.PHONY: all tests setup gen-docs go go-verbose go-classic go-classic-verbose cli config config_file utility vector ansi tui log main
+
 ifeq ($(OS), Windows_NT)
     EXE_EXT=.exe
 endif
