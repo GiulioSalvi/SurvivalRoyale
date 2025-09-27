@@ -6,5 +6,6 @@ test/exec/
 
 Go.sh
 Go.ps1
+*.docx
 game.cfg
 .DS_Store
