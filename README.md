@@ -15,13 +15,13 @@ A logging utility, for debugging purposes, can be activated at run-time using th
 
 ## How to Compile and Run:
 
-The project is designed to be cross-platform on Windows, macOS and Linux. Note that for Windows systems you might use some toolchain that serves you a Unix-like environment, such as *Windows Subsystem for Linux 2* (*WSL2*) (which is the most recommended and versatile), *MSYS2*, *Cygwin*, *MinGW* and many others.
+The project is designed to be cross-platform on Windows, macOS and Linux. Note that for Windows systems you might use some [toolchain](https://en.wikipedia.org/wiki/Toolchain) that serves you a Unix-like environment, such as *[Windows Subsystem for Linux 2](https://en.wikipedia.org/wiki/Windows_Subsystem_for_Linux)* (*WSL2*) (which is the most recommended and versatile), *MSYS2*, *Cygwin*, *MinGW* and many others.
 
-The main tool to compile and run the project is the GNU Make file that is placed in the root folder: when cloning this repository for the first time it is **mandatory** to run the target `setup` that will set up your workspace for you. Then you might want to run the target `all` for compiling all the modules of the project. Alternatively, you can run any of the targets starting with `go` which will compile and run the project for you: the project can be run with several interactive modes and configurations.
+The main tool to compile and run the project is the [GNU Make](https://en.wikipedia.org/wiki/Make_(software)) file that is placed in the root folder: when cloning this repository for the first time it is **mandatory** to run the target `setup` that will set up your workspace for you. Then you might want to run the target `all` for compiling all the modules of the project. Alternatively, you can run any of the targets starting with `go` which will compile and run the project for you: the project can be run with several interactive modes and configurations.
 
-On Windows systems, the project requires to be run on [Windows Terminal app](https://apps.microsoft.com/detail/9n0dx20hk701).
+On Windows systems, the project requires to be run on the [Windows Terminal app](https://apps.microsoft.com/detail/9n0dx20hk701).
 
-If you desire to regenerate the Doxygen documentation, you can run the target `gen-docs` but you need to have Doxygen installed on your system.
+If you desire to regenerate the [Doxygen](https://en.wikipedia.org/wiki/Doxygen) documentation, you can run the target `gen-docs` but you need to have Doxygen installed on your system.
 
 ## About the Code Organization:
 
