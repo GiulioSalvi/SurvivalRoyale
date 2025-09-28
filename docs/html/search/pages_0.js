@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['royale_3a_20strong_0',['&lt;strong&gt;Survival Royale:&lt;/strong&gt;',['../index.html',1,'']]]
+  ['code_20organization_3a_0',['Code Organization:',['../index.html#autotoc_md1',1,'']]]
 ];

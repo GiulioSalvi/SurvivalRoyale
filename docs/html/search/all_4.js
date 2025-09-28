@@ -12,7 +12,7 @@ var searchData=
   ['diamonds_9',['Diamonds',['../main_8h.html#a17cfb536d4e2f32f38afdd2a57617668',1,'main.h']]],
   ['displaypage_10',['displayPage',['../tui_8h.html#a703fd6c981df3057f4e956243bfee84c',1,'displayPage(PageData *page, int maxRows, int maxColumns, int bestStartColumn):&#160;tui.c'],['../tui_8c.html#a703fd6c981df3057f4e956243bfee84c',1,'displayPage(PageData *page, int maxRows, int maxColumns, int bestStartColumn):&#160;tui.c']]],
   ['docs_2dmainpage_2emd_11',['docs-mainpage.md',['../docs-mainpage_8md.html',1,'']]],
-  ['doublyunderlined_12',['DoublyUnderlined',['../ansi__const_8h.html#a8a02ad4e2f1926f3c975b5f641d75c72',1,'DoublyUnderlined:&#160;ansi_const.h'],['../tui_8h.html#a8a02ad4e2f1926f3c975b5f641d75c72',1,'DoublyUnderlined:&#160;tui.h']]],
+  ['doublyunderlined_12',['DoublyUnderlined',['../ansi__const_8h.html#a8a02ad4e2f1926f3c975b5f641d75c72',1,'ansi_const.h']]],
   ['doublyunderlined_13',['doublyUnderlined',['../ansi_8h.html#a82e03ae592c92726f05e58c353bf0553',1,'doublyUnderlined():&#160;ansi.c'],['../ansi_8c.html#a82e03ae592c92726f05e58c353bf0553',1,'doublyUnderlined():&#160;ansi.c']]],
   ['drawcard_14',['drawCard',['../tui_8h.html#a2ba1b15535284a734c8b588d8d33c3be',1,'drawCard(int startingX, int startingY, int suit, int rank):&#160;tui.c'],['../tui_8c.html#a2ba1b15535284a734c8b588d8d33c3be',1,'drawCard(int startingX, int startingY, int suit, int rank):&#160;tui.c']]],
   ['drawcardsforpage_15',['drawCardsForPage',['../tui_8h.html#a94ce6d28d044407fcbb87219f6341840',1,'drawCardsForPage(PageData *page, int startX, int bestStartColumn):&#160;tui.c'],['../tui_8c.html#a94ce6d28d044407fcbb87219f6341840',1,'drawCardsForPage(PageData *page, int startX, int bestStartColumn):&#160;tui.c']]],

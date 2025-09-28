@@ -7,5 +7,6 @@ var searchData=
   ['action_5fhelp_4',['ACTION_HELP',['../consts_8h.html#a6b54135a70faa4164ba2189215e47016',1,'consts.h']]],
   ['action_5fignore_5fconfig_5ffile_5',['ACTION_IGNORE_CONFIG_FILE',['../consts_8h.html#a94c6b64be9fa788c516a8780f16b3e27',1,'consts.h']]],
   ['action_5fnothing_6',['ACTION_NOTHING',['../consts_8h.html#ad63e64e3a2a171ca05a18e4337d6aa5e',1,'consts.h']]],
-  ['action_5fsave_5fto_5ffile_7',['ACTION_SAVE_TO_FILE',['../consts_8h.html#a2a7e70362eb9c107c9375a17c816ec00',1,'consts.h']]]
+  ['action_5fsave_5fto_5ffile_7',['ACTION_SAVE_TO_FILE',['../consts_8h.html#a2a7e70362eb9c107c9375a17c816ec00',1,'consts.h']]],
+  ['action_5fuse_5ftui_8',['ACTION_USE_TUI',['../consts_8h.html#ab23adc379c0083b28275b2d2239be17a',1,'consts.h']]]
 ];

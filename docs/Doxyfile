@@ -183,7 +183,8 @@ FILE_PATTERNS          = *.c \
                          *.ice
 RECURSIVE              = YES
 EXCLUDE                = ./test/ \
-                         ./logs/
+                         ./logs/ \
+                         ./README.md
 EXCLUDE_SYMLINKS       = NO
 EXCLUDE_PATTERNS       =
 EXCLUDE_SYMBOLS        =

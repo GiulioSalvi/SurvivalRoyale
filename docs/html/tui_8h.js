@@ -4,7 +4,6 @@ var tui_8h =
     [ "_GUI_H_", "tui_8h.html#a7c3af9c14c097d70cc89934d479f38f5", null ],
     [ "CARD_HEIGHT", "tui_8h.html#a1112bc16f788ef03ff4165abfa648d28", null ],
     [ "CARD_WIDTH", "tui_8h.html#ad6ff324701f28fdcd04a8408f68a3f6c", null ],
-    [ "DoublyUnderlined", "tui_8h.html#a8a02ad4e2f1926f3c975b5f641d75c72", null ],
     [ "LOG_SECTION_HEIGHT", "tui_8h.html#aced628f36d2fc0b003b0eade62b142b6", null ],
     [ "MIN_COLUMNS", "tui_8h.html#a359791a95390262089840e5f232aac44", null ],
     [ "MIN_ROWS", "tui_8h.html#a127ce6a6f9cc3249f35aba75db3e77e0", null ],

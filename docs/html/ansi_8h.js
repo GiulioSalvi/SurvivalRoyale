@@ -55,6 +55,5 @@ var ansi_8h =
     [ "setStandardBackgroundColor", "ansi_8h.html#ac8eb168942549efd66a06ac9cf665a82", null ],
     [ "setStandardForegroundColor", "ansi_8h.html#abdc3ddf704f97428d16e31a2788ce1f4", null ],
     [ "slowBlinking", "ansi_8h.html#ad0dfc3813cd82beebc3e58aadd7bb70c", null ],
-    [ "underlined", "ansi_8h.html#a05bdcaa839284c6183da995a3cc9077f", null ],
-    [ "validateRgb", "ansi_8h.html#a7b4b30d9bb1010992f63aeeb40afb3c7", null ]
+    [ "underlined", "ansi_8h.html#a05bdcaa839284c6183da995a3cc9077f", null ]
 ];
