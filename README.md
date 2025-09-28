@@ -4,11 +4,11 @@
 
 ## Welcome:
 
-This is the project of [Giulio Salvi](https://github.com/GiulioSalvi) and [Jacopo Paridisi](https://github.com/jajo-coder) for the academic [course Introduction to Computer Programming [CT0665]](https://www.unive.it/data/course/521402) in the bachelor's degree program in [Computer Science [CT3]](https://www.unive.it/web/en/12090/home) at the [University of Venice Ca&#39; Foscari](unive.it).
+This is the project of [Giulio Salvi](https://github.com/GiulioSalvi) and [Jacopo Paridisi](https://github.com/jajo-coder) for the academic [course Introduction to Computer Programming [CT0665]](https://www.unive.it/data/course/521402) in the bachelor's degree program in [Computer Science [CT3]](https://www.unive.it/web/en/12090/home) at the [University of Venice Ca&#39; Foscari](https://unive.it).
 
 The project offers two interfaces at run-time:
 
-1. *Terminal User Interface* (*TUI*): it aims to simulate a *Graphical User Interface* (*GUI*) with the features available in modern terminals via [ANSI escape codes](https://en.wikipedia.org/wiki/ANSI_escape_code), like [coloring](https://en.wikipedia.org/wiki/ANSI_escape_code#Colors) and [text styling](https://en.wikipedia.org/wiki/ANSI_escape_code#Select_Graphic_Rendition_parameters), and [Unicode characters](https://en.wikipedia.org/wiki/Unicode). On Windows systems, it requires the project to be run on [Windows Terminal app](https://apps.microsoft.com/detail/9n0dx20hk701).
+1. *Terminal User Interface* (*TUI*): it aims to simulate a *Graphical User Interface* (*GUI*) with the features available in modern terminals via [ANSI escape codes](https://en.wikipedia.org/wiki/ANSI_escape_code), like [coloring](https://en.wikipedia.org/wiki/ANSI_escape_code#Colors) and [text styling](https://en.wikipedia.org/wiki/ANSI_escape_code#Select_Graphic_Rendition_parameters), and [Unicode characters](https://en.wikipedia.org/wiki/Unicode). On Windows systems, it requires the project to be run on the [Windows Terminal app](https://apps.microsoft.com/detail/9n0dx20hk701).
 2. The *Classic Mode*: it uses plain text printed on the terminal for interacting with the user.
 
 A logging utility, for debugging purposes, can be activated at run-time using the option `--verbose` or its alias `-v` in the *CLI* (*Command Line Interface*) and it will produce log files in the directory `logs`.
@@ -19,7 +19,7 @@ The project is designed to be cross-platform on Windows, macOS and Linux. Note t
 
 The main tool to compile and run the project is the [GNU Make](https://en.wikipedia.org/wiki/Make_(software)) file that is placed in the root folder: when cloning this repository for the first time it is **mandatory** to run the target `setup` that will set up your workspace for you. Then you might want to run the target `all` for compiling all the modules of the project. Alternatively, you can run any of the targets starting with `go` which will compile and run the project for you: the project can be run with several interactive modes and configurations.
 
-On Windows systems, the project requires to be run on the [Windows Terminal app](https://apps.microsoft.com/detail/9n0dx20hk701).
+On Windows systems, the project's *TUI* requires to be run on the [Windows Terminal app](https://apps.microsoft.com/detail/9n0dx20hk701).
 
 If you desire to regenerate the [Doxygen](https://en.wikipedia.org/wiki/Doxygen) documentation, you can run the target `gen-docs` but you need to have Doxygen installed on your system.
 
