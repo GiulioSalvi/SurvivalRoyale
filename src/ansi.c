@@ -30,9 +30,9 @@
 
 rgb buildRgb() {
     rgb rgb = {
-        .r = NONE,
-        .g = NONE,
-        .b = NONE
+        .r = 0,
+        .g = 0,
+        .b = 0
     };
     
     return rgb;
@@ -82,17 +82,6 @@ graphicRendition buildGraphicRendition() {
 
 // UTILITY FUNCTIONS section
 
-bool validateRgb(rgb rgbColor) {
-    if(rgbColor.r < 0 || rgbColor.r > 255)
-        return false;
-    if(rgbColor.g < 0 || rgbColor.g > 255)
-        return false;
-    if(rgbColor.b < 0 || rgbColor.b > 255)
-        return false;
-    
-    return true;
-}
-
 void clearScreen() {
     eraseInDisplay(1);
     eraseInDisplay(2);
@@ -101,30 +90,20 @@ void clearScreen() {
 }
 
 void setForegroundColor(color color) {
-    if(color.isRgbColor) {
-        if(!validateRgb(color.color.rgbColor.fgRgb))
-            return;
-        
+    if(color.isRgbColor)
         setRGBForegroundColor(color.color.rgbColor.fgRgb);
-    } else
+    else
         setStandardForegroundColor(color.color.stdColor.fgColor);
 }
 
 void setBackgroundColor(color color) {
-    if(color.isRgbColor) {
-        if(!validateRgb(color.color.rgbColor.bgRgb))
-            return;
-        
+    if(color.isRgbColor)
         setRGBBackgroundColor(color.color.rgbColor.bgRgb);
-    } else
+    else
         setStandardBackgroundColor(color.color.stdColor.bgColor);
 }
 
 void setColor(color color) {
-    if(color.isRgbColor)
-        if(!validateRgb(color.color.rgbColor.bgRgb) || !validateRgb(color.color.rgbColor.fgRgb))
-            return;
-    
     setBackgroundColor(color);
     setForegroundColor(color);
 }
@@ -494,9 +473,6 @@ void setStandardForegroundColor(ansiStandardColors foregroundColor) {
 }
 
 void setRGBForegroundColor(rgb rgbColor) {
-    if(!validateRgb(rgbColor))
-        return;
-    
     printf("\e[38;2;%d;%d;%dm", rgbColor.r, rgbColor.g, rgbColor.b);
 }
 
@@ -509,9 +485,6 @@ void setStandardBackgroundColor(ansiStandardColors backgroundColor) {
 }
 
 void setRGBBackgroundColor(rgb rgbColor) {
-    if(!validateRgb(rgbColor))
-        return;
-    
     printf("\e[48;2;%d;%d;%dm", rgbColor.r, rgbColor.g, rgbColor.b);
 }
 

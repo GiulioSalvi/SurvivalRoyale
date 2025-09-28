@@ -220,8 +220,8 @@
     /// @param card The card whose effect has to be printed.
     /// @param newLine Flag for determining if the function has to go to a new line before exiting.
     void printCardEffect(Card card, bool newLine);
-    /// @brief Prints user-friendly the card revealed from a player.
-    /// @param card The card that has been revealed.
+    /// @brief Prints user-friendly the faced down card revealed of the player.
+    /// @param card The faced down card.
     /// @param playerId The card's owner ID. If it is 0, it prints 'Your', otherwise it prints 'Player <playerID>'s'
     void tellFacedDownCard(Card card, int playerId);
 #endif

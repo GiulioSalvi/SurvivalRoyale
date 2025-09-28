@@ -21,7 +21,7 @@
  *  
  *  NOTICE: not every function declared in this header is part of ANSI standard.
  * 
- *  NOTICE: for these structures are available some builders function that you should use if you want to build structures with unset properties.
+ *  NOTICE: for these structures are available some builder functions that you should use if you want to build structures with default set properties.
 **/
 
 #include "vector.h"
@@ -36,7 +36,7 @@
 
     /// @brief Defines the type underlined as unsigned integer 1 byte large.
     typedef uint8_t underline;
-    /// @brief Defines the ttype ansiStandardColors as unsigned integer 1 byte large.
+    /// @brief Defines the type ansiStandardColors as unsigned integer 1 byte large.
     typedef uint8_t ansiStandardColors;
 
     /// @brief Defines a basic structure for RGB colors.
@@ -95,7 +95,7 @@
 
 
     /// @brief Builds a rgb struct.
-    /// @return Returns a rgb struct with properties set to NONE.
+    /// @return Returns a rgb struct with properties set to 0.
     rgb buildRgb();
     /// @brief Builds a ANSI rgb color struct.
     /// @return Returns a ANSI rgb color struct with properties set to NONE.
@@ -110,10 +110,6 @@
     /// @return Returns a graphic rendition struct with properties set to NONE. bold and italic properties are set to false.
     graphicRendition buildGraphicRendition();
 
-    /// @brief Checks if  a rgb struct has valid properties, meaning that all the properites' values are between 0 and 255.
-    /// @param rgbColor The struct to be checked.
-    /// @return True if it is valid, false otherwise.
-    bool validateRgb(rgb rgbColor);
     /// @brief Clears the entire terminal's window's content.
     void clearScreen();
     /// @brief Sets the terminal's foreground color.
@@ -144,7 +140,7 @@
     void printgr(const char* text);
     /// @brief Prints text as printgr but handles standard C format specifiers %, d, i, u, x, X, f, F, s, n. Integers are always interpreted in base 10.
     /// @param text The text with custom graphic rendition format specifiers and standard C format specifiers.
-    /// @param Values Values to be contacetaned.
+    /// @param Values Values to be concatenated.
     void printfgr(char* text, ...);
     /// @brief Gets the char pressed on the keyboard without waiting for 'Enter' to be pressed.
     /// @return The pressed char on the keyboard.
