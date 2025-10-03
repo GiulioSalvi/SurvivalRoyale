@@ -120,19 +120,18 @@ int hexDigitToInt(char digit) {
     );
 }
 
-int evalutateBase(char* number) {
+int evaluateBase(char* number) {
     char max = -1;
 
     for(int i = 0; i < strlen(number); i++) {
         if(isHexDigit(number[i])) {
             if(number[i] > max)
                 max = number[i];
-        } else
+        } else if(number[i] != '.' && number[i] != '+' && number[i] != '-')
             return -1;
     }
 
     return hexDigitToInt(max) + 1;
-    
 }
 
 int nDigits(int number) {
