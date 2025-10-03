@@ -36,6 +36,10 @@ The source code of the project is organized in modules, in particular:
 * *Logs* module: it is formed by the files `h/logs_configuration.h`, `h/logs.h` and `src/logs.c`; it provides a dynamic way for the program for printing debug informations, either to the terminal or to a log file, in a verbose behavior.
 * *Main* module: it is formed by the files `h/main.h` and `src/main.c`; it is the implementation for the game.
 
+## Need help?
+
+If you need any help about the code and the project, please feel free to start a thread in [Q&amp;A category](https://github.com/GiulioSalvi/SurvivalRoyale/discussions/categories/q-a) in the discussion section.
+
 ## Documentation:
 
 The full documentation can be found [at this link on GitHub Pages](https://giuliosalvi.github.io/SurvivalRoyale).
