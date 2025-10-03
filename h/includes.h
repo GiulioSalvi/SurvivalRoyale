@@ -19,7 +19,7 @@
 **/
 
 /// @brief Used in some structure for meaning that a field is unset, instead of using NULL.
-#define NONE 1
+#define NONE 0
 
 #ifdef _WIN32
     #include <conio.h>

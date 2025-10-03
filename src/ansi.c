@@ -30,9 +30,9 @@
 
 rgb buildRgb() {
     rgb rgb = {
-        .r = 0,
-        .g = 0,
-        .b = 0
+        .r = NONE,
+        .g = NONE,
+        .b = NONE
     };
     
     return rgb;
@@ -117,8 +117,8 @@ void printGraphicRendition(char* text, graphicRendition rendition) {
         underlined();
     else if(rendition.underlined == 2)
         doublyUnderlined();
-    if(rendition.color.isRgbColor)
-        setColor(rendition.color);
+
+    setColor(rendition.color);
 
     printf("%s", text);
     graphicReset();
@@ -248,9 +248,9 @@ void printfgr(char* text, ...) {
             } else if(text[i] == 'f' || text[i] == 'F') {
                 double n = va_arg(args, double);
                 char format[16];
-                snprintf(format, 16, "%%.%df", NUMBER_DECIMALS_DIGITS);
+                snprintf(format, 16, "%%.%df", NUMBER_DECIMAL_DIGITS);
 
-                int snLen = NUMBER_DECIMALS_DIGITS + nDigits(floor(n)) + 3;
+                int snLen = NUMBER_DECIMAL_DIGITS + nDigits(floor(n)) + 3;
                 char* sn = (char*)malloc(snLen*sizeof(char));
                 if(sn == NULL)
                     exit(EXIT_ALLOC_FAILURE);
@@ -337,90 +337,90 @@ void screenSize(int* width, int* height) {
 
 // CSI section
 
-void cursorUp(int n) {
-    if(n <= 0)
+void cursorUp(uint32_t n) {
+    if(!n)
         return;
     
-    printf("\e[%dA", n);
+    printf("\e[%uA", n);
 }
 
-void cursorDown(int n) {
-    if(n <= 0)
+void cursorDown(uint32_t n) {
+    if(!n)
         return;
     
-    printf("\e[%dB", n);
+    printf("\e[%uB", n);
 }
 
-void cursorForward(int n) {
-    if(n <= 0) 
+void cursorForward(uint32_t n) {
+    if(!n) 
         return;
     
-    printf("\e[%dC", n);
+    printf("\e[%uC", n);
 }
 
-void cursorBack(int n) {
-    if(n <= 0) 
+void cursorBack(uint32_t n) {
+    if(!n) 
         return;
     
-    printf("\e[%dD", n);
+    printf("\e[%uD", n);
 }
 
-void cursorNextLine(int n) {
-    if(n <= 0) 
+void cursorNextLine(uint32_t n) {
+    if(!n) 
         return;
     
-    printf("\e[%dE", n);
+    printf("\e[%uE", n);
 }
 
-void cursorPreviousLine(int n) {
-    if(n <= 0) 
+void cursorPreviousLine(uint32_t n) {
+    if(!n) 
         return;
 
-    printf("\e[%dF", n);
+    printf("\e[%uF", n);
 }
 
-void cursorHorizontalAbsolute(int n) {
-    if(n <= 0) 
+void cursorHorizontalAbsolute(uint32_t n) {
+    if(!n) 
         return;
     
-    printf("\e[%dG", n);
+    printf("\e[%uG", n);
 }
 
-void cursorPosition(int n, int m) {
-    if(n <= 0) 
+void cursorPosition(uint32_t n, uint32_t m) {
+    if(!n) 
         return;
-    if(m <= 0)
+    if(!m)
         return;
 
-    printf("\e[%d;%dH", n, m);
+    printf("\e[%u;%uH", n, m);
 }
 
-void eraseInDisplay(int n) {
-    if(n < 0 || n > 3)
+void eraseInDisplay(uint32_t n) {
+    if(n > 3)
         return;
 
-    printf("\e[%dJ", n);
+    printf("\e[%uJ", n);
 }
 
-void eraseInLine(int n) {
-    if(n < 0 || n > 2)
+void eraseInLine(uint32_t n) {
+    if(n > 2)
         return;
     
-    printf("\e[%dK", n);
+    printf("\e[%uK", n);
 }
 
-void scrollUp(int n) {
-    if(n <= 0)
+void scrollUp(uint32_t n) {
+    if(!n)
         return;
     
-    printf("\e[%dS", n);
+    printf("\e[%uS", n);
 }
 
-void scrollDown(int n) {
-    if(n <= 0)
+void scrollDown(uint32_t n) {
+    if(!n)
         return;
 
-    printf("\e[%dT", n);
+    printf("\e[%uT", n);
 }
 
 void deviceStatusReport(int* row, int* col) {
@@ -469,11 +469,14 @@ void doublyUnderlined() {
 }
 
 void setStandardForegroundColor(ansiStandardColors foregroundColor) {
-    printf("\e[%dm", (int)foregroundColor);
+    if(!((foregroundColor >= 30 && foregroundColor <= 37) || (foregroundColor >= 90 && foregroundColor <= 97)))
+        return;
+
+    printf("\e[%dm", foregroundColor);
 }
 
 void setRGBForegroundColor(rgb rgbColor) {
-    printf("\e[38;2;%d;%d;%dm", rgbColor.r, rgbColor.g, rgbColor.b);
+    printf("\e[38;2;%u;%u;%um", rgbColor.r, rgbColor.g, rgbColor.b);
 }
 
 void defaultForegroundColor() {
@@ -481,11 +484,14 @@ void defaultForegroundColor() {
 }
 
 void setStandardBackgroundColor(ansiStandardColors backgroundColor) {
-    printf("\e[%dm", (int)backgroundColor);
+    if(!((backgroundColor >= 40 && backgroundColor <= 47) || (backgroundColor >= 100 && backgroundColor <= 107)))
+        return;
+
+    printf("\e[%um", backgroundColor);
 }
 
 void setRGBBackgroundColor(rgb rgbColor) {
-    printf("\e[48;2;%d;%d;%dm", rgbColor.r, rgbColor.g, rgbColor.b);
+    printf("\e[48;2;%u;%u;%um", rgbColor.r, rgbColor.g, rgbColor.b);
 }
 
 void defaultBackgroundColor() {

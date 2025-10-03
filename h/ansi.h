@@ -32,7 +32,7 @@
     #define _ANSI_H_
     
     /// @brief Defines how many decimals digits should use printfgr when printing floating-point numbers. If there are leading digits, it approximates the number to a floating-point number with this amount of decimal digits
-    #define NUMBER_DECIMALS_DIGITS 6
+    #define NUMBER_DECIMAL_DIGITS 6
 
     /// @brief Defines the type underlined as unsigned integer 1 byte large.
     typedef uint8_t underline;
@@ -95,7 +95,7 @@
 
 
     /// @brief Builds a rgb struct.
-    /// @return Returns a rgb struct with properties set to 0.
+    /// @return Returns a rgb struct with properties set to NONE.
     rgb buildRgb();
     /// @brief Builds a ANSI rgb color struct.
     /// @return Returns a ANSI rgb color struct with properties set to NONE.
@@ -155,41 +155,41 @@
 
     /// @brief Moves the cursor up by n rows.
     /// @param n The rows to go up.
-    void cursorUp(int n);
+    void cursorUp(uint32_t n);
     /// @brief Moves the cursor down by n rows.
     /// @param n The rows to go down.
-    void cursorDown(int n);
+    void cursorDown(uint32_t n);
     /// @brief Moves the cursor to the right by n columns.
     /// @param n The columns to go forward.
-    void cursorForward(int n);
+    void cursorForward(uint32_t n);
     /// @brief Moves the cursor to the left by n columns.
     /// @param n The columns to go backward.
-    void cursorBack(int n);
+    void cursorBack(uint32_t n);
     /// @brief Moves the cursor at the beginning of the line n rows down.
     /// @param n The rows to go down.
-    void cursorNextLine(int n);
+    void cursorNextLine(uint32_t n);
     /// @brief Moves the cursor at the beginning of the line n rows up.
     /// @param n The rows to go up.
-    void cursorPreviousLine(int n);
+    void cursorPreviousLine(uint32_t n);
     /// @brief Moves the cursor to column n.
     /// @param n The column to go to.
-    void cursorHorizontalAbsolute(int n);
+    void cursorHorizontalAbsolute(uint32_t n);
     /// @brief Moves the cursor at n-th row and at the m-th column.
     /// @param n The row to go to.
     /// @param m The column to go to.
-    void cursorPosition(int n, int m);
+    void cursorPosition(uint32_t n, uint32_t m);
     /// @brief Clears part of the screen.
     /// @param n If n is set to 0, it clears from the cursor to the end of the screen. If n is set to 1, it clears from the cursor to the beginning of the screen. If n is set to 2, it clears the entire screen (on MS-DOS moves the cursor to the upper left corner). If n is set to 3, it clears the screen and erases the scrollback buffer.
-    void eraseInDisplay(int n);
+    void eraseInDisplay(uint32_t n);
     /// @brief Erases part of the line.
     /// @param n If n is set to 0, it clears from the cursor to the end of the line. If n is set to 1, it clears from the cursor to the beginning of the line. If n is set to 2, it clears the entire line. In any case the cursor position is unchanged.
-    void eraseInLine(int n);
+    void eraseInLine(uint32_t n);
     /// @brief Scrolls the whole page up by n rows.
     /// @param n The number of the rows to scroll up.
-    void scrollUp(int n);
+    void scrollUp(uint32_t n);
     /// @brief Scrolls the whole page down by n rows.
     /// @param n The number of the rows to scroll down.
-    void scrollDown(int n);
+    void scrollDown(uint32_t n);
     /// @brief Gets the cursor position.
     /// @param row The row of the cursor.
     /// @param col The column of the cursor.
@@ -207,7 +207,7 @@
     void slowBlinking();
     /// @brief Toggles doubly underlined text.
     void doublyUnderlined();
-    /// @brief Sets the ANSI standard foreground color.
+    /// @brief Sets the ANSI standard foreground color. If the color is not valid, it does nothing.
     /// @param foregroundColor The ANSI standard foreground color to be set.
     void setStandardForegroundColor(ansiStandardColors foregroundColor);
     /// @brief Sets the RGB foreground color.
@@ -215,7 +215,7 @@
     void setRGBForegroundColor(rgb rgbColor);
     /// @brief Resets the foreground color.
     void defaultForegroundColor();
-    /// @brief Sets the ANSI standard background color.
+    /// @brief Sets the ANSI standard background color. If the color is not valid, it does nothing.
     /// @param backgroundColor The ANSI standard background color to be set.
     void setStandardBackgroundColor(ansiStandardColors backgroundColor);
     /// @brief Sets the RGB  background color.
