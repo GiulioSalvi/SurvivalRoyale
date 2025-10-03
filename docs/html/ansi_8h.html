@@ -121,8 +121,8 @@ Data Structures</h2></td></tr>
 Macros</h2></td></tr>
 <tr class="memitem:a16f3e88347e88e0c1b40cccd28bf4dfe" id="r_a16f3e88347e88e0c1b40cccd28bf4dfe"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a16f3e88347e88e0c1b40cccd28bf4dfe">_ANSI_H_</a></td></tr>
 <tr class="memdesc:a16f3e88347e88e0c1b40cccd28bf4dfe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Include guard.  <br /></td></tr>
-<tr class="memitem:a6181416cb4f539582d79a43219d5b14a" id="r_a6181416cb4f539582d79a43219d5b14a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6181416cb4f539582d79a43219d5b14a">NUMBER_DECIMALS_DIGITS</a>&#160;&#160;&#160;6</td></tr>
-<tr class="memdesc:a6181416cb4f539582d79a43219d5b14a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Defines how many decimals digits should use printfgr when printing floating-point numbers. If there are leading digits, it approximates the number to a floating-point number with this amount of decimal digits.  <br /></td></tr>
+<tr class="memitem:af26a647de470e1508b1aedc5e9e67159" id="r_af26a647de470e1508b1aedc5e9e67159"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af26a647de470e1508b1aedc5e9e67159">NUMBER_DECIMAL_DIGITS</a>&#160;&#160;&#160;6</td></tr>
+<tr class="memdesc:af26a647de470e1508b1aedc5e9e67159"><td class="mdescLeft">&#160;</td><td class="mdescRight">Defines how many decimals digits should use printfgr when printing floating-point numbers. If there are leading digits, it approximates the number to a floating-point number with this amount of decimal digits.  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-typedef-members" class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
@@ -175,30 +175,30 @@ Functions</h2></td></tr>
 <tr class="memdesc:a106329ce5bea51f3defe6fabff041ae0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Waits for the user to press a key without waiting for 'Enter' to be pressed.  <br /></td></tr>
 <tr class="memitem:a8d7c4529e37b5a6d180f1acfba50f8ef" id="r_a8d7c4529e37b5a6d180f1acfba50f8ef"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8d7c4529e37b5a6d180f1acfba50f8ef">screenSize</a> (int *width, int *height)</td></tr>
 <tr class="memdesc:a8d7c4529e37b5a6d180f1acfba50f8ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">It returns the width and the height of the screen. On unix-like platforms, in case of errors, it sets them to -1.  <br /></td></tr>
-<tr class="memitem:a78826712599447b1d807091c705fc78c" id="r_a78826712599447b1d807091c705fc78c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a78826712599447b1d807091c705fc78c">cursorUp</a> (int n)</td></tr>
-<tr class="memdesc:a78826712599447b1d807091c705fc78c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Moves the cursor up by n rows.  <br /></td></tr>
-<tr class="memitem:a2122d6da1790923cd4f3ccb4aa1bcdb3" id="r_a2122d6da1790923cd4f3ccb4aa1bcdb3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2122d6da1790923cd4f3ccb4aa1bcdb3">cursorDown</a> (int n)</td></tr>
-<tr class="memdesc:a2122d6da1790923cd4f3ccb4aa1bcdb3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Moves the cursor down by n rows.  <br /></td></tr>
-<tr class="memitem:affcb8c5644334ed6909e211fbf25ceb7" id="r_affcb8c5644334ed6909e211fbf25ceb7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#affcb8c5644334ed6909e211fbf25ceb7">cursorForward</a> (int n)</td></tr>
-<tr class="memdesc:affcb8c5644334ed6909e211fbf25ceb7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Moves the cursor to the right by n columns.  <br /></td></tr>
-<tr class="memitem:aa1765d7d0b795d9fa2c6b5450cb4f39e" id="r_aa1765d7d0b795d9fa2c6b5450cb4f39e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa1765d7d0b795d9fa2c6b5450cb4f39e">cursorBack</a> (int n)</td></tr>
-<tr class="memdesc:aa1765d7d0b795d9fa2c6b5450cb4f39e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Moves the cursor to the left by n columns.  <br /></td></tr>
-<tr class="memitem:af81432ef4de9d67ca599055d69d74313" id="r_af81432ef4de9d67ca599055d69d74313"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af81432ef4de9d67ca599055d69d74313">cursorNextLine</a> (int n)</td></tr>
-<tr class="memdesc:af81432ef4de9d67ca599055d69d74313"><td class="mdescLeft">&#160;</td><td class="mdescRight">Moves the cursor at the beginning of the line n rows down.  <br /></td></tr>
-<tr class="memitem:abcece5e81e933c16f790fb65ee9bab7e" id="r_abcece5e81e933c16f790fb65ee9bab7e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abcece5e81e933c16f790fb65ee9bab7e">cursorPreviousLine</a> (int n)</td></tr>
-<tr class="memdesc:abcece5e81e933c16f790fb65ee9bab7e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Moves the cursor at the beginning of the line n rows up.  <br /></td></tr>
-<tr class="memitem:a8c37f22fb56c10aa2ba9f87cdd6ace84" id="r_a8c37f22fb56c10aa2ba9f87cdd6ace84"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8c37f22fb56c10aa2ba9f87cdd6ace84">cursorHorizontalAbsolute</a> (int n)</td></tr>
-<tr class="memdesc:a8c37f22fb56c10aa2ba9f87cdd6ace84"><td class="mdescLeft">&#160;</td><td class="mdescRight">Moves the cursor to column n.  <br /></td></tr>
-<tr class="memitem:a8c398ea153ebd06ed7324bec43c0c68f" id="r_a8c398ea153ebd06ed7324bec43c0c68f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8c398ea153ebd06ed7324bec43c0c68f">cursorPosition</a> (int n, int m)</td></tr>
-<tr class="memdesc:a8c398ea153ebd06ed7324bec43c0c68f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Moves the cursor at n-th row and at the m-th column.  <br /></td></tr>
-<tr class="memitem:a2e767014b22e43513f23f84b298e14f0" id="r_a2e767014b22e43513f23f84b298e14f0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2e767014b22e43513f23f84b298e14f0">eraseInDisplay</a> (int n)</td></tr>
-<tr class="memdesc:a2e767014b22e43513f23f84b298e14f0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clears part of the screen.  <br /></td></tr>
-<tr class="memitem:a54bd77a858894de858d0d3f2302fead7" id="r_a54bd77a858894de858d0d3f2302fead7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a54bd77a858894de858d0d3f2302fead7">eraseInLine</a> (int n)</td></tr>
-<tr class="memdesc:a54bd77a858894de858d0d3f2302fead7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Erases part of the line.  <br /></td></tr>
-<tr class="memitem:abff76a469bab53892c2a4c0abef876ba" id="r_abff76a469bab53892c2a4c0abef876ba"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abff76a469bab53892c2a4c0abef876ba">scrollUp</a> (int n)</td></tr>
-<tr class="memdesc:abff76a469bab53892c2a4c0abef876ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Scrolls the whole page up by n rows.  <br /></td></tr>
-<tr class="memitem:a7bf66075dca64fe3b011d0dff8066a3f" id="r_a7bf66075dca64fe3b011d0dff8066a3f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7bf66075dca64fe3b011d0dff8066a3f">scrollDown</a> (int n)</td></tr>
-<tr class="memdesc:a7bf66075dca64fe3b011d0dff8066a3f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Scrolls the whole page down by n rows.  <br /></td></tr>
+<tr class="memitem:ad350798c3b91a19065df5a79de101e8d" id="r_ad350798c3b91a19065df5a79de101e8d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad350798c3b91a19065df5a79de101e8d">cursorUp</a> (uint32_t n)</td></tr>
+<tr class="memdesc:ad350798c3b91a19065df5a79de101e8d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Moves the cursor up by n rows.  <br /></td></tr>
+<tr class="memitem:a91621bb93a3539b482cad420ff7ccf35" id="r_a91621bb93a3539b482cad420ff7ccf35"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a91621bb93a3539b482cad420ff7ccf35">cursorDown</a> (uint32_t n)</td></tr>
+<tr class="memdesc:a91621bb93a3539b482cad420ff7ccf35"><td class="mdescLeft">&#160;</td><td class="mdescRight">Moves the cursor down by n rows.  <br /></td></tr>
+<tr class="memitem:a65d7f9c4607f4018008a601ced5e5705" id="r_a65d7f9c4607f4018008a601ced5e5705"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a65d7f9c4607f4018008a601ced5e5705">cursorForward</a> (uint32_t n)</td></tr>
+<tr class="memdesc:a65d7f9c4607f4018008a601ced5e5705"><td class="mdescLeft">&#160;</td><td class="mdescRight">Moves the cursor to the right by n columns.  <br /></td></tr>
+<tr class="memitem:a4d21e7c4fc5b2d3edcf6f144c99f0a7c" id="r_a4d21e7c4fc5b2d3edcf6f144c99f0a7c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4d21e7c4fc5b2d3edcf6f144c99f0a7c">cursorBack</a> (uint32_t n)</td></tr>
+<tr class="memdesc:a4d21e7c4fc5b2d3edcf6f144c99f0a7c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Moves the cursor to the left by n columns.  <br /></td></tr>
+<tr class="memitem:ab84ceb87116d565e2b835e3402695e33" id="r_ab84ceb87116d565e2b835e3402695e33"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab84ceb87116d565e2b835e3402695e33">cursorNextLine</a> (uint32_t n)</td></tr>
+<tr class="memdesc:ab84ceb87116d565e2b835e3402695e33"><td class="mdescLeft">&#160;</td><td class="mdescRight">Moves the cursor at the beginning of the line n rows down.  <br /></td></tr>
+<tr class="memitem:ac2c49be9e363d9962d0f4e499a7dce4a" id="r_ac2c49be9e363d9962d0f4e499a7dce4a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac2c49be9e363d9962d0f4e499a7dce4a">cursorPreviousLine</a> (uint32_t n)</td></tr>
+<tr class="memdesc:ac2c49be9e363d9962d0f4e499a7dce4a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Moves the cursor at the beginning of the line n rows up.  <br /></td></tr>
+<tr class="memitem:aa4fb0560677275ea0ea3b8242f2a81ef" id="r_aa4fb0560677275ea0ea3b8242f2a81ef"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa4fb0560677275ea0ea3b8242f2a81ef">cursorHorizontalAbsolute</a> (uint32_t n)</td></tr>
+<tr class="memdesc:aa4fb0560677275ea0ea3b8242f2a81ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Moves the cursor to column n.  <br /></td></tr>
+<tr class="memitem:a269854b36725796793cfc28b3c1617d9" id="r_a269854b36725796793cfc28b3c1617d9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a269854b36725796793cfc28b3c1617d9">cursorPosition</a> (uint32_t n, uint32_t m)</td></tr>
+<tr class="memdesc:a269854b36725796793cfc28b3c1617d9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Moves the cursor at n-th row and at the m-th column.  <br /></td></tr>
+<tr class="memitem:ad21c204a50eedca9cf339178a030a22c" id="r_ad21c204a50eedca9cf339178a030a22c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad21c204a50eedca9cf339178a030a22c">eraseInDisplay</a> (uint32_t n)</td></tr>
+<tr class="memdesc:ad21c204a50eedca9cf339178a030a22c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clears part of the screen.  <br /></td></tr>
+<tr class="memitem:a0a2139a4ecb8d399fb4271b3f55144bd" id="r_a0a2139a4ecb8d399fb4271b3f55144bd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0a2139a4ecb8d399fb4271b3f55144bd">eraseInLine</a> (uint32_t n)</td></tr>
+<tr class="memdesc:a0a2139a4ecb8d399fb4271b3f55144bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Erases part of the line.  <br /></td></tr>
+<tr class="memitem:a0104b6ccbd7d29b56a651cf44e1913c5" id="r_a0104b6ccbd7d29b56a651cf44e1913c5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0104b6ccbd7d29b56a651cf44e1913c5">scrollUp</a> (uint32_t n)</td></tr>
+<tr class="memdesc:a0104b6ccbd7d29b56a651cf44e1913c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Scrolls the whole page up by n rows.  <br /></td></tr>
+<tr class="memitem:a51f7112f9b41552d055b2e32a591070b" id="r_a51f7112f9b41552d055b2e32a591070b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a51f7112f9b41552d055b2e32a591070b">scrollDown</a> (uint32_t n)</td></tr>
+<tr class="memdesc:a51f7112f9b41552d055b2e32a591070b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Scrolls the whole page down by n rows.  <br /></td></tr>
 <tr class="memitem:a49c7f9ee5f472eb31638f66e7694c62c" id="r_a49c7f9ee5f472eb31638f66e7694c62c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a49c7f9ee5f472eb31638f66e7694c62c">deviceStatusReport</a> (int *row, int *col)</td></tr>
 <tr class="memdesc:a49c7f9ee5f472eb31638f66e7694c62c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the cursor position.  <br /></td></tr>
 <tr class="memitem:a54dffcffb5538afde1838a8eb5f370d3" id="r_a54dffcffb5538afde1838a8eb5f370d3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a54dffcffb5538afde1838a8eb5f370d3">graphicReset</a> ()</td></tr>
@@ -214,13 +214,13 @@ Functions</h2></td></tr>
 <tr class="memitem:a82e03ae592c92726f05e58c353bf0553" id="r_a82e03ae592c92726f05e58c353bf0553"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a82e03ae592c92726f05e58c353bf0553">doublyUnderlined</a> ()</td></tr>
 <tr class="memdesc:a82e03ae592c92726f05e58c353bf0553"><td class="mdescLeft">&#160;</td><td class="mdescRight">Toggles doubly underlined text.  <br /></td></tr>
 <tr class="memitem:abdc3ddf704f97428d16e31a2788ce1f4" id="r_abdc3ddf704f97428d16e31a2788ce1f4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abdc3ddf704f97428d16e31a2788ce1f4">setStandardForegroundColor</a> (<a class="el" href="#af3c7e631728b722438dbbea250d432cc">ansiStandardColors</a> foregroundColor)</td></tr>
-<tr class="memdesc:abdc3ddf704f97428d16e31a2788ce1f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the ANSI standard foreground color.  <br /></td></tr>
+<tr class="memdesc:abdc3ddf704f97428d16e31a2788ce1f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the ANSI standard foreground color. If the color is not valid, it does nothing.  <br /></td></tr>
 <tr class="memitem:a9bd01c58da58f6cc1bfeafccc7ce5697" id="r_a9bd01c58da58f6cc1bfeafccc7ce5697"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9bd01c58da58f6cc1bfeafccc7ce5697">setRGBForegroundColor</a> (<a class="el" href="structrgb.html">rgb</a> rgbColor)</td></tr>
 <tr class="memdesc:a9bd01c58da58f6cc1bfeafccc7ce5697"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the RGB foreground color.  <br /></td></tr>
 <tr class="memitem:a6f818e398df2bb83682d5ae36f2fceeb" id="r_a6f818e398df2bb83682d5ae36f2fceeb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6f818e398df2bb83682d5ae36f2fceeb">defaultForegroundColor</a> ()</td></tr>
 <tr class="memdesc:a6f818e398df2bb83682d5ae36f2fceeb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resets the foreground color.  <br /></td></tr>
 <tr class="memitem:ac8eb168942549efd66a06ac9cf665a82" id="r_ac8eb168942549efd66a06ac9cf665a82"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac8eb168942549efd66a06ac9cf665a82">setStandardBackgroundColor</a> (<a class="el" href="#af3c7e631728b722438dbbea250d432cc">ansiStandardColors</a> backgroundColor)</td></tr>
-<tr class="memdesc:ac8eb168942549efd66a06ac9cf665a82"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the ANSI standard background color.  <br /></td></tr>
+<tr class="memdesc:ac8eb168942549efd66a06ac9cf665a82"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the ANSI standard background color. If the color is not valid, it does nothing.  <br /></td></tr>
 <tr class="memitem:a49092bfee1a613ad575bc6f8637f89c6" id="r_a49092bfee1a613ad575bc6f8637f89c6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a49092bfee1a613ad575bc6f8637f89c6">setRGBBackgroundColor</a> (<a class="el" href="structrgb.html">rgb</a> rgbColor)</td></tr>
 <tr class="memdesc:a49092bfee1a613ad575bc6f8637f89c6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the RGB background color.  <br /></td></tr>
 <tr class="memitem:a540ccd55325dcdc0da412709ec94609b" id="r_a540ccd55325dcdc0da412709ec94609b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a540ccd55325dcdc0da412709ec94609b">defaultBackgroundColor</a> ()</td></tr>
@@ -252,14 +252,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a6181416cb4f539582d79a43219d5b14a" name="a6181416cb4f539582d79a43219d5b14a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6181416cb4f539582d79a43219d5b14a">&#9670;&#160;</a></span>NUMBER_DECIMALS_DIGITS</h2>
+<a id="af26a647de470e1508b1aedc5e9e67159" name="af26a647de470e1508b1aedc5e9e67159"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af26a647de470e1508b1aedc5e9e67159">&#9670;&#160;</a></span>NUMBER_DECIMAL_DIGITS</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define NUMBER_DECIMALS_DIGITS&#160;&#160;&#160;6</td>
+          <td class="memname">#define NUMBER_DECIMAL_DIGITS&#160;&#160;&#160;6</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -529,7 +529,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Builds a rgb struct. </p>
-<dl class="section return"><dt>Returns</dt><dd>Returns a rgb struct with properties set to 0. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Returns a rgb struct with properties set to NONE. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="ansi_8c_source.html#l00031">31</a> of file <a class="el" href="ansi_8c_source.html">ansi.c</a>.</p>
 
@@ -556,8 +556,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="aa1765d7d0b795d9fa2c6b5450cb4f39e" name="aa1765d7d0b795d9fa2c6b5450cb4f39e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa1765d7d0b795d9fa2c6b5450cb4f39e">&#9670;&#160;</a></span>cursorBack()</h2>
+<a id="a4d21e7c4fc5b2d3edcf6f144c99f0a7c" name="a4d21e7c4fc5b2d3edcf6f144c99f0a7c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4d21e7c4fc5b2d3edcf6f144c99f0a7c">&#9670;&#160;</a></span>cursorBack()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -565,7 +565,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">void cursorBack </td>
           <td>(</td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>n</em></span></td><td>)</td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>n</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -583,8 +583,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a2122d6da1790923cd4f3ccb4aa1bcdb3" name="a2122d6da1790923cd4f3ccb4aa1bcdb3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2122d6da1790923cd4f3ccb4aa1bcdb3">&#9670;&#160;</a></span>cursorDown()</h2>
+<a id="a91621bb93a3539b482cad420ff7ccf35" name="a91621bb93a3539b482cad420ff7ccf35"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a91621bb93a3539b482cad420ff7ccf35">&#9670;&#160;</a></span>cursorDown()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -592,7 +592,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">void cursorDown </td>
           <td>(</td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>n</em></span></td><td>)</td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>n</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -610,8 +610,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="affcb8c5644334ed6909e211fbf25ceb7" name="affcb8c5644334ed6909e211fbf25ceb7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#affcb8c5644334ed6909e211fbf25ceb7">&#9670;&#160;</a></span>cursorForward()</h2>
+<a id="a65d7f9c4607f4018008a601ced5e5705" name="a65d7f9c4607f4018008a601ced5e5705"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a65d7f9c4607f4018008a601ced5e5705">&#9670;&#160;</a></span>cursorForward()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -619,7 +619,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">void cursorForward </td>
           <td>(</td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>n</em></span></td><td>)</td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>n</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -637,8 +637,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a8c37f22fb56c10aa2ba9f87cdd6ace84" name="a8c37f22fb56c10aa2ba9f87cdd6ace84"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8c37f22fb56c10aa2ba9f87cdd6ace84">&#9670;&#160;</a></span>cursorHorizontalAbsolute()</h2>
+<a id="aa4fb0560677275ea0ea3b8242f2a81ef" name="aa4fb0560677275ea0ea3b8242f2a81ef"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa4fb0560677275ea0ea3b8242f2a81ef">&#9670;&#160;</a></span>cursorHorizontalAbsolute()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -646,7 +646,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">void cursorHorizontalAbsolute </td>
           <td>(</td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>n</em></span></td><td>)</td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>n</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -664,8 +664,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="af81432ef4de9d67ca599055d69d74313" name="af81432ef4de9d67ca599055d69d74313"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af81432ef4de9d67ca599055d69d74313">&#9670;&#160;</a></span>cursorNextLine()</h2>
+<a id="ab84ceb87116d565e2b835e3402695e33" name="ab84ceb87116d565e2b835e3402695e33"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab84ceb87116d565e2b835e3402695e33">&#9670;&#160;</a></span>cursorNextLine()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -673,7 +673,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">void cursorNextLine </td>
           <td>(</td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>n</em></span></td><td>)</td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>n</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -691,8 +691,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a8c398ea153ebd06ed7324bec43c0c68f" name="a8c398ea153ebd06ed7324bec43c0c68f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8c398ea153ebd06ed7324bec43c0c68f">&#9670;&#160;</a></span>cursorPosition()</h2>
+<a id="a269854b36725796793cfc28b3c1617d9" name="a269854b36725796793cfc28b3c1617d9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a269854b36725796793cfc28b3c1617d9">&#9670;&#160;</a></span>cursorPosition()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -700,12 +700,12 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">void cursorPosition </td>
           <td>(</td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>n</em></span>, </td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>n</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>m</em></span>&#160;)</td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>m</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -723,8 +723,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="abcece5e81e933c16f790fb65ee9bab7e" name="abcece5e81e933c16f790fb65ee9bab7e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abcece5e81e933c16f790fb65ee9bab7e">&#9670;&#160;</a></span>cursorPreviousLine()</h2>
+<a id="ac2c49be9e363d9962d0f4e499a7dce4a" name="ac2c49be9e363d9962d0f4e499a7dce4a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac2c49be9e363d9962d0f4e499a7dce4a">&#9670;&#160;</a></span>cursorPreviousLine()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -732,7 +732,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">void cursorPreviousLine </td>
           <td>(</td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>n</em></span></td><td>)</td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>n</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -750,8 +750,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a78826712599447b1d807091c705fc78c" name="a78826712599447b1d807091c705fc78c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a78826712599447b1d807091c705fc78c">&#9670;&#160;</a></span>cursorUp()</h2>
+<a id="ad350798c3b91a19065df5a79de101e8d" name="ad350798c3b91a19065df5a79de101e8d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad350798c3b91a19065df5a79de101e8d">&#9670;&#160;</a></span>cursorUp()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -759,7 +759,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">void cursorUp </td>
           <td>(</td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>n</em></span></td><td>)</td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>n</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -794,7 +794,7 @@ Functions</h2></td></tr>
 
 <p>Resets the background color. </p>
 
-<p class="definition">Definition at line <a class="el" href="ansi_8c_source.html#l00491">491</a> of file <a class="el" href="ansi_8c_source.html">ansi.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ansi_8c_source.html#l00497">497</a> of file <a class="el" href="ansi_8c_source.html">ansi.c</a>.</p>
 
 </div>
 </div>
@@ -815,7 +815,7 @@ Functions</h2></td></tr>
 
 <p>Resets the foreground color. </p>
 
-<p class="definition">Definition at line <a class="el" href="ansi_8c_source.html#l00479">479</a> of file <a class="el" href="ansi_8c_source.html">ansi.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ansi_8c_source.html#l00482">482</a> of file <a class="el" href="ansi_8c_source.html">ansi.c</a>.</p>
 
 </div>
 </div>
@@ -872,8 +872,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a2e767014b22e43513f23f84b298e14f0" name="a2e767014b22e43513f23f84b298e14f0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2e767014b22e43513f23f84b298e14f0">&#9670;&#160;</a></span>eraseInDisplay()</h2>
+<a id="ad21c204a50eedca9cf339178a030a22c" name="ad21c204a50eedca9cf339178a030a22c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad21c204a50eedca9cf339178a030a22c">&#9670;&#160;</a></span>eraseInDisplay()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -881,7 +881,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">void eraseInDisplay </td>
           <td>(</td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>n</em></span></td><td>)</td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>n</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -899,8 +899,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a54bd77a858894de858d0d3f2302fead7" name="a54bd77a858894de858d0d3f2302fead7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a54bd77a858894de858d0d3f2302fead7">&#9670;&#160;</a></span>eraseInLine()</h2>
+<a id="a0a2139a4ecb8d399fb4271b3f55144bd" name="a0a2139a4ecb8d399fb4271b3f55144bd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0a2139a4ecb8d399fb4271b3f55144bd">&#9670;&#160;</a></span>eraseInLine()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -908,7 +908,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">void eraseInLine </td>
           <td>(</td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>n</em></span></td><td>)</td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>n</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -1144,8 +1144,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a7bf66075dca64fe3b011d0dff8066a3f" name="a7bf66075dca64fe3b011d0dff8066a3f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7bf66075dca64fe3b011d0dff8066a3f">&#9670;&#160;</a></span>scrollDown()</h2>
+<a id="a51f7112f9b41552d055b2e32a591070b" name="a51f7112f9b41552d055b2e32a591070b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a51f7112f9b41552d055b2e32a591070b">&#9670;&#160;</a></span>scrollDown()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1153,7 +1153,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">void scrollDown </td>
           <td>(</td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>n</em></span></td><td>)</td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>n</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -1171,8 +1171,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="abff76a469bab53892c2a4c0abef876ba" name="abff76a469bab53892c2a4c0abef876ba"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abff76a469bab53892c2a4c0abef876ba">&#9670;&#160;</a></span>scrollUp()</h2>
+<a id="a0104b6ccbd7d29b56a651cf44e1913c5" name="a0104b6ccbd7d29b56a651cf44e1913c5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0104b6ccbd7d29b56a651cf44e1913c5">&#9670;&#160;</a></span>scrollUp()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1180,7 +1180,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">void scrollUp </td>
           <td>(</td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>n</em></span></td><td>)</td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>n</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -1302,7 +1302,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="ansi_8c_source.html#l00487">487</a> of file <a class="el" href="ansi_8c_source.html">ansi.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ansi_8c_source.html#l00493">493</a> of file <a class="el" href="ansi_8c_source.html">ansi.c</a>.</p>
 
 </div>
 </div>
@@ -1329,7 +1329,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="ansi_8c_source.html#l00475">475</a> of file <a class="el" href="ansi_8c_source.html">ansi.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ansi_8c_source.html#l00478">478</a> of file <a class="el" href="ansi_8c_source.html">ansi.c</a>.</p>
 
 </div>
 </div>
@@ -1348,7 +1348,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Sets the ANSI standard background color. </p>
+<p>Sets the ANSI standard background color. If the color is not valid, it does nothing. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">backgroundColor</td><td>The ANSI standard background color to be set. </td></tr>
@@ -1356,7 +1356,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="ansi_8c_source.html#l00483">483</a> of file <a class="el" href="ansi_8c_source.html">ansi.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ansi_8c_source.html#l00486">486</a> of file <a class="el" href="ansi_8c_source.html">ansi.c</a>.</p>
 
 </div>
 </div>
@@ -1375,7 +1375,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Sets the ANSI standard foreground color. </p>
+<p>Sets the ANSI standard foreground color. If the color is not valid, it does nothing. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">foregroundColor</td><td>The ANSI standard foreground color to be set. </td></tr>
