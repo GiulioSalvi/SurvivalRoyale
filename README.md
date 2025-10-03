@@ -4,7 +4,7 @@
 
 ## Welcome:
 
-This is the project of [Giulio Salvi](https://github.com/GiulioSalvi) and [Jacopo Paridisi](https://github.com/jajo-coder) for the academic [course Introduction to Computer Programming [CT0665]](https://www.unive.it/data/course/521402) in the bachelor's degree program in [Computer Science [CT3]](https://www.unive.it/web/en/12090/home) at the [University of Venice Ca&#39; Foscari](https://unive.it).
+This is the project of [Giulio Salvi](https://github.com/GiulioSalvi) and [Jacopo Paridisi](https://github.com/jajo-coder) for the academic [course Introduction to Computer Programming [CT0665]](https://www.unive.it/data/course/521402) in the bachelor's degree program in [Computer Science [CT3]](https://www.unive.it/web/en/12090/home) at the [University of Venice](https://unive.it) Ca' Foscari.
 
 The project offers two interfaces at run-time:
 
@@ -38,7 +38,7 @@ The source code of the project is organized in modules, in particular:
 
 ## Need help?
 
-If you need any help about the code and the project, please feel free to start a thread in [Q&amp;A category](https://github.com/GiulioSalvi/SurvivalRoyale/discussions/categories/q-a) in the discussion section.
+If you need any help about the code and the project, please feel free to join [the thread](https://github.com/GiulioSalvi/SurvivalRoyale/discussions/categories/q-a) in the Q&A category in the discussion section.
 
 ## Documentation:
 
