@@ -60,7 +60,7 @@
     /// @param element The element to be pushed.
     void pushBack(vector* const vector, const data_type element);
     /// @brief Pops the element at the back of the vector. If necessary, the vector is resized automatically. If the vector is empty, it exits with EXIT_POP_FAILURE exit code.
-    /// @param vector The vector from which the element is poped.
+    /// @param vector The vector from which the element is popped.
     /// @return Returns the element at the back of the vector.
     data_type popBack(vector* const vector);
     /// @brief Pushes an element at the front of the vector. If necessary, the vector is resized automatically.
@@ -68,7 +68,7 @@
     /// @param element The element to be pushed.
     void pushFront(vector* const vector, const data_type element);
     /// @brief Pops the element at the back of the vector. If necessary, the vector is resized automatically. If the vector is empty, it exits with EXIT_POP_FAILURE exit code.
-    /// @param vector The vector from which the element is poped.
+    /// @param vector The vector from which the element is popped.
     /// @return Returns the element at the front of the vector.
     data_type popFront(vector* const vector);
     /// @brief Access at the element in the given index of the vector. If the index is greater or equal to the vector's size, it exits with EXIT_ILLEGAL_INDEX_FAILURE exit code.

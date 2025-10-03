@@ -28,7 +28,7 @@
     /// @brief Prints the generic help message or a detailed help message describing a particular option.
     /// @param scope Generic scope or a CLI option (shorthands are not handled).
     void getHelp(const char* scope);
-    /// @brief It validates and intreprets the CLI options.
+    /// @brief It validates and interprets the CLI options.
     /// @param argv The CLI options vector.
     /// @param argc The length of argv.
     /// @return If the CLI options are legal, it returns a bit-masked action code meaning the action that the program has to take of, otherwise exits with EXIT_CLI_ILLEGAL. If the user was legally asking for help, it returns ACTION_HELP; otherwise it exits with EXIT_CLI_ILLEGAL.

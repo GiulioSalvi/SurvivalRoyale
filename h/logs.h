@@ -35,7 +35,7 @@
     /// @param newLine Flag for determining if the function has to go to a new line before exiting. If the logger is not using the console, this value is ignored and a new line is always generated.
     void printGameConfiguration(GameConfiguration gameConfiguration, LogsConfiguration logsConfiguration, bool newLine);
     /// @brief Prints user-friendly the players' infos.
-    /// @param game The game which cointains the players.
+    /// @param game The game which contains the players.
     /// @param newLine Flag for determining if the function has to go to a new line before exiting. If the logger is not using the console, this value is ignored and a new line is always generated.
     void printPlayers(Game game, bool newLine);
     /// @brief Prints user-friendly player's info.
