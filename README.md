@@ -2,7 +2,7 @@
 
 *Survival Royale, a very simple yet funny card game*
 
-## Welcome:
+## Welcome
 
 This is the project of [Giulio Salvi](https://github.com/GiulioSalvi) and [Jacopo Paridisi](https://github.com/jajo-coder) for the academic [course Introduction to Computer Programming [CT0665]](https://www.unive.it/data/course/521402) in the bachelor's degree program in [Computer Science [CT3]](https://www.unive.it/web/en/12090/home) at the [University of Venice](https://unive.it) Ca' Foscari.
 
@@ -13,7 +13,7 @@ The project offers two interfaces at run-time:
 
 A logging utility, for debugging purposes, can be activated at run-time using the option `--verbose` or its alias `-v` in the *CLI* (*Command Line Interface*) and it will produce log files in the directory `logs`.
 
-## How to Compile and Run:
+## How to Compile and Run
 
 The project is designed to be cross-platform on Windows, macOS and Linux. Note that for Windows systems you might use some [toolchain](https://en.wikipedia.org/wiki/Toolchain) that serves you a Unix-like environment, such as *[Windows Subsystem for Linux 2](https://en.wikipedia.org/wiki/Windows_Subsystem_for_Linux)* (*WSL2*) (which is the most recommended and versatile), *MSYS2*, *Cygwin*, *MinGW* and many others.
 
@@ -23,7 +23,7 @@ On Windows systems, the project's *TUI* requires to be run on the [Windows Termi
 
 If you desire to regenerate the [Doxygen](https://en.wikipedia.org/wiki/Doxygen) documentation, you can run the target `gen-docs` but you need to have Doxygen installed on your system.
 
-## About the Code Organization:
+## About the Code Organization
 
 The source code of the project is organized in modules, in particular:
 
@@ -40,17 +40,17 @@ The source code of the project is organized in modules, in particular:
 
 If you need any help about the code and the project, please feel free to join [the thread](https://github.com/GiulioSalvi/SurvivalRoyale/discussions/categories/q-a) in the Q&A category in the discussion section.
 
-## Documentation:
+## Documentation
 
 The full documentation can be found [at this link on GitHub Pages](https://giuliosalvi.github.io/SurvivalRoyale).
 
-## License:
+## License
 
 The whole content of this repository (project source code, documentation, specification, report and icon) is licensed under the *GNU General Public License 3.*
 
 You can find the original and complete copy of the license in the *[COPYING](COPYING)* file or [at the original website](https://www.gnu.org/licenses/).
 
-## Acknowledgements:
+## Acknowledgements
 
 The *Project Specifications* file is available under the license as a courtesy of [Professor Giulio Ermanno Pibiri](https://github.com/jermp) and of Professor Luca Olivieri.
 
@@ -60,6 +60,6 @@ The *TUI module* was developed by [Jacopo Paridisi](https://github.com/jajo-code
 
 If you would like to see more about the team's organization, check the related section in the *Project Report* file.
 
-## Thank you:
+## Thank you
 
 A special thank you to my colleague [Jacopo Paridisi](https://github.com/jajo-coder) for his significant contribute and to the professors for the fruitful stimulus.
